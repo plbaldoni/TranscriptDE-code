@@ -9,3 +9,10 @@ analysis/*png
 analysis/*html
 analysis/*_cache
 analysis/site_libs
+
+# Data ignores
+output/mouse/salmon/
+
+# File ignores
+*.gtf.gz
+*.fa.gz
