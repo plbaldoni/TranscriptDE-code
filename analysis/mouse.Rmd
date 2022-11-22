@@ -1,0 +1,140 @@
+---
+title: "Transcript level analysis of mouse mammary gland RNA-seq data"
+author: "Pedro Baldoni"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+# Introduction
+
+# Setup
+
+```{r mouse_setup_options}
+knitr::opts_chunk$set(
+  dev = "png",
+  dpi = 300,
+  dev.args = list(type = "cairo-png"),
+  root.dir = '.'
+)
+```
+
+```{r mouse_setup_lib}
+library(edgeR)
+library(data.table)
+library(ggplot2)
+library(readr)
+library(Rsubread)
+library(rtracklayer)
+library(magrittr)
+library(ggpubr)
+```
+
+# Analysis
+
+## Data wrangling
+
+```{r mouse_data_path}
+path.data <- '../data/mouse'
+path.anno <- '../data/annotation/mm39'
+path.quant <- '../output/mouse'
+```
+
+```{r mouse_data_targets}
+dt.targets <- fread(file.path(path.data,'misc/targets.txt'))
+setnames(dt.targets,old = 'Group',new = 'group')
+dt.targets[,path := file.path(path.quant,'salmon',gsub('_R1.fastq.gz','',File1))]
+```
+
+```{r mouse_data_fa}
+dt.fa <- scanFasta(file.path(path.anno,'gencode.vM27.transcripts.fa.gz'))
+dt.fa <- as.data.table(dt.fa)
+dt.fa$GeneID <- strsplit2(dt.fa$TranscriptID,'\\|')[,2]
+dt.fa$TranscriptID <- strsplit2(dt.fa$TranscriptID,'\\|')[,1]
+
+dt.fa.gene <- dt.fa[,.(NTranscriptID = .N),by = 'GeneID']
+
+dt.fa <- merge(dt.fa,dt.fa.gene,by = 'GeneID',all.x = TRUE,sort = FALSE)
+```
+
+```{r mouse_data_gtf}
+gr.gtf <- import(file.path(path.anno,'gencode.vM27.annotation.gtf.gz'))
+
+gr.gtf.gene <- gr.gtf[gr.gtf$type == 'gene']
+gr.gtf.transcript <- gr.gtf[gr.gtf$type == 'transcript']
+
+gr.gtf.gene.interest <- 
+  gr.gtf.gene[gr.gtf.gene$gene_type %in% c('protein_coding','lncRNA')]
+gr.gtf.transcript.interest <- 
+  gr.gtf.transcript[gr.gtf.transcript$gene_id %in% gr.gtf.gene.interest$gene_id]
+```
+
+```{r mouse_data_catch}
+catch <- catchSalmon(dt.targets$path,verbose = FALSE)
+
+key.catch.fa <- match(rownames(catch$annotation),dt.fa$TranscriptID)
+
+catch$annotation$GeneID <- dt.fa$GeneID[key.catch.fa]
+catch$annotation$NTranscriptID <- dt.fa$NTranscriptID[key.catch.fa]
+```
+
+
+## Differential transcript expression
+
+### edgeR with count scaling
+
+```{r dte_edger-cs}
+dte.scaled <- DGEList(counts = catch$counts/catch$annotation$Overdispersion,
+                      genes = catch$annotation,
+                      samples = dt.targets)
+colnames(dte.scaled) <- dte.scaled$samples$Sample
+
+design <- model.matrix(~0+group,data = dte.scaled$samples)
+
+con.3groups <- makeContrasts(LPvsB = groupLP - groupBasal,
+                             MLvsB = groupML - groupBasal, levels = design)
+con.2groups <- makeContrasts(MLvsLP = groupML - groupLP, levels = design)
+
+keep.scaled <- 
+  filterByExpr(dte.scaled) & 
+  rownames(dte.scaled) %in% gr.gtf.transcript.interest$transcript_id
+dte.scaled.filtr <- dte.scaled[keep.scaled, , keep.lib.sizes = FALSE]
+dte.scaled.filtr <- calcNormFactors(dte.scaled.filtr)
+dte.scaled.filtr <- estimateDisp(dte.scaled.filtr,design)
+fit.scaled <- glmQLFit(dte.scaled.filtr,design)
+
+qlf.3groups.scaled <- glmQLFTest(fit.scaled,contrast = con.3groups)
+out.3groups.scaled <- topTags(qlf.3groups.scaled,n = Inf)
+
+qlf.2groups.scaled <- glmQLFTest(fit.scaled,contrast = con.2groups)
+out.2groups.scaled <- topTags(qlf.2groups.scaled,n = Inf)
+```
+
+
+```{r dte_edger-cs_mao_plot,fig.height=4,fig.width=8}
+dt.mao.plot <- as.data.table(dte.scaled.filtr$genes)
+dt.mao.plot[,NTranscriptIDTrunc := ifelse(NTranscriptID<10,NTranscriptID,paste0('>=10'))]
+
+dt.mao.plot$NTranscriptIDTrunc %<>% factor(levels = paste0(c(1:10,'>=10')))
+
+plot.mao.1 <- 
+  ggplot(dt.mao.plot,aes(x = log10(Overdispersion))) +
+  geom_histogram(fill = 'gray',color = 'black',boundary = 0,binwidth = 0.1) +
+  theme_bw() +
+  labs(y = 'Frequency', x = 'Overdispersion (log10 scale)') +
+  scale_x_continuous(limits = c(0,3)) +
+  theme(panel.grid = element_blank())
+
+plot.mao.2 <- 
+  ggplot(data = dt.mao.plot,aes(x = NTranscriptIDTrunc,y = log10(Overdispersion))) +
+  geom_boxplot(fill = 'gray',outlier.alpha = 0.2) +
+  geom_smooth(aes(group = 1),color = 'red',se = FALSE,span = 0.8,method = 'loess') +
+  labs(x = 'Number of expressed transcripts per gene', y = 'Overdispersion (log10 scale)') +
+  scale_y_continuous(limits = c(0,3),breaks = seq(0,3,1)) +
+  theme_bw() +
+  theme(panel.grid = element_blank())
+
+plot.mao <- ggarrange(plot.mao.1,plot.mao.2,nrow = 1,ncol = 2,labels = c('a','b'))
+plot.mao
+```
