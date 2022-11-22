@@ -1,3 +1,4 @@
+# source("renv/activate.R")
 ## This makes sure that R loads the workflowr package
 ## automatically, everytime the project is loaded
 if (requireNamespace("workflowr", quietly = TRUE)) {
