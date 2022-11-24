@@ -1,0 +1,342 @@
+---
+title: "simulation"
+author: "Pedro Baldoni"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+# Introduction
+
+# Setup
+
+```{r simulation-paper_setup}
+knitr::opts_chunk$set(
+  dev = "png",
+  dpi = 300,
+  dev.args = list(type = "cairo-png"),
+  root.dir = '.',
+  autodep = TRUE
+)
+
+options(knitr.kable.NA = "-")
+```
+
+```{r simulation-paper_setup_lib}
+library(data.table)
+library(ggplot2)
+library(thematic)
+library(plyr)
+library(magrittr)
+library(limma)
+library(edgeR)
+library(BiocParallel)
+library(devtools)
+library(purrr)
+library(readr)
+library(ggpubr)
+library(kableExtra)
+load_all('../code/pkg/')
+
+BPPARAM <- MulticoreParam(workers = 16,progressbar = TRUE)
+register(BPPARAM)
+```
+
+```{r simulation-paper_setup_functions}
+cleanPlot <- function(x,fig){
+  if (x == max(seq_along(fig))) {
+    y <- fig[[x]]
+  } else{
+    y <- fig[[x]] + theme(axis.title.x = element_blank(),
+                          axis.text.x = element_blank(),
+                          axis.ticks.x = element_blank())
+  }
+  if (x > 1) {
+    y <- y + theme(strip.background.x = element_blank(),
+                   strip.text.x = element_blank())
+  }
+  return(y)
+}
+
+subsetDT <- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE){
+  if(isTRUE(plot)){
+    if(panel %in% c('A','B')){
+      out <- x[Genome == scenario['genome'] &
+                 FC == ifelse(panel == 'A','fc2','fc1') & 
+                 Length == scenario['length'] &
+                 Reads == scenario['read'] & 
+                 Quantifier == scenario['quantifier'] & 
+                 Scenario == scenario['scenario'],]
+    } else{
+      out <- x[Genome == scenario['genome'] &
+                 FC == 'fc1' & 
+                 Length == scenario['length'] &
+                 Reads == scenario['read'] & 
+                 Quantifier == scenario['quantifier'] & 
+                 Scenario == scenario['scenario'] &
+                 TxPerGene == tx.per.gene ,]
+    }
+  } else{
+    out <- x[Genome == scenario['genome'] &
+               FC == 'fc2' & 
+               Quantifier == scenario['quantifier'] & 
+               TxPerGene == scenario['txpergene'],]
+  }
+  return(out)
+}
+```
+
+# Analysis
+
+## Data wrangling
+
+```{r simulation-paper_data_paths}
+path.fdr <- 
+  list.files('../output/simulation/summary','fdr.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.metrics <- 
+  list.files('../output/simulation/summary','metrics.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.time <- 
+  list.files('../output/simulation/summary','time.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.quantile <- 
+  list.files('../output/simulation/summary','quantile.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.pvalue <- 
+  list.files('../output/simulation/summary','pvalue.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.overdispersion <- 
+  list.files('../output/simulation/summary','overdispersion.tsv.gz',recursive = TRUE,full.names = TRUE)
+```
+
+```{r simulation-paper_data_load,cache=TRUE}
+# Loading datasets
+dt.fdr <- do.call(rbind,lapply(path.fdr,fread))
+dt.metrics <- do.call(rbind,lapply(path.metrics,fread))
+dt.time <- do.call(rbind,lapply(path.time,fread))
+dt.quantile <- do.call(rbind,lapply(path.quantile,fread))
+dt.pvalue <- do.call(rbind,lapply(path.pvalue,fread))
+dt.overdispersion <- do.call(rbind,lapply(path.overdispersion,fread))
+```
+
+```{r simulation-paper_data_label}
+# Changing labels
+dt.fdr$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.fdr$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.fdr$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.fdr$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                             to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.metrics$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.metrics$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.metrics$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.metrics$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                 to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.time$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.time$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.time$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.time$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                              to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.quantile$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.quantile$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.quantile$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.quantile$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                  to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.pvalue$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.pvalue$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.pvalue$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.pvalue$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.overdispersion$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.overdispersion$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.overdispersion$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.overdispersion$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                        to = paste0(seq(50, 150, 25), 'bp'))
+```
+
+```{r simulation-paper_data_scenario}
+dt.scenario <- expand.grid('genome' = 'mm39',
+                           'length' = c('50bp','75bp','100bp','125bp','150bp'),
+                           'read' = c('single-end','paired-end'),
+                           'quantifier' = c('Salmon','kallisto'),
+                           'scenario' = c('balanced','unbalanced'),
+                           stringsAsFactors = FALSE)
+dt.scenario <- as.data.table(dt.scenario)
+```
+
+## Power plot
+
+```{r simulation-paper_power,fig.height=6,fig.width=6,fig.cap="Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated over bars. Results from the simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations."}
+scenario.balanced <- as.character(dt.scenario[length == '100bp' &
+                                                read == 'paired-end' &
+                                                quantifier == 'Salmon' &
+                                                scenario == 'balanced',])
+scenario.unbalanced <- as.character(dt.scenario[length == '100bp' &
+                                                  read == 'paired-end' &
+                                                  quantifier == 'Salmon' &
+                                                  scenario == 'unbalanced',])
+names(scenario.balanced) <- colnames(dt.scenario)
+names(scenario.unbalanced) <- colnames(dt.scenario)
+
+
+dt.power <- rbind(subsetDT(dt.metrics,scenario.balanced,'A'),
+                  subsetDT(dt.metrics,scenario.unbalanced,'A'))
+
+dt.power$LibsPerGroup %<>% mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
+                                     to = paste0(c(3,5),' samples per group'))
+
+dt.power$Scenario %<>% 
+  mapvalues(from = c('balanced','unbalanced'),
+            to = c('Equal library sizes','Unequal library sizes'))
+
+dt.power[, FDR := roundPretty(ifelse((FP+TP) == 0,NA,100*FP/(FP+TP)),1)]
+
+dt.power <- dt.power[TxPerGene == 'All Transcripts',]
+
+sub.byvar <- 
+  colnames(dt.power)[-which(colnames(dt.power) %in% c('P.SIG','TP','FP'))]
+
+gap <- 0.05*max(dt.power$TP + dt.power$FP)
+
+x.melt <- melt(dt.power,id.vars = sub.byvar,
+               measure.vars = c('TP','FP'),
+               variable.name = 'Type',
+               value.name = 'Value')
+x.melt$Type <- 
+  factor(x.melt$Type,
+         levels = c('FP','TP'),
+         labels = c('False Positive','True Positive'))
+
+plot <- ggplot(x.melt,aes(x = Method,y = Value,fill = Type)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_col() +
+  geom_text(aes(x = Method,y = (TP + FP) + gap,label = FDR),
+            inherit.aes = FALSE,data = dt.power[FDR != 'NA',],vjust = 0) +
+  theme_bw() +
+  scale_fill_brewer(palette = 'Set1') +
+  labs(x = NULL,y = paste('# DE Transcripts at FDR < 0.05')) +
+  scale_y_continuous(limits = c(0,3000)) +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = c(0.85,0.925),legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90),
+        legend.background = element_rect(fill=alpha('white', 0)))
+plot
+```
+
+## False discovery rate
+
+```{r simulation-paper_fdr,fig.height=6,fig.width=6,fig.cap="Average number of false discoveries as a function of the number of chosen transcripts. Results from the simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations."}
+dt.fdr.plot <- rbind(subsetDT(dt.fdr,scenario.balanced,'A'),
+                     subsetDT(dt.fdr,scenario.unbalanced,'A'))
+
+dt.fdr.plot$LibsPerGroup %<>% 
+  mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
+            to = paste0(c(3,5),' samples per group'))
+
+dt.fdr.plot$Scenario %<>% 
+  mapvalues(from = c('balanced','unbalanced'),
+            to = c('Equal library sizes','Unequal library sizes'))
+
+dt.fdr.plot <- dt.fdr.plot[TxPerGene == 'All Transcripts',]
+
+
+plot <- ggplot(dt.fdr.plot,aes(x = N,y = FDR,color = Method,group = Method)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_line(linewidth = 1) +
+  theme_bw() +
+  scale_color_manual(values = methodsNames()$color) +
+  scale_y_continuous(limits = c(0,1250)) +
+  theme(panel.grid = element_blank(),legend.direction = 'vertical',
+        legend.position = c(0.125,0.88),legend.title = element_blank(),
+        legend.background = element_rect(fill=alpha('white', 0))) +
+  labs(y = 'False discoveries',x = 'Transcripts chosen')
+
+plot
+```
+
+## Type 1 error 
+
+```{r simulation-paper_type1error_barplot,fig.height=6,fig.width=6,fig.cap="Average proportion of transcripts with unadjusted p-values less than 0.05. Results from the null simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations."}
+
+dt.type1error <- rbind(subsetDT(dt.metrics,scenario.balanced,'B'),
+                       subsetDT(dt.metrics,scenario.unbalanced,'B'))
+
+dt.type1error$LibsPerGroup %<>% 
+  mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
+            to = paste0(c(3,5),' samples per group'))
+
+dt.type1error$Scenario %<>% 
+  mapvalues(from = c('balanced','unbalanced'),
+            to = c('Equal library sizes','Unequal library sizes'))
+
+dt.type1error[, FDR := roundPretty(ifelse((FP+TP) == 0,NA,100*FP/(FP+TP)),1)]
+
+dt.type1error <- dt.type1error[TxPerGene == 'All Transcripts',]
+
+
+sub.byvar <- 
+  colnames(dt.type1error)[-which(colnames(dt.type1error) %in% c('P.SIG','TP','FP'))]
+
+x.melt <- 
+  melt(dt.type1error,id.vars = sub.byvar,
+       measure.vars = c('P.SIG'),variable.name = 'Type',value.name = 'Value')
+
+plot <- ggplot(x.melt,aes(x = Method,y = Value)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_col() +
+  theme_bw() +
+  geom_hline(yintercept = 0.05,color = 'red',linetype = 'dashed') +
+  labs(x = NULL,y = paste('Proportion of transcripts with p-value < 0.05')) +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        legend.position = 'top',legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90))
+
+plot
+```
+
+```{r simulation-paper_type1error_pvalue,fig.height=6,fig.width=6,fig.cap="Density histograms with smoothing of raw p-values. Results from the null simulation scenario with 100 bp paired-end read data quantified with Salmon with 5 samples per group, averaged over 20 simulations."}
+
+dt.pvalue.plot <- subsetDT(dt.pvalue,scenario.unbalanced,'C','All Transcripts')
+dt.pvalue.plot <- dt.pvalue.plot[LibsPerGroup == '#Lib/Group = 5',]
+
+plot <- ggplot(data = dt.pvalue.plot,aes(x = PValue,y = Density.Avg)) +
+  facet_wrap('Method',nrow = 2) +
+  geom_col(col = NA,fill = 'grey',position = position_dodge(),width = 0.75) +
+  geom_smooth(aes(group = 1),se = FALSE,linewidth = 0.5,method = 'loess',span = 0.3) +
+  geom_hline(yintercept = 1,col = 'red',linewidth = 0.5,linetype = 'dashed') +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  scale_x_discrete(breaks = c("(0.00-0.05]","(0.50-0.55]","(0.95-1.00]"),
+                   labels = c(0.00,0.50,1.00)) +
+  labs(x = 'P-values',y = 'Density')
+
+plot
+```

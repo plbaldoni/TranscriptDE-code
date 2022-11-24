@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Pedro Baldoni" />
+
+
+<title>simulation</title>
+
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">wf-TranscriptDE</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/plbaldoni/wf-TranscriptDE">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">simulation</h1>
+<h4 class="author">Pedro Baldoni</h4>
+<h4 class="date">24 November, 2022</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-11-24
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 2
+</p>
+<p>
+<strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
+<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20221115code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20221115)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20221115code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20221115)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
+</p>
+</div>
+<div id="strongCachestrongdetected" class="panel-collapse collapse">
+<div class="panel-body">
+The following chunks had caches available:
+<ul>
+<li>
+simulation-paper_data_load
+</li>
+</ul>
+<p>To ensure reproducibility of the results, delete the cache directory
+<code>simulation-paper_cache</code> and re-run the analysis. To have
+workflowr automatically delete the cache directory prior to building the
+file, set <code>delete_cache = TRUE</code> when running
+<code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree62ad2ee020f1984c93f1e11218725136ce6334f1targetblank62ad2eea">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/62ad2ee020f1984c93f1e11218725136ce6334f1" target="_blank">62ad2ee</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree62ad2ee020f1984c93f1e11218725136ce6334f1targetblank62ad2eea"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/62ad2ee020f1984c93f1e11218725136ce6334f1" target="_blank">62ad2ee</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/pkg/.Rhistory
+    Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/src/RcppExports.o
+    Ignored:    code/pkg/src/pkg.so
+    Ignored:    code/pkg/src/rcpparma_hello_world.o
+    Ignored:    data/annotation/mm39/
+    Ignored:    data/mouse/fastq/
+    Ignored:    output/mouse/salmon/
+    Ignored:    output/simulation/
+    Ignored:    renv/
+
+Untracked files:
+    Untracked:  analysis/simulation-paper.Rmd
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+</div>
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<pre class="r"><code>knitr::opts_chunk$set(
+  dev = &quot;png&quot;,
+  dpi = 300,
+  dev.args = list(type = &quot;cairo-png&quot;),
+  root.dir = &#39;.&#39;,
+  autodep = TRUE
+)
+
+options(knitr.kable.NA = &quot;-&quot;)</code></pre>
+<pre class="r"><code>library(data.table)
+library(ggplot2)
+library(thematic)
+library(plyr)
+library(magrittr)
+library(limma)
+library(edgeR)
+library(BiocParallel)
+library(devtools)</code></pre>
+<pre><code>Loading required package: usethis</code></pre>
+<pre class="r"><code>library(purrr)</code></pre>
+<pre><code>
+Attaching package: &#39;purrr&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:magrittr&#39;:
+
+    set_names</code></pre>
+<pre><code>The following object is masked from &#39;package:plyr&#39;:
+
+    compact</code></pre>
+<pre><code>The following object is masked from &#39;package:data.table&#39;:
+
+    transpose</code></pre>
+<pre class="r"><code>library(readr)
+library(ggpubr)</code></pre>
+<pre><code>
+Attaching package: &#39;ggpubr&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:plyr&#39;:
+
+    mutate</code></pre>
+<pre class="r"><code>library(kableExtra)
+load_all(&#39;../code/pkg/&#39;)</code></pre>
+<pre><code>ℹ Loading pkg</code></pre>
+<pre class="r"><code>BPPARAM &lt;- MulticoreParam(workers = 16,progressbar = TRUE)
+register(BPPARAM)</code></pre>
+<pre class="r"><code>cleanPlot &lt;- function(x,fig){
+  if (x == max(seq_along(fig))) {
+    y &lt;- fig[[x]]
+  } else{
+    y &lt;- fig[[x]] + theme(axis.title.x = element_blank(),
+                          axis.text.x = element_blank(),
+                          axis.ticks.x = element_blank())
+  }
+  if (x &gt; 1) {
+    y &lt;- y + theme(strip.background.x = element_blank(),
+                   strip.text.x = element_blank())
+  }
+  return(y)
+}
+
+subsetDT &lt;- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE){
+  if(isTRUE(plot)){
+    if(panel %in% c(&#39;A&#39;,&#39;B&#39;)){
+      out &lt;- x[Genome == scenario[&#39;genome&#39;] &amp;
+                 FC == ifelse(panel == &#39;A&#39;,&#39;fc2&#39;,&#39;fc1&#39;) &amp; 
+                 Length == scenario[&#39;length&#39;] &amp;
+                 Reads == scenario[&#39;read&#39;] &amp; 
+                 Quantifier == scenario[&#39;quantifier&#39;] &amp; 
+                 Scenario == scenario[&#39;scenario&#39;],]
+    } else{
+      out &lt;- x[Genome == scenario[&#39;genome&#39;] &amp;
+                 FC == &#39;fc1&#39; &amp; 
+                 Length == scenario[&#39;length&#39;] &amp;
+                 Reads == scenario[&#39;read&#39;] &amp; 
+                 Quantifier == scenario[&#39;quantifier&#39;] &amp; 
+                 Scenario == scenario[&#39;scenario&#39;] &amp;
+                 TxPerGene == tx.per.gene ,]
+    }
+  } else{
+    out &lt;- x[Genome == scenario[&#39;genome&#39;] &amp;
+               FC == &#39;fc2&#39; &amp; 
+               Quantifier == scenario[&#39;quantifier&#39;] &amp; 
+               TxPerGene == scenario[&#39;txpergene&#39;],]
+  }
+  return(out)
+}</code></pre>
+</div>
+<div id="analysis" class="section level1">
+<h1>Analysis</h1>
+<div id="data-wrangling" class="section level2">
+<h2>Data wrangling</h2>
+<pre class="r"><code>path.fdr &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;fdr.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
+path.metrics &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;metrics.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
+path.time &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;time.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
+path.quantile &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;quantile.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
+path.pvalue &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;pvalue.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
+path.overdispersion &lt;- 
+  list.files(&#39;../output/simulation/summary&#39;,&#39;overdispersion.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)</code></pre>
+<pre class="r"><code># Loading datasets
+dt.fdr &lt;- do.call(rbind,lapply(path.fdr,fread))
+dt.metrics &lt;- do.call(rbind,lapply(path.metrics,fread))
+dt.time &lt;- do.call(rbind,lapply(path.time,fread))
+dt.quantile &lt;- do.call(rbind,lapply(path.quantile,fread))
+dt.pvalue &lt;- do.call(rbind,lapply(path.pvalue,fread))
+dt.overdispersion &lt;- do.call(rbind,lapply(path.overdispersion,fread))</code></pre>
+<pre class="r"><code># Changing labels
+dt.fdr$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.fdr$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.fdr$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.fdr$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                             to = paste0(seq(50, 150, 25), &#39;bp&#39;))
+
+dt.metrics$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.metrics$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.metrics$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.metrics$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                                 to = paste0(seq(50, 150, 25), &#39;bp&#39;))
+
+dt.time$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.time$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.time$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.time$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                              to = paste0(seq(50, 150, 25), &#39;bp&#39;))
+
+dt.quantile$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.quantile$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.quantile$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.quantile$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                                  to = paste0(seq(50, 150, 25), &#39;bp&#39;))
+
+dt.pvalue$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.pvalue$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.pvalue$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.pvalue$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                                to = paste0(seq(50, 150, 25), &#39;bp&#39;))
+
+dt.overdispersion$TxPerGene %&lt;&gt;%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
+            to = c(paste0(&quot;#Tx/Gene = &quot;, c(2, 3, 4, 5)), &#39;All Transcripts&#39;))
+dt.overdispersion$LibsPerGroup %&lt;&gt;%
+  mapvalues(from = paste0(c(3, 5), &#39;libsPerGroup&#39;),
+            to = paste0(&#39;#Lib/Group = &#39;, c(3, 5)))
+dt.overdispersion$Quantifier %&lt;&gt;% mapvalues(from = &#39;salmon&#39;, to = &#39;Salmon&#39;)
+dt.overdispersion$Length %&lt;&gt;% mapvalues(from = paste0(&#39;readlen-&#39;, seq(50, 150, 25)),
+                                        to = paste0(seq(50, 150, 25), &#39;bp&#39;))</code></pre>
+<pre class="r"><code>dt.scenario &lt;- expand.grid(&#39;genome&#39; = &#39;mm39&#39;,
+                           &#39;length&#39; = c(&#39;50bp&#39;,&#39;75bp&#39;,&#39;100bp&#39;,&#39;125bp&#39;,&#39;150bp&#39;),
+                           &#39;read&#39; = c(&#39;single-end&#39;,&#39;paired-end&#39;),
+                           &#39;quantifier&#39; = c(&#39;Salmon&#39;,&#39;kallisto&#39;),
+                           &#39;scenario&#39; = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
+                           stringsAsFactors = FALSE)
+dt.scenario &lt;- as.data.table(dt.scenario)</code></pre>
+</div>
+<div id="power-plot" class="section level2">
+<h2>Power plot</h2>
+<pre class="r"><code>scenario.balanced &lt;- as.character(dt.scenario[length == &#39;100bp&#39; &amp;
+                                                read == &#39;paired-end&#39; &amp;
+                                                quantifier == &#39;Salmon&#39; &amp;
+                                                scenario == &#39;balanced&#39;,])
+scenario.unbalanced &lt;- as.character(dt.scenario[length == &#39;100bp&#39; &amp;
+                                                  read == &#39;paired-end&#39; &amp;
+                                                  quantifier == &#39;Salmon&#39; &amp;
+                                                  scenario == &#39;unbalanced&#39;,])
+names(scenario.balanced) &lt;- colnames(dt.scenario)
+names(scenario.unbalanced) &lt;- colnames(dt.scenario)
+
+
+dt.power &lt;- rbind(subsetDT(dt.metrics,scenario.balanced,&#39;A&#39;),
+                  subsetDT(dt.metrics,scenario.unbalanced,&#39;A&#39;))
+
+dt.power$LibsPerGroup %&lt;&gt;% mapvalues(from = paste0(&#39;#Lib/Group = &#39;, c(3, 5)),
+                                     to = paste0(c(3,5),&#39; samples per group&#39;))
+
+dt.power$Scenario %&lt;&gt;% 
+  mapvalues(from = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
+            to = c(&#39;Equal library sizes&#39;,&#39;Unequal library sizes&#39;))
+
+dt.power[, FDR := roundPretty(ifelse((FP+TP) == 0,NA,100*FP/(FP+TP)),1)]
+
+dt.power &lt;- dt.power[TxPerGene == &#39;All Transcripts&#39;,]
+
+sub.byvar &lt;- 
+  colnames(dt.power)[-which(colnames(dt.power) %in% c(&#39;P.SIG&#39;,&#39;TP&#39;,&#39;FP&#39;))]
+
+gap &lt;- 0.05*max(dt.power$TP + dt.power$FP)
+
+x.melt &lt;- melt(dt.power,id.vars = sub.byvar,
+               measure.vars = c(&#39;TP&#39;,&#39;FP&#39;),
+               variable.name = &#39;Type&#39;,
+               value.name = &#39;Value&#39;)
+x.melt$Type &lt;- 
+  factor(x.melt$Type,
+         levels = c(&#39;FP&#39;,&#39;TP&#39;),
+         labels = c(&#39;False Positive&#39;,&#39;True Positive&#39;))
+
+plot &lt;- ggplot(x.melt,aes(x = Method,y = Value,fill = Type)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_col() +
+  geom_text(aes(x = Method,y = (TP + FP) + gap,label = FDR),
+            inherit.aes = FALSE,data = dt.power[FDR != &#39;NA&#39;,],vjust = 0) +
+  theme_bw() +
+  scale_fill_brewer(palette = &#39;Set1&#39;) +
+  labs(x = NULL,y = paste(&#39;# DE Transcripts at FDR &lt; 0.05&#39;)) +
+  scale_y_continuous(limits = c(0,3000)) +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        legend.position = c(0.85,0.925),legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90),
+        legend.background = element_rect(fill=alpha(&#39;white&#39;, 0)))
+plot</code></pre>
+<div class="figure" style="text-align: center">
+<img src="figure/simulation-paper.Rmd/simulation-paper_power-1.png" alt="Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated over bars. Results from the simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations." width="1800" />
+<p class="caption">
+Average number of true (blue) and false (red) positive DE transcripts.
+Observed is FDR annotated over bars. Results from the simulation
+scenario with 100 bp paired-end read data quantified with Salmon,
+averaged over 20 simulations.
+</p>
+</div>
+</div>
+<div id="false-discovery-rate" class="section level2">
+<h2>False discovery rate</h2>
+<pre class="r"><code>dt.fdr.plot &lt;- rbind(subsetDT(dt.fdr,scenario.balanced,&#39;A&#39;),
+                     subsetDT(dt.fdr,scenario.unbalanced,&#39;A&#39;))
+
+dt.fdr.plot$LibsPerGroup %&lt;&gt;% 
+  mapvalues(from = paste0(&#39;#Lib/Group = &#39;, c(3, 5)),
+            to = paste0(c(3,5),&#39; samples per group&#39;))
+
+dt.fdr.plot$Scenario %&lt;&gt;% 
+  mapvalues(from = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
+            to = c(&#39;Equal library sizes&#39;,&#39;Unequal library sizes&#39;))
+
+dt.fdr.plot &lt;- dt.fdr.plot[TxPerGene == &#39;All Transcripts&#39;,]
+
+
+plot &lt;- ggplot(dt.fdr.plot,aes(x = N,y = FDR,color = Method,group = Method)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_line(linewidth = 1) +
+  theme_bw() +
+  scale_color_manual(values = methodsNames()$color) +
+  scale_y_continuous(limits = c(0,1250)) +
+  theme(panel.grid = element_blank(),legend.direction = &#39;vertical&#39;,
+        legend.position = c(0.125,0.88),legend.title = element_blank(),
+        legend.background = element_rect(fill=alpha(&#39;white&#39;, 0))) +
+  labs(y = &#39;False discoveries&#39;,x = &#39;Transcripts chosen&#39;)
+
+plot</code></pre>
+<div class="figure" style="text-align: center">
+<img src="figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" alt="Average number of false discoveries as a function of the number of chosen transcripts. Results from the simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations." width="1800" />
+<p class="caption">
+Average number of false discoveries as a function of the number of
+chosen transcripts. Results from the simulation scenario with 100 bp
+paired-end read data quantified with Salmon, averaged over 20
+simulations.
+</p>
+</div>
+</div>
+<div id="type-1-error" class="section level2">
+<h2>Type 1 error</h2>
+<pre class="r"><code>dt.type1error &lt;- rbind(subsetDT(dt.metrics,scenario.balanced,&#39;B&#39;),
+                       subsetDT(dt.metrics,scenario.unbalanced,&#39;B&#39;))
+
+dt.type1error$LibsPerGroup %&lt;&gt;% 
+  mapvalues(from = paste0(&#39;#Lib/Group = &#39;, c(3, 5)),
+            to = paste0(c(3,5),&#39; samples per group&#39;))
+
+dt.type1error$Scenario %&lt;&gt;% 
+  mapvalues(from = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
+            to = c(&#39;Equal library sizes&#39;,&#39;Unequal library sizes&#39;))
+
+dt.type1error[, FDR := roundPretty(ifelse((FP+TP) == 0,NA,100*FP/(FP+TP)),1)]
+
+dt.type1error &lt;- dt.type1error[TxPerGene == &#39;All Transcripts&#39;,]
+
+
+sub.byvar &lt;- 
+  colnames(dt.type1error)[-which(colnames(dt.type1error) %in% c(&#39;P.SIG&#39;,&#39;TP&#39;,&#39;FP&#39;))]
+
+x.melt &lt;- 
+  melt(dt.type1error,id.vars = sub.byvar,
+       measure.vars = c(&#39;P.SIG&#39;),variable.name = &#39;Type&#39;,value.name = &#39;Value&#39;)
+
+plot &lt;- ggplot(x.melt,aes(x = Method,y = Value)) +
+  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
+  geom_col() +
+  theme_bw() +
+  geom_hline(yintercept = 0.05,color = &#39;red&#39;,linetype = &#39;dashed&#39;) +
+  labs(x = NULL,y = paste(&#39;Proportion of transcripts with p-value &lt; 0.05&#39;)) +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        legend.position = &#39;top&#39;,legend.title = element_blank(),
+        axis.text.x = element_text(angle = 90))
+
+plot</code></pre>
+<div class="figure" style="text-align: center">
+<img src="figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" alt="Average proportion of transcripts with unadjusted p-values less than 0.05. Results from the null simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations." width="1800" />
+<p class="caption">
+Average proportion of transcripts with unadjusted p-values less than
+0.05. Results from the null simulation scenario with 100 bp paired-end
+read data quantified with Salmon, averaged over 20 simulations.
+</p>
+</div>
+<pre class="r"><code>dt.pvalue.plot &lt;- subsetDT(dt.pvalue,scenario.unbalanced,&#39;C&#39;,&#39;All Transcripts&#39;)
+dt.pvalue.plot &lt;- dt.pvalue.plot[LibsPerGroup == &#39;#Lib/Group = 5&#39;,]
+
+plot &lt;- ggplot(data = dt.pvalue.plot,aes(x = PValue,y = Density.Avg)) +
+  facet_wrap(&#39;Method&#39;,nrow = 2) +
+  geom_col(col = NA,fill = &#39;grey&#39;,position = position_dodge(),width = 0.75) +
+  geom_smooth(aes(group = 1),se = FALSE,linewidth = 0.5,method = &#39;loess&#39;,span = 0.3) +
+  geom_hline(yintercept = 1,col = &#39;red&#39;,linewidth = 0.5,linetype = &#39;dashed&#39;) +
+  theme_bw() +
+  theme(panel.grid = element_blank()) +
+  scale_x_discrete(breaks = c(&quot;(0.00-0.05]&quot;,&quot;(0.50-0.55]&quot;,&quot;(0.95-1.00]&quot;),
+                   labels = c(0.00,0.50,1.00)) +
+  labs(x = &#39;P-values&#39;,y = &#39;Density&#39;)
+
+plot</code></pre>
+<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<div class="figure" style="text-align: center">
+<img src="figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" alt="Density histograms with smoothing of raw p-values. Results from the null simulation scenario with 100 bp paired-end read data quantified with Salmon with 5 samples per group, averaged over 20 simulations." width="1800" />
+<p class="caption">
+Density histograms with smoothing of raw p-values. Results from the null
+simulation scenario with 100 bp paired-end read data quantified with
+Salmon with 5 samples per group, averaged over 20 simulations.
+</p>
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.2.1 (2022-06-23)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: CentOS Linux 7 (Core)
+
+Matrix products: default
+BLAS:   /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRblas.so
+LAPACK: /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRlapack.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] pkg_1.0             kableExtra_1.3.4    ggpubr_0.5.0       
+ [4] readr_2.1.3         purrr_0.3.5         devtools_2.4.5     
+ [7] usethis_2.1.6       BiocParallel_1.32.1 edgeR_3.40.0       
+[10] limma_3.54.0        magrittr_2.0.3      plyr_1.8.8         
+[13] thematic_0.1.2.1    ggplot2_3.4.0       data.table_1.14.6  
+[16] workflowr_1.7.0    
+
+loaded via a namespace (and not attached):
+  [1] utf8_1.2.2                    tidyselect_1.2.0             
+  [3] RSQLite_2.2.18                AnnotationDbi_1.60.0         
+  [5] htmlwidgets_1.5.4             grid_4.2.1                   
+  [7] munsell_0.5.0                 codetools_0.2-18             
+  [9] miniUI_0.1.1.1                withr_2.5.0                  
+ [11] colorspace_2.0-3              Biobase_2.58.0               
+ [13] filelock_1.0.2                highr_0.9                    
+ [15] knitr_1.41                    rstudioapi_0.14              
+ [17] stats4_4.2.1                  SingleCellExperiment_1.20.0  
+ [19] ggsignif_0.6.4                Rsubread_2.12.0              
+ [21] labeling_0.4.2                MatrixGenerics_1.10.0        
+ [23] git2r_0.30.1                  tximport_1.26.0              
+ [25] GenomeInfoDbData_1.2.9        bit64_4.0.5                  
+ [27] farver_2.1.1                  rhdf5_2.42.0                 
+ [29] rprojroot_2.0.3               vctrs_0.5.1                  
+ [31] generics_0.1.3                xfun_0.35                    
+ [33] BiocFileCache_2.6.0           fishpond_2.4.0               
+ [35] R6_2.5.1                      GenomeInfoDb_1.34.3          
+ [37] locfit_1.5-9.6                AnnotationFilter_1.22.0      
+ [39] bitops_1.0-7                  rhdf5filters_1.10.0          
+ [41] cachem_1.0.6                  DelayedArray_0.24.0          
+ [43] assertthat_0.2.1              promises_1.2.0.1             
+ [45] BiocIO_1.8.0                  scales_1.2.1                 
+ [47] gtable_0.3.1                  processx_3.8.0               
+ [49] ensembldb_2.22.0              rlang_1.0.6                  
+ [51] systemfonts_1.0.4             splines_4.2.1                
+ [53] rtracklayer_1.58.0            rstatix_0.7.1                
+ [55] lazyeval_0.2.2                broom_1.0.1                  
+ [57] BiocManager_1.30.19           yaml_2.3.6                   
+ [59] abind_1.4-5                   GenomicFeatures_1.50.2       
+ [61] backports_1.4.1               httpuv_1.6.6                 
+ [63] sleuth_0.30.0                 wasabi_1.0.1                 
+ [65] tools_4.2.1                   ellipsis_0.3.2               
+ [67] RColorBrewer_1.1-3            jquerylib_0.1.4              
+ [69] BiocGenerics_0.44.0           sessioninfo_1.2.2            
+ [71] Rcpp_1.0.9                    progress_1.2.2               
+ [73] zlibbioc_1.44.0               RCurl_1.98-1.9               
+ [75] ps_1.7.2                      prettyunits_1.1.1            
+ [77] urlchecker_1.0.1              S4Vectors_0.36.0             
+ [79] SummarizedExperiment_1.28.0   fs_1.5.2                     
+ [81] svMisc_1.2.3                  whisker_0.4                  
+ [83] ProtGenerics_1.30.0           matrixStats_0.63.0           
+ [85] pkgload_1.3.2                 hms_1.1.2                    
+ [87] mime_0.12                     evaluate_0.18                
+ [89] xtable_1.8-4                  XML_3.99-0.12                
+ [91] IRanges_2.32.0                compiler_4.2.1               
+ [93] biomaRt_2.54.0                tibble_3.1.8                 
+ [95] crayon_1.5.2                  htmltools_0.5.3              
+ [97] mgcv_1.8-41                   later_1.3.0                  
+ [99] tzdb_0.3.0                    tidyr_1.2.1                  
+[101] DBI_1.1.3                     dbplyr_2.2.1                 
+[103] rappdirs_0.3.3                Matrix_1.5-3                 
+[105] car_3.1-1                     cli_3.4.1                    
+[107] parallel_4.2.1                GenomicRanges_1.50.1         
+[109] pkgconfig_2.0.3               getPass_0.2-2                
+[111] GenomicAlignments_1.34.0      xml2_1.3.3                   
+[113] svglite_2.1.0                 bslib_0.4.1                  
+[115] webshot_0.5.4                 XVector_0.38.0               
+[117] rvest_1.0.3                   stringr_1.4.1                
+[119] callr_3.7.3                   digest_0.6.30                
+[121] Biostrings_2.66.0             rmarkdown_2.18               
+[123] tximeta_1.16.0                restfulr_0.0.15              
+[125] curl_4.3.3                    shiny_1.7.3                  
+[127] Rsamtools_2.14.0              gtools_3.9.3                 
+[129] rjson_0.2.21                  nlme_3.1-160                 
+[131] lifecycle_1.0.3               jsonlite_1.8.3               
+[133] Rhdf5lib_1.20.0               carData_3.0-5                
+[135] desc_1.4.2                    viridisLite_0.4.1            
+[137] fansi_1.0.3                   pillar_1.8.1                 
+[139] lattice_0.20-45               KEGGREST_1.38.0              
+[141] fastmap_1.1.0                 httr_1.4.4                   
+[143] pkgbuild_1.3.1                interactiveDisplayBase_1.36.0
+[145] glue_1.6.2                    remotes_2.4.2                
+[147] png_0.1-7                     BiocVersion_3.16.0           
+[149] bit_4.0.5                     stringi_1.7.8                
+[151] sass_0.4.3                    profvis_0.3.7                
+[153] blob_1.2.3                    AnnotationHub_3.6.0          
+[155] memoise_2.0.1                 dplyr_1.0.10                 </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
