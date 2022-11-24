@@ -1,0 +1,770 @@
+---
+title: "simulation"
+author: "Pedro Baldoni"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+```{r simulation-complete_simulation-complete_setup}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  comment = NA,
+  size = 'small',
+  prompt = TRUE,
+  collapse = TRUE,
+  dev = "png",
+  dpi = 300,
+  dev.args = list(type = "cairo-png"),
+  fig.height = 4,
+  fig.width = 6
+)
+
+options(knitr.kable.NA = "-")
+```
+
+```{r simulation-complete_setup_lib}
+library(data.table)
+library(ggplot2)
+library(thematic)
+library(plyr)
+library(magrittr)
+library(limma)
+library(edgeR)
+library(BiocParallel)
+library(devtools)
+library(purrr)
+library(readr)
+library(ggpubr)
+library(kableExtra)
+load_all('../code/pkg/')
+
+BPPARAM <- MulticoreParam(workers = 16,progressbar = TRUE)
+register(BPPARAM)
+```
+
+# Introduction
+
+In this report I present the analysis of the fifth round of simulations for the DTE manuscript. At this point, I have only generated data simulating a typical *mouse* RNA-seq data set. In the the future, we will also simulate bulk RNA-seq dataset from a typical *human* data
+
+## News
+
+- Changes in version 221123:
+  - Fix paragraph that discusses average fragment length from Salmon and kallisto. Fix paths to new location in workflowr directory.
+
+- Changes in version 221105:
+  - Simulations with 50, 75, and 100 base pairs read length were re-run with `simReads` option `fragment.length.min = 150L` to match the specifications of the simulations using 125bp and 150bp read length.
+
+- Changes in version 221007:
+  - Adding simulations with read length 125bp and 150bp to assesss methods' performances under different read lengths.
+
+- Changes in version 221007:
+  - Adding simulations with read length of 50bp and 100bp to assess methods' performances under different read lengths.
+
+- Changes in version 220822:
+  - The simulation is no longer done in a two-stage fashion. TPM values are directly generated for transcripts. Previously, we were using a two-stage approach with a Dirichlet random variable to split gene-level expression into transcripts. We found that the two-stage approach was not realistic.
+  - Transcript ranks from our reference dataset are now based on Salmon's TPM from real data, not raw counts.
+  - Increased the library size from 30 mi. reads to 50 mi. reads in the balanced scenario. For unbalanced scenario, libraries alternate between 25 mi. and 100 mil. reads in size.
+  - Inclusion of an extre scenario with 5 replicates per group. We only had 3 replicates/group until now.
+  - We now use `edgeR::goodTuring` to generate baseline expression values (before we used the Zipf law, which I thought to be unrealistic for the number of transcripts we are simulating), and the BCV trend is of the form $\text{BCV} = 0.2 + 1/\sqrt{\text{expression}}$ with gene- and group-specific dispersion of the form $\text{Dispersion} = BCV^2\times\frac{40}{\chi^2_{40}}$. The motivation for these changes is mainly to mimic the simulation setup used in the `voom` paper.
+
+## Outstanding work
+
+Here I list the aspects that still need to be addressed in our simulation:
+
+- Simulation of human data
+
+# Simulation setup
+
+We simulated RNA-seq experiments in a variety of scenarios that are detailed in this section. Our simulation pipeline is organized in 4 main steps involving (1) the creation of a reference data set from real RNA-seq experiments, (2) the simulation of sequencing reads, (3) the quantification of simulated reads, and (4) differential transcript expression analysis. Below we describe each of these steps in detail.
+
+## Reference dataset
+
+Two reference data sets were generated from real RNA-seq data from mouse (GSE60450) and human (*to be added*) experiments. For each reference data set, a subset of relevant genes (protein-coding or lncRNA genes from reference chromosomes with expected CPM > 1 in at least half of the samples) and their associated transcripts (protein-coding and lncRNA transcripts from relevant genes) was selected from the respective species' transcriptome using the Gencode basic GTF annotation (M27 for mouse and v40 for human). Selected transcripts from the same gene were ranked (in decreasing order) according to their observed expression level (in TPM) averaged across all samples. In both mouse and human reference data sets, only transcripts with unique sequences from protein coding genes and long non-coding RNA (lncRNA) were considered. 
+
+More specifically, the selection of such a subset of relevatn genes for which the expersion of their transcripts would be simulated was as follows. We summarized Salmon's quantification to the gene level using the function `tximeta::summarizeToGene`. Only protein-coding and lncRNA genes from chromosomes 1, ..., 22, X, and Y were considered. Next, we estimated baseline expression proportions using `edgeR::goodTuringProportions`. For mouse data, we selected relevant genes with an expected CPM>1 in at least 6 of the 12 libraries ($N_G = 13,176$). For human data, (*to be added*). Only transcripts from relevant genes were considered in our simulation ($N_T = 41,372$ for mouse, and *to be added* for humans). For each relevant gene, transcripts were ranked according to their sample-averaged TPM values obtained from Salmon's TPM quantifications. We used the baseline expression Good-Turing proportions of relevant genes to create a smoothing function (using `approxfun` function) to be used when simulating transcript-level expression, in a similar fashion to what was done in the `voom` paper.
+
+## Simulation of sequencing reads
+
+For both mouse and human reference data sets, simulation scenarios varied according to the sequencing read length (50bp, 75bp, 100bp, 125bp, and 150bp), library size (either balanced with 50mi reads/sample or unbalanced with alternating 100mi and 25mi reads/sample), sequencing read type (either single-end or paired-end), maximum number of transcripts per gene considered (either 2, 3, 4, 5, or all transcripts available in the reference data set), the number of biological replicates per group (either 3 or 5), and fold-change (either 2 or 1, in which the latter represents a null simulation without any differential expression). A total of 20 simulated experiments per scenario was generated. For each experiment, we simulated RNA-seq libraries for a total of 2 groups.
+
+The relative expression levels of selected transcripts (the input for `simReads`) was simulated as follows. First, for a particular scenario, baseline expression proportions were generated for all selected transcripts using the smoothed Good-Turing proportions from our reference dataset. The maximum number of transcripts/gene considered in a given scenario as well as the ranking of each transcript (obtained from the reference dataset) dictated the set of selected transcripts in a simulation with only the most expressed ones (top ranked) being selected. For example, in a scenario with only 3 transcripts per gene being expressed, we simulate a positive expression level for all transcripts from genes that express at most 1 or 2 transcripts and, for genes that expresses 3 or more transcripts, only the top-ranked 3 transcripts had a positive expression. A subset of 3000 randomly selected transcripts had their baseline proportions adjusted with a 2 fold-change to create group-specific proportions with 1500 up-regulated and 1500 down-regulated transcripts. For each group, proportions were then transformed to sample-specific expected counts $\mu_{ts}$, for transcript $t$ and sample $s$, depending on the library size of each sample. 
+
+Biological variation was incorporated in the simulation with a trend on the expected count for each sample. For mouse data, this trend had the form $\text{BCV}_{ts} = 0.2 + 1/\sqrt{\mu_{ts}}$. For human data, (*to be added*). Dispersions $\phi_{ts}$ were generated with random shifts around the trend as $\phi_{ts} = \text{BCV}_{ts}^2\times\frac{df}{\chi^2_{df}}$. We used $df = 40$ for mouse data and (*to be added*) for human data. In this simulation, samples belonging to the same group share the random shift $\chi^2_{40}$. In other words, for each transcript and each group, a single random variable was drawn from $\chi^2_{40}$ and used to all biological replicates of that group. Note that (1) this approach is slightly different to the approach used in the `voom` paper, in which there were sample- and gene-specific random shifts around the trend to generate dispersions, and (2) this approach does not imply that there is no biological variability among samples from the same group (which will be introduced by the Gamma-Poisson model), but rather it just implies that transcript-wise expression levels from samples of the same group share the same mean and dispersion paramaters (as they should). Apart from the differences in library size across replicates, the only variation among replicates should be a result of the variance model resulting from the Gamma-Poisson distribution. Since we generated differential expression states directly on the baseline proportions to define groups, it makes sense to have a single random shift around the dispersion trend per group, hence having a single dispersion shared among libraries of the same group.
+
+Expected counts and dispersions were used to generate transcript-level expression following a Gamma distribution. Resulting transcript-wise expression levels were divided by the transcript length and scaled up to $1\times 10^6$ to generate transcript-wise TPMs that were used as input in `Rsubread::simReads`. For read lengths other than 75bp or 100bp, quality scores were samples from real data (ENCFF713MNU data for 50bp, ENCFF126GLV for 125bp, and ENCFF102BXZ for 150bp  experiments) and used as an input parameter in `Rsubread::simReads`. Note that quality scores are disregarded by Salmon and kallisto during quantification, and their choice is irrelevant to the overall results of this simulations study.
+
+
+## Quantification
+
+Sequencing reads in FASTQ format generated by `simReads` were quantified by Salmon (v. 1.9.0) and kallisto (v. 0.46.1). For both quantification algorithms, we used transcriptomic index from the complete Gencode annotation (M27 for mouse and v40 for human) and we generated a total of 100 bootstraps samples for each library. For `Salmon`, we used a decoy-aware mapping-based indexed transcriptome generated for the mouse (mm39) and human (hg38.p13) reference genomes with k-mers of length 31. For Salmon, the option `--validateMappings` was used as recommended in the software documentation. For single-end read libraries, we provided kallisto the option `-l 180 -s 40` with the true mean and standard deviation fragment length that is the default and used in `simReads`. For Salmon, we used the default values of 250 and 25 in single-end library quantification, because I am not interesting in comparing results across both tools and because the effect would be small anyway. To read Salmon quantification files in `sleuth`, Salmon quantification files `quant.sf` were transformed to `abundance.h5` files with the function `prepare_fish_for_sleuth` from the `wasabi` package (v. 1.0.1).
+
+## Differential transcript expression
+
+We compared differential transcript expression (DTE) among methods `edgeR-Raw` (edgeR using raw counts), `edgeR-Scaled` (edgeR using deflated counts), `sleuth-LRT` (with likelihood ratio test), `sleuth-Wald` (with Wald test), and `Swish`. In both `edgeR-Raw` and `edgeR-Scaled`, the QLF pipeline with default options in all functions was used. Transcript filtering in `edgeR` was performed with `filterByExpr` with default options. Default filtering functions were used in `sleuth` (transcripts with at least 5 counts in at least 47% of the samples) and `Swish` (transcripts with at least 10 counts in at least 3 samples). We acknowledge that using different filtering approach by each method introduce an extra, but nonetheless minimal, level variability that is separate from the statistical approach. Both `sleuth` and `Swish` were run with their default pipeline with default options. Unless otherwise noted, transcripts were claimed to be differentially expressed with a 0.05 FDR threshold.
+
+# Example of a single simulated dataset
+
+Here I present an example of DTE analysis using edgeR with scaled counts and each one of the competitor methods on single simulated dataset. First, let's load an example dataset.
+
+```{r simulation-complete_example_loading}
+sim.path <- "../output/simulation/data/mm39/readlen-100/fc2/paired-end/9999TxPerGene/unbalanced/5libsPerGroup/simulation-1/"
+
+# Loading simulated DE status
+df.example.sim <- read.delim(file.path(sim.path,'meta/counts.tsv.gz'))
+
+# Catching Salmon
+path.example <- list.dirs(file.path(sim.path,'quant-salmon'),recursive = FALSE)
+df.example.salmon <- catchSalmon(path.example,verbose = FALSE)
+colnames(df.example.salmon$counts) <- basename(colnames(df.example.salmon$counts))
+
+# Loading targets
+df.example.targets <- read.delim(file.path(sim.path,'dte-salmon/targets.tsv'))
+df.example.targets$path <- path.example
+```
+
+## edgeR-scaled
+
+```{r simulation-complete_example_edgeR-scaled}
+# Creating DGEList with both raw and scaled approaches
+cts.scaled <- df.example.salmon$counts/df.example.salmon$annotation$Overdispersion
+
+dge.scaled <- DGEList(counts = cts.scaled, 
+                      samples = df.example.targets,
+                      genes = df.example.salmon$annotation)
+
+# Adding true DE status to DGEList
+dge.scaled$genes$simulation <- 
+  df.example.sim$status[match(rownames(dge.scaled$genes),df.example.sim$TranscriptID)]
+```
+
+Next, I apply edgeR's pipeline. I start by filtering lowly expressed transcripts and calculating normalization factors. 
+
+```{r simulation-complete_example_edgeR-scaled_DE}
+# Applying edgeR's filterByExpr
+keep <- filterByExpr(dge.scaled)
+table(keep, simulation = dge.scaled$genes$simulation)
+
+dge.scaled.filtr <- dge.scaled[keep, , keep.lib.sizes = FALSE]
+dge.scaled.filtr <- calcNormFactors(dge.scaled.filtr)
+```
+
+Below we have the MDS plot, MD plots, and BCV plot. There is a somewhat substantial variability among replicates of the same group (y-axis), despite the clear separation of groups along the x-axis. The BCV trends toward a value slightly above 0.2.
+
+```{r simulation-complete_example_edgeR-scaled_loading_wrangling,fig.height=6}
+plotMDS(dge.scaled.filtr)
+par(mfrow = c(2,3))
+for (i in 1:ncol(dge.scaled.filtr)) plotMD(dge.scaled.filtr,column = i)
+par(mfrow = c(1,1))
+
+design <- model.matrix(~group-1,data = dge.scaled.filtr$samples)
+colnames(design) <- gsub('group','',colnames(design))
+dge.scaled.filtr <- estimateDisp(dge.scaled.filtr,design)
+
+dge.scaled.filtr$common.dispersion
+
+plotBCV(dge.scaled.filtr)
+```
+
+Finally, we call `glmQLFit`, `glmQLFTest`, and plot the DTE results with an MD plot.
+
+```{r simulation-complete_example_edgeR-scaled_dte}
+fit <- glmQLFit(dge.scaled.filtr,design)
+
+plotQLDisp(fit)
+
+summary(fit$df.prior)
+
+qlf <- glmQLFTest(fit, contrast = makeContrasts(B - A, levels = design))
+
+tt <- topTags(qlf,n = Inf)
+is.de <- decideTestsDGE(qlf)
+summary(is.de)
+
+plotMD(qlf, status = is.de, values = c(1, -1),
+       col = c("red","blue"), legend = "topright")
+```
+
+Below I tabulate the true DE status of each transcript against edgeR's results.
+
+```{r simulation-complete_example_edgeR-scaled_table}
+# Bringing edgeR output to dge object
+dge.scaled.filtr$genes$FDR <- 
+  tt$table$FDR[match(rownames(dge.scaled.filtr$genes),rownames(tt))]
+dge.scaled.filtr$genes$logFC <- 
+  tt$table$logFC[match(rownames(dge.scaled.filtr$genes),rownames(tt$table))]
+dge.scaled.filtr$genes$edgeR <- 
+  is.de@.Data[,1][match(rownames(dge.scaled.filtr$genes),rownames(is.de@.Data))]
+
+table('edgeR' = dge.scaled.filtr$genes$edgeR, 
+      'simulation' = dge.scaled.filtr$genes$simulation)
+```
+
+Then, I generate MD plots with the TP, FP, and FN status of transcripts.
+
+```{r simulation-complete_example_edgeR-scaled_confusion,fig.height=7}
+# Plotting false negatives
+dge.scaled.filtr$genes$abs.simulation <- abs(dge.scaled.filtr$genes$simulation)
+dge.scaled.filtr$genes$abs.edgeR <- abs(dge.scaled.filtr$genes$edgeR)
+
+dge.scaled.filtr$genes$TN <- 
+  factor(1*with(dge.scaled.filtr$genes,abs.simulation == 0 & abs.edgeR == 0),
+         levels = c(1,0))
+dge.scaled.filtr$genes$TP <- 
+  factor(1*with(dge.scaled.filtr$genes,abs.simulation == 1 & abs.edgeR == 1),
+         levels = c(1,0))
+dge.scaled.filtr$genes$FN <- 
+  factor(1*with(dge.scaled.filtr$genes,abs.simulation == 1 & abs.edgeR == 0),
+         levels = c(1,0))
+dge.scaled.filtr$genes$FP <- 
+  factor(1*with(dge.scaled.filtr$genes,abs.simulation == 0 & abs.edgeR == 1),
+         levels = c(1,0))
+
+tb.metrics.edger_scaled <- with(dge.scaled.filtr$genes,table(abs.simulation,abs.edgeR))
+
+message('TPR = ',tb.metrics.edger_scaled['1','1']/sum(tb.metrics.edger_scaled['1',]))
+message('FPR = ',tb.metrics.edger_scaled['0','1']/sum(tb.metrics.edger_scaled['0',]))
+message('FDR = ',tb.metrics.edger_scaled['0','1']/sum(tb.metrics.edger_scaled[,'1']))
+
+col.tp <- c('black','red')[as.numeric(dge.scaled.filtr$genes$TP)]
+col.fn <- c('black','red')[as.numeric(dge.scaled.filtr$genes$FN)]
+col.fp <- c('black','red')[as.numeric(dge.scaled.filtr$genes$FP)]
+
+par(mfrow = c(3,1))
+plotMD(qlf,status = dge.scaled.filtr$genes$TP,main = 'True positives',col = col.tp)
+plotMD(qlf,status = dge.scaled.filtr$genes$FN,main = 'False negatives',col = col.fn)
+plotMD(qlf,status = dge.scaled.filtr$genes$FP,main = 'False positives',col = col.fp)
+```
+
+Below is a histogram of observed logFC. The histograms of truly DE should be centered around +/- 1, or +- log2(2).
+
+```{r simulation-complete_example_edgeR-scaled_confusion_hist,fig.width=8,fig.height=3}
+# Plotting fold changes (should be around 2)
+par(mfrow = c(1,3))
+hist(dge.scaled.filtr$genes$logFC[dge.scaled.filtr$genes$simulation == 1],
+     xlab = 'logFC',main = 'Up-regulated transcripts (log2(2))',
+     xlim = c(-2,2))
+abline(v = log2(2),col = 'red')
+hist(dge.scaled.filtr$genes$logFC[dge.scaled.filtr$genes$simulation == 0],
+     xlab = 'logFC',main = 'No DTE',xlim = c(-2,2))
+abline(v = log2(1),col = 'red')
+hist(dge.scaled.filtr$genes$logFC[dge.scaled.filtr$genes$simulation == -1],
+     xlab = 'logFC',main = 'Down-regulated transcripts (log2(1/2))',
+     xlim = c(-2,2))
+abline(v = log2(1/2),col = 'red')
+```
+
+## edgeR-raw
+
+```{r simulation-complete_example_edgeR-raw}
+# Creating DGEList with both raw and raw approaches
+cts.raw <- df.example.salmon$counts
+
+dge.raw <- DGEList(counts = cts.raw, 
+                   samples = df.example.targets,
+                   genes = df.example.salmon$annotation)
+
+# Adding true DE status to DGEList
+dge.raw$genes$simulation <- 
+  df.example.sim$status[match(rownames(dge.raw$genes),df.example.sim$TranscriptID)]
+```
+
+Next, I apply edgeR's pipeline. I start by filtering lowly expressed transcripts and calculating normalization factors. 
+
+```{r simulation-complete_example_edgeR-raw_DE}
+# Applying edgeR's filterByExpr
+keep <- filterByExpr(dge.raw)
+table(keep, simulation = dge.raw$genes$simulation)
+
+dge.raw.filtr <- dge.raw[keep, , keep.lib.sizes = FALSE]
+dge.raw.filtr <- calcNormFactors(dge.raw.filtr)
+```
+
+Below we have the MDS plot, MD plots, and BCV plot. There is a somewhat substantial variability among replicates of the same group (y-axis), despite the clear separation of groups along the x-axis. The BCV trends toward a value slightly above 0.2.
+
+```{r simulation-complete_example_edgeR-raw_loading_wrangling,fig.height=6}
+plotMDS(dge.raw.filtr)
+par(mfrow = c(2,3))
+for (i in 1:ncol(dge.raw.filtr)) plotMD(dge.raw.filtr,column = i)
+par(mfrow = c(1,1))
+
+design <- model.matrix(~group-1,data = dge.raw.filtr$samples)
+colnames(design) <- gsub('group','',colnames(design))
+dge.raw.filtr <- estimateDisp(dge.raw.filtr,design)
+
+dge.raw.filtr$common.dispersion
+
+plotBCV(dge.raw.filtr)
+```
+
+Finally, we call `glmQLFit`, `glmQLFTest`, and plot the DTE results with an MD plot.
+
+```{r simulation-complete_example_edgeR-raw_dte}
+fit <- glmQLFit(dge.raw.filtr,design)
+
+plotQLDisp(fit)
+
+summary(fit$df.prior)
+
+qlf <- glmQLFTest(fit, contrast = makeContrasts(B - A, levels = design))
+
+tt <- topTags(qlf,n = Inf)
+is.de <- decideTestsDGE(qlf)
+summary(is.de)
+
+plotMD(qlf, status = is.de, values = c(1, -1),
+       col = c("red","blue"), legend = "topright")
+```
+
+Below I tabulate the true DE status of each transcript against edgeR's results.
+
+```{r simulation-complete_example_edgeR-raw_table}
+# Bringing edgeR output to dge object
+dge.raw.filtr$genes$FDR <- 
+  tt$table$FDR[match(rownames(dge.raw.filtr$genes),rownames(tt))]
+dge.raw.filtr$genes$logFC <- 
+  tt$table$logFC[match(rownames(dge.raw.filtr$genes),rownames(tt$table))]
+dge.raw.filtr$genes$edgeR <- 
+  is.de@.Data[,1][match(rownames(dge.raw.filtr$genes),rownames(is.de@.Data))]
+
+table('edgeR' = dge.raw.filtr$genes$edgeR, 
+      'simulation' = dge.raw.filtr$genes$simulation)
+```
+
+Then, I generate MD plots with the TP, FP, and FN status of transcripts.
+
+```{r simulation-complete_example_edgeR-raw_confusion,fig.height=7}
+# Plotting false negatives
+dge.raw.filtr$genes$abs.simulation <- abs(dge.raw.filtr$genes$simulation)
+dge.raw.filtr$genes$abs.edgeR <- abs(dge.raw.filtr$genes$edgeR)
+
+dge.raw.filtr$genes$TN <- 
+  factor(1*with(dge.raw.filtr$genes,abs.simulation == 0 & abs.edgeR == 0),
+         levels = c(1,0))
+dge.raw.filtr$genes$TP <- 
+  factor(1*with(dge.raw.filtr$genes,abs.simulation == 1 & abs.edgeR == 1),
+         levels = c(1,0))
+dge.raw.filtr$genes$FN <- 
+  factor(1*with(dge.raw.filtr$genes,abs.simulation == 1 & abs.edgeR == 0),
+         levels = c(1,0))
+dge.raw.filtr$genes$FP <- 
+  factor(1*with(dge.raw.filtr$genes,abs.simulation == 0 & abs.edgeR == 1),
+         levels = c(1,0))
+
+tb.metrics.edger_raw <- with(dge.raw.filtr$genes,table(abs.simulation,abs.edgeR))
+
+message('TPR = ',tb.metrics.edger_raw['1','1']/sum(tb.metrics.edger_raw['1',]))
+message('FPR = ',tb.metrics.edger_raw['0','1']/sum(tb.metrics.edger_raw['0',]))
+message('FDR = ',tb.metrics.edger_raw['0','1']/sum(tb.metrics.edger_raw[,'1']))
+
+col.tp <- c('black','red')[as.numeric(dge.raw.filtr$genes$TP)]
+col.fn <- c('black','red')[as.numeric(dge.raw.filtr$genes$FN)]
+col.fp <- c('black','red')[as.numeric(dge.raw.filtr$genes$FP)]
+
+par(mfrow = c(3,1))
+plotMD(qlf,status = dge.raw.filtr$genes$TP,main = 'True positives',col = col.tp)
+plotMD(qlf,status = dge.raw.filtr$genes$FN,main = 'False negatives',col = col.fn)
+plotMD(qlf,status = dge.raw.filtr$genes$FP,main = 'False positives',col = col.fp)
+```
+
+Below is a histogram of observed logFC. The histograms of truly DE should be centered around +/- 1, or +- log2(2).
+
+```{r simulation-complete_example_edgeR-raw_confusion_hist,fig.width=8,fig.height=3}
+# Plotting fold changes (should be around 2)
+par(mfrow = c(1,3))
+hist(dge.raw.filtr$genes$logFC[dge.raw.filtr$genes$simulation == 1],
+     xlab = 'logFC',main = 'Up-regulated transcripts (log2(2))',
+     xlim = c(-3,3))
+abline(v = log2(2),col = 'red')
+hist(dge.raw.filtr$genes$logFC[dge.raw.filtr$genes$simulation == 0],
+     xlab = 'logFC',main = 'No DTE',xlim = c(-3,3))
+abline(v = log2(1),col = 'red')
+hist(dge.raw.filtr$genes$logFC[dge.raw.filtr$genes$simulation == -1],
+     xlab = 'logFC',main = 'Down-regulated transcripts (log2(1/2))',
+     xlim = c(-3,3))
+abline(v = log2(1/2),col = 'red')
+```
+
+## sleuth-LRT
+
+Now I run sleuth LRT:
+
+```{r simulation-complete_sleuth-lrt}
+# See ../rfun/ function runSleuth
+dge.sleuth_lrt <- runSleuth(targets = df.example.targets,test = 'lrt',quantifier = 'salmon')
+
+# Plotting false negatives
+dge.sleuth_lrt$abs.simulation <- 
+  abs(df.example.sim$status[match(dge.sleuth_lrt$feature,df.example.sim$TranscriptID)])
+dge.sleuth_lrt$abs.sleuth <- 1*(dge.sleuth_lrt$qval < 0.05)
+
+dge.sleuth_lrt$TN <- 
+  factor(1*with(dge.sleuth_lrt,abs.simulation == 0 & abs.sleuth == 0),
+         levels = c(1,0))
+dge.sleuth_lrt$TP <- 
+  factor(1*with(dge.sleuth_lrt,abs.simulation == 1 & abs.sleuth == 1),
+         levels = c(1,0))
+dge.sleuth_lrt$FN <- 
+  factor(1*with(dge.sleuth_lrt,abs.simulation == 1 & abs.sleuth == 0),
+         levels = c(1,0))
+dge.sleuth_lrt$FP <- 
+  factor(1*with(dge.sleuth_lrt,abs.simulation == 0 & abs.sleuth == 1),
+         levels = c(1,0))
+
+tb.metrics.sleuth_lrt <- with(dge.sleuth_lrt,table(abs.simulation,abs.sleuth))
+
+message('TPR = ',tb.metrics.sleuth_lrt['1','1']/sum(tb.metrics.sleuth_lrt['1',]))
+message('FPR = ',tb.metrics.sleuth_lrt['0','1']/sum(tb.metrics.sleuth_lrt['0',]))
+message('FDR = ',tb.metrics.sleuth_lrt['0','1']/sum(tb.metrics.sleuth_lrt[,'1']))
+```
+
+## sleuth-Wald
+
+Now I run sleuth Wald:
+
+```{r simulation-complete_sleuth-wald}
+# See ../rfun/ function runSleuth
+dge.sleuth_wald <- runSleuth(targets = df.example.targets,test = 'wald',quantifier = 'salmon')
+
+# Plotting false negatives
+dge.sleuth_wald$abs.simulation <- 
+  abs(df.example.sim$status[match(dge.sleuth_wald$feature,df.example.sim$TranscriptID)])
+dge.sleuth_wald$abs.sleuth <- 1*(dge.sleuth_wald$qval < 0.05)
+
+dge.sleuth_wald$TN <- 
+  factor(1*with(dge.sleuth_wald,abs.simulation == 0 & abs.sleuth == 0),
+         levels = c(1,0))
+dge.sleuth_wald$TP <- 
+  factor(1*with(dge.sleuth_wald,abs.simulation == 1 & abs.sleuth == 1),
+         levels = c(1,0))
+dge.sleuth_wald$FN <- 
+  factor(1*with(dge.sleuth_wald,abs.simulation == 1 & abs.sleuth == 0),
+         levels = c(1,0))
+dge.sleuth_wald$FP <- 
+  factor(1*with(dge.sleuth_wald,abs.simulation == 0 & abs.sleuth == 1),
+         levels = c(1,0))
+
+tb.metrics.sleuth_wald <- with(dge.sleuth_wald,table(abs.simulation,abs.sleuth))
+
+message('TPR = ',tb.metrics.sleuth_wald['1','1']/sum(tb.metrics.sleuth_wald['1',]))
+message('FPR = ',tb.metrics.sleuth_wald['0','1']/sum(tb.metrics.sleuth_wald['0',]))
+message('FDR = ',tb.metrics.sleuth_wald['0','1']/sum(tb.metrics.sleuth_wald[,'1']))
+```
+
+## Swish
+
+Now I run Swish:
+
+```{r simulation-complete_swish}
+# See ../rfun/ function runSwish
+df.example.targets.swish <- df.example.targets
+df.example.targets.swish$group %<>% as.factor()
+
+dge.swish <- runSwish(targets = df.example.targets.swish,quantifier = 'salmon')
+
+# Plotting false negatives
+dge.swish$abs.simulation <- 
+  abs(df.example.sim$status[match(dge.swish$feature,df.example.sim$TranscriptID)])
+dge.swish$abs.swish <- 1*(dge.swish$qvalue < 0.05)
+
+dge.swish$TN <- 
+  factor(1*with(dge.swish,abs.simulation == 0 & abs.swish == 0),
+         levels = c(1,0))
+dge.swish$TP <- 
+  factor(1*with(dge.swish,abs.simulation == 1 & abs.swish == 1),
+         levels = c(1,0))
+dge.swish$FN <- 
+  factor(1*with(dge.swish,abs.simulation == 1 & abs.swish == 0),
+         levels = c(1,0))
+dge.swish$FP <- 
+  factor(1*with(dge.swish,abs.simulation == 0 & abs.swish == 1),
+         levels = c(1,0))
+
+tb.metrics.swish <- with(dge.swish,table(abs.simulation,abs.swish))
+
+message('TPR = ',tb.metrics.swish['1','1']/sum(tb.metrics.swish['1',]))
+message('FPR = ',tb.metrics.swish['0','1']/sum(tb.metrics.swish['0',]))
+message('FDR = ',tb.metrics.swish['0','1']/sum(tb.metrics.swish[,'1']))
+```
+
+# Simulation Results
+
+Here I present the results from the simulation study. I have written a function to summarize the results of each simulation scenario (see function `summarizeSimulation` in `../code/pkg/R/simulation-summary.R`). Please refer to the caption of each figure for a description of each analysis.
+
+## Data setup and loading results
+
+```{r simulation-complete_data_paths}
+path.fdr <- 
+  list.files('../output/simulation/summary','fdr.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.metrics <- 
+  list.files('../output/simulation/summary','metrics.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.time <- 
+  list.files('../output/simulation/summary','time.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.quantile <- 
+  list.files('../output/simulation/summary','quantile.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.pvalue <- 
+  list.files('../output/simulation/summary','pvalue.tsv.gz',recursive = TRUE,full.names = TRUE)
+path.overdispersion <- 
+  list.files('../output/simulation/summary','overdispersion.tsv.gz',recursive = TRUE,full.names = TRUE)
+```
+
+```{r simulation-complete_data_load}
+# Loading datasets
+dt.fdr <- do.call(rbind,lapply(path.fdr,fread))
+dt.metrics <- do.call(rbind,lapply(path.metrics,fread))
+dt.time <- do.call(rbind,lapply(path.time,fread))
+dt.quantile <- do.call(rbind,lapply(path.quantile,fread))
+dt.pvalue <- do.call(rbind,lapply(path.pvalue,fread))
+dt.overdispersion <- do.call(rbind,lapply(path.overdispersion,fread))
+```
+
+```{r simulation-complete_data_label}
+# Changing labels
+dt.fdr$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.fdr$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.fdr$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.fdr$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                             to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.metrics$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.metrics$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.metrics$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.metrics$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                 to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.time$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.time$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.time$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.time$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                              to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.quantile$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.quantile$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.quantile$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.quantile$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                  to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.pvalue$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.pvalue$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.pvalue$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.pvalue$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                to = paste0(seq(50, 150, 25), 'bp'))
+
+dt.overdispersion$TxPerGene %<>%
+  mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
+            to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
+dt.overdispersion$LibsPerGroup %<>%
+  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5)))
+dt.overdispersion$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
+dt.overdispersion$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
+                                        to = paste0(seq(50, 150, 25), 'bp'))
+```
+
+I use the functions below to produce the histogram plot shown in this report and to quickly subset data tables for specific scenarios:
+
+```{r simulation-complete_data_functions}
+cleanPlot <- function(x,fig){
+  if (x == max(seq_along(fig))) {
+    y <- fig[[x]]
+  } else{
+    y <- fig[[x]] + theme(axis.title.x = element_blank(),
+                          axis.text.x = element_blank(),
+                          axis.ticks.x = element_blank())
+  }
+  if (x > 1) {
+    y <- y + theme(strip.background.x = element_blank(),
+                   strip.text.x = element_blank())
+  }
+  return(y)
+}
+
+subsetDT <- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE){
+  if(isTRUE(plot)){
+    if(panel %in% c('A','B')){
+      out <- x[Genome == scenario['genome'] &
+                 FC == ifelse(panel == 'A','fc2','fc1') & 
+                 Length == scenario['length'] &
+                 Reads == scenario['read'] & 
+                 Quantifier == scenario['quantifier'] & 
+                 Scenario == scenario['scenario'],]
+    } else{
+      out <- x[Genome == scenario['genome'] &
+                 FC == 'fc1' & 
+                 Length == scenario['length'] &
+                 Reads == scenario['read'] & 
+                 Quantifier == scenario['quantifier'] & 
+                 Scenario == scenario['scenario'] &
+                 TxPerGene == tx.per.gene ,]
+    }
+  } else{
+    out <- x[Genome == scenario['genome'] &
+               FC == 'fc2' & 
+               Quantifier == scenario['quantifier'] & 
+               TxPerGene == scenario['txpergene'],]
+  }
+  return(out)
+}
+```
+
+The results of each simulation scenario are presented as a set of three figures. The first set of figures (set A in the chunk below) compares methods in regards to power (sensitivity), false discovery rate, and computing time. The second set of figures (set B in the chunk below) compares methods in regards to type 1 error rate control in a null simulation (i.e., a simulation without any truly differential expression between groups). The last and third set of figures (set C in the chunk below) compares methods in regards to the distribution of their unadjusted p-values in a null simulation.
+
+```{r simulation-complete_results_plots}
+dt.scenario <- expand.grid('genome' = 'mm39',
+                           'length' = c('50bp','75bp','100bp','125bp','150bp'),
+                           'read' = c('single-end','paired-end'),
+                           'quantifier' = c('Salmon','kallisto'),
+                           'scenario' = c('balanced','unbalanced'),
+                           stringsAsFactors = FALSE)
+
+plots <- lapply(seq_len(nrow(dt.scenario)),function(i){
+  scenario <- as.character(dt.scenario[i,])
+  names(scenario) <- colnames(dt.scenario)
+
+  figA <- 
+    list(plotFDRCurve(x = subsetDT(dt.fdr,scenario,'A'),3000),
+         plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3000),
+         plotTime(x = subsetDT(dt.time,scenario,'A')))
+  
+  figB <- 
+    list(plotQQPlot(x = subsetDT(dt.quantile,scenario,'B')),
+         plotType1Error(x = subsetDT(dt.metrics,scenario,'B'),0.05))
+  
+  figC <- 
+    list(plotPValues(x = subsetDT(dt.pvalue,scenario,'C','#Tx/Gene = 2')),
+         plotPValues(x = subsetDT(dt.pvalue,scenario,'C','#Tx/Gene = 3')),
+         plotPValues(x = subsetDT(dt.pvalue,scenario,'C','#Tx/Gene = 4')),
+         plotPValues(x = subsetDT(dt.pvalue,scenario,'C','#Tx/Gene = 5')),
+         plotPValues(x = subsetDT(dt.pvalue,scenario,'C','All Transcripts')))
+  
+  figC <- lapply(seq_along(figC),cleanPlot,fig = figC)
+  
+  out <- 
+    list('scenario' = scenario,
+         'panelA' = ggarrange(plotlist = figA,nrow = 3,labels = c('A','B','C'),
+                              heights = c(0.95,1.25,0.95)),
+         'panelB' = ggarrange(plotlist = figB,nrow = 2,labels = c('A','B')),
+         'panelC' = ggarrange(plotlist = figC,nrow = 5,
+                              labels = c('A','B','C','D','E'),
+                              heights = c(1,0.95,0.95,0.95,1.25)))
+  
+  return(out)
+})   
+```
+
+```{r simulation-complete_results_plots_title}
+cap <- paste0('Simulation results. Scenario with ',dt.scenario$genome,' genome, ',
+              dt.scenario$length,' ',dt.scenario$read,' reads quantified with ',
+              dt.scenario$quantifier,', and ',dt.scenario$scenario,' libraries.')
+
+capA <- paste(cap,
+              '(A) Average number of false discoveries as a function of the number of chosen transcripts.',
+              '(B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated.',
+              '(C) Average computing time in minutes.') 
+
+capB <- paste(cap,
+              '(A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations).',
+              '(B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)') 
+
+capC <- paste(cap,
+              '(A) Density histograms for simulations without any differential expression (averaged over 20 simulations).')  
+```
+
+I also compute the observed power and false discovery rate for different types of reads (paired- or single-end) and read lengths and present them in the same table:
+
+```{r simulation-complete_results_tables_title}
+dt.scenario.table <- expand.grid('genome' = 'mm39',
+                                 'quantifier' = c('Salmon','kallisto'),
+                                 'txpergene' = c(paste0('#Tx/Gene = ',2:5),'All Transcripts'),
+                                 stringsAsFactors = FALSE)
+
+cap.txpergene <- dt.scenario.table$txpergene
+cap.txpergene %<>% mapvalues(from = c(paste0('#Tx/Gene = ',2:5),'All Transcripts'),
+                             to = c(paste0('maximum of ',2:5,' transcripts/gene expressed'),
+                                    'all transcripts expressed'))
+
+cap <- paste0('Simulation results - observed power and false discovery rate for',
+              ' different read types and read Lengths, averaged over 20 simulations. Scenario with ',
+              dt.scenario.table$genome,' genome, ',cap.txpergene,', and reads ',
+              ' quantified with ',dt.scenario.table$quantifier,'.')
+
+cap1 <- paste(cap,'Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates most powerful method for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.')
+```
+
+```{r simulation-complete_results_tables}
+tables <- lapply(seq_len(nrow(dt.scenario.table)),function(i){
+  scenario <- as.character(dt.scenario.table[i,])
+  names(scenario) <- colnames(dt.scenario.table)
+  
+  tb1 <- tabulateMetrics(subsetDT(dt.metrics,scenario = scenario,plot = FALSE),
+                         cap = cap1[i],
+                         format = 'html')
+  
+  out <- list('scenario' = scenario,'table1' = tb1)
+   
+  return(out)
+})
+cat('\n\n<!-- -->\n\n')
+```
+
+## Power, false discovery rate, and computing time
+
+```{r simulation-complete_results_panelA,fig.cap=capA,fig.height=11,fig.width=8.5,results='asis'}
+for(i in seq_len(length(plots))) {
+  fig <- plots[[i]]$panelA
+  print(fig)
+  cat('\n\n<!-- -->\n\n')
+}   
+```
+
+## Type 1 error rate control
+
+
+```{r simulation-complete_results_panelB,fig.cap=capB,fig.height=8,fig.width=8.5,results='asis'}
+for(i in seq_len(length(plots))) {
+  fig <- plots[[i]]$panelB
+  print(fig)
+  cat('\n\n<!-- -->\n\n')
+}   
+```
+
+## Distribution of unadjusted p-values
+
+```{r simulation-complete_results_panelC,fig.cap=capC,fig.height=11,fig.width=8.5,results='asis'}
+for(i in seq_len(length(plots))) {
+  fig <- plots[[i]]$panelC
+  print(fig)
+  cat('\n\n<!-- -->\n\n')
+}   
+```
+
+## Power and false discovery rate by read lengths
+
+```{r simulation-complete_results_table1,results='asis'}
+for(i in seq_len(length(tables))) {
+  tb <- tables[[i]]$table1
+  print(tb)
+  cat('\n\n<!-- -->\n\n')
+}   
+```
