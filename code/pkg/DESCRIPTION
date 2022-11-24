@@ -1,0 +1,35 @@
+Package: pkg
+Type: Package
+Title: Package with auxiliary functions for the transcriptomics project
+Encoding: UTF-8
+Version: 1.0
+Date: 2022-03-24
+Author: Pedro Baldoni
+Maintainer: Pedro Baldoni <baldoni.p@wehi.edu.au>
+Description: This package provides auxiliary functions used in the data analysis of the transcriptomics project.
+License: MIT + file LICENSE
+Imports: 
+    Rcpp,
+    Rsubread,
+    rhdf5,
+    limma,
+    BiocParallel,
+    readr,
+    tximeta,
+    fishpond,
+    SummarizedExperiment,
+    wasabi,
+    sleuth,
+    S4Vectors,
+    rtracklayer,
+    splines,
+    ggplot2,
+    edgeR,
+    thematic,
+    data.table,
+    jsonlite,
+    kableExtra
+LinkingTo: Rcpp, RcppArmadillo
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
+LazyData: true
