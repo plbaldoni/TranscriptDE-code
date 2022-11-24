@@ -12,6 +12,7 @@ analysis/site_libs
 
 # Data ignores
 output/mouse/salmon/
+output/simulation/
 
 # File ignores
 *.gtf.gz
