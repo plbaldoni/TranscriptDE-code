@@ -11,9 +11,12 @@ analysis/*_cache
 analysis/site_libs
 
 # Data ignores
-output/mouse/salmon/
+output/mouse/
 output/simulation/
+misc/quasi_poisson/output/
+data/mouse/single-end/fastq/
 
 # File ignores
 *.gtf.gz
 *.fa.gz
+slurm-*
