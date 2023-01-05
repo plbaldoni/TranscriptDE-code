@@ -509,7 +509,7 @@ path.overdispersion <-
   list.files('../output/simulation/summary','overdispersion.tsv.gz',recursive = TRUE,full.names = TRUE)
 ```
 
-```{r simulation-complete_data_load}
+```{r simulation-complete_data_load,cache=TRUE}
 # Loading datasets
 dt.fdr <- do.call(rbind,lapply(path.fdr,fread))
 dt.metrics <- do.call(rbind,lapply(path.metrics,fread))
@@ -641,7 +641,7 @@ dt.scenario <- expand.grid('genome' = 'mm39',
 plots <- lapply(seq_len(nrow(dt.scenario)),function(i){
   scenario <- as.character(dt.scenario[i,])
   names(scenario) <- colnames(dt.scenario)
-
+  
   figA <- 
     list(plotFDRCurve(x = subsetDT(dt.fdr,scenario,'A'),3000),
          plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3000),
@@ -722,7 +722,7 @@ tables <- lapply(seq_len(nrow(dt.scenario.table)),function(i){
                          format = 'html')
   
   out <- list('scenario' = scenario,'table1' = tb1)
-   
+  
   return(out)
 })
 cat('\n\n<!-- -->\n\n')

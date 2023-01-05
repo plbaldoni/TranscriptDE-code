@@ -360,7 +360,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">simulation</h1>
 <h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">24 November, 2022</h4>
+<h4 class="date">04 January, 2023</h4>
 
 </div>
 
@@ -389,7 +389,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-11-24
+<strong>Last updated:</strong> 2023-01-04
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -427,10 +427,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -523,15 +523,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree057454e3fa055c432fa91ede48794e52d62e4b4atargetblank057454ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/057454e3fa055c432fa91ede48794e52d62e4b4a" target="_blank">057454e</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree057454e3fa055c432fa91ede48794e52d62e4b4atargetblank057454ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -541,7 +541,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/057454e3fa055c432fa91ede48794e52d62e4b4a" target="_blank">057454e</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -559,24 +559,35 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/figure/
+    Ignored:    analysis/mouse_cache/
+    Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
     Ignored:    data/annotation/mm39/
-    Ignored:    data/mouse/fastq/
-    Ignored:    output/mouse/salmon/
     Ignored:    output/simulation/
     Ignored:    renv/
 
 Untracked files:
-    Untracked:  analysis/simulation-complete.Rmd
-    Untracked:  analysis/simulation-paper.Rmd
-    Untracked:  code/simulation/
+    Untracked:  code/mouse/paired-end/
+    Untracked:  code/mouse/single-end/
+    Untracked:  data/mouse/paired-end/
+    Untracked:  data/mouse/single-end/
+    Untracked:  misc/
+    Untracked:  output/mouse/paired-end/
+    Untracked:  output/mouse/single-end/
 
 Unstaged changes:
-    Modified:   .gitignore
+    Modified:   analysis/mouse.Rmd
+    Modified:   analysis/simulation-complete.Rmd
+    Modified:   analysis/simulation-paper.Rmd
+    Deleted:    code/mouse/salmon/runSalmon.sh
+    Deleted:    code/mouse/salmon/runWasabi.R
+    Deleted:    data/mouse/misc/targets.txt
+    Modified:   data/mouse/readme.txt
+    Modified:   output/mouse/readme.txt
 
 </code></pre>
 <p>
@@ -591,10 +602,74 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/simulation-complete.Rmd</code>)
+and HTML (<code>docs/simulation-complete.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/analysis/simulation-complete.Rmd" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+<td>
+Adding complete simulation report
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/simulation-complete.html" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+<td>
+Adding complete simulation report
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -928,11 +1003,131 @@ somewhat substantial variability among replicates of the same group
 BCV trends toward a value slightly above 0.2.</p>
 <pre class="r"><code>&gt; plotMDS(dge.scaled.filtr)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_loading_wrangling-1">
+Past versions of
+simulation-complete_example_edgeR-scaled_loading_wrangling-1.png
+</button>
+</p>
+<div
+id="fig-simulation-complete_example_edgeR-scaled_loading_wrangling-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; par(mfrow = c(2,3))
 &gt; for (i in 1:ncol(dge.scaled.filtr)) plotMD(dge.scaled.filtr,column = i)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-2.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_loading_wrangling-2">
+Past versions of
+simulation-complete_example_edgeR-scaled_loading_wrangling-2.png
+</button>
+</p>
+<div
+id="fig-simulation-complete_example_edgeR-scaled_loading_wrangling-2"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; par(mfrow = c(1,1))</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-3.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_loading_wrangling-3">
+Past versions of
+simulation-complete_example_edgeR-scaled_loading_wrangling-3.png
+</button>
+</p>
+<div
+id="fig-simulation-complete_example_edgeR-scaled_loading_wrangling-3"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-3.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; 
 &gt; design &lt;- model.matrix(~group-1,data = dge.scaled.filtr$samples)
 &gt; colnames(design) &lt;- gsub(&#39;group&#39;,&#39;&#39;,colnames(design))
@@ -943,12 +1138,90 @@ BCV trends toward a value slightly above 0.2.</p>
 &gt; 
 &gt; plotBCV(dge.scaled.filtr)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-4.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_loading_wrangling-4">
+Past versions of
+simulation-complete_example_edgeR-scaled_loading_wrangling-4.png
+</button>
+</p>
+<div
+id="fig-simulation-complete_example_edgeR-scaled_loading_wrangling-4"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-4.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Finally, we call <code>glmQLFit</code>, <code>glmQLFTest</code>, and
 plot the DTE results with an MD plot.</p>
 <pre class="r"><code>&gt; fit &lt;- glmQLFit(dge.scaled.filtr,design)
 &gt; 
 &gt; plotQLDisp(fit)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_dte-1">
+Past versions of simulation-complete_example_edgeR-scaled_dte-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-scaled_dte-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; 
 &gt; summary(fit$df.prior)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -967,6 +1240,44 @@ Up         1091
 &gt; plotMD(qlf, status = is.de, values = c(1, -1),
 +        col = c(&quot;red&quot;,&quot;blue&quot;), legend = &quot;topright&quot;)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-2.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_dte-2">
+Past versions of simulation-complete_example_edgeR-scaled_dte-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-scaled_dte-2"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below I tabulate the true DE status of each transcript against
 edgeR’s results.</p>
 <pre class="r"><code>&gt; # Bringing edgeR output to dge object
@@ -1021,6 +1332,45 @@ FDR = 0.0346399270738377
 &gt; plotMD(qlf,status = dge.scaled.filtr$genes$FN,main = &#39;False negatives&#39;,col = col.fn)
 &gt; plotMD(qlf,status = dge.scaled.filtr$genes$FP,main = &#39;False positives&#39;,col = col.fp)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_confusion-1">
+Past versions of
+simulation-complete_example_edgeR-scaled_confusion-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-scaled_confusion-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below is a histogram of observed logFC. The histograms of truly DE
 should be centered around +/- 1, or +- log2(2).</p>
 <pre class="r"><code>&gt; # Plotting fold changes (should be around 2)
@@ -1037,6 +1387,45 @@ should be centered around +/- 1, or +- log2(2).</p>
 +      xlim = c(-2,2))
 &gt; abline(v = log2(1/2),col = &#39;red&#39;)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion_hist-1.png" width="2400" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-scaled_confusion_hist-1">
+Past versions of
+simulation-complete_example_edgeR-scaled_confusion_hist-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-scaled_confusion_hist-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion_hist-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="edger-raw" class="section level2">
 <h2>edgeR-raw</h2>
@@ -1068,11 +1457,128 @@ somewhat substantial variability among replicates of the same group
 BCV trends toward a value slightly above 0.2.</p>
 <pre class="r"><code>&gt; plotMDS(dge.raw.filtr)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_loading_wrangling-1">
+Past versions of
+simulation-complete_example_edgeR-raw_loading_wrangling-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_loading_wrangling-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; par(mfrow = c(2,3))
 &gt; for (i in 1:ncol(dge.raw.filtr)) plotMD(dge.raw.filtr,column = i)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-2.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_loading_wrangling-2">
+Past versions of
+simulation-complete_example_edgeR-raw_loading_wrangling-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_loading_wrangling-2"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; par(mfrow = c(1,1))</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-3.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_loading_wrangling-3">
+Past versions of
+simulation-complete_example_edgeR-raw_loading_wrangling-3.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_loading_wrangling-3"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-3.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; 
 &gt; design &lt;- model.matrix(~group-1,data = dge.raw.filtr$samples)
 &gt; colnames(design) &lt;- gsub(&#39;group&#39;,&#39;&#39;,colnames(design))
@@ -1083,12 +1589,89 @@ BCV trends toward a value slightly above 0.2.</p>
 &gt; 
 &gt; plotBCV(dge.raw.filtr)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-4.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_loading_wrangling-4">
+Past versions of
+simulation-complete_example_edgeR-raw_loading_wrangling-4.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_loading_wrangling-4"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-4.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Finally, we call <code>glmQLFit</code>, <code>glmQLFTest</code>, and
 plot the DTE results with an MD plot.</p>
 <pre class="r"><code>&gt; fit &lt;- glmQLFit(dge.raw.filtr,design)
 &gt; 
 &gt; plotQLDisp(fit)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_dte-1">
+Past versions of simulation-complete_example_edgeR-raw_dte-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_dte-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>&gt; 
 &gt; summary(fit$df.prior)
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -1107,6 +1690,44 @@ Up          767
 &gt; plotMD(qlf, status = is.de, values = c(1, -1),
 +        col = c(&quot;red&quot;,&quot;blue&quot;), legend = &quot;topright&quot;)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-2.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_dte-2">
+Past versions of simulation-complete_example_edgeR-raw_dte-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_dte-2"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below I tabulate the true DE status of each transcript against
 edgeR’s results.</p>
 <pre class="r"><code>&gt; # Bringing edgeR output to dge object
@@ -1161,6 +1782,44 @@ FDR = 0.0132538104705103
 &gt; plotMD(qlf,status = dge.raw.filtr$genes$FN,main = &#39;False negatives&#39;,col = col.fn)
 &gt; plotMD(qlf,status = dge.raw.filtr$genes$FP,main = &#39;False positives&#39;,col = col.fp)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion-1.png" width="1800" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_confusion-1">
+Past versions of simulation-complete_example_edgeR-raw_confusion-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_confusion-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below is a histogram of observed logFC. The histograms of truly DE
 should be centered around +/- 1, or +- log2(2).</p>
 <pre class="r"><code>&gt; # Plotting fold changes (should be around 2)
@@ -1177,6 +1836,45 @@ should be centered around +/- 1, or +- log2(2).</p>
 +      xlim = c(-3,3))
 &gt; abline(v = log2(1/2),col = &#39;red&#39;)</code></pre>
 <p><img src="figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion_hist-1.png" width="2400" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_example_edgeR-raw_confusion_hist-1">
+Past versions of
+simulation-complete_example_edgeR-raw_confusion_hist-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_example_edgeR-raw_confusion_hist-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion_hist-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="sleuth-lrt" class="section level2">
 <h2>sleuth-LRT</h2>
@@ -1432,6 +2130,20 @@ caption of each figure for a description of each analysis.</p>
 &gt; dt.quantile &lt;- do.call(rbind,lapply(path.quantile,fread))
 &gt; dt.pvalue &lt;- do.call(rbind,lapply(path.pvalue,fread))
 &gt; dt.overdispersion &lt;- do.call(rbind,lapply(path.overdispersion,fread))</code></pre>
+<div class="alert alert-warning">
+<p>
+<strong>Warning:</strong> The above code chunk cached its results, but
+it won’t be re-run if previous chunks it depends on are updated. If you
+need to use caching, it is highly recommended to also set
+<code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the
+file (in a chunk that is not cached). Alternatively, you can customize
+the option <code>dependson</code> for each individual chunk that is
+cached. Using either <code>autodep</code> or <code>dependson</code> will
+remove this warning. See the
+<a href="https://yihui.name/knitr/options/#cache"
+>knitr cache options</a> for more details.
+</p>
+</div>
 <pre class="r"><code>&gt; # Changing labels
 &gt; dt.fdr$TxPerGene %&lt;&gt;%
 +   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
@@ -1554,7 +2266,7 @@ their unadjusted p-values in a null simulation.</p>
 &gt; plots &lt;- lapply(seq_len(nrow(dt.scenario)),function(i){
 +   scenario &lt;- as.character(dt.scenario[i,])
 +   names(scenario) &lt;- colnames(dt.scenario)
-+ 
++   
 +   figA &lt;- 
 +     list(plotFDRCurve(x = subsetDT(dt.fdr,scenario,&#39;A&#39;),3000),
 +          plotPowerBars(x = subsetDT(dt.metrics,scenario,&#39;A&#39;),0.05,3000),
@@ -1627,7 +2339,7 @@ present them in the same table:</p>
 +                          format = &#39;html&#39;)
 +   
 +   out &lt;- list(&#39;scenario&#39; = scenario,&#39;table1&#39; = tb1)
-+    
++   
 +   return(out)
 + })
 Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
@@ -1670,6 +2382,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-1">
+Past versions of simulation-complete_results_panelA-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1680,6 +2429,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-2">
+Past versions of simulation-complete_results_panelA-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1692,6 +2478,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-3">
+Past versions of simulation-complete_results_panelA-3.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1702,6 +2525,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-4">
+Past versions of simulation-complete_results_panelA-4.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1714,6 +2574,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-5">
+Past versions of simulation-complete_results_panelA-5.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-5" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1724,6 +2621,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-6">
+Past versions of simulation-complete_results_panelA-6.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-6" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1736,6 +2670,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-7">
+Past versions of simulation-complete_results_panelA-7.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-7" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1746,6 +2717,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-8">
+Past versions of simulation-complete_results_panelA-8.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-8" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1758,6 +2766,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-9">
+Past versions of simulation-complete_results_panelA-9.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-9" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1768,6 +2813,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-10">
+Past versions of simulation-complete_results_panelA-10.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-10" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1780,6 +2862,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-11">
+Past versions of simulation-complete_results_panelA-11.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-11" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1790,6 +2909,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-12">
+Past versions of simulation-complete_results_panelA-12.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-12" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1802,6 +2958,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-13">
+Past versions of simulation-complete_results_panelA-13.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-13" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1812,6 +3005,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-14">
+Past versions of simulation-complete_results_panelA-14.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-14" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1824,6 +3054,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-15">
+Past versions of simulation-complete_results_panelA-15.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1834,6 +3101,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-16">
+Past versions of simulation-complete_results_panelA-16.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1846,6 +3150,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-17">
+Past versions of simulation-complete_results_panelA-17.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-17" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1856,6 +3197,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-18">
+Past versions of simulation-complete_results_panelA-18.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-18" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1868,6 +3246,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-19">
+Past versions of simulation-complete_results_panelA-19.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-19" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and balanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1878,6 +3293,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-20">
+Past versions of simulation-complete_results_panelA-20.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-20" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1890,6 +3342,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-21">
+Past versions of simulation-complete_results_panelA-21.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-21" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1900,6 +3389,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-22">
+Past versions of simulation-complete_results_panelA-22.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-22" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1912,6 +3438,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-23">
+Past versions of simulation-complete_results_panelA-23.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-23" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1922,6 +3485,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-24">
+Past versions of simulation-complete_results_panelA-24.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-24" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1934,6 +3534,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-25">
+Past versions of simulation-complete_results_panelA-25.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-25" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1944,6 +3581,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-26">
+Past versions of simulation-complete_results_panelA-26.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-26" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1956,6 +3630,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-27">
+Past versions of simulation-complete_results_panelA-27.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-27" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1966,6 +3677,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-28">
+Past versions of simulation-complete_results_panelA-28.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-28" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -1978,6 +3726,43 @@ Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-29">
+Past versions of simulation-complete_results_panelA-29.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-29" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -1988,6 +3773,43 @@ false discoveries as a function of the number of chosen transcripts. (B)
 Average number of true (blue) and false (red) positive DE transcripts.
 Observed is FDR annotated. (C) Average computing time in minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-30">
+Past versions of simulation-complete_results_panelA-30.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-30" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2001,6 +3823,43 @@ transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-31">
+Past versions of simulation-complete_results_panelA-31.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-31" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -2012,6 +3871,43 @@ of false discoveries as a function of the number of chosen transcripts.
 transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-32">
+Past versions of simulation-complete_results_panelA-32.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-32" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2025,6 +3921,43 @@ transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-33">
+Past versions of simulation-complete_results_panelA-33.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-33" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -2036,6 +3969,43 @@ of false discoveries as a function of the number of chosen transcripts.
 transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-34">
+Past versions of simulation-complete_results_panelA-34.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-34" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2049,6 +4019,43 @@ transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-35">
+Past versions of simulation-complete_results_panelA-35.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-35" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -2060,6 +4067,43 @@ of false discoveries as a function of the number of chosen transcripts.
 transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-36">
+Past versions of simulation-complete_results_panelA-36.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-36" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2073,6 +4117,43 @@ transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-37">
+Past versions of simulation-complete_results_panelA-37.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-37" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -2084,6 +4165,43 @@ of false discoveries as a function of the number of chosen transcripts.
 transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-38">
+Past versions of simulation-complete_results_panelA-38.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-38" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2097,6 +4215,43 @@ transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-39">
+Past versions of simulation-complete_results_panelA-39.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-39" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Average number of false discoveries as a function of the number of chosen transcripts. (B) Average number of true (blue) and false (red) positive DE transcripts. Observed is FDR annotated. (C) Average computing time in minutes." width="2550" />
@@ -2108,6 +4263,43 @@ of false discoveries as a function of the number of chosen transcripts.
 transcripts. Observed is FDR annotated. (C) Average computing time in
 minutes.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelA-40">
+Past versions of simulation-complete_results_panelA-40.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelA-40" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 </div>
@@ -2129,6 +4321,43 @@ less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-1">
+Past versions of simulation-complete_results_panelB-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2140,6 +4369,43 @@ simulations). (B) Proportion of transcripts with unadjusted p-values
 less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-2">
+Past versions of simulation-complete_results_panelB-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2153,6 +4419,43 @@ less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-3">
+Past versions of simulation-complete_results_panelB-3.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2164,6 +4467,43 @@ simulations). (B) Proportion of transcripts with unadjusted p-values
 less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-4">
+Past versions of simulation-complete_results_panelB-4.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2177,6 +4517,43 @@ less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-5">
+Past versions of simulation-complete_results_panelB-5.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-5" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2188,6 +4565,43 @@ simulations). (B) Proportion of transcripts with unadjusted p-values
 less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-6">
+Past versions of simulation-complete_results_panelB-6.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-6" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2201,6 +4615,43 @@ less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-7">
+Past versions of simulation-complete_results_panelB-7.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-7" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2212,6 +4663,43 @@ simulations). (B) Proportion of transcripts with unadjusted p-values
 less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-8">
+Past versions of simulation-complete_results_panelB-8.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-8" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2225,6 +4713,43 @@ less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-9">
+Past versions of simulation-complete_results_panelB-9.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-9" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2236,6 +4761,43 @@ simulations). (B) Proportion of transcripts with unadjusted p-values
 less than 0.05 for simulations without any differential expression
 (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-10">
+Past versions of simulation-complete_results_panelB-10.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-10" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2249,6 +4811,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-11">
+Past versions of simulation-complete_results_panelB-11.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-11" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2260,6 +4859,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-12">
+Past versions of simulation-complete_results_panelB-12.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-12" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2273,6 +4909,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-13">
+Past versions of simulation-complete_results_panelB-13.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-13" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2284,6 +4957,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-14">
+Past versions of simulation-complete_results_panelB-14.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-14" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2297,6 +5007,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-15">
+Past versions of simulation-complete_results_panelB-15.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2308,6 +5055,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-16">
+Past versions of simulation-complete_results_panelB-16.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2321,6 +5105,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-17">
+Past versions of simulation-complete_results_panelB-17.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-17" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2332,6 +5153,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-18">
+Past versions of simulation-complete_results_panelB-18.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-18" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2345,6 +5203,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-19">
+Past versions of simulation-complete_results_panelB-19.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-19" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and balanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2356,6 +5251,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-20">
+Past versions of simulation-complete_results_panelB-20.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-20" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2369,6 +5301,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-21">
+Past versions of simulation-complete_results_panelB-21.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-21" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2380,6 +5349,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-22">
+Past versions of simulation-complete_results_panelB-22.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-22" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2393,6 +5399,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-23">
+Past versions of simulation-complete_results_panelB-23.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-23" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2404,6 +5447,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-24">
+Past versions of simulation-complete_results_panelB-24.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-24" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2417,6 +5497,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-25">
+Past versions of simulation-complete_results_panelB-25.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-25" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2428,6 +5545,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-26">
+Past versions of simulation-complete_results_panelB-26.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-26" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2441,6 +5595,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-27">
+Past versions of simulation-complete_results_panelB-27.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-27" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2452,6 +5643,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-28">
+Past versions of simulation-complete_results_panelB-28.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-28" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2465,6 +5693,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-29">
+Past versions of simulation-complete_results_panelB-29.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-29" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2476,6 +5741,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-30">
+Past versions of simulation-complete_results_panelB-30.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-30" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2489,6 +5791,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-31">
+Past versions of simulation-complete_results_panelB-31.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-31" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2500,6 +5839,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-32">
+Past versions of simulation-complete_results_panelB-32.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-32" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2513,6 +5889,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-33">
+Past versions of simulation-complete_results_panelB-33.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-33" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2524,6 +5937,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-34">
+Past versions of simulation-complete_results_panelB-34.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-34" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2537,6 +5987,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-35">
+Past versions of simulation-complete_results_panelB-35.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-35" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2548,6 +6035,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-36">
+Past versions of simulation-complete_results_panelB-36.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-36" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2561,6 +6085,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-37">
+Past versions of simulation-complete_results_panelB-37.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-37" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2572,6 +6133,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-38">
+Past versions of simulation-complete_results_panelB-38.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-38" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2585,6 +6183,43 @@ p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-39">
+Past versions of simulation-complete_results_panelB-39.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-39" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) QQ plots of p-values for simulations without any differential expression (averaged over 20 simulations). (B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)" width="2550" />
@@ -2596,6 +6231,43 @@ over 20 simulations). (B) Proportion of transcripts with unadjusted
 p-values less than 0.05 for simulations without any differential
 expression (averaged over 20 simulations)
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelB-40">
+Past versions of simulation-complete_results_panelB-40.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelB-40" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 </div>
@@ -2615,6 +6287,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-1">
+Past versions of simulation-complete_results_panelC-1.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2624,6 +6333,43 @@ quantified with Salmon, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-2">
+Past versions of simulation-complete_results_panelC-2.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2635,6 +6381,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-3">
+Past versions of simulation-complete_results_panelC-3.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2644,6 +6427,43 @@ quantified with Salmon, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-4">
+Past versions of simulation-complete_results_panelC-4.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2655,6 +6475,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-5">
+Past versions of simulation-complete_results_panelC-5.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-5" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2664,6 +6521,43 @@ quantified with Salmon, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-6">
+Past versions of simulation-complete_results_panelC-6.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-6" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2675,6 +6569,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-7">
+Past versions of simulation-complete_results_panelC-7.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-7" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2684,6 +6615,43 @@ quantified with Salmon, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-8">
+Past versions of simulation-complete_results_panelC-8.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-8" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2695,6 +6663,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-9">
+Past versions of simulation-complete_results_panelC-9.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-9" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2704,6 +6709,43 @@ quantified with Salmon, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-10">
+Past versions of simulation-complete_results_panelC-10.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-10" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2715,6 +6757,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-11">
+Past versions of simulation-complete_results_panelC-11.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-11" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2724,6 +6803,43 @@ quantified with kallisto, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-12">
+Past versions of simulation-complete_results_panelC-12.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-12" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2735,6 +6851,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-13">
+Past versions of simulation-complete_results_panelC-13.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-13" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2744,6 +6897,43 @@ quantified with kallisto, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-14">
+Past versions of simulation-complete_results_panelC-14.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-14" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2755,6 +6945,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-15">
+Past versions of simulation-complete_results_panelC-15.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2764,6 +6991,43 @@ quantified with kallisto, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-16">
+Past versions of simulation-complete_results_panelC-16.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2775,6 +7039,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-17">
+Past versions of simulation-complete_results_panelC-17.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-17" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2784,6 +7085,43 @@ quantified with kallisto, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-18">
+Past versions of simulation-complete_results_panelC-18.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-18" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2795,6 +7133,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-19">
+Past versions of simulation-complete_results_panelC-19.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-19" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and balanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2804,6 +7179,43 @@ quantified with kallisto, and balanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-20">
+Past versions of simulation-complete_results_panelC-20.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-20" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2815,6 +7227,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-21">
+Past versions of simulation-complete_results_panelC-21.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-21" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with Salmon, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2824,6 +7273,43 @@ quantified with Salmon, and unbalanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-22">
+Past versions of simulation-complete_results_panelC-22.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-22" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2835,6 +7321,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-23">
+Past versions of simulation-complete_results_panelC-23.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-23" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with Salmon, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2844,6 +7367,43 @@ quantified with Salmon, and unbalanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-24">
+Past versions of simulation-complete_results_panelC-24.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-24" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2855,6 +7415,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-25">
+Past versions of simulation-complete_results_panelC-25.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-25" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2864,6 +7461,43 @@ quantified with Salmon, and unbalanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-26">
+Past versions of simulation-complete_results_panelC-26.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-26" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2875,6 +7509,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-27">
+Past versions of simulation-complete_results_panelC-27.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-27" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2884,6 +7555,43 @@ quantified with Salmon, and unbalanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-28">
+Past versions of simulation-complete_results_panelC-28.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-28" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2895,6 +7603,43 @@ for simulations without any differential expression (averaged over 20
 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-29">
+Past versions of simulation-complete_results_panelC-29.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-29" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with Salmon, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2904,6 +7649,43 @@ quantified with Salmon, and unbalanced libraries. (A) Density histograms
 for simulations without any differential expression (averaged over 20
 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-30">
+Past versions of simulation-complete_results_panelC-30.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-30" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2915,6 +7697,43 @@ histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-31">
+Past versions of simulation-complete_results_panelC-31.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-31" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" alt="Simulation results. Scenario with mm39 genome, 75bp single-end reads quantified with kallisto, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2924,6 +7743,43 @@ quantified with kallisto, and unbalanced libraries. (A) Density
 histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-32">
+Past versions of simulation-complete_results_panelC-32.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-32" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2935,6 +7791,43 @@ histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-33">
+Past versions of simulation-complete_results_panelC-33.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-33" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" alt="Simulation results. Scenario with mm39 genome, 125bp single-end reads quantified with kallisto, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2944,6 +7837,43 @@ quantified with kallisto, and unbalanced libraries. (A) Density
 histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-34">
+Past versions of simulation-complete_results_panelC-34.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-34" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2955,6 +7885,43 @@ histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-35">
+Past versions of simulation-complete_results_panelC-35.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-35" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" alt="Simulation results. Scenario with mm39 genome, 50bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2964,6 +7931,43 @@ quantified with kallisto, and unbalanced libraries. (A) Density
 histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-36">
+Past versions of simulation-complete_results_panelC-36.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-36" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2975,6 +7979,43 @@ histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-37">
+Past versions of simulation-complete_results_panelC-37.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-37" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" alt="Simulation results. Scenario with mm39 genome, 100bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -2984,6 +8025,43 @@ quantified with kallisto, and unbalanced libraries. (A) Density
 histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-38">
+Past versions of simulation-complete_results_panelC-38.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-38" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 <div class="figure" style="text-align: center">
@@ -2995,6 +8073,43 @@ histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-39">
+Past versions of simulation-complete_results_panelC-39.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-39" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <!-- -->
 <div class="figure" style="text-align: center">
 <img src="figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" alt="Simulation results. Scenario with mm39 genome, 150bp paired-end reads quantified with kallisto, and unbalanced libraries. (A) Density histograms for simulations without any differential expression (averaged over 20 simulations)." width="2550" />
@@ -3004,6 +8119,43 @@ quantified with kallisto, and unbalanced libraries. (A) Density
 histograms for simulations without any differential expression (averaged
 over 20 simulations).
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-complete_results_panelC-40">
+Past versions of simulation-complete_results_panelC-40.png
+</button>
+</p>
+<div id="fig-simulation-complete_results_panelC-40" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">8c476c6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <!-- -->
 </div>
@@ -21410,13 +26562,13 @@ other attached packages:
  [7] S4Vectors_0.36.0       BiocGenerics_0.44.0    pkg_1.0               
 [10] kableExtra_1.3.4       ggpubr_0.5.0           readr_2.1.3           
 [13] purrr_0.3.5            devtools_2.4.5         usethis_2.1.6         
-[16] BiocParallel_1.32.1    edgeR_3.40.0           limma_3.54.0          
+[16] BiocParallel_1.32.3    edgeR_3.40.0           limma_3.54.0          
 [19] magrittr_2.0.3         plyr_1.8.8             thematic_0.1.2.1      
 [22] ggplot2_3.4.0          data.table_1.14.6      workflowr_1.7.0       
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.2                    R.utils_2.12.2               
-  [3] tidyselect_1.2.0              RSQLite_2.2.18               
+  [3] tidyselect_1.2.0              RSQLite_2.2.19               
   [5] htmlwidgets_1.5.4             grid_4.2.1                   
   [7] munsell_0.5.0                 codetools_0.2-18             
   [9] miniUI_0.1.1.1                withr_2.5.0                  
@@ -21488,7 +26640,7 @@ loaded via a namespace (and not attached):
 [141] glue_1.6.2                    remotes_2.4.2                
 [143] png_0.1-7                     BiocVersion_3.16.0           
 [145] bit_4.0.5                     stringi_1.7.8                
-[147] sass_0.4.3                    profvis_0.3.7                
+[147] sass_0.4.4                    profvis_0.3.7                
 [149] blob_1.2.3                    AnnotationHub_3.6.0          
 [151] memoise_2.0.1                 dplyr_1.0.10                 </code></pre>
 </div>
