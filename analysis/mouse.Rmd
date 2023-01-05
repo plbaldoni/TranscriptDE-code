@@ -29,112 +29,628 @@ library(Rsubread)
 library(rtracklayer)
 library(magrittr)
 library(ggpubr)
+library(plyr)
+library(gplots)
+library(grid)
+library(ComplexHeatmap)
+library(patchwork)
+library(tibble)
+library(tidyHeatmap)
+library(AnnotationHub)
+library(sleuth)
+library(fishpond)
+library(tximeta)
+library(tidyverse)
+library(SummarizedExperiment)
+library(stringr)
+library(kableExtra)
 ```
 
-# Analysis
+```{r mouse_setup_anno}
+ah <- AnnotationHub()
+edb <- ah[['AH95775']] # This annotation corresponds to Ensembl 104 (release M27)
+ensid <- keys(edb)
+cols <- c("TXIDVERSION","TXEXTERNALNAME","TXBIOTYPE","GENEIDVERSION",
+          "GENENAME","GENEBIOTYPE","ENTREZID")
 
-## Data wrangling
+dt.anno <- select(edb,ensid,cols)
+dt.anno <- as.data.table(dt.anno)
+
+dt.anno.gene <- dt.anno[,.(NTranscriptPerGene = .N),by = c('GENEIDVERSION','GENEBIOTYPE','ENTREZID','GENENAME')]
+dt.anno.gene[,GeneOfInterest := GENEBIOTYPE %in% c('protein_coding','lncRNA')]
+
+dt.anno <- merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = 'GENEIDVERSION',all.x = TRUE)
+```
+
+# Analysis of paired-end data
+
+## Transcript-level analysis
+
+### Data wrangling
 
 ```{r mouse_data_path}
-path.data <- '../data/mouse'
+path.data <- '../data/mouse/paired-end'
 path.anno <- '../data/annotation/mm39'
-path.quant <- '../output/mouse'
+path.quant <- '../output/mouse/paired-end'
 ```
 
 ```{r mouse_data_targets}
 dt.targets <- fread(file.path(path.data,'misc/targets.txt'))
+dt.targets[,Sample := paste(Group,Replicate,sep = '.')]
+dt.targets[,Color := mapvalues(Group,
+                               from = c('Basal','LP','ML'),
+                               to = c('blue','darkgreen','red'))]
 setnames(dt.targets,old = 'Group',new = 'group')
 dt.targets[,path := file.path(path.quant,'salmon',gsub('_R1.fastq.gz','',File1))]
-```
-
-```{r mouse_data_fa}
-dt.fa <- scanFasta(file.path(path.anno,'gencode.vM27.transcripts.fa.gz'))
-dt.fa <- as.data.table(dt.fa)
-dt.fa$GeneID <- strsplit2(dt.fa$TranscriptID,'\\|')[,2]
-dt.fa$TranscriptID <- strsplit2(dt.fa$TranscriptID,'\\|')[,1]
-
-dt.fa.gene <- dt.fa[,.(NTranscriptID = .N),by = 'GeneID']
-
-dt.fa <- merge(dt.fa,dt.fa.gene,by = 'GeneID',all.x = TRUE,sort = FALSE)
-```
-
-```{r mouse_data_gtf}
-gr.gtf <- import(file.path(path.anno,'gencode.vM27.annotation.gtf.gz'))
-
-gr.gtf.gene <- gr.gtf[gr.gtf$type == 'gene']
-gr.gtf.transcript <- gr.gtf[gr.gtf$type == 'transcript']
-
-gr.gtf.gene.interest <- 
-  gr.gtf.gene[gr.gtf.gene$gene_type %in% c('protein_coding','lncRNA')]
-gr.gtf.transcript.interest <- 
-  gr.gtf.transcript[gr.gtf.transcript$gene_id %in% gr.gtf.gene.interest$gene_id]
 ```
 
 ```{r mouse_data_catch}
 catch <- catchSalmon(dt.targets$path,verbose = FALSE)
 
-key.catch.fa <- match(rownames(catch$annotation),dt.fa$TranscriptID)
+key.catch.anno <- match(rownames(catch$annotation),dt.anno$TXIDVERSION)
 
-catch$annotation$GeneID <- dt.fa$GeneID[key.catch.fa]
-catch$annotation$NTranscriptID <- dt.fa$NTranscriptID[key.catch.fa]
+catch$annotation$TranscriptName <- dt.anno$TXEXTERNALNAME[key.catch.anno]
+catch$annotation$GeneID <- dt.anno$GENEIDVERSION[key.catch.anno]
+catch$annotation$GeneName <- dt.anno$GENENAME[key.catch.anno]
+catch$annotation$GeneEntrezID <- dt.anno$ENTREZID[key.catch.anno]
+catch$annotation$GeneOfInterest <- dt.anno$GeneOfInterest[key.catch.anno]
+catch$annotation$NTranscriptPerGene <- dt.anno$NTranscriptPerGene[key.catch.anno]
+catch$annotation$Type <- dt.anno$TXBIOTYPE[key.catch.anno]
 ```
 
+### Differential transcript expression between basal and LP populations
 
-## Differential transcript expression
-
-### edgeR with count scaling
+#### edgeR with count scaling
 
 ```{r dte_edger-cs}
 dte.scaled <- DGEList(counts = catch$counts/catch$annotation$Overdispersion,
                       genes = catch$annotation,
                       samples = dt.targets)
 colnames(dte.scaled) <- dte.scaled$samples$Sample
+```
 
-design <- model.matrix(~0+group,data = dte.scaled$samples)
-
-con.3groups <- makeContrasts(LPvsB = groupLP - groupBasal,
-                             MLvsB = groupML - groupBasal, levels = design)
-con.2groups <- makeContrasts(MLvsLP = groupML - groupLP, levels = design)
-
+```{r dte_edger-cs_filtering}
 keep.scaled <- 
-  filterByExpr(dte.scaled) & 
-  rownames(dte.scaled) %in% gr.gtf.transcript.interest$transcript_id
-dte.scaled.filtr <- dte.scaled[keep.scaled, , keep.lib.sizes = FALSE]
+  filterByExpr(dte.scaled) & dte.scaled$genes$GeneOfInterest
+dte.scaled.filtr <- dte.scaled[keep.scaled,, keep.lib.sizes = FALSE]
+```
+
+```{r dte_edger-cs_norm-disp}
+design <- model.matrix(~0+group,data = dte.scaled.filtr$samples)
 dte.scaled.filtr <- calcNormFactors(dte.scaled.filtr)
-dte.scaled.filtr <- estimateDisp(dte.scaled.filtr,design)
-fit.scaled <- glmQLFit(dte.scaled.filtr,design)
+dte.scaled.filtr <- estimateDisp(dte.scaled.filtr,design,robust = TRUE)
+```
 
-qlf.3groups.scaled <- glmQLFTest(fit.scaled,contrast = con.3groups)
-out.3groups.scaled <- topTags(qlf.3groups.scaled,n = Inf)
+```{r dte_edger-cs_fit}
+fit.scaled <- glmQLFit(dte.scaled.filtr,design,robust = TRUE)
 
-qlf.2groups.scaled <- glmQLFTest(fit.scaled,contrast = con.2groups)
-out.2groups.scaled <- topTags(qlf.2groups.scaled,n = Inf)
+con.LPvsB <- makeContrasts(LPvsB = groupLP - groupBasal,levels = design)
+con.MLvsLP <- makeContrasts(MLvsLP = groupML - groupLP,levels = design)
+
+qlf.LPvsB.scaled <- glmQLFTest(fit.scaled,contrast = con.LPvsB)
+qlf.MLvsLP.scaled <- glmQLFTest(fit.scaled,contrast = con.MLvsLP)
+
+out.LPvsB.scaled <- topTags(qlf.LPvsB.scaled,n = Inf)
+out.MLvsLP.scaled <- topTags(qlf.MLvsLP.scaled,n = Inf)
+
+summary(decideTests(qlf.LPvsB.scaled))
+summary(decideTests(qlf.MLvsLP.scaled))
+```
+
+#### edgeR with raw counts
+
+```{r dte_edger-rc}
+dte.raw <- DGEList(counts = catch$counts,
+                   genes = catch$annotation,
+                   samples = dt.targets)
+colnames(dte.raw) <- dte.raw$samples$Sample
+```
+
+```{r dte_edger-rc_filtering}
+keep.raw <- 
+  filterByExpr(dte.raw) & dte.raw$genes$GeneOfInterest
+dte.raw.filtr <- dte.raw[keep.raw,, keep.lib.sizes = FALSE]
+```
+
+```{r dte_edger-rc_norm-disp}
+dte.raw.filtr <- calcNormFactors(dte.raw.filtr)
+dte.raw.filtr <- estimateDisp(dte.raw.filtr,design,robust = TRUE)
+```
+
+```{r dte_edger-rc_fit}
+fit.raw <- glmQLFit(dte.raw.filtr,design,robust = TRUE)
+
+con.LPvsB <- makeContrasts(LPvsB = groupLP - groupBasal,levels = design)
+
+qlf.LPvsB.raw <- glmQLFTest(fit.raw,contrast = con.LPvsB)
+
+out.LPvsB.raw <- topTags(qlf.LPvsB.raw,n = Inf)
+
+summary(decideTests(qlf.LPvsB.raw))
+```
+
+#### sleuth-LRT
+
+```{r dte_sleuth-lrt,cache=TRUE}
+dt.targets.sleuth <- dt.targets[group %in% c('Basal','LP'),]
+setnames(dt.targets.sleuth,old = 'Sample',new = 'sample')
+
+se.sleuth.lrt <- 
+  sleuth_prep(sample_to_covariates = dt.targets.sleuth,full_model = ~ group)
+
+se.sleuth.lrt <- sleuth_fit(obj = se.sleuth.lrt, fit_name = 'full')
+
+se.sleuth.lrt <- 
+  sleuth_fit(obj = se.sleuth.lrt,formula = ~ 1,fit_name = 'reduced')
+se.sleuth.lrt <- 
+  sleuth_lrt(obj = se.sleuth.lrt,null_model = 'reduced',alt_model = 'full')
+
+out.sleuth.lrt <- 
+  sleuth_results(obj = se.sleuth.lrt, test = 'reduced:full', test_type = 'lrt',
+                 show_all = FALSE)
+```
+
+#### sleuth-Wald
+
+```{r dte_sleuth-wald,cache=TRUE}
+se.sleuth.wald <- 
+  sleuth_prep(sample_to_covariates = dt.targets.sleuth,full_model = ~ group)
+
+se.sleuth.wald <- sleuth_fit(obj = se.sleuth.wald, fit_name = 'full')
+
+se.sleuth.wald <- 
+  sleuth_wt(obj = se.sleuth.wald,which_beta = 'groupLP',which_model = 'full')
+
+out.sleuth.wald <- 
+  sleuth_results(obj = se.sleuth.wald, test = 'groupLP', test_type = 'wald',
+                 show_all = FALSE)
+```
+
+#### Swish
+
+```{r dte_swish,cache=TRUE}
+dt.targets.swish <- dt.targets[group %in% c('Basal','LP'),]
+dt.targets.swish[,files := file.path(path,'quant.sf')]
+dt.targets.swish$group %<>% factor(levels = c('Basal','LP'))
+setnames(dt.targets.swish,old = 'Sample',new = 'names')
+
+se.swish <- tximeta(coldata = dt.targets.swish,type = 'salmon')
+se.swish <- scaleInfReps(se.swish)
+se.swish <- labelKeep(se.swish)
+se.swish <- se.swish[mcols(se.swish)$keep,]
+se.swish <- swish(y = se.swish, x = "group")
+out.swish <- as.data.frame(mcols(se.swish))
+```
+
+## Gene-level analysis
+
+```{r dge_mao}
+# Function computing catchSalmon's formula for gene-level counts
+# To be used only for exploratory purposes
+geneLevelCatchSalmon <- function(x) {
+  NSamples <- ncol(x)
+  NBoot <- sum(grepl('infRep', assayNames(x)))
+  NTx <- nrow(x)
+  DF <- rep_len(0L, NTx)
+  OverDisp <- rep_len(0, NTx)
+  
+  for (i.samples in 1:NSamples) {
+    Boot <- lapply(1:NBoot, function(i.boot) {
+      assay(x, paste0('infRep', i.boot))[, i.samples]
+    })
+    Boot <- do.call(cbind, Boot)
+    M <- rowMeans(Boot)
+    i <- (M > 0)
+    OverDisp[i] <- OverDisp[i] + rowSums((Boot[i,] - M[i]) ^ 2) / M[i]
+    DF[i] <- DF[i] + NBoot - 1L
+  }
+  
+  i <- (DF > 0L)
+  OverDisp[i] <- OverDisp[i] / DF[i]
+  DFMedian <- median(DF[i])
+  DFPrior <- 3
+  OverDispPrior <-
+    median(OverDisp[i]) / qf(0.5, df1 = DFMedian, df2 = DFPrior)
+  if (OverDispPrior < 1) {
+    OverDispPrior <- 1
+  }
+  OverDisp[i] <-
+    (DFPrior * OverDispPrior + DF[i] * OverDisp[i]) / (DFPrior + DF[i])
+  OverDisp <- pmax(OverDisp, 1)
+  OverDisp[!i] <- OverDispPrior
+  rowData(x)$Overdispersion <- OverDisp
+  return(x)
+}
+```
+
+```{r dge}
+dt.targets.tximeta <- dt.targets
+dt.targets.tximeta[,files := file.path(path,'quant.sf')]
+dt.targets.tximeta$group %<>% factor(levels = c('Basal','LP','ML'))
+setnames(dt.targets.tximeta,old = 'Sample',new = 'names')
+
+txm <- tximeta(coldata = dt.targets.tximeta[,c('files','names')])
+se.gene <- summarizeToGene(txm)
+se.gene <- geneLevelCatchSalmon(se.gene)
+
+dge <- DGEList(counts = assay(se.gene,'counts'), 
+               samples = dt.targets.tximeta,
+               genes = as.data.frame(rowData(se.gene)))
+
+key.dge.anno.gene <- match(rownames(dge),dt.anno.gene$GENEIDVERSION)
+
+dge$genes$GeneOfInterest <- dt.anno.gene$GeneOfInterest[key.dge.anno.gene]
+dge$genes$NTranscriptPerGene <- dt.anno.gene$NTranscriptPerGene[key.dge.anno.gene]
+dge$genes$GeneEntrezID <- dt.anno.gene$ENTREZID[key.dge.anno.gene]
+dge$genes$GeneName <- dt.anno.gene$GENENAME[key.dge.anno.gene]
+dge$genes$GeneType <- dt.anno.gene$GENEBIOTYPE[key.dge.anno.gene]
+
+keep <- filterByExpr(dge) & dge$genes$GeneOfInterest
+
+dge.filtr <- dge[keep, , keep.lib.sizes = FALSE]
+dge.filtr <- calcNormFactors(dge.filtr)
+
+design.dge <- model.matrix(~0+group,data = dge.filtr$samples)
+
+dge.filtr <-
+  estimateDisp(dge.filtr, design = design.dge, robust = TRUE)
+
+con.LPvsB.dge <- 
+  makeContrasts(LPvsBasal = groupLP - groupBasal,levels = design.dge)
+con.MLvsLP.dge <- 
+  makeContrasts(MLvsLP = groupML - groupLP,levels = design.dge)
+
+fit.filtr <- glmQLFit(dge.filtr,design.dge, robust = TRUE)
+
+qlf.LPvsBasal.filtr <- glmQLFTest(fit.filtr,contrast = con.LPvsB.dge)
+out.LPvsBasal <- topTags(qlf.LPvsBasal.filtr,n = Inf) 
+
+qlf.MLvsLP.filtr <- glmQLFTest(fit.filtr,contrast = con.MLvsLP.dge)
+out.MLvsLP <- topTags(qlf.MLvsLP.filtr,n = Inf) 
+```
+
+## Plots and other exploratory analyses
+
+```{r eda_foxp1}
+# Foxp1-216
+out.LPvsB.scaled$table['ENSMUST00000175838.2',]
 ```
 
 
-```{r dte_edger-cs_mao_plot,fig.height=4,fig.width=8}
+```{r eda_plots_mao,fig.height=5,fig.width=5}
 dt.mao.plot <- as.data.table(dte.scaled.filtr$genes)
-dt.mao.plot[,NTranscriptIDTrunc := ifelse(NTranscriptID<10,NTranscriptID,paste0('>=10'))]
+dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene<10,NTranscriptPerGene,paste0('>=10'))]
 
-dt.mao.plot$NTranscriptIDTrunc %<>% factor(levels = paste0(c(1:10,'>=10')))
+dt.mao.plot$NTranscriptPerGeneTrunc %<>% factor(levels = paste0(c(1:10,'>=10')))
 
-plot.mao.1 <- 
-  ggplot(dt.mao.plot,aes(x = log10(Overdispersion))) +
-  geom_histogram(fill = 'gray',color = 'black',boundary = 0,binwidth = 0.1) +
-  theme_bw() +
-  labs(y = 'Frequency', x = 'Overdispersion (log10 scale)') +
-  scale_x_continuous(limits = c(0,3)) +
-  theme(panel.grid = element_blank())
+dt.mao.plot[,.(sum(NTranscriptPerGene == 1),
+               sum(NTranscriptPerGene == 1 & Overdispersion>2)/sum(NTranscriptPerGene == 1))]
+
+dt.mao.plot[,.(sum(NTranscriptPerGene > 1),
+               sum(NTranscriptPerGene > 1 & Overdispersion>2)/sum(NTranscriptPerGene > 1))]
+
+dt.mao.plot[NTranscriptPerGene >=10,.(.N,mean(Overdispersion))]
 
 plot.mao.2 <- 
-  ggplot(data = dt.mao.plot,aes(x = NTranscriptIDTrunc,y = log10(Overdispersion))) +
+  ggplot(data = dt.mao.plot,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
   geom_boxplot(fill = 'gray',outlier.alpha = 0.2) +
   geom_smooth(aes(group = 1),color = 'red',se = FALSE,span = 0.8,method = 'loess') +
   labs(x = 'Number of expressed transcripts per gene', y = 'Overdispersion (log10 scale)') +
-  scale_y_continuous(limits = c(0,3),breaks = seq(0,3,1)) +
+  scale_y_continuous(limits = c(0,3),breaks = seq(0,3,0.5)) +
   theme_bw() +
   theme(panel.grid = element_blank())
 
-plot.mao <- ggarrange(plot.mao.1,plot.mao.2,nrow = 1,ncol = 2,labels = c('a','b'))
-plot.mao
+plot.mao.2
+```
+
+```{r eda_plots_dte,fig.height=9,fig.width=8}
+# Heatmap of Foxp1 transcripts
+cpm.scaled.filtr <- cpm(dte.scaled.filtr,log = TRUE)
+rownames(cpm.scaled.filtr) <- dte.scaled.filtr$genes$TranscriptName
+
+cpm.scaled.filtr.LPvsBasal <- 
+  cpm.scaled.filtr[,grepl('Basal|LP',colnames(cpm.scaled.filtr))]
+
+cpm.scaled.filtr.LPvsBasal <- t(scale(t(cpm.scaled.filtr.LPvsBasal)))
+
+cpm.scaled.filtr.LPvsBasal.foxp1 <- 
+  cpm.scaled.filtr.LPvsBasal[grepl('foxp1',rownames(cpm.scaled.filtr.LPvsBasal),ignore.case = TRUE),]
+
+foo.heat <- function(x,cluster_rows = TRUE,fontsize = 10){
+  tb <- data.table(TranscriptName = rownames(x),x)
+  tb <- melt(tb,id.vars = 'TranscriptName',value.name = 'Expression')
+  tb <- as_tibble(tb)
+  
+  tb %>%
+    heatmap(.row = TranscriptName,.column = variable,.value = Expression,
+            scale = 'none',palette_value = c("blue", "white", "red"),
+            column_title = NULL,row_title = NULL,
+            cluster_rows = cluster_rows,
+            row_names_gp = gpar(fontsize = fontsize),
+            column_names_gp = gpar(fontsize = fontsize),
+            clustering_method_rows = "complete",
+            clustering_method_columns = "complete",
+            heatmap_legend_param = list(at = seq(-3,3,1),
+                                        direction = "horizontal")) %>%
+    as_ComplexHeatmap() %>%
+    draw(heatmap_legend_side = "top")
+}
+plot.heat <- 
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.filtr.LPvsBasal.foxp1))))
+
+# Heatmap of significant transcripts of non-significant breast cancer genes
+tb.LPvsB.scaled <- as.data.table(out.LPvsB.scaled$table)
+tb.LPvsBasal <- as.data.table(out.LPvsBasal$table)
+
+tb.LPvsB.scaled$FDR.Gene <- 
+  tb.LPvsBasal$FDR[match(tb.LPvsB.scaled$GeneID,tb.LPvsBasal$gene_id)]
+tb.LPvsB.scaled$logFC.Gene <- 
+  tb.LPvsBasal$logFC[match(tb.LPvsB.scaled$GeneID,tb.LPvsBasal$gene_id)]
+
+interestGenes <- 
+  tb.LPvsB.scaled[FDR.Gene > 0.05 & 
+                    FDR < 0.05 &
+                    !is.na(GeneEntrezID),unique(GeneEntrezID)]
+
+length(interestGenes)
+
+tb.kegga <- kegga(interestGenes,species = 'Mm')
+
+tb.kegga['path:mmu05224',]
+
+GK <- getGeneKEGGLinks(species.KEGG = "mmu")
+
+interestGenes.breast <- 
+  interestGenes[interestGenes %in% GK$GeneID[GK$PathwayID == 'path:mmu05224']]
+
+tb.LPvsB.scaled.breast <- 
+  tb.LPvsB.scaled[tb.LPvsB.scaled$GeneEntrezID %in% interestGenes.breast,]
+
+tb.LPvsB.scaled.breast <- 
+  tb.LPvsB.scaled.breast[tb.LPvsB.scaled.breast$FDR<0.05,]
+
+cpm.scaled.filtr.LPvsBasal.breast <- 
+  cpm.scaled.filtr.LPvsBasal[tb.LPvsB.scaled.breast$TranscriptName,]
+
+plot.heat.breast <- 
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.filtr.LPvsBasal.breast))))
+
+
+# plotMD does not return invisible(), so we just use wrap_elements
+foo.md <- function(){
+  par(mar = c(5, 4, 2, 2))
+  plotMD(qlf.LPvsB.scaled,xlim = c(-2.5,17.5),
+         main = NULL,cex = 0.5,legend = FALSE)
+  legend('topright',
+         legend = c('NotSig','Up','Down'),
+         pch = rep(16,3), 
+         col = c('black','red','blue'),
+         cex = 0.75,
+         pt.cex = c(0.3,0.5,0.5))
+}
+plot.md <- 
+  wrap_elements(full = ~foo.md())
+
+# plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
+obj.mds <- plotMDS(dte.scaled.filtr,col = dte.scaled.filtr$samples$Color,main = NULL)
+foo.mds <- function(){
+  par(mar = c(5, 4, 2, 2))
+  labels <- colnames(obj.mds$distance.matrix.squared)
+  StringRadius <- 0.15 * 1 * nchar(labels)
+  left.x <- obj.mds$x - StringRadius
+  right.x <- obj.mds$x + StringRadius
+  Perc <- round(obj.mds$var.explained * 100)
+  xlab <- paste(obj.mds$axislabel, 1)
+  ylab <- paste(obj.mds$axislabel, 2)
+  xlab <- paste0(xlab, " (", Perc[1], "%)")
+  ylab <- paste0(ylab, " (", Perc[2], "%)")
+  
+  plot(c(-6, 3), c(-3, 3),
+       #c(left.x, right.x), c(obj.mds$y, obj.mds$y), 
+       type = "n",xlab = xlab,ylab = ylab)
+  text(obj.mds$x, obj.mds$y, labels = labels, cex = 1,col = dte.scaled.filtr$samples$Color)
+}
+plot.mds <- wrap_elements(full = ~foo.mds())
+
+plot.design <- c(area(1, 1),area(1,2),area(2, 1),area(2,2))
+
+wrap_plots(A = plot.mds,
+           B = plot.md,
+           C = plot.heat,
+           D = plot.heat.breast,
+           design = plot.design,
+           heights = c(0.35,0.65)) +
+  plot_annotation(tag_levels = 'a',tag_prefix = '(',tag_suffix = ')') 
+```
+
+```{r dge_eda_foxp1}
+kb <- out.LPvsBasal[grepl('ENSMUSG00000030067',out.LPvsBasal$table$gene_id),]$table
+kb <- data.frame(kb[,-c(2,3,4,5)],row.names = NULL)
+setnames(kb,
+         old = c('gene_id','GeneEntrezID'),
+         new = c('Ensembl ID','Entrez ID'))
+
+kb$GeneType <- gsub("_"," ",kb$GeneType)
+
+kb <- kbl(kb,
+          escape = FALSE,
+          format = 'latex',
+          booktabs = TRUE,
+          caption = 'Results from gene-level DE analysis for the Foxp1 gene with edgeR via count scaling comparing basal and LP cells (NCBI Gene Expression Omnibus accession number GSEXXXXX)',
+          align = c('l',rep('r',6))) %>%
+  kable_styling(latex_options = "scale_down")
+save_kable(kb,file = "../misc/mouse_foxp1_gene.tex")
+```
+
+```{r dge_eda_mao_fig}
+## Gene-level
+df.output.gene <- as.data.table(dge$genes[,c('GeneName','GeneEntrezID','GeneType','Overdispersion')])
+setnames(df.output.gene,
+         old = c('GeneName','GeneEntrezID','GeneType','Overdispersion'),
+         new = c('Symbol','EntrezID','Type','Overdispersion'))
+df.output.gene[,Level := 'Gene']
+
+## Transcript-level
+df.output.tx <- data.table(Symbol = catch$annotation$TranscriptName,
+                           EntrezID = catch$annotation$GeneEntrezID,
+                           Type = catch$annotation$Type,
+                           Overdispersion = catch$annotation$Overdispersion,
+                           Level = 'Transcript')
+
+
+df.output <- rbindlist(list(df.output.gene,
+                            df.output.tx))
+
+fig.dge.mao <- ggplot(df.output,aes(x = log10(Overdispersion),y = Level,fill = Level)) +
+  geom_boxplot(outlier.alpha = 0.5) +
+  scale_fill_brewer(palette = 'Set1') +
+  labs(y = NULL,x = 'Mapping ambiguity overdispersion (log10 scale)') +
+  theme_bw() +
+  theme(legend.position = 'none')
+fig.dge.mao
+```
+
+```{r dge_eda_mao_tab}
+df.output.gene.top <- df.output.gene[order(-Overdispersion),][1:20,]
+df.output.gene.top[,Level := NULL]
+df.output.gene.top$Type <- 
+  gsub("_"," ",df.output.gene.top$Type)
+df.output.gene.top$EntrezID[is.na(df.output.gene.top$EntrezID)] <- 
+  "-"
+
+cap <- paste("Top 20 genes with largest mapping ambiguity overdispersion.",
+             "Here, mapping ambiguity overdispersion at the gene-level was",
+             "estimated with bootstrap counts summarized to the gene-wise",
+             "counts computed with the function summarizeToGene from the",
+             "tximport package. The majority of such genes are classified as",
+             "gene models or pseudo-genes, and exhibit high levels of overlap",
+             "with other annotated genes. Data from the mouse mammary gland",
+             "epithelial cell population experiment generated with paired-end",
+             "reads (NCBI Gene Expression Omnibus accession number GSEXXXXX).")
+
+kb <- kbl(df.output.gene.top,
+          escape = FALSE,
+          format = 'latex',
+          booktabs = TRUE,
+          caption = cap,
+          digits = 2,
+          align = c('l',rep('r',3)),
+          col.names = c('Gene Symbol','Entrez ID','Biotype','Overdispersion')) %>%
+  kable_styling(latex_options = "scale_down")
+save_kable(kb,file = "../misc/mouse_top_genes.tex")
+```
+
+# Analysis of single-end data
+
+## Transcript-level analysis
+
+### Data wrangling
+
+```{r mouse_data_path_se}
+path.data.se <- '../data/mouse/single-end'
+path.quant.se <- '../output/mouse/single-end'
+```
+
+```{r mouse_data_targets_se}
+dt.targets.se <- fread(file.path(path.data.se,'misc/targets.txt'))
+dt.targets.se[,Sample := paste(Group,Replicate,sep = '.')]
+dt.targets.se[,Population := mapvalues(Population,'Luminal','LP')]
+dt.targets.se$Stage <- strsplit2(dt.targets.se$Group,"\\.")[,2]
+
+dt.targets.se$Group <- NULL
+
+dt.targets.se[,Color := mapvalues(Population,
+                                  from = c('Basal','LP'),
+                                  to = c('blue','darkgreen'))]
+
+dt.targets.se[,path := file.path(path.quant.se,'salmon',gsub('.fastq.gz','',File))]
+```
+
+```{r mouse_data_catch_se}
+catch.se <- catchSalmon(dt.targets.se$path,verbose = FALSE)
+
+key.catch.se.anno <- match(rownames(catch.se$annotation),dt.anno$TXIDVERSION)
+
+catch.se$annotation$TranscriptName <- dt.anno$TXEXTERNALNAME[key.catch.se.anno]
+catch.se$annotation$GeneID <- dt.anno$GENEIDVERSION[key.catch.se.anno]
+catch.se$annotation$GeneName <- dt.anno$GENENAME[key.catch.se.anno]
+catch.se$annotation$GeneEntrezID <- dt.anno$ENTREZID[key.catch.se.anno]
+catch.se$annotation$GeneOfInterest <- dt.anno$GeneOfInterest[key.catch.se.anno]
+catch.se$annotation$NTranscriptPerGene <- dt.anno$NTranscriptPerGene[key.catch.se.anno]
+```
+
+### Differential transcript expression between basal and LP populations
+
+#### edgeR with count scaling
+
+```{r dte_se_edger-cs}
+dte.se.scaled <- DGEList(counts = catch.se$counts/catch.se$annotation$Overdispersion,
+                         genes = catch.se$annotation,
+                         samples = dt.targets.se)
+colnames(dte.se.scaled) <- dte.se.scaled$samples$Sample
+```
+
+```{r dte_se_edger-cs_filtering}
+keep.se.scaled <- 
+  filterByExpr(dte.se.scaled,group = dte.se.scaled$samples$Population) & 
+  dte.se.scaled$genes$GeneOfInterest
+dte.se.scaled.filtr <- dte.se.scaled[keep.se.scaled,, keep.lib.sizes = FALSE]
+```
+
+```{r dte_se_edger-cs_norm-disp}
+design.se <- model.matrix(~Stage + Population,data = dte.se.scaled.filtr$samples)
+dte.se.scaled.filtr <- calcNormFactors(dte.se.scaled.filtr)
+dte.se.scaled.filtr <- estimateDisp(dte.se.scaled.filtr,design.se,robust = TRUE)
+```
+
+```{r dte_se_edger-cs_fit}
+fit.se.scaled <- glmQLFit(dte.se.scaled.filtr,design.se,robust = TRUE)
+
+qlf.se.LPvsB.scaled <- glmQLFTest(fit.se.scaled)
+
+out.se.LPvsB.scaled <- topTags(qlf.se.LPvsB.scaled,n = Inf)
+
+summary(decideTests(qlf.se.LPvsB.scaled))
+```
+
+#### edgeR with raw counts
+
+```{r dte_se_edger-rc}
+dte.se.raw <- 
+  DGEList(counts = catch.se$counts,
+          genes = catch.se$annotation,
+          samples = dt.targets.se)
+colnames(dte.se.raw) <- dte.se.raw$samples$Sample
+```
+
+```{r dte_se_edger-rc_filtering}
+keep.se.raw <- 
+  filterByExpr(dte.se.raw,group = dte.se.raw$samples$Population) & 
+  dte.se.raw$genes$GeneOfInterest
+dte.se.raw.filtr <- dte.se.raw[keep.se.raw,,keep.lib.sizes = FALSE]
+```
+
+```{r dte_se_edger-rc_norm-disp}
+dte.se.raw.filtr <- calcNormFactors(dte.se.raw.filtr)
+dte.se.raw.filtr <- estimateDisp(dte.se.raw.filtr,design.se,robust = TRUE)
+```
+
+```{r dte_se_edger-rc_fit}
+fit.se.raw <- glmQLFit(dte.se.raw.filtr,design.se,robust = TRUE)
+
+qlf.se.LPvsB.raw <- glmQLFTest(fit.se.raw)
+
+out.se.LPvsB.raw <- topTags(qlf.se.LPvsB.raw,n = Inf)
+
+summary(decideTests(qlf.se.LPvsB.raw))
+```
+
+## Plots and other exploratory analyses
+
+```{r eda_se_foxp1}
+plotMD(qlf.se.LPvsB.scaled,main = NULL)
+
+# Foxp1 transcripts (EntrezID 108655)
+out.se.LPvsB.scaled$table[out.se.LPvsB.scaled$table$GeneEntrezID %in% '108655',]
+out.se.LPvsB.raw$table[out.se.LPvsB.raw$table$GeneEntrezID %in% '108655',]
 ```
