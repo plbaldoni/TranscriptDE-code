@@ -32,6 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -263,7 +265,13 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/plbaldoni/wf-TranscriptDE">
+    <span class="fab fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -281,7 +289,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +300,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -302,17 +310,17 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-11-15
+<strong>Last updated:</strong> 2023-01-06
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
-<strong>Knit directory:</strong> <code>wf-TranscriptDE/</code> <span
-class="glyphicon glyphicon-question-sign" aria-hidden="true"
+<strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
+<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
 </p>
@@ -331,31 +339,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongf4ae2f9">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree4276bfc1b4f2a31caae390bb910515ab77e165cftargetblank4276bfca">
 <span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Repository version:</strong> f4ae2f9
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/4276bfc1b4f2a31caae390bb910515ab77e165cf" target="_blank">4276bfc</a>
 </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongf4ae2f9"
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree4276bfc1b4f2a31caae390bb910515ab77e165cftargetblank4276bfca"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -364,7 +377,8 @@ and connecting the code version to the results is critical for
 reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version f4ae2f9.
+The results in this page were generated with repository version
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/4276bfc1b4f2a31caae390bb910515ab77e165cf" target="_blank">4276bfc</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -379,7 +393,28 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    .gitignore
+    Ignored:    analysis/simulation-complete_cache/
+    Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
+    Ignored:    code/pkg/.Rhistory
+    Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/src/RcppExports.o
+    Ignored:    code/pkg/src/pkg.so
+    Ignored:    code/pkg/src/rcpparma_hello_world.o
+    Ignored:    data/annotation/mm39/
+    Ignored:    data/mouse/paired-end/fastq/
+    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    output/mouse/paired-end/
+    Ignored:    output/mouse/single-end/
+    Ignored:    output/quasi_poisson/
+    Ignored:    output/simulation/
+    Ignored:    renv/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -426,10 +461,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/363e980735814cba553e9aecf26982b8b9a27aaf/docs/index.html" target="_blank">363e980</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-f4ae2f9
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/f4ae2f9998d3ebfd79cc3cca376be568e43e3230/analysis/index.Rmd" target="_blank">f4ae2f9</a>
 </td>
 <td>
 Pedro Baldoni
@@ -448,7 +500,24 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Welcome to my research website.</p>
+<p>The website hosts code for the transcript-level DE paper.</p>
+<div id="simulation-study" class="section level2">
+<h2>Simulation study</h2>
+<ul>
+<li><a href="simulation-complete.html">Complete report</a></li>
+<li><a href="simulation-paper.html">Reduced report - paper figures and
+tables</a></li>
+</ul>
+</div>
+<div
+id="application-to-rna-seq-data-from-the-mouse-mammary-epithelial-cell-population"
+class="section level2">
+<h2>Application to RNA-seq data from the mouse mammary epithelial cell
+population</h2>
+<ul>
+<li><a href="mouse.html">Report</a></li>
+</ul>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using

@@ -8,4 +8,14 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+The website hosts code for the transcript-level DE paper.
+
+
+## Simulation study
+
+* [Complete report](simulation-complete.html)
+* [Reduced report - paper figures and tables](simulation-paper.html)
+  
+## Application to RNA-seq data from the mouse mammary epithelial cell population
+
+* [Report](mouse.html)
