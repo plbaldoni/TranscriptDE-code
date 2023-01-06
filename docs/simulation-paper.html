@@ -360,7 +360,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">simulation</h1>
 <h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">06 December, 2022</h4>
+<h4 class="date">06 January, 2023</h4>
 
 </div>
 
@@ -389,7 +389,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-12-06
+<strong>Last updated:</strong> 2023-01-06
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -531,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree52e37f13e4d17db069ceb6396d6f0ad8accdf63atargetblank52e37f1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/52e37f13e4d17db069ceb6396d6f0ad8accdf63a" target="_blank">52e37f1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree52e37f13e4d17db069ceb6396d6f0ad8accdf63atargetblank52e37f1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -549,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/52e37f13e4d17db069ceb6396d6f0ad8accdf63a" target="_blank">52e37f1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,24 +566,28 @@ were generated:
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    .gitignore
+    Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
     Ignored:    data/annotation/mm39/
-    Ignored:    data/mouse/fastq/
-    Ignored:    output/mouse/salmon/
+    Ignored:    data/mouse/paired-end/fastq/
+    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    output/mouse/paired-end/
+    Ignored:    output/mouse/single-end/
+    Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
     Ignored:    renv/
 
 Untracked files:
-    Untracked:  glimma-plots/
-    Untracked:  misc/
+    Untracked:  misc/simulation-paper.Rmd/
 
 Unstaged changes:
-    Modified:   analysis/mouse.Rmd
     Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
@@ -635,6 +639,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/analysis/simulation-paper.Rmd" target="_blank">a8c51af</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating simulation-paper report
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/docs/simulation-paper.html" target="_blank">a8c51af</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating simulation-paper report
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/analysis/simulation-paper.Rmd" target="_blank">d34d4e6</a>
 </td>
 <td>
@@ -676,13 +714,11 @@ Adding simulation-paper-report
 </div>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
-<pre class="r"><code>knitr::opts_chunk$set(
-  dev = &quot;png&quot;,
-  dpi = 300,
-  dev.args = list(type = &quot;cairo-png&quot;),
-  root.dir = &#39;.&#39;,
-  autodep = TRUE
-)
+<pre class="r"><code>knitr::opts_chunk$set(dev = &quot;png&quot;,
+                      dpi = 300,
+                      dev.args = list(type = &quot;cairo-png&quot;),
+                      root.dir = &#39;.&#39;,
+                      autodep = TRUE)
 
 options(knitr.kable.NA = &quot;-&quot;)</code></pre>
 <pre class="r"><code>library(data.table)
@@ -693,31 +729,14 @@ library(magrittr)
 library(limma)
 library(edgeR)
 library(BiocParallel)
-library(devtools)</code></pre>
-<pre><code>Loading required package: usethis</code></pre>
-<pre class="r"><code>library(purrr)</code></pre>
-<pre><code>
-Attaching package: &#39;purrr&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:magrittr&#39;:
+library(devtools)
+library(purrr)
+library(readr)
+library(ggpubr)
+library(kableExtra)
+load_all(&#39;../code/pkg/&#39;)
 
-    set_names</code></pre>
-<pre><code>The following object is masked from &#39;package:plyr&#39;:
-
-    compact</code></pre>
-<pre><code>The following object is masked from &#39;package:data.table&#39;:
-
-    transpose</code></pre>
-<pre class="r"><code>library(readr)
-library(ggpubr)</code></pre>
-<pre><code>
-Attaching package: &#39;ggpubr&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:plyr&#39;:
-
-    mutate</code></pre>
-<pre class="r"><code>library(kableExtra)
-load_all(&#39;../code/pkg/&#39;)</code></pre>
-<pre><code>ℹ Loading pkg</code></pre>
-<pre class="r"><code>BPPARAM &lt;- MulticoreParam(workers = 16,progressbar = TRUE)
+BPPARAM &lt;- MulticoreParam(workers = 16,progressbar = TRUE)
 register(BPPARAM)</code></pre>
 <pre class="r"><code>cleanPlot &lt;- function(x,fig){
   if (x == max(seq_along(fig))) {
@@ -765,7 +784,10 @@ subsetDT &lt;- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE)
 <h1>Analysis</h1>
 <div id="data-wrangling" class="section level2">
 <h2>Data wrangling</h2>
-<pre class="r"><code>path.fdr &lt;- 
+<pre class="r"><code>path.misc &lt;- file.path(&#39;../misc&#39;,knitr::current_input())
+dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+
+path.fdr &lt;- 
   list.files(&#39;../output/simulation/summary&#39;,&#39;fdr.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
 path.metrics &lt;- 
   list.files(&#39;../output/simulation/summary&#39;,&#39;metrics.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
@@ -944,6 +966,43 @@ number of chosen transcripts. Results from the simulation scenario with
 simulations.
 </p>
 </div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_power-fdr_plot-1">
+Past versions of simulation-paper_power-fdr_plot-1.png
+</button>
+</p>
+<div id="fig-simulation-paper_power-fdr_plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_power-fdr_plot-1.png" target="_blank">5dcd60b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="type-1-error" class="section level2">
 <h2>Type 1 error</h2>
@@ -1006,6 +1065,44 @@ smoothing of raw p-values for a scenario with unequal library sizes and
 bp paired-end read data quantified with Salmon, averaged over 20
 simulations.
 </p>
+</div>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_barplot-pvalue_plot-1">
+Past versions of simulation-paper_type1error_barplot-pvalue_plot-1.png
+</button>
+</p>
+<div id="fig-simulation-paper_type1error_barplot-pvalue_plot-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-pvalue_plot-1.png" target="_blank">5dcd60b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div id="read-type" class="section level2">
@@ -1112,7 +1209,7 @@ tb &lt;- kbl(dt.table.sigma2,digits = 3,format = &#39;latex&#39;,escape = FALSE,
   add_header_above(c(&quot; &quot; = 2, &quot;Single-end Read&quot; = 3, &quot;Paired-end Read&quot; = 3)) %&gt;%
   collapse_rows(1, latex_hline = &#39;major&#39;)
 
-save_kable(tb,file = &quot;../misc/simulation-paper_read.tex&quot;)</code></pre>
+save_kable(tb,file = file.path(path.misc,&quot;simulation-paper_read.tex&quot;))</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1147,7 +1244,6 @@ other attached packages:
  [7] usethis_2.1.6       BiocParallel_1.32.3 edgeR_3.40.0       
 [10] limma_3.54.0        magrittr_2.0.3      plyr_1.8.8         
 [13] thematic_0.1.2.1    ggplot2_3.4.0       data.table_1.14.6  
-[16] workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.2                    tidyselect_1.2.0             
@@ -1160,7 +1256,7 @@ loaded via a namespace (and not attached):
  [15] knitr_1.41                    rstudioapi_0.14              
  [17] stats4_4.2.1                  SingleCellExperiment_1.20.0  
  [19] ggsignif_0.6.4                Rsubread_2.12.0              
- [21] labeling_0.4.2                MatrixGenerics_1.10.0        
+ [21] MatrixGenerics_1.10.0         labeling_0.4.2               
  [23] git2r_0.30.1                  tximport_1.26.0              
  [25] GenomeInfoDbData_1.2.9        bit64_4.0.5                  
  [27] farver_2.1.1                  rhdf5_2.42.0                 
@@ -1174,37 +1270,37 @@ loaded via a namespace (and not attached):
  [43] assertthat_0.2.1              promises_1.2.0.1             
  [45] BiocIO_1.8.0                  scales_1.2.1                 
  [47] gtable_0.3.1                  processx_3.8.0               
- [49] ensembldb_2.22.0              rlang_1.0.6                  
- [51] systemfonts_1.0.4             splines_4.2.1                
- [53] rtracklayer_1.58.0            rstatix_0.7.1                
- [55] lazyeval_0.2.2                broom_1.0.1                  
- [57] BiocManager_1.30.19           yaml_2.3.6                   
- [59] abind_1.4-5                   GenomicFeatures_1.50.2       
- [61] backports_1.4.1               httpuv_1.6.6                 
- [63] sleuth_0.30.0                 wasabi_1.0.1                 
- [65] tools_4.2.1                   ellipsis_0.3.2               
- [67] jquerylib_0.1.4               BiocGenerics_0.44.0          
- [69] sessioninfo_1.2.2             Rcpp_1.0.9                   
- [71] progress_1.2.2                zlibbioc_1.44.0              
- [73] RCurl_1.98-1.9                ps_1.7.2                     
- [75] prettyunits_1.1.1             cowplot_1.1.1                
- [77] urlchecker_1.0.1              S4Vectors_0.36.0             
- [79] SummarizedExperiment_1.28.0   fs_1.5.2                     
- [81] svMisc_1.2.3                  whisker_0.4                  
- [83] ProtGenerics_1.30.0           matrixStats_0.63.0           
- [85] pkgload_1.3.2                 hms_1.1.2                    
- [87] mime_0.12                     evaluate_0.18                
- [89] xtable_1.8-4                  XML_3.99-0.12                
- [91] IRanges_2.32.0                compiler_4.2.1               
- [93] biomaRt_2.54.0                tibble_3.1.8                 
- [95] crayon_1.5.2                  htmltools_0.5.3              
- [97] later_1.3.0                   tzdb_0.3.0                   
- [99] tidyr_1.2.1                   DBI_1.1.3                    
-[101] dbplyr_2.2.1                  rappdirs_0.3.3               
-[103] Matrix_1.5-3                  car_3.1-1                    
-[105] cli_3.4.1                     parallel_4.2.1               
-[107] GenomicRanges_1.50.1          pkgconfig_2.0.3              
-[109] getPass_0.2-2                 GenomicAlignments_1.34.0     
+ [49] ensembldb_2.22.0              workflowr_1.7.0              
+ [51] rlang_1.0.6                   systemfonts_1.0.4            
+ [53] splines_4.2.1                 rtracklayer_1.58.0           
+ [55] rstatix_0.7.1                 lazyeval_0.2.2               
+ [57] broom_1.0.1                   BiocManager_1.30.19          
+ [59] yaml_2.3.6                    abind_1.4-5                  
+ [61] GenomicFeatures_1.50.2        backports_1.4.1              
+ [63] httpuv_1.6.6                  sleuth_0.30.0                
+ [65] wasabi_1.0.1                  tools_4.2.1                  
+ [67] ellipsis_0.3.2                jquerylib_0.1.4              
+ [69] BiocGenerics_0.44.0           sessioninfo_1.2.2            
+ [71] Rcpp_1.0.9                    progress_1.2.2               
+ [73] zlibbioc_1.44.0               RCurl_1.98-1.9               
+ [75] ps_1.7.2                      prettyunits_1.1.1            
+ [77] cowplot_1.1.1                 urlchecker_1.0.1             
+ [79] S4Vectors_0.36.0              SummarizedExperiment_1.28.0  
+ [81] fs_1.5.2                      svMisc_1.2.3                 
+ [83] whisker_0.4                   ProtGenerics_1.30.0          
+ [85] matrixStats_0.63.0            pkgload_1.3.2                
+ [87] hms_1.1.2                     mime_0.12                    
+ [89] evaluate_0.18                 xtable_1.8-4                 
+ [91] XML_3.99-0.12                 IRanges_2.32.0               
+ [93] compiler_4.2.1                biomaRt_2.54.0               
+ [95] tibble_3.1.8                  crayon_1.5.2                 
+ [97] htmltools_0.5.3               later_1.3.0                  
+ [99] tzdb_0.3.0                    tidyr_1.2.1                  
+[101] DBI_1.1.3                     dbplyr_2.2.1                 
+[103] rappdirs_0.3.3                Matrix_1.5-3                 
+[105] car_3.1-1                     cli_3.4.1                    
+[107] parallel_4.2.1                GenomicRanges_1.50.1         
+[109] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
 [111] xml2_1.3.3                    svglite_2.1.0                
 [113] bslib_0.4.1                   webshot_0.5.4                
 [115] XVector_0.38.0                rvest_1.0.3                  

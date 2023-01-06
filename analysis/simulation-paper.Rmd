@@ -12,18 +12,16 @@ editor_options:
 # Setup
 
 ```{r simulation-paper_setup}
-knitr::opts_chunk$set(
-  dev = "png",
-  dpi = 300,
-  dev.args = list(type = "cairo-png"),
-  root.dir = '.',
-  autodep = TRUE
-)
+knitr::opts_chunk$set(dev = "png",
+                      dpi = 300,
+                      dev.args = list(type = "cairo-png"),
+                      root.dir = '.',
+                      autodep = TRUE)
 
 options(knitr.kable.NA = "-")
 ```
 
-```{r simulation-paper_setup_lib}
+```{r simulation-paper_setup_lib,message=FALSE,warning=FALSE}
 library(data.table)
 library(ggplot2)
 library(thematic)
@@ -92,6 +90,9 @@ subsetDT <- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE){
 ## Data wrangling
 
 ```{r simulation-paper_data_paths}
+path.misc <- file.path('../misc',knitr::current_input())
+dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+
 path.fdr <- 
   list.files('../output/simulation/summary','fdr.tsv.gz',recursive = TRUE,full.names = TRUE)
 path.metrics <- 
@@ -445,5 +446,5 @@ tb <- kbl(dt.table.sigma2,digits = 3,format = 'latex',escape = FALSE,booktabs = 
   add_header_above(c(" " = 2, "Single-end Read" = 3, "Paired-end Read" = 3)) %>%
   collapse_rows(1, latex_hline = 'major')
 
-save_kable(tb,file = "../misc/simulation-paper_read.tex")
+save_kable(tb,file = file.path(path.misc,"simulation-paper_read.tex"))
 ```
