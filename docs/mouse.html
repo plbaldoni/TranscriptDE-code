@@ -394,9 +394,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
@@ -493,30 +493,16 @@ versions is critical for reproducibility.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
 </p>
 </div>
-<div id="strongCachestrongdetected" class="panel-collapse collapse">
+<div id="strongCachestrongnone" class="panel-collapse collapse">
 <div class="panel-body">
-The following chunks had caches available:
-<ul>
-<li>
-dte_sleuth-lrt
-</li>
-<li>
-dte_sleuth-wald
-</li>
-<li>
-dte_swish
-</li>
-</ul>
-<p>To ensure reproducibility of the results, delete the cache directory
-<code>mouse_cache</code> and re-run the analysis. To have workflowr
-automatically delete the cache directory prior to building the file, set
-<code>delete_cache = TRUE</code> when running <code>wflow_build()</code>
-or <code>wflow_publish()</code>.</p>
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
 </div>
 </div>
 </div>
@@ -538,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree79576da463385667e580c484249a8bdb1f29fc61targetblank79576daa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree9bdd81920622c9e710fd325d68872c1e922b0b9atargetblank9bdd819a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/79576da463385667e580c484249a8bdb1f29fc61" target="_blank">79576da</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/9bdd81920622c9e710fd325d68872c1e922b0b9a" target="_blank">9bdd819</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree79576da463385667e580c484249a8bdb1f29fc61targetblank79576daa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree9bdd81920622c9e710fd325d68872c1e922b0b9atargetblank9bdd819a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -556,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/79576da463385667e580c484249a8bdb1f29fc61" target="_blank">79576da</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/9bdd81920622c9e710fd325d68872c1e922b0b9a" target="_blank">9bdd819</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -573,35 +559,28 @@ were generated:
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    .gitignore
     Ignored:    analysis/figure/
-    Ignored:    analysis/mouse_cache/
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
     Ignored:    data/annotation/mm39/
+    Ignored:    data/mouse/paired-end/fastq/
+    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    misc/mouse.Rmd/
+    Ignored:    misc/quasi_poisson/output/
     Ignored:    output/mouse/paired-end/
     Ignored:    output/mouse/single-end/
     Ignored:    output/simulation/
     Ignored:    renv/
 
-Untracked files:
-    Untracked:  code/mouse/single-end/
-    Untracked:  data/mouse/paired-end/
-    Untracked:  data/mouse/single-end/
-    Untracked:  misc/
-
 Unstaged changes:
-    Modified:   .gitignore
     Modified:   analysis/mouse.Rmd
-    Modified:   analysis/simulation-complete.Rmd
-    Modified:   analysis/simulation-paper.Rmd
-    Deleted:    data/mouse/misc/targets.txt
-    Modified:   data/mouse/readme.txt
-    Modified:   output/mouse/readme.txt
 
 </code></pre>
 <p>
@@ -646,6 +625,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/c228d3f26a2f820f85d2baa971ed77a8f554d689/analysis/mouse.Rmd" target="_blank">c228d3f</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating mouse report
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/c228d3f26a2f820f85d2baa971ed77a8f554d689/docs/mouse.html" target="_blank">c228d3f</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating mouse report
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -715,233 +728,33 @@ Updating docs
   dev.args = list(type = &quot;cairo-png&quot;),
   root.dir = &#39;.&#39;
 )</code></pre>
-<pre class="r"><code>library(edgeR)</code></pre>
-<pre><code>Loading required package: limma</code></pre>
-<pre class="r"><code>library(data.table)
+<pre class="r"><code>library(edgeR)
+library(data.table)
 library(ggplot2)
 library(readr)
 library(Rsubread)
-library(rtracklayer)</code></pre>
-<pre><code>Loading required package: GenomicRanges</code></pre>
-<pre><code>Loading required package: stats4</code></pre>
-<pre><code>Loading required package: BiocGenerics</code></pre>
-<pre><code>
-Attaching package: &#39;BiocGenerics&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:limma&#39;:
-
-    plotMA</code></pre>
-<pre><code>The following objects are masked from &#39;package:stats&#39;:
-
-    IQR, mad, sd, var, xtabs</code></pre>
-<pre><code>The following objects are masked from &#39;package:base&#39;:
-
-    anyDuplicated, aperm, append, as.data.frame, basename, cbind,
-    colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
-    get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,
-    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
-    Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort,
-    table, tapply, union, unique, unsplit, which.max, which.min</code></pre>
-<pre><code>Loading required package: S4Vectors</code></pre>
-<pre><code>
-Attaching package: &#39;S4Vectors&#39;</code></pre>
-<pre><code>The following objects are masked from &#39;package:data.table&#39;:
-
-    first, second</code></pre>
-<pre><code>The following objects are masked from &#39;package:base&#39;:
-
-    expand.grid, I, unname</code></pre>
-<pre><code>Loading required package: IRanges</code></pre>
-<pre><code>
-Attaching package: &#39;IRanges&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:data.table&#39;:
-
-    shift</code></pre>
-<pre><code>Loading required package: GenomeInfoDb</code></pre>
-<pre class="r"><code>library(magrittr)</code></pre>
-<pre><code>
-Attaching package: &#39;magrittr&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:GenomicRanges&#39;:
-
-    subtract</code></pre>
-<pre class="r"><code>library(ggpubr)
-library(plyr)</code></pre>
-<pre><code>
-Attaching package: &#39;plyr&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:ggpubr&#39;:
-
-    mutate</code></pre>
-<pre><code>The following object is masked from &#39;package:IRanges&#39;:
-
-    desc</code></pre>
-<pre><code>The following object is masked from &#39;package:S4Vectors&#39;:
-
-    rename</code></pre>
-<pre class="r"><code>library(gplots)</code></pre>
-<pre><code>
-Attaching package: &#39;gplots&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:rtracklayer&#39;:
-
-    space</code></pre>
-<pre><code>The following object is masked from &#39;package:IRanges&#39;:
-
-    space</code></pre>
-<pre><code>The following object is masked from &#39;package:S4Vectors&#39;:
-
-    space</code></pre>
-<pre><code>The following object is masked from &#39;package:stats&#39;:
-
-    lowess</code></pre>
-<pre class="r"><code>library(grid)
-library(ComplexHeatmap)</code></pre>
-<pre><code>========================================
-ComplexHeatmap version 2.14.0
-Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
-Github page: https://github.com/jokergoo/ComplexHeatmap
-Documentation: http://jokergoo.github.io/ComplexHeatmap-reference
-
-If you use it in published research, please cite either one:
-- Gu, Z. Complex Heatmap Visualization. iMeta 2022.
-- Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
-    genomic data. Bioinformatics 2016.
-
-
-The new InteractiveComplexHeatmap package can directly export static 
-complex heatmaps into an interactive Shiny app with zero effort. Have a try!
-
-This message can be suppressed by:
-  suppressPackageStartupMessages(library(ComplexHeatmap))
-========================================</code></pre>
-<pre class="r"><code>library(patchwork)
+library(rtracklayer)
+library(magrittr)
+library(ggpubr)
+library(plyr)
+library(gplots)
+library(grid)
+library(ComplexHeatmap)
+library(patchwork)
 library(tibble)
-library(tidyHeatmap)</code></pre>
-<pre><code>========================================
-tidyHeatmap version 1.7.0
-If you use tidyHeatmap in published research, please cite:
-1) Mangiola et al. tidyHeatmap: an R package for modular heatmap production 
-  based on tidy principles. JOSS 2020.
-2) Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
-  genomic data. Bioinformatics 2016.
-This message can be suppressed by:
-  suppressPackageStartupMessages(library(tidyHeatmap))
-========================================</code></pre>
-<pre><code>
-Attaching package: &#39;tidyHeatmap&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:stats&#39;:
-
-    heatmap</code></pre>
-<pre class="r"><code>library(AnnotationHub)</code></pre>
-<pre><code>Loading required package: BiocFileCache</code></pre>
-<pre><code>Loading required package: dbplyr</code></pre>
-<pre><code>
-Attaching package: &#39;AnnotationHub&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:rtracklayer&#39;:
-
-    hubUrl</code></pre>
-<pre class="r"><code>library(sleuth)
+library(tidyHeatmap)
+library(AnnotationHub)
+library(sleuth)
 library(fishpond)
 library(tximeta)
-library(tidyverse)</code></pre>
-<pre><code>── Attaching packages
-───────────────────────────────────────
-tidyverse 1.3.2 ──</code></pre>
-<pre><code>✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-✔ purrr   0.3.5      ✔ forcats 0.5.2 
-✔ dplyr   1.0.10     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::arrange()         masks plyr::arrange()
-✖ dplyr::between()         masks data.table::between()
-✖ dplyr::collapse()        masks IRanges::collapse()
-✖ dplyr::combine()         masks BiocGenerics::combine()
-✖ purrr::compact()         masks plyr::compact()
-✖ dplyr::count()           masks plyr::count()
-✖ dplyr::desc()            masks plyr::desc(), IRanges::desc()
-✖ tidyr::expand()          masks S4Vectors::expand()
-✖ tidyr::extract()         masks magrittr::extract()
-✖ dplyr::failwith()        masks plyr::failwith()
-✖ dplyr::filter()          masks stats::filter()
-✖ dplyr::first()           masks S4Vectors::first(), data.table::first()
-✖ dplyr::id()              masks plyr::id()
-✖ dplyr::ident()           masks dbplyr::ident()
-✖ dplyr::lag()             masks stats::lag()
-✖ dplyr::last()            masks data.table::last()
-✖ dplyr::mutate()          masks plyr::mutate(), ggpubr::mutate()
-✖ BiocGenerics::Position() masks ggplot2::Position(), base::Position()
-✖ purrr::reduce()          masks GenomicRanges::reduce(), IRanges::reduce()
-✖ dplyr::rename()          masks plyr::rename(), S4Vectors::rename()
-✖ purrr::set_names()       masks magrittr::set_names()
-✖ dplyr::slice()           masks IRanges::slice()
-✖ dplyr::sql()             masks dbplyr::sql()
-✖ magrittr::subtract()     masks GenomicRanges::subtract()
-✖ dplyr::summarise()       masks plyr::summarise()
-✖ dplyr::summarize()       masks plyr::summarize()
-✖ purrr::transpose()       masks data.table::transpose()</code></pre>
-<pre class="r"><code>library(SummarizedExperiment)</code></pre>
-<pre><code>Loading required package: MatrixGenerics
-Loading required package: matrixStats
-
-Attaching package: &#39;matrixStats&#39;
-
-The following object is masked from &#39;package:dplyr&#39;:
-
-    count
-
-The following object is masked from &#39;package:plyr&#39;:
-
-    count
-
-
-Attaching package: &#39;MatrixGenerics&#39;
-
-The following objects are masked from &#39;package:matrixStats&#39;:
-
-    colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
-    colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
-    colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
-    colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
-    colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
-    colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
-    colWeightedMeans, colWeightedMedians, colWeightedSds,
-    colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
-    rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
-    rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
-    rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
-    rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
-    rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
-    rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
-    rowWeightedSds, rowWeightedVars
-
-Loading required package: Biobase
-Welcome to Bioconductor
-
-    Vignettes contain introductory material; view with
-    &#39;browseVignettes()&#39;. To cite Bioconductor, see
-    &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.
-
-
-Attaching package: &#39;Biobase&#39;
-
-The following object is masked from &#39;package:MatrixGenerics&#39;:
-
-    rowMedians
-
-The following objects are masked from &#39;package:matrixStats&#39;:
-
-    anyMissing, rowMedians
-
-The following object is masked from &#39;package:AnnotationHub&#39;:
-
-    cache</code></pre>
-<pre class="r"><code>library(stringr)
+library(tidyverse)
+library(SummarizedExperiment)
+library(stringr)
 library(kableExtra)</code></pre>
-<pre><code>
-Attaching package: &#39;kableExtra&#39;
-
-The following object is masked from &#39;package:dplyr&#39;:
-
-    group_rows</code></pre>
-<pre class="r"><code>ah &lt;- AnnotationHub()</code></pre>
+<pre class="r"><code># &#39;AH95775&#39; annotation corresponds to Ensembl 104 (release M27)
+ah &lt;- AnnotationHub()</code></pre>
 <pre><code>snapshotDate(): 2022-10-31</code></pre>
-<pre class="r"><code>edb &lt;- ah[[&#39;AH95775&#39;]] # This annotation corresponds to Ensembl 104 (release M27)</code></pre>
+<pre class="r"><code>edb &lt;- ah[[&#39;AH95775&#39;]]</code></pre>
 <pre><code>loading from cache</code></pre>
 <pre><code>require(&quot;ensembldb&quot;)</code></pre>
 <pre class="r"><code>ensid &lt;- keys(edb)
@@ -951,10 +764,23 @@ cols &lt;- c(&quot;TXIDVERSION&quot;,&quot;TXEXTERNALNAME&quot;,&quot;TXBIOTYPE&
 dt.anno &lt;- select(edb,ensid,cols)
 dt.anno &lt;- as.data.table(dt.anno)
 
-dt.anno.gene &lt;- dt.anno[,.(NTranscriptPerGene = .N),by = c(&#39;GENEIDVERSION&#39;,&#39;GENEBIOTYPE&#39;,&#39;ENTREZID&#39;,&#39;GENENAME&#39;)]
+dt.anno.gene &lt;- 
+  dt.anno[,.(NTranscriptPerGene = .N),
+          by = c(&#39;GENEIDVERSION&#39;,&#39;GENEBIOTYPE&#39;,&#39;ENTREZID&#39;,&#39;GENENAME&#39;)]
 dt.anno.gene[,GeneOfInterest := GENEBIOTYPE %in% c(&#39;protein_coding&#39;,&#39;lncRNA&#39;)]
 
-dt.anno &lt;- merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = &#39;GENEIDVERSION&#39;,all.x = TRUE)</code></pre>
+dt.anno &lt;- 
+  merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = &#39;GENEIDVERSION&#39;,all.x = TRUE)</code></pre>
+<pre class="r"><code>path.anno &lt;- &#39;../data/annotation/mm39&#39;
+
+path.misc &lt;- file.path(&#39;../misc&#39;,knitr::current_input())
+dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+
+path.data.pe &lt;- &#39;../data/mouse/paired-end&#39;
+path.quant.pe &lt;- &#39;../output/mouse/paired-end&#39;
+
+path.data.se &lt;- &#39;../data/mouse/single-end&#39;
+path.quant.se &lt;- &#39;../output/mouse/single-end&#39;</code></pre>
 </div>
 <div id="analysis-of-paired-end-data" class="section level1">
 <h1>Analysis of paired-end data</h1>
@@ -962,62 +788,58 @@ dt.anno &lt;- merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = &#39;GENEIDVERSION&#39
 <h2>Transcript-level analysis</h2>
 <div id="data-wrangling" class="section level3">
 <h3>Data wrangling</h3>
-<pre class="r"><code>path.data &lt;- &#39;../data/mouse/paired-end&#39;
-path.anno &lt;- &#39;../data/annotation/mm39&#39;
-path.quant &lt;- &#39;../output/mouse/paired-end&#39;</code></pre>
-<pre class="r"><code>dt.targets &lt;- fread(file.path(path.data,&#39;misc/targets.txt&#39;))
-dt.targets[,Sample := paste(Group,Replicate,sep = &#39;.&#39;)]
-dt.targets[,Color := mapvalues(Group,
-                               from = c(&#39;Basal&#39;,&#39;LP&#39;,&#39;ML&#39;),
-                               to = c(&#39;blue&#39;,&#39;darkgreen&#39;,&#39;red&#39;))]
-setnames(dt.targets,old = &#39;Group&#39;,new = &#39;group&#39;)
-dt.targets[,path := file.path(path.quant,&#39;salmon&#39;,gsub(&#39;_R1.fastq.gz&#39;,&#39;&#39;,File1))]</code></pre>
-<pre class="r"><code>catch &lt;- catchSalmon(dt.targets$path,verbose = FALSE)
+<pre class="r"><code>dt.targets.pe &lt;- fread(file.path(path.data.pe,&#39;misc/targets.txt&#39;))
+dt.targets.pe[,Sample := paste(Group,Replicate,sep = &#39;.&#39;)]
+dt.targets.pe[,Color := mapvalues(Group,
+                                  from = c(&#39;Basal&#39;,&#39;LP&#39;,&#39;ML&#39;),
+                                  to = c(&#39;blue&#39;,&#39;darkgreen&#39;,&#39;red&#39;))]
+setnames(dt.targets.pe,old = &#39;Group&#39;,new = &#39;group&#39;)
+dt.targets.pe[,path := 
+                file.path(path.quant.pe,&#39;salmon&#39;,gsub(&#39;_R1.fastq.gz&#39;,&#39;&#39;,File1))]</code></pre>
+<pre class="r"><code>catch.pe &lt;- catchSalmon(dt.targets.pe$path,verbose = FALSE)
 
-key.catch.anno &lt;- match(rownames(catch$annotation),dt.anno$TXIDVERSION)
+key.catch.pe.anno &lt;- match(rownames(catch.pe$annotation),dt.anno$TXIDVERSION)
 
-catch$annotation$TranscriptName &lt;- dt.anno$TXEXTERNALNAME[key.catch.anno]
-catch$annotation$GeneID &lt;- dt.anno$GENEIDVERSION[key.catch.anno]
-catch$annotation$GeneName &lt;- dt.anno$GENENAME[key.catch.anno]
-catch$annotation$GeneEntrezID &lt;- dt.anno$ENTREZID[key.catch.anno]
-catch$annotation$GeneOfInterest &lt;- dt.anno$GeneOfInterest[key.catch.anno]
-catch$annotation$NTranscriptPerGene &lt;- dt.anno$NTranscriptPerGene[key.catch.anno]
-catch$annotation$Type &lt;- dt.anno$TXBIOTYPE[key.catch.anno]</code></pre>
+catch.pe$annotation$TranscriptName &lt;- dt.anno$TXEXTERNALNAME[key.catch.pe.anno]
+catch.pe$annotation$GeneID &lt;- dt.anno$GENEIDVERSION[key.catch.pe.anno]
+catch.pe$annotation$GeneName &lt;- dt.anno$GENENAME[key.catch.pe.anno]
+catch.pe$annotation$GeneEntrezID &lt;- dt.anno$ENTREZID[key.catch.pe.anno]
+catch.pe$annotation$GeneOfInterest &lt;- dt.anno$GeneOfInterest[key.catch.pe.anno]
+catch.pe$annotation$NTranscriptPerGene &lt;- dt.anno$NTranscriptPerGene[key.catch.pe.anno]
+catch.pe$annotation$Type &lt;- dt.anno$TXBIOTYPE[key.catch.pe.anno]</code></pre>
 </div>
-<div
-id="differential-transcript-expression-between-basal-and-lp-populations"
-class="section level3">
-<h3>Differential transcript expression between basal and LP
-populations</h3>
+<div id="differential-transcript-expression" class="section level3">
+<h3>Differential transcript expression</h3>
 <div id="edger-with-count-scaling" class="section level4">
 <h4>edgeR with count scaling</h4>
-<pre class="r"><code>dte.scaled &lt;- DGEList(counts = catch$counts/catch$annotation$Overdispersion,
-                      genes = catch$annotation,
-                      samples = dt.targets)
-colnames(dte.scaled) &lt;- dte.scaled$samples$Sample</code></pre>
-<pre class="r"><code>keep.scaled &lt;- 
-  filterByExpr(dte.scaled) &amp; dte.scaled$genes$GeneOfInterest
-dte.scaled.filtr &lt;- dte.scaled[keep.scaled,, keep.lib.sizes = FALSE]</code></pre>
-<pre class="r"><code>design &lt;- model.matrix(~0+group,data = dte.scaled.filtr$samples)
-dte.scaled.filtr &lt;- calcNormFactors(dte.scaled.filtr)
-dte.scaled.filtr &lt;- estimateDisp(dte.scaled.filtr,design,robust = TRUE)</code></pre>
-<pre class="r"><code>fit.scaled &lt;- glmQLFit(dte.scaled.filtr,design,robust = TRUE)
+<pre class="r"><code>dte.pe.scaled &lt;- 
+  DGEList(counts = catch.pe$counts/catch.pe$annotation$Overdispersion,
+          genes = catch.pe$annotation,
+          samples = dt.targets.pe)
+colnames(dte.pe.scaled) &lt;- dte.pe.scaled$samples$Sample</code></pre>
+<pre class="r"><code>keep.pe.scaled &lt;- 
+  filterByExpr(dte.pe.scaled) &amp; dte.pe.scaled$genes$GeneOfInterest
+dte.pe.scaled.filtr &lt;- dte.pe.scaled[keep.pe.scaled,, keep.lib.sizes = FALSE]</code></pre>
+<pre class="r"><code>design.pe &lt;- model.matrix(~0+group,data = dte.pe.scaled.filtr$samples)
+dte.pe.scaled.filtr &lt;- calcNormFactors(dte.pe.scaled.filtr)
+dte.pe.scaled.filtr &lt;- estimateDisp(dte.pe.scaled.filtr,design.pe,robust = TRUE)</code></pre>
+<pre class="r"><code>fit.pe.scaled &lt;- glmQLFit(dte.pe.scaled.filtr,design.pe,robust = TRUE)
 
-con.LPvsB &lt;- makeContrasts(LPvsB = groupLP - groupBasal,levels = design)
-con.MLvsLP &lt;- makeContrasts(MLvsLP = groupML - groupLP,levels = design)
+con.LPvsB &lt;- makeContrasts(LPvsB = groupLP - groupBasal,levels = design.pe)
+con.MLvsLP &lt;- makeContrasts(MLvsLP = groupML - groupLP,levels = design.pe)
 
-qlf.LPvsB.scaled &lt;- glmQLFTest(fit.scaled,contrast = con.LPvsB)
-qlf.MLvsLP.scaled &lt;- glmQLFTest(fit.scaled,contrast = con.MLvsLP)
+qlf.pe.LPvsB.scaled &lt;- glmQLFTest(fit.pe.scaled,contrast = con.LPvsB)
+qlf.pe.MLvsLP.scaled &lt;- glmQLFTest(fit.pe.scaled,contrast = con.MLvsLP)
 
-out.LPvsB.scaled &lt;- topTags(qlf.LPvsB.scaled,n = Inf)
-out.MLvsLP.scaled &lt;- topTags(qlf.MLvsLP.scaled,n = Inf)
+out.pe.LPvsB.scaled &lt;- topTags(qlf.pe.LPvsB.scaled,n = Inf)
+out.pe.MLvsLP.scaled &lt;- topTags(qlf.pe.MLvsLP.scaled,n = Inf)
 
-summary(decideTests(qlf.LPvsB.scaled))</code></pre>
+summary(decideTests(qlf.pe.LPvsB.scaled))</code></pre>
 <pre><code>       -1*groupBasal 1*groupLP
 Down                      9002
 NotSig                   26192
 Up                        8382</code></pre>
-<pre class="r"><code>summary(decideTests(qlf.MLvsLP.scaled))</code></pre>
+<pre class="r"><code>summary(decideTests(qlf.pe.MLvsLP.scaled))</code></pre>
 <pre><code>       -1*groupLP 1*groupML
 Down                   2422
 NotSig                38639
@@ -1025,36 +847,41 @@ Up                     2515</code></pre>
 </div>
 <div id="edger-with-raw-counts" class="section level4">
 <h4>edgeR with raw counts</h4>
-<pre class="r"><code>dte.raw &lt;- DGEList(counts = catch$counts,
-                   genes = catch$annotation,
-                   samples = dt.targets)
-colnames(dte.raw) &lt;- dte.raw$samples$Sample</code></pre>
-<pre class="r"><code>keep.raw &lt;- 
-  filterByExpr(dte.raw) &amp; dte.raw$genes$GeneOfInterest
-dte.raw.filtr &lt;- dte.raw[keep.raw,, keep.lib.sizes = FALSE]</code></pre>
-<pre class="r"><code>dte.raw.filtr &lt;- calcNormFactors(dte.raw.filtr)
-dte.raw.filtr &lt;- estimateDisp(dte.raw.filtr,design,robust = TRUE)</code></pre>
-<pre class="r"><code>fit.raw &lt;- glmQLFit(dte.raw.filtr,design,robust = TRUE)
+<pre class="r"><code>dte.pe.raw &lt;- DGEList(counts = catch.pe$counts,
+                      genes = catch.pe$annotation,
+                      samples = dt.targets.pe)
+colnames(dte.pe.raw) &lt;- dte.pe.raw$samples$Sample</code></pre>
+<pre class="r"><code>keep.pe.raw &lt;- 
+  filterByExpr(dte.pe.raw) &amp; dte.pe.raw$genes$GeneOfInterest
+dte.pe.raw.filtr &lt;- dte.pe.raw[keep.pe.raw,, keep.lib.sizes = FALSE]</code></pre>
+<pre class="r"><code>dte.pe.raw.filtr &lt;- calcNormFactors(dte.pe.raw.filtr)
+dte.pe.raw.filtr &lt;- estimateDisp(dte.pe.raw.filtr,design.pe,robust = TRUE)</code></pre>
+<pre class="r"><code>fit.pe.raw &lt;- glmQLFit(dte.pe.raw.filtr,design.pe,robust = TRUE)
 
-con.LPvsB &lt;- makeContrasts(LPvsB = groupLP - groupBasal,levels = design)
+qlf.pe.LPvsB.raw &lt;- glmQLFTest(fit.pe.raw,contrast = con.LPvsB)
+qlf.pe.MLvsLP.raw &lt;- glmQLFTest(fit.pe.raw,contrast = con.MLvsLP)
 
-qlf.LPvsB.raw &lt;- glmQLFTest(fit.raw,contrast = con.LPvsB)
+out.pe.LPvsB.raw &lt;- topTags(qlf.pe.LPvsB.raw,n = Inf)
+out.pe.MLvsLP.raw &lt;- topTags(qlf.pe.MLvsLP.raw,n = Inf)
 
-out.LPvsB.raw &lt;- topTags(qlf.LPvsB.raw,n = Inf)
-
-summary(decideTests(qlf.LPvsB.raw))</code></pre>
+summary(decideTests(qlf.pe.LPvsB.raw))</code></pre>
 <pre><code>       -1*groupBasal 1*groupLP
 Down                      8216
 NotSig                   40699
 Up                        7322</code></pre>
+<pre class="r"><code>summary(decideTests(qlf.pe.MLvsLP.raw))</code></pre>
+<pre><code>       -1*groupLP 1*groupML
+Down                    673
+NotSig                54922
+Up                      642</code></pre>
 </div>
 <div id="sleuth-lrt" class="section level4">
 <h4>sleuth-LRT</h4>
-<pre class="r"><code>dt.targets.sleuth &lt;- dt.targets[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
-setnames(dt.targets.sleuth,old = &#39;Sample&#39;,new = &#39;sample&#39;)
+<pre class="r"><code>dt.targets.pe.sleuth &lt;- dt.targets.pe[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
+setnames(dt.targets.pe.sleuth,old = &#39;Sample&#39;,new = &#39;sample&#39;)
 
-se.sleuth.lrt &lt;- 
-  sleuth_prep(sample_to_covariates = dt.targets.sleuth,full_model = ~ group)</code></pre>
+se.pe.sleuth.lrt &lt;- 
+  sleuth_prep(sample_to_covariates = dt.targets.pe.sleuth,full_model = ~ group)</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
 Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
 If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
@@ -1067,46 +894,32 @@ normalizing tpm
 merging in metadata
 summarizing bootstraps
 ......</code></pre>
-<pre class="r"><code>se.sleuth.lrt &lt;- sleuth_fit(obj = se.sleuth.lrt, fit_name = &#39;full&#39;)</code></pre>
+<pre class="r"><code>se.pe.sleuth.lrt &lt;- sleuth_fit(obj = se.pe.sleuth.lrt, fit_name = &#39;full&#39;)</code></pre>
 <pre><code>fitting measurement error models
 shrinkage estimation
 1 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
 The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
 These are the target ids with NA values: ENSMUST00000042235.15
 computing variance of betas</code></pre>
-<pre class="r"><code>se.sleuth.lrt &lt;- 
-  sleuth_fit(obj = se.sleuth.lrt,formula = ~ 1,fit_name = &#39;reduced&#39;)</code></pre>
+<pre class="r"><code>se.pe.sleuth.lrt &lt;- 
+  sleuth_fit(obj = se.pe.sleuth.lrt,formula = ~ 1,fit_name = &#39;reduced&#39;)</code></pre>
 <pre><code>fitting measurement error models
 shrinkage estimation
 1 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
 The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
 These are the target ids with NA values: ENSMUST00000230860.2
 computing variance of betas</code></pre>
-<pre class="r"><code>se.sleuth.lrt &lt;- 
-  sleuth_lrt(obj = se.sleuth.lrt,null_model = &#39;reduced&#39;,alt_model = &#39;full&#39;)
+<pre class="r"><code>se.pe.sleuth.lrt &lt;- 
+  sleuth_lrt(obj = se.pe.sleuth.lrt,null_model = &#39;reduced&#39;,alt_model = &#39;full&#39;)
 
-out.sleuth.lrt &lt;- 
-  sleuth_results(obj = se.sleuth.lrt, test = &#39;reduced:full&#39;, test_type = &#39;lrt&#39;,
-                 show_all = FALSE)</code></pre>
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but
-it won’t be re-run if previous chunks it depends on are updated. If you
-need to use caching, it is highly recommended to also set
-<code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the
-file (in a chunk that is not cached). Alternatively, you can customize
-the option <code>dependson</code> for each individual chunk that is
-cached. Using either <code>autodep</code> or <code>dependson</code> will
-remove this warning. See the
-<a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
+out.pe.sleuth.lrt &lt;- 
+  sleuth_results(obj = se.pe.sleuth.lrt,
+                 test = &#39;reduced:full&#39;, test_type = &#39;lrt&#39;,show_all = FALSE)</code></pre>
 </div>
 <div id="sleuth-wald" class="section level4">
 <h4>sleuth-Wald</h4>
-<pre class="r"><code>se.sleuth.wald &lt;- 
-  sleuth_prep(sample_to_covariates = dt.targets.sleuth,full_model = ~ group)</code></pre>
+<pre class="r"><code>se.pe.sleuth.wald &lt;- 
+  sleuth_prep(sample_to_covariates = dt.targets.pe.sleuth,full_model = ~ group)</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
 Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
 If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
@@ -1119,42 +932,28 @@ normalizing tpm
 merging in metadata
 summarizing bootstraps
 ......</code></pre>
-<pre class="r"><code>se.sleuth.wald &lt;- sleuth_fit(obj = se.sleuth.wald, fit_name = &#39;full&#39;)</code></pre>
+<pre class="r"><code>se.pe.sleuth.wald &lt;- sleuth_fit(obj = se.pe.sleuth.wald, fit_name = &#39;full&#39;)</code></pre>
 <pre><code>fitting measurement error models
 shrinkage estimation
 1 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
 The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
 These are the target ids with NA values: ENSMUST00000042235.15
 computing variance of betas</code></pre>
-<pre class="r"><code>se.sleuth.wald &lt;- 
-  sleuth_wt(obj = se.sleuth.wald,which_beta = &#39;groupLP&#39;,which_model = &#39;full&#39;)
+<pre class="r"><code>se.pe.sleuth.wald &lt;- 
+  sleuth_wt(obj = se.pe.sleuth.wald,which_beta = &#39;groupLP&#39;,which_model = &#39;full&#39;)
 
-out.sleuth.wald &lt;- 
-  sleuth_results(obj = se.sleuth.wald, test = &#39;groupLP&#39;, test_type = &#39;wald&#39;,
+out.pe.sleuth.wald &lt;- 
+  sleuth_results(obj = se.pe.sleuth.wald, test = &#39;groupLP&#39;, test_type = &#39;wald&#39;,
                  show_all = FALSE)</code></pre>
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but
-it won’t be re-run if previous chunks it depends on are updated. If you
-need to use caching, it is highly recommended to also set
-<code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the
-file (in a chunk that is not cached). Alternatively, you can customize
-the option <code>dependson</code> for each individual chunk that is
-cached. Using either <code>autodep</code> or <code>dependson</code> will
-remove this warning. See the
-<a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
-</div>
 </div>
 <div id="swish" class="section level4">
 <h4>Swish</h4>
-<pre class="r"><code>dt.targets.swish &lt;- dt.targets[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
-dt.targets.swish[,files := file.path(path,&#39;quant.sf&#39;)]
-dt.targets.swish$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;))
-setnames(dt.targets.swish,old = &#39;Sample&#39;,new = &#39;names&#39;)
+<pre class="r"><code>dt.targets.pe.swish &lt;- dt.targets.pe[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
+dt.targets.pe.swish[,files := file.path(path,&#39;quant.sf&#39;)]
+dt.targets.pe.swish$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;))
+setnames(dt.targets.pe.swish,old = &#39;Sample&#39;,new = &#39;names&#39;)
 
-se.swish &lt;- tximeta(coldata = dt.targets.swish,type = &#39;salmon&#39;)</code></pre>
+se.pe.swish &lt;- tximeta(coldata = dt.targets.pe.swish,type = &#39;salmon&#39;)</code></pre>
 <pre><code>importing quantifications</code></pre>
 <pre><code>reading in files with read_tsv</code></pre>
 <pre><code>1 2 3 4 5 6 
@@ -1170,30 +969,21 @@ fetching genome info for GENCODE</code></pre>
   lengths and circularity flags of the underlying sequences). You can use
   trim() to trim these ranges. See ?`trim,GenomicRanges-method` for more
   information.</code></pre>
-<pre class="r"><code>se.swish &lt;- scaleInfReps(se.swish)
-se.swish &lt;- labelKeep(se.swish)
-se.swish &lt;- se.swish[mcols(se.swish)$keep,]
-se.swish &lt;- swish(y = se.swish, x = &quot;group&quot;)
-out.swish &lt;- as.data.frame(mcols(se.swish))</code></pre>
-<div class="alert alert-warning">
-<p>
-<strong>Warning:</strong> The above code chunk cached its results, but
-it won’t be re-run if previous chunks it depends on are updated. If you
-need to use caching, it is highly recommended to also set
-<code>knitr::opts_chunk$set(autodep = TRUE)</code> at the top of the
-file (in a chunk that is not cached). Alternatively, you can customize
-the option <code>dependson</code> for each individual chunk that is
-cached. Using either <code>autodep</code> or <code>dependson</code> will
-remove this warning. See the
-<a href="https://yihui.name/knitr/options/#cache"
->knitr cache options</a> for more details.
-</p>
+<pre class="r"><code>se.pe.swish &lt;- scaleInfReps(se.pe.swish)
+se.pe.swish &lt;- labelKeep(se.pe.swish)
+se.pe.swish &lt;- se.pe.swish[mcols(se.pe.swish)$keep,]
+se.pe.swish &lt;- swish(y = se.pe.swish, x = &quot;group&quot;)
+out.pe.swish &lt;- as.data.frame(mcols(se.pe.swish))</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div id="gene-level-analysis" class="section level2">
-<h2>Gene-level analysis</h2>
+<div id="differential-gene-expression" class="section level2">
+<h2>Differential gene expression</h2>
+<p>The function below computes estimates the mapping ambiguity
+overdispersion parameter at the level of gene-wise counts. It implements
+the exact same formula from <code>catchSalmon</code>, but it instead
+uses the aggregated counts from
+<code>tximport::summarizeToGene</code>.</p>
 <pre class="r"><code># Function computing catchSalmon&#39;s formula for gene-level counts
 # To be used only for exploratory purposes
 geneLevelCatchSalmon &lt;- function(x) {
@@ -1230,12 +1020,12 @@ geneLevelCatchSalmon &lt;- function(x) {
   rowData(x)$Overdispersion &lt;- OverDisp
   return(x)
 }</code></pre>
-<pre class="r"><code>dt.targets.tximeta &lt;- dt.targets
-dt.targets.tximeta[,files := file.path(path,&#39;quant.sf&#39;)]
-dt.targets.tximeta$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;,&#39;ML&#39;))
-setnames(dt.targets.tximeta,old = &#39;Sample&#39;,new = &#39;names&#39;)
+<pre class="r"><code>dt.targets.pe.tximeta &lt;- dt.targets.pe
+dt.targets.pe.tximeta[,files := file.path(path,&#39;quant.sf&#39;)]
+dt.targets.pe.tximeta$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;,&#39;ML&#39;))
+setnames(dt.targets.pe.tximeta,old = &#39;Sample&#39;,new = &#39;names&#39;)
 
-txm &lt;- tximeta(coldata = dt.targets.tximeta[,c(&#39;files&#39;,&#39;names&#39;)])</code></pre>
+txm &lt;- tximeta(coldata = dt.targets.pe.tximeta[,c(&#39;files&#39;,&#39;names&#39;)])</code></pre>
 <pre><code>importing quantifications</code></pre>
 <pre><code>reading in files with read_tsv</code></pre>
 <pre><code>1 2 3 4 5 6 7 8 9 
@@ -1251,7 +1041,7 @@ fetching genome info for GENCODE</code></pre>
   lengths and circularity flags of the underlying sequences). You can use
   trim() to trim these ranges. See ?`trim,GenomicRanges-method` for more
   information.</code></pre>
-<pre class="r"><code>se.gene &lt;- summarizeToGene(txm)</code></pre>
+<pre class="r"><code>se.pe.gene &lt;- summarizeToGene(txm)</code></pre>
 <pre><code>loading existing TxDb created: 2022-04-05 23:03:51
 obtaining transcript-to-gene mapping from database
 loading existing gene ranges created: 2022-06-02 01:59:12</code></pre>
@@ -1266,69 +1056,67 @@ loading existing gene ranges created: 2022-06-02 01:59:12</code></pre>
 summarizing counts
 summarizing length
 summarizing inferential replicates</code></pre>
-<pre class="r"><code>se.gene &lt;- geneLevelCatchSalmon(se.gene)
+<pre class="r"><code>se.pe.gene &lt;- geneLevelCatchSalmon(se.pe.gene)
 
-dge &lt;- DGEList(counts = assay(se.gene,&#39;counts&#39;), 
-               samples = dt.targets.tximeta,
-               genes = as.data.frame(rowData(se.gene)))
+dge.pe &lt;- DGEList(counts = assay(se.pe.gene,&#39;counts&#39;), 
+                  samples = dt.targets.pe.tximeta,
+                  genes = as.data.frame(rowData(se.pe.gene)))
 
-key.dge.anno.gene &lt;- match(rownames(dge),dt.anno.gene$GENEIDVERSION)
+key.dge.pe.anno.gene &lt;- match(rownames(dge.pe),dt.anno.gene$GENEIDVERSION)
 
-dge$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.dge.anno.gene]
-dge$genes$NTranscriptPerGene &lt;- dt.anno.gene$NTranscriptPerGene[key.dge.anno.gene]
-dge$genes$GeneEntrezID &lt;- dt.anno.gene$ENTREZID[key.dge.anno.gene]
-dge$genes$GeneName &lt;- dt.anno.gene$GENENAME[key.dge.anno.gene]
-dge$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.dge.anno.gene]
+dge.pe$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.dge.pe.anno.gene]
+dge.pe$genes$NTranscriptPerGene &lt;- dt.anno.gene$NTranscriptPerGene[key.dge.pe.anno.gene]
+dge.pe$genes$GeneEntrezID &lt;- dt.anno.gene$ENTREZID[key.dge.pe.anno.gene]
+dge.pe$genes$GeneName &lt;- dt.anno.gene$GENENAME[key.dge.pe.anno.gene]
+dge.pe$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.dge.pe.anno.gene]
 
-keep &lt;- filterByExpr(dge) &amp; dge$genes$GeneOfInterest
+keep.pe &lt;- filterByExpr(dge.pe) &amp; dge.pe$genes$GeneOfInterest
 
-dge.filtr &lt;- dge[keep, , keep.lib.sizes = FALSE]
-dge.filtr &lt;- calcNormFactors(dge.filtr)
+dge.pe.filtr &lt;- dge.pe[keep.pe, , keep.lib.sizes = FALSE]
+dge.pe.filtr &lt;- calcNormFactors(dge.pe.filtr)
 
-design.dge &lt;- model.matrix(~0+group,data = dge.filtr$samples)
+dge.pe.filtr &lt;-
+  estimateDisp(dge.pe.filtr, design = design.pe, robust = TRUE)
 
-dge.filtr &lt;-
-  estimateDisp(dge.filtr, design = design.dge, robust = TRUE)
+fit.pe &lt;- glmQLFit(dge.pe.filtr,design.pe, robust = TRUE)
 
-con.LPvsB.dge &lt;- 
-  makeContrasts(LPvsBasal = groupLP - groupBasal,levels = design.dge)
-con.MLvsLP.dge &lt;- 
-  makeContrasts(MLvsLP = groupML - groupLP,levels = design.dge)
+qlf.pe.LPvsB &lt;- glmQLFTest(fit.pe,contrast = con.LPvsB)
+qlf.pe.MLvsLP &lt;- glmQLFTest(fit.pe,contrast = con.MLvsLP)
 
-fit.filtr &lt;- glmQLFit(dge.filtr,design.dge, robust = TRUE)
+out.pe.LPvsB &lt;- topTags(qlf.pe.LPvsB,n = Inf) 
+out.pe.MLvsLP &lt;- topTags(qlf.pe.MLvsLP,n = Inf) 
 
-qlf.LPvsBasal.filtr &lt;- glmQLFTest(fit.filtr,contrast = con.LPvsB.dge)
-out.LPvsBasal &lt;- topTags(qlf.LPvsBasal.filtr,n = Inf) 
-
-qlf.MLvsLP.filtr &lt;- glmQLFTest(fit.filtr,contrast = con.MLvsLP.dge)
-out.MLvsLP &lt;- topTags(qlf.MLvsLP.filtr,n = Inf) </code></pre>
+summary(decideTests(qlf.pe.LPvsB))</code></pre>
+<pre><code>       -1*groupBasal 1*groupLP
+Down                      4735
+NotSig                    8488
+Up                        4388</code></pre>
+<pre class="r"><code>summary(decideTests(qlf.pe.MLvsLP))</code></pre>
+<pre><code>       -1*groupLP 1*groupML
+Down                   1512
+NotSig                14381
+Up                     1718</code></pre>
 </div>
 <div id="plots-and-other-exploratory-analyses" class="section level2">
 <h2>Plots and other exploratory analyses</h2>
-<pre class="r"><code># Foxp1-216
-out.LPvsB.scaled$table[&#39;ENSMUST00000175838.2&#39;,]</code></pre>
-<pre><code>                     Length EffectiveLength Overdispersion TranscriptName
-ENSMUST00000175838.2    420         163.755       1.111807      Foxp1-216
-                                    GeneID GeneName GeneEntrezID GeneOfInterest
-ENSMUST00000175838.2 ENSMUSG00000030067.18    Foxp1       108655           TRUE
-                     NTranscriptPerGene                 Type    logFC
-ENSMUST00000175838.2                 31 processed_transcript 1.806999
-                         logCPM        F      PValue         FDR
-ENSMUST00000175838.2 -0.5914241 14.03927 0.002188547 0.008318195</code></pre>
-<pre class="r"><code>dt.mao.plot &lt;- as.data.table(dte.scaled.filtr$genes)
+<pre class="r"><code>dt.mao.plot &lt;- as.data.table(dte.pe.scaled.filtr$genes)
 dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene&lt;10,NTranscriptPerGene,paste0(&#39;&gt;=10&#39;))]
 
 dt.mao.plot$NTranscriptPerGeneTrunc %&lt;&gt;% factor(levels = paste0(c(1:10,&#39;&gt;=10&#39;)))
 
-dt.mao.plot[,.(sum(NTranscriptPerGene == 1),
-               sum(NTranscriptPerGene == 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene == 1))]</code></pre>
-<pre><code>     V1         V2
+# Number of transcripts from single-transcript genes
+dt.mao.plot[NTranscriptPerGene == 1,
+            .(.N,sum(NTranscriptPerGene == 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene == 1))]</code></pre>
+<pre><code>      N         V2
 1: 2967 0.03943377</code></pre>
-<pre class="r"><code>dt.mao.plot[,.(sum(NTranscriptPerGene &gt; 1),
-               sum(NTranscriptPerGene &gt; 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene &gt; 1))]</code></pre>
-<pre><code>      V1        V2
+<pre class="r"><code># Number of transcripts from multi-transcript genes
+dt.mao.plot[NTranscriptPerGene &gt; 1,
+            .(.N,sum(NTranscriptPerGene &gt; 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene &gt; 1))]</code></pre>
+<pre><code>       N        V2
 1: 40609 0.4484966</code></pre>
-<pre class="r"><code>dt.mao.plot[NTranscriptPerGene &gt;=10,.(.N,mean(Overdispersion))]</code></pre>
+<pre class="r"><code># Number of transcripts from transcript-rich genes (#tx&gt;10)
+dt.mao.plot[NTranscriptPerGene &gt;= 10,
+            .(.N,mean(Overdispersion))]</code></pre>
 <pre><code>       N       V2
 1: 12558 5.315015</code></pre>
 <pre class="r"><code>plot.mao.2 &lt;- 
@@ -1342,47 +1130,10 @@ dt.mao.plot[,.(sum(NTranscriptPerGene == 1),
 
 plot.mao.2</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="figure/mouse.Rmd/eda_plots_mao-1.png" width="1500" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-eda_plots_mao-1">
-Past versions of eda_plots_mao-1.png
-</button>
-</p>
-<div id="fig-eda_plots_mao-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/mouse.Rmd/eda_plots_mao-1.png" target="_blank">5dcd60b</a>
-</td>
-<td>
-Pedro Baldoni
-</td>
-<td>
-2023-01-04
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/mouse.Rmd/mouse_eda_plots_mao-1.png" width="1500" style="display: block; margin: auto;" /></p>
 <pre class="r"><code># Heatmap of Foxp1 transcripts
-cpm.scaled.filtr &lt;- cpm(dte.scaled.filtr,log = TRUE)
-rownames(cpm.scaled.filtr) &lt;- dte.scaled.filtr$genes$TranscriptName
+cpm.scaled.filtr &lt;- cpm(dte.pe.scaled.filtr,log = TRUE)
+rownames(cpm.scaled.filtr) &lt;- dte.pe.scaled.filtr$genes$TranscriptName
 
 cpm.scaled.filtr.LPvsBasal &lt;- 
   cpm.scaled.filtr[,grepl(&#39;Basal|LP&#39;,colnames(cpm.scaled.filtr))]
@@ -1392,7 +1143,7 @@ cpm.scaled.filtr.LPvsBasal &lt;- t(scale(t(cpm.scaled.filtr.LPvsBasal)))
 cpm.scaled.filtr.LPvsBasal.foxp1 &lt;- 
   cpm.scaled.filtr.LPvsBasal[grepl(&#39;foxp1&#39;,rownames(cpm.scaled.filtr.LPvsBasal),ignore.case = TRUE),]
 
-foo.heat &lt;- function(x,cluster_rows = TRUE,fontsize = 10){
+foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 10){
   tb &lt;- data.table(TranscriptName = rownames(x),x)
   tb &lt;- melt(tb,id.vars = &#39;TranscriptName&#39;,value.name = &#39;Expression&#39;)
   tb &lt;- as_tibble(tb)
@@ -1411,52 +1162,53 @@ foo.heat &lt;- function(x,cluster_rows = TRUE,fontsize = 10){
     as_ComplexHeatmap() %&gt;%
     draw(heatmap_legend_side = &quot;top&quot;)
 }
+
 plot.heat &lt;- 
   wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.filtr.LPvsBasal.foxp1))))</code></pre>
 <pre><code>tidyHeatmap says: (once per session) from release 1.7.0 the scaling is set to &quot;none&quot; by default. Please use scale = &quot;row&quot;, &quot;column&quot; or &quot;both&quot; to apply scaling</code></pre>
 <pre class="r"><code># Heatmap of significant transcripts of non-significant breast cancer genes
-tb.LPvsB.scaled &lt;- as.data.table(out.LPvsB.scaled$table)
-tb.LPvsBasal &lt;- as.data.table(out.LPvsBasal$table)
+tb.pe.LPvsB.scaled &lt;- as.data.table(out.pe.LPvsB.scaled$table)
+tb.pe.LPvsB &lt;- as.data.table(out.pe.LPvsB$table)
 
-tb.LPvsB.scaled$FDR.Gene &lt;- 
-  tb.LPvsBasal$FDR[match(tb.LPvsB.scaled$GeneID,tb.LPvsBasal$gene_id)]
-tb.LPvsB.scaled$logFC.Gene &lt;- 
-  tb.LPvsBasal$logFC[match(tb.LPvsB.scaled$GeneID,tb.LPvsBasal$gene_id)]
+tb.pe.LPvsB.scaled$FDR.Gene &lt;- 
+  tb.pe.LPvsB$FDR[match(tb.pe.LPvsB.scaled$GeneID,tb.pe.LPvsB$gene_id)]
+tb.pe.LPvsB.scaled$logFC.Gene &lt;- 
+  tb.pe.LPvsB$logFC[match(tb.pe.LPvsB.scaled$GeneID,tb.pe.LPvsB$gene_id)]
 
 interestGenes &lt;- 
-  tb.LPvsB.scaled[FDR.Gene &gt; 0.05 &amp; 
-                    FDR &lt; 0.05 &amp;
-                    !is.na(GeneEntrezID),unique(GeneEntrezID)]
+  tb.pe.LPvsB.scaled[FDR.Gene &gt; 0.05 &amp; 
+                       FDR &lt; 0.05 &amp;
+                       !is.na(GeneEntrezID),unique(GeneEntrezID)]
 
+# Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes)</code></pre>
 <pre><code>[1] 1818</code></pre>
-<pre class="r"><code>tb.kegga &lt;- kegga(interestGenes,species = &#39;Mm&#39;)
-
+<pre class="r"><code># Running KEGG analysis
+tb.kegga &lt;- kegga(interestGenes,species = &#39;Mm&#39;)
+GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;mmu&quot;)
 tb.kegga[&#39;path:mmu05224&#39;,]</code></pre>
 <pre><code>                    Pathway   N DE      P.DE
 path:mmu05224 Breast cancer 147 15 0.2535296</code></pre>
-<pre class="r"><code>GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;mmu&quot;)
-
-interestGenes.breast &lt;- 
+<pre class="r"><code>interestGenes.breast &lt;- 
   interestGenes[interestGenes %in% GK$GeneID[GK$PathwayID == &#39;path:mmu05224&#39;]]
 
-tb.LPvsB.scaled.breast &lt;- 
-  tb.LPvsB.scaled[tb.LPvsB.scaled$GeneEntrezID %in% interestGenes.breast,]
+tb.pe.LPvsB.scaled.breast &lt;- 
+  tb.pe.LPvsB.scaled[tb.pe.LPvsB.scaled$GeneEntrezID %in% interestGenes.breast,]
 
-tb.LPvsB.scaled.breast &lt;- 
-  tb.LPvsB.scaled.breast[tb.LPvsB.scaled.breast$FDR&lt;0.05,]
+tb.pe.LPvsB.scaled.breast &lt;- 
+  tb.pe.LPvsB.scaled.breast[tb.pe.LPvsB.scaled.breast$FDR &lt; 0.05,]
 
 cpm.scaled.filtr.LPvsBasal.breast &lt;- 
-  cpm.scaled.filtr.LPvsBasal[tb.LPvsB.scaled.breast$TranscriptName,]
+  cpm.scaled.filtr.LPvsBasal[tb.pe.LPvsB.scaled.breast$TranscriptName,]
 
 plot.heat.breast &lt;- 
   wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.filtr.LPvsBasal.breast))))
 
 
 # plotMD does not return invisible(), so we just use wrap_elements
-foo.md &lt;- function(){
+foo.md &lt;- function(x){
   par(mar = c(5, 4, 2, 2))
-  plotMD(qlf.LPvsB.scaled,xlim = c(-2.5,17.5),
+  plotMD(x,xlim = c(-2.5,17.5),
          main = NULL,cex = 0.5,legend = FALSE)
   legend(&#39;topright&#39;,
          legend = c(&#39;NotSig&#39;,&#39;Up&#39;,&#39;Down&#39;),
@@ -1466,49 +1218,11 @@ foo.md &lt;- function(){
          pt.cex = c(0.3,0.5,0.5))
 }
 plot.md &lt;- 
-  wrap_elements(full = ~foo.md())
+  wrap_elements(full = ~foo.md(qlf.pe.LPvsB.scaled))
 
 # plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
-obj.mds &lt;- plotMDS(dte.scaled.filtr,col = dte.scaled.filtr$samples$Color,main = NULL)</code></pre>
-<p><img src="figure/mouse.Rmd/eda_plots_dte-1.png" width="2400" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-eda_plots_dte-1">
-Past versions of eda_plots_dte-1.png
-</button>
-</p>
-<div id="fig-eda_plots_dte-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/mouse.Rmd/eda_plots_dte-1.png" target="_blank">5dcd60b</a>
-</td>
-<td>
-Pedro Baldoni
-</td>
-<td>
-2023-01-04
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>foo.mds &lt;- function(){
+foo.mds &lt;- function(x){
+  obj.mds &lt;- plotMDS(x,col = x$samples$Color,main = NULL)
   par(mar = c(5, 4, 2, 2))
   labels &lt;- colnames(obj.mds$distance.matrix.squared)
   StringRadius &lt;- 0.15 * 1 * nchar(labels)
@@ -1523,9 +1237,9 @@ Pedro Baldoni
   plot(c(-6, 3), c(-3, 3),
        #c(left.x, right.x), c(obj.mds$y, obj.mds$y), 
        type = &quot;n&quot;,xlab = xlab,ylab = ylab)
-  text(obj.mds$x, obj.mds$y, labels = labels, cex = 1,col = dte.scaled.filtr$samples$Color)
+  text(obj.mds$x, obj.mds$y, labels = labels, cex = 1,col = x$samples$Color)
 }
-plot.mds &lt;- wrap_elements(full = ~foo.mds())
+plot.mds &lt;- wrap_elements(full = ~foo.mds(dte.pe.scaled.filtr))
 
 plot.design &lt;- c(area(1, 1),area(1,2),area(2, 1),area(2,2))
 
@@ -1536,86 +1250,64 @@ wrap_plots(A = plot.mds,
            design = plot.design,
            heights = c(0.35,0.65)) +
   plot_annotation(tag_levels = &#39;a&#39;,tag_prefix = &#39;(&#39;,tag_suffix = &#39;)&#39;) </code></pre>
-<p><img src="figure/mouse.Rmd/eda_plots_dte-2.png" width="2400" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-eda_plots_dte-2">
-Past versions of eda_plots_dte-2.png
-</button>
-</p>
-<div id="fig-eda_plots_dte-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/mouse.Rmd/eda_plots_dte-2.png" target="_blank">5dcd60b</a>
-</td>
-<td>
-Pedro Baldoni
-</td>
-<td>
-2023-01-04
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>kb &lt;- out.LPvsBasal[grepl(&#39;ENSMUSG00000030067&#39;,out.LPvsBasal$table$gene_id),]$table
-kb &lt;- data.frame(kb[,-c(2,3,4,5)],row.names = NULL)
-setnames(kb,
+<p><img src="figure/mouse.Rmd/mouse_eda_plots_dte-1.png" width="2400" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># Foxp1-216
+out.pe.LPvsB.scaled$table[&#39;ENSMUST00000175838.2&#39;,]</code></pre>
+<pre><code>                     Length EffectiveLength Overdispersion TranscriptName
+ENSMUST00000175838.2    420         163.755       1.111807      Foxp1-216
+                                    GeneID GeneName GeneEntrezID GeneOfInterest
+ENSMUST00000175838.2 ENSMUSG00000030067.18    Foxp1       108655           TRUE
+                     NTranscriptPerGene                 Type    logFC
+ENSMUST00000175838.2                 31 processed_transcript 1.806999
+                         logCPM        F      PValue         FDR
+ENSMUST00000175838.2 -0.5914241 14.03927 0.002188547 0.008318195</code></pre>
+<pre class="r"><code>tb.foxp1.gene &lt;- 
+  out.pe.LPvsB[grepl(&#39;ENSMUSG00000030067&#39;,out.pe.LPvsB$table$gene_id),]$table
+tb.foxp1.gene &lt;- data.frame(tb.foxp1.gene[,-c(2,3,4,5)],row.names = NULL)
+setnames(tb.foxp1.gene,
          old = c(&#39;gene_id&#39;,&#39;GeneEntrezID&#39;),
          new = c(&#39;Ensembl ID&#39;,&#39;Entrez ID&#39;))
 
-kb$GeneType &lt;- gsub(&quot;_&quot;,&quot; &quot;,kb$GeneType)
+tb.foxp1.gene$GeneType &lt;- gsub(&quot;_&quot;,&quot; &quot;,tb.foxp1.gene$GeneType)
 
-kb &lt;- kbl(kb,
-          escape = FALSE,
-          format = &#39;latex&#39;,
-          booktabs = TRUE,
-          caption = &#39;Results from gene-level DE analysis for the Foxp1 gene with edgeR via count scaling comparing basal and LP cells (NCBI Gene Expression Omnibus accession number GSEXXXXX)&#39;,
-          align = c(&#39;l&#39;,rep(&#39;r&#39;,6))) %&gt;%
+kb.foxp1.gene &lt;- 
+  kbl(tb.foxp1.gene,
+      escape = FALSE,
+      format = &#39;latex&#39;,
+      booktabs = TRUE,
+      caption = paste(&#39;Results from gene-level DE analysis for the Foxp1 gene&#39;,
+                      &#39;with edgeR via count scaling comparing basal and LP&#39;,
+                      &#39;cells (NCBI Gene Expression Omnibus accession number GSEXXXXX)&#39;),
+      align = c(&#39;l&#39;,rep(&#39;r&#39;,6))) %&gt;%
   kable_styling(latex_options = &quot;scale_down&quot;)
-save_kable(kb,file = &quot;../misc/mouse_foxp1_gene.tex&quot;)</code></pre>
+save_kable(kb.foxp1.gene,file = file.path(path.misc,&quot;mouse_eda_table_foxp1.tex&quot;))</code></pre>
 <pre class="r"><code>## Gene-level
-df.output.gene &lt;- as.data.table(dge$genes[,c(&#39;GeneName&#39;,&#39;GeneEntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;)])
+df.output.gene &lt;- 
+  as.data.table(dge.pe$genes[,c(&#39;GeneName&#39;,&#39;GeneEntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;)])
 setnames(df.output.gene,
          old = c(&#39;GeneName&#39;,&#39;GeneEntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;),
          new = c(&#39;Symbol&#39;,&#39;EntrezID&#39;,&#39;Type&#39;,&#39;Overdispersion&#39;))
 df.output.gene[,Level := &#39;Gene&#39;]
 
 ## Transcript-level
-df.output.tx &lt;- data.table(Symbol = catch$annotation$TranscriptName,
-                           EntrezID = catch$annotation$GeneEntrezID,
-                           Type = catch$annotation$Type,
-                           Overdispersion = catch$annotation$Overdispersion,
+df.output.tx &lt;- data.table(Symbol = catch.pe$annotation$TranscriptName,
+                           EntrezID = catch.pe$annotation$GeneEntrezID,
+                           Type = catch.pe$annotation$Type,
+                           Overdispersion = catch.pe$annotation$Overdispersion,
                            Level = &#39;Transcript&#39;)
 
 
-df.output &lt;- rbindlist(list(df.output.gene,
-                            df.output.tx))
+df.output.gene.tx &lt;- rbindlist(list(df.output.gene,
+                                    df.output.tx))
 
-fig.dge.mao &lt;- ggplot(df.output,aes(x = log10(Overdispersion),y = Level,fill = Level)) +
+fig.mao.gene.tx &lt;- ggplot(df.output.gene.tx,aes(x = log10(Overdispersion),y = Level,fill = Level)) +
   geom_boxplot(outlier.alpha = 0.5) +
   scale_fill_brewer(palette = &#39;Set1&#39;) +
   labs(y = NULL,x = &#39;Mapping ambiguity overdispersion (log10 scale)&#39;) +
   theme_bw() +
   theme(legend.position = &#39;none&#39;)
-fig.dge.mao</code></pre>
-<p><img src="figure/mouse.Rmd/dge_eda_mao_fig-1.png" width="2100" style="display: block; margin: auto;" /></p>
+fig.mao.gene.tx</code></pre>
+<p><img src="figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>df.output.gene.top &lt;- df.output.gene[order(-Overdispersion),][1:20,]
 df.output.gene.top[,Level := NULL]
 df.output.gene.top$Type &lt;- 
@@ -1623,26 +1315,26 @@ df.output.gene.top$Type &lt;-
 df.output.gene.top$EntrezID[is.na(df.output.gene.top$EntrezID)] &lt;- 
   &quot;-&quot;
 
-cap &lt;- paste(&quot;Top 20 genes with largest mapping ambiguity overdispersion.&quot;,
-             &quot;Here, mapping ambiguity overdispersion at the gene-level was&quot;,
-             &quot;estimated with bootstrap counts summarized to the gene-wise&quot;,
-             &quot;counts computed with the function summarizeToGene from the&quot;,
-             &quot;tximport package. The majority of such genes are classified as&quot;,
-             &quot;gene models or pseudo-genes, and exhibit high levels of overlap&quot;,
-             &quot;with other annotated genes. Data from the mouse mammary gland&quot;,
-             &quot;epithelial cell population experiment generated with paired-end&quot;,
-             &quot;reads (NCBI Gene Expression Omnibus accession number GSEXXXXX).&quot;)
+cap.mao &lt;- paste(&quot;Top 20 genes with largest mapping ambiguity overdispersion.&quot;,
+                 &quot;Here, mapping ambiguity overdispersion at the gene-level was&quot;,
+                 &quot;estimated with bootstrap counts summarized to the gene-wise&quot;,
+                 &quot;counts computed with the function summarizeToGene from the&quot;,
+                 &quot;tximport package. The majority of such genes are classified as&quot;,
+                 &quot;gene models or pseudo-genes, and exhibit high levels of overlap&quot;,
+                 &quot;with other annotated genes. Data from the mouse mammary gland&quot;,
+                 &quot;epithelial cell population experiment generated with paired-end&quot;,
+                 &quot;reads (NCBI Gene Expression Omnibus accession number GSEXXXXX).&quot;)
 
-kb &lt;- kbl(df.output.gene.top,
-          escape = FALSE,
-          format = &#39;latex&#39;,
-          booktabs = TRUE,
-          caption = cap,
-          digits = 2,
-          align = c(&#39;l&#39;,rep(&#39;r&#39;,3)),
-          col.names = c(&#39;Gene Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
+kb.output.gene.top &lt;- kbl(df.output.gene.top,
+                          escape = FALSE,
+                          format = &#39;latex&#39;,
+                          booktabs = TRUE,
+                          caption = cap.mao,
+                          digits = 2,
+                          align = c(&#39;l&#39;,rep(&#39;r&#39;,3)),
+                          col.names = c(&#39;Gene Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
   kable_styling(latex_options = &quot;scale_down&quot;)
-save_kable(kb,file = &quot;../misc/mouse_top_genes.tex&quot;)</code></pre>
+save_kable(kb.output.gene.top,file = file.path(path.misc,&quot;mouse_eda_table_mao.tex&quot;))</code></pre>
 </div>
 </div>
 <div id="analysis-of-single-end-data" class="section level1">
@@ -1651,18 +1343,14 @@ save_kable(kb,file = &quot;../misc/mouse_top_genes.tex&quot;)</code></pre>
 <h2>Transcript-level analysis</h2>
 <div id="data-wrangling-1" class="section level3">
 <h3>Data wrangling</h3>
-<pre class="r"><code>path.data.se &lt;- &#39;../data/mouse/single-end&#39;
-path.quant.se &lt;- &#39;../output/mouse/single-end&#39;</code></pre>
 <pre class="r"><code>dt.targets.se &lt;- fread(file.path(path.data.se,&#39;misc/targets.txt&#39;))
 dt.targets.se[,Sample := paste(Group,Replicate,sep = &#39;.&#39;)]
 dt.targets.se[,Population := mapvalues(Population,&#39;Luminal&#39;,&#39;LP&#39;)]
 dt.targets.se$Stage &lt;- strsplit2(dt.targets.se$Group,&quot;\\.&quot;)[,2]
-
 dt.targets.se$Group &lt;- NULL
 
-dt.targets.se[,Color := mapvalues(Population,
-                                  from = c(&#39;Basal&#39;,&#39;LP&#39;),
-                                  to = c(&#39;blue&#39;,&#39;darkgreen&#39;))]
+dt.targets.se[,Color := 
+                mapvalues(Population,from = c(&#39;Basal&#39;,&#39;LP&#39;),to = c(&#39;blue&#39;,&#39;darkgreen&#39;))]
 
 dt.targets.se[,path := file.path(path.quant.se,&#39;salmon&#39;,gsub(&#39;.fastq.gz&#39;,&#39;&#39;,File))]</code></pre>
 <pre class="r"><code>catch.se &lt;- catchSalmon(dt.targets.se$path,verbose = FALSE)
@@ -1676,16 +1364,14 @@ catch.se$annotation$GeneEntrezID &lt;- dt.anno$ENTREZID[key.catch.se.anno]
 catch.se$annotation$GeneOfInterest &lt;- dt.anno$GeneOfInterest[key.catch.se.anno]
 catch.se$annotation$NTranscriptPerGene &lt;- dt.anno$NTranscriptPerGene[key.catch.se.anno]</code></pre>
 </div>
-<div
-id="differential-transcript-expression-between-basal-and-lp-populations-1"
-class="section level3">
-<h3>Differential transcript expression between basal and LP
-populations</h3>
+<div id="differential-transcript-expression-1" class="section level3">
+<h3>Differential transcript expression</h3>
 <div id="edger-with-count-scaling-1" class="section level4">
 <h4>edgeR with count scaling</h4>
-<pre class="r"><code>dte.se.scaled &lt;- DGEList(counts = catch.se$counts/catch.se$annotation$Overdispersion,
-                         genes = catch.se$annotation,
-                         samples = dt.targets.se)
+<pre class="r"><code>dte.se.scaled &lt;- 
+  DGEList(counts = catch.se$counts/catch.se$annotation$Overdispersion,
+          genes = catch.se$annotation,
+          samples = dt.targets.se)
 colnames(dte.se.scaled) &lt;- dte.se.scaled$samples$Sample</code></pre>
 <pre class="r"><code>keep.se.scaled &lt;- 
   filterByExpr(dte.se.scaled,group = dte.se.scaled$samples$Population) &amp; 
@@ -1736,7 +1422,7 @@ Up             6929</code></pre>
 <div id="plots-and-other-exploratory-analyses-1" class="section level2">
 <h2>Plots and other exploratory analyses</h2>
 <pre class="r"><code>plotMD(qlf.se.LPvsB.scaled,main = NULL)</code></pre>
-<p><img src="figure/mouse.Rmd/eda_se_foxp1-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p><img src="figure/mouse.Rmd/mouse_eda_se_dte-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <pre class="r"><code># Foxp1 transcripts (EntrezID 108655)
 out.se.LPvsB.scaled$table[out.se.LPvsB.scaled$table$GeneEntrezID %in% &#39;108655&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName
@@ -1880,54 +1566,55 @@ loaded via a namespace (and not attached):
  [49] splines_4.2.1                 GlobalOptions_0.1.2          
  [51] rstatix_0.7.1                 lazyeval_0.2.2               
  [53] gargle_1.2.1                  broom_1.0.1                  
- [55] modelr_0.1.10                 BiocManager_1.30.19          
- [57] yaml_2.3.6                    abind_1.4-5                  
- [59] backports_1.4.1               httpuv_1.6.6                 
- [61] tools_4.2.1                   ellipsis_0.3.2               
- [63] jquerylib_0.1.4               RColorBrewer_1.1-3           
- [65] Rcpp_1.0.9                    progress_1.2.2               
- [67] zlibbioc_1.44.0               RCurl_1.98-1.9               
- [69] ps_1.7.2                      prettyunits_1.1.1            
- [71] GetoptLong_1.0.5              viridis_0.6.2                
- [73] haven_2.5.1                   cluster_2.1.4                
- [75] fs_1.5.2                      svMisc_1.2.3                 
- [77] circlize_0.4.15               reprex_2.0.2                 
- [79] googledrive_2.0.0             whisker_0.4                  
- [81] ProtGenerics_1.30.0           hms_1.1.2                    
- [83] mime_0.12                     evaluate_0.18                
- [85] xtable_1.8-4                  XML_3.99-0.12                
- [87] readxl_1.4.1                  gridExtra_2.3                
- [89] shape_1.4.6                   compiler_4.2.1               
- [91] biomaRt_2.54.0                KernSmooth_2.23-20           
- [93] crayon_1.5.2                  htmltools_0.5.3              
- [95] mgcv_1.8-41                   later_1.3.0                  
- [97] tzdb_0.3.0                    lubridate_1.9.0              
- [99] DBI_1.1.3                     rappdirs_0.3.3               
-[101] Matrix_1.5-3                  car_3.1-1                    
-[103] cli_3.4.1                     parallel_4.2.1               
-[105] pkgconfig_2.0.3               getPass_0.2-2                
-[107] GenomicAlignments_1.34.0      xml2_1.3.3                   
-[109] foreach_1.5.2                 svglite_2.1.0                
-[111] bslib_0.4.1                   webshot_0.5.4                
-[113] XVector_0.38.0                rvest_1.0.3                  
-[115] callr_3.7.3                   digest_0.6.30                
-[117] Biostrings_2.66.0             cellranger_1.1.0             
-[119] rmarkdown_2.18                dendextend_1.16.0            
-[121] restfulr_0.0.15               curl_4.3.3                   
-[123] shiny_1.7.3                   Rsamtools_2.14.0             
-[125] gtools_3.9.3                  rjson_0.2.21                 
-[127] nlme_3.1-160                  lifecycle_1.0.3              
-[129] jsonlite_1.8.3                Rhdf5lib_1.20.0              
-[131] carData_3.0-5                 viridisLite_0.4.1            
-[133] fansi_1.0.3                   pillar_1.8.1                 
-[135] lattice_0.20-45               KEGGREST_1.38.0              
-[137] fastmap_1.1.0                 httr_1.4.4                   
-[139] interactiveDisplayBase_1.36.0 glue_1.6.2                   
-[141] png_0.1-7                     iterators_1.0.14             
-[143] BiocVersion_3.16.0            bit_4.0.5                    
-[145] stringi_1.7.8                 sass_0.4.4                   
-[147] blob_1.2.3                    textshaping_0.3.6            
-[149] caTools_1.18.2                memoise_2.0.1                </code></pre>
+ [55] reshape2_1.4.4                modelr_0.1.10                
+ [57] BiocManager_1.30.19           yaml_2.3.6                   
+ [59] abind_1.4-5                   backports_1.4.1              
+ [61] httpuv_1.6.6                  qvalue_2.30.0                
+ [63] tools_4.2.1                   ellipsis_0.3.2               
+ [65] jquerylib_0.1.4               RColorBrewer_1.1-3           
+ [67] Rcpp_1.0.9                    progress_1.2.2               
+ [69] zlibbioc_1.44.0               RCurl_1.98-1.9               
+ [71] ps_1.7.2                      prettyunits_1.1.1            
+ [73] GetoptLong_1.0.5              viridis_0.6.2                
+ [75] haven_2.5.1                   cluster_2.1.4                
+ [77] fs_1.5.2                      svMisc_1.2.3                 
+ [79] circlize_0.4.15               reprex_2.0.2                 
+ [81] googledrive_2.0.0             whisker_0.4                  
+ [83] ProtGenerics_1.30.0           hms_1.1.2                    
+ [85] mime_0.12                     evaluate_0.18                
+ [87] xtable_1.8-4                  XML_3.99-0.12                
+ [89] readxl_1.4.1                  gridExtra_2.3                
+ [91] shape_1.4.6                   compiler_4.2.1               
+ [93] biomaRt_2.54.0                KernSmooth_2.23-20           
+ [95] crayon_1.5.2                  htmltools_0.5.3              
+ [97] mgcv_1.8-41                   later_1.3.0                  
+ [99] tzdb_0.3.0                    lubridate_1.9.0              
+[101] DBI_1.1.3                     rappdirs_0.3.3               
+[103] Matrix_1.5-3                  car_3.1-1                    
+[105] cli_3.4.1                     parallel_4.2.1               
+[107] pkgconfig_2.0.3               getPass_0.2-2                
+[109] GenomicAlignments_1.34.0      xml2_1.3.3                   
+[111] foreach_1.5.2                 svglite_2.1.0                
+[113] bslib_0.4.1                   webshot_0.5.4                
+[115] XVector_0.38.0                rvest_1.0.3                  
+[117] callr_3.7.3                   digest_0.6.30                
+[119] Biostrings_2.66.0             cellranger_1.1.0             
+[121] rmarkdown_2.18                dendextend_1.16.0            
+[123] restfulr_0.0.15               curl_4.3.3                   
+[125] shiny_1.7.3                   Rsamtools_2.14.0             
+[127] gtools_3.9.3                  rjson_0.2.21                 
+[129] nlme_3.1-160                  lifecycle_1.0.3              
+[131] jsonlite_1.8.3                Rhdf5lib_1.20.0              
+[133] carData_3.0-5                 viridisLite_0.4.1            
+[135] fansi_1.0.3                   pillar_1.8.1                 
+[137] lattice_0.20-45               KEGGREST_1.38.0              
+[139] fastmap_1.1.0                 httr_1.4.4                   
+[141] interactiveDisplayBase_1.36.0 glue_1.6.2                   
+[143] png_0.1-7                     iterators_1.0.14             
+[145] BiocVersion_3.16.0            bit_4.0.5                    
+[147] stringi_1.7.8                 sass_0.4.4                   
+[149] blob_1.2.3                    textshaping_0.3.6            
+[151] caTools_1.18.2                memoise_2.0.1                </code></pre>
 </div>
 </div>
 </div>
