@@ -3,11 +3,11 @@ library(BiocParallel)
 library(devtools)
 library(readr)
 
-load_all("../../code/pkg")
+load_all("../pkg/")
 
 ### Parameters
 
-dest_main <- 'output'
+dest_main <- '../../output/quasi_poisson'
 fasta <- "../../data/annotation/mm39/gencode.vM27.transcripts.fa.gz"
 tmpdir <- tempdir(check = TRUE)
 workers <- 25
@@ -102,7 +102,7 @@ expr.bio <- matrix(rgamma(n.feat*n.samples, shape = shape, scale = scale),
 for(i in c('bio', 'tech')) {
   expr <- get(paste0('expr.',i))
   dest <- file.path(dest_main,i)
-  
+
   # Checking if simulation has already been run
   dir.create(dest,recursive = TRUE,showWarnings = FALSE)
   dest <- normalizePath(dest)
@@ -110,47 +110,47 @@ for(i in c('bio', 'tech')) {
   dir.create(dest,showWarnings = FALSE,recursive = TRUE)
   out.files <- file.path(dest,c('counts.tsv.gz','targets.tsv.gz'))
   names(out.files) <- c('counts','targets')
-  
-  
+
+
   # Shuffling matrices (to be matched with reference data)
   key <- sample(n.feat,replace = FALSE)
   expr <- expr[key,]
   mu0 <- mu0[key,]
   disp <- disp[key,]
-  
+
   trExpr <- list('expr' = expr,'mu' = mu0,'disp' = disp,'de' = de)
-  
+
   # Generating TPM values
   tpm <- trExpr$expr / contigs.subset$Length
   tpm <- 1e6 * t(t(tpm) / colSums(tpm))
-  
+
   # Organizing contigs.subset
   dimnames(tpm) <- dimnames(trExpr$expr) <- dimnames(trExpr$mu) <- dimnames(trExpr$disp) <- list(contigs.subset$TranscriptID,group.name)
-  
+
   # Merging contigs.subset values to contigs
   tpm.contigs <- expr.contigs <- mu.contigs <- disp.contigs <- matrix(NA, nrow(contigs), sum(n.libs))
-  
+
   dimnames(tpm.contigs) <- dimnames(expr.contigs) <- dimnames(mu.contigs) <- dimnames(disp.contigs) <- list(contigs$TranscriptID,group.name)
-  
+
   key <- match(contigs.subset$TranscriptID, contigs$TranscriptID)
   tpm.contigs[key,] <- tpm
   expr.contigs[key,] <- trExpr$expr
   mu.contigs[key,] <- trExpr$mu
   disp.contigs[key,] <- trExpr$disp
-  
+
   txTPM <- list('tpm' = tpm.contigs,'expr' = expr.contigs,'mu' = mu.contigs,'disp' = disp.contigs)
-  
+
   # Getting quality reference
   quality.source <- ifelse(read.length %in% c(75, 100),'Rsubread','rfun')
   quality.reference <- list.files(system.file(package = quality.source,'qualf'),
                                   paste0('-',read.length,'bp'),full.names = TRUE)
-  
+
   # Running simReads
   message('Simulating reads...')
   curwd <- getwd()
   setwd(tmpdir)
   out <- bplapply(seq_len(sum(n.libs)), FUN = function(i){
-    simReads(transcript.file = fasta, expression.levels = txTPM$tpm[, i], 
+    simReads(transcript.file = fasta, expression.levels = txTPM$tpm[, i],
              output.prefix = colnames(txTPM$tpm)[i],library.size = lib.sizes[i],
              paired.end = paired.end, simplify.transcript.names = TRUE,
              fragment.length.min = fragment.length.min,read.length = read.length,
@@ -158,22 +158,22 @@ for(i in c('bio', 'tech')) {
   },BPPARAM = BPPARAM)
   out.fastq <- normalizePath(list.files('.',"group*.*.fastq.gz",full.names = TRUE))
   setwd(curwd)
-  
+
   # Saving metadata
   message('Saving metadata...')
   mat <- do.call(cbind,lapply(out,function(x){x$NReads}))
   colnames(mat) <- colnames(txTPM$tpm)
-  
+
   out <- cbind(contigs[,c("TranscriptID","Length",'GeneID')],mat)
   rownames(out) <- NULL
   write_tsv(x = out,file = out.files['counts'],col_names = TRUE,quote = 'none')
-  
+
   targets <- data.frame('R1' = out.fastq[grepl("R1.fastq.gz",out.fastq)])
   if (isTRUE(paired.end)) {
     targets$R2 <- out.fastq[grepl("R2.fastq.gz",out.fastq)]
   }
   write_tsv(x = targets,file = out.files['targets'],col_names = TRUE,quote = 'none')
-  
+
   # Quantifying FASTQs
   dest <- file.path(dest_main,i)
   path.targets <- file.path(dest,'meta/targets.tsv.gz')
@@ -182,7 +182,7 @@ for(i in c('bio', 'tech')) {
                 bin.salmon = bin.salmon,index.salmon = index.salmon,opts.salmon = opts.salmon,
                 bin.kallisto = bin.kallisto,index.kallisto = index.kallisto,opts.kallisto = opts.kallisto,
                 run.salmon = run.salmon, run.kallisto = run.kallisto)
-  
+
   # Organizing FASTQ files
   path.fastq <- read.delim(path.targets,header = TRUE)
   if (isTRUE(keep.fastq)) {

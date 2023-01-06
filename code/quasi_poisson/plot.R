@@ -1,8 +1,9 @@
 library(edgeR)
 library(data.table)
-devtools::load_all('../../code/pkg')
+devtools::load_all('../pkg')
 
-path <- 'output'
+path <- '../../output/quasi_poisson'
+out.path <- '../../misc/quasi_poisson'
 
 # Annotation
 
@@ -39,7 +40,7 @@ dge.true <- DGEList(counts = as.matrix(meta[,grepl('group',colnames(meta)),with 
                     samples = targets,
                     genes = meta[,c('TranscriptID','GeneID','Length','N','color')])
 
-keep.true <- filterByExpr(dge.true) 
+keep.true <- filterByExpr(dge.true)
 dge.true <- dge.true[keep.true, , keep.lib.sizes = FALSE]
 
 rmeans.true <- rowMeans(dge.true$counts)
@@ -53,7 +54,7 @@ dge <- DGEList(counts = catch$counts,
                samples = targets,
                genes = catch$annotation)
 
-keep <- filterByExpr(dge) 
+keep <- filterByExpr(dge)
 dge <- dge[keep, , keep.lib.sizes = FALSE]
 dge <- calcNormFactors(dge)
 dge <- estimateDisp(dge)
@@ -66,7 +67,7 @@ is.singletx <- dge$genes$N == 1
 
 # Plots
 
-png(file = 'plot.png',height = 5,width = 10,units = 'in',res = 300)
+png(file = file.path(out.path,'plot.png'),height = 5,width = 10,units = 'in',res = 300)
 
 par(mfrow = c(1,2))
 
