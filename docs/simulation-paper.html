@@ -360,7 +360,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">simulation</h1>
 <h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">06 January, 2023</h4>
+<h4 class="date">19 January, 2023</h4>
 
 </div>
 
@@ -389,7 +389,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-06
+<strong>Last updated:</strong> 2023-01-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -531,15 +531,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree52e37f13e4d17db069ceb6396d6f0ad8accdf63atargetblank52e37f1a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/52e37f13e4d17db069ceb6396d6f0ad8accdf63a" target="_blank">52e37f1</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree52e37f13e4d17db069ceb6396d6f0ad8accdf63atargetblank52e37f1a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -549,7 +549,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/52e37f13e4d17db069ceb6396d6f0ad8accdf63a" target="_blank">52e37f1</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -585,9 +585,14 @@ Ignored files:
     Ignored:    renv/
 
 Untracked files:
-    Untracked:  misc/simulation-paper.Rmd/
+    Untracked:  misc/simulation-paper.Rmd/figure2.png
+    Untracked:  misc/simulation-paper.Rmd/figure3.png
+    Untracked:  misc/simulation-paper.Rmd/figure4.png
+    Untracked:  misc/simulation-paper.Rmd/figure5.png
+    Untracked:  misc/simulation-paper.Rmd/table1.tex
 
 Unstaged changes:
+    Modified:   analysis/mouse.Rmd
     Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
@@ -634,6 +639,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/4276bfc1b4f2a31caae390bb910515ab77e165cf/analysis/simulation-paper.Rmd" target="_blank">4276bfc</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+<td>
+Organizing output of latex table
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/4276bfc1b4f2a31caae390bb910515ab77e165cf/docs/simulation-paper.html" target="_blank">4276bfc</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+<td>
+Organizing output of latex table
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -734,6 +773,7 @@ library(purrr)
 library(readr)
 library(ggpubr)
 library(kableExtra)
+library(patchwork)
 load_all(&#39;../code/pkg/&#39;)
 
 BPPARAM &lt;- MulticoreParam(workers = 16,progressbar = TRUE)
@@ -916,62 +956,47 @@ x.melt$Type &lt;-
          levels = c(&#39;FP&#39;,&#39;TP&#39;),
          labels = c(&#39;False Positive&#39;,&#39;True Positive&#39;))
 
-plot.power &lt;- ggplot(x.melt,aes(x = Method,y = Value,fill = Type)) +
-  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
-  geom_col() +
-  geom_text(aes(x = Method,y = (TP + FP) + gap,label = FDR),
-            inherit.aes = FALSE,data = dt.power[FDR != &#39;NA&#39;,],vjust = 0) +
-  theme_bw() +
-  scale_fill_manual(values = c(&#39;#ff0000&#39;,&#39;#595959&#39;)) +
-  labs(x = NULL,y = paste(&#39;# DE Transcripts at FDR &lt; 0.05&#39;)) +
-  scale_y_continuous(limits = c(0,3000)) +
-  theme(panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        legend.position = c(0.15,0.90),legend.title = element_blank(),
-        axis.text.x = element_text(angle = 90),
-        legend.background = element_rect(fill=alpha(&#39;white&#39;, 0)))</code></pre>
-<pre class="r"><code>dt.fdr.plot &lt;- rbind(subsetDT(dt.fdr,scenario.balanced,&#39;A&#39;),
-                     subsetDT(dt.fdr,scenario.unbalanced,&#39;A&#39;))
+plot.power &lt;- function(df.bar,df.txt,scenario,library,legend = FALSE){
+  tb.bar &lt;- df.bar[Scenario == scenario &amp; LibsPerGroup == library,]
+  tb.txt &lt;- df.txt[Scenario == scenario &amp; LibsPerGroup == library,][FDR != &#39;NA&#39;,]
+  
+  ggplot(tb.bar,aes(x = Method,y = Value,fill = Type)) +
+    geom_col(colour = &#39;black&#39;) +
+    geom_text(aes(x = Method,y = (TP + FP) + gap,label = FDR),
+              inherit.aes = FALSE,vjust = 0,data = tb.txt) +
+    theme_bw() +
+    scale_fill_manual(values = c(&#39;#ff0000&#39;,&#39;#bebebe&#39;)) +
+    labs(x = NULL,y = paste(&#39;# DE Transcripts&#39;)) +
+    scale_y_continuous(limits = c(0,3000)) +
+    theme(panel.grid = element_blank(),
+          legend.position = c(0.75,0.90),
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = 90),
+          axis.text = element_text(colour = &#39;black&#39;)) +
+    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha(&#39;white&#39;, 0))) else theme(legend.position = &#39;none&#39;)
+}
 
-dt.fdr.plot$LibsPerGroup %&lt;&gt;% 
-  mapvalues(from = paste0(&#39;#Lib/Group = &#39;, c(3, 5)),
-            to = paste0(c(3,5),&#39; samples per group&#39;))
+fig.power.a &lt;- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = &#39;Equal library sizes&#39;,library = &#39;3 samples per group&#39;)
+fig.power.b &lt;- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = &#39;Unequal library sizes&#39;,library = &#39;3 samples per group&#39;,legend = TRUE)
+fig.power.c &lt;- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = &#39;Equal library sizes&#39;,library = &#39;5 samples per group&#39;)
+fig.power.d &lt;- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = &#39;Unequal library sizes&#39;,library = &#39;5 samples per group&#39;)
 
-dt.fdr.plot$Scenario %&lt;&gt;% 
-  mapvalues(from = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
-            to = c(&#39;Equal library sizes&#39;,&#39;Unequal library sizes&#39;))
+fig.power &lt;- (fig.power.a + fig.power.b) / (fig.power.c + fig.power.d) +
+  plot_annotation(tag_levels = &#39;a&#39;)
 
-dt.fdr.plot &lt;- dt.fdr.plot[TxPerGene == &#39;All Transcripts&#39;,]
-
-plot.fdr &lt;- ggplot(dt.fdr.plot,aes(x = N,y = FDR,color = Method,group = Method)) +
-  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
-  geom_line(linewidth = 1) +
-  theme_bw() +
-  scale_color_manual(values = methodsNames()$color) +
-  scale_y_continuous(limits = c(0,1250)) +
-  theme(panel.grid = element_blank(),legend.direction = &#39;vertical&#39;,
-        legend.position = c(0.15,0.825),legend.title = element_blank(),
-        legend.background = element_rect(fill=alpha(&#39;white&#39;, 0))) +
-  labs(y = &#39;False discoveries&#39;,x = &#39;Transcripts chosen&#39;)</code></pre>
-<pre class="r"><code>ggarrange(plot.power,plot.fdr,nrow = 1,ncol = 2,common.legend = FALSE,
-          labels = c(&#39;(a)&#39;,&#39;(b)&#39;))</code></pre>
-<div class="figure" style="text-align: center">
-<img src="figure/simulation-paper.Rmd/simulation-paper_power-fdr_plot-1.png" alt="Simulation results. (a): Average number of true (blue) and false (red) positive DE transcripts at nominal 0.05 FDR. Observed is FDR annotated over bars. (b): Average number of false discoveries as a function of the number of chosen transcripts. Results from the simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations." width="3000" />
-<p class="caption">
-Simulation results. (a): Average number of true (blue) and false (red)
-positive DE transcripts at nominal 0.05 FDR. Observed is FDR annotated
-over bars. (b): Average number of false discoveries as a function of the
-number of chosen transcripts. Results from the simulation scenario with
-100 bp paired-end read data quantified with Salmon, averaged over 20
-simulations.
-</p>
-</div>
+png(filename = file.path(path.misc,&quot;figure2.png&quot;),width = 7,height = 7,units = &#39;in&#39;,res = 300)
+fig.power
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<pre class="r"><code>fig.power</code></pre>
+<p><img src="figure/simulation-paper.Rmd/simulation-paper_power-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_power-fdr_plot-1">
-Past versions of simulation-paper_power-fdr_plot-1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_power-1">
+Past versions of simulation-paper_power-1.png
 </button>
 </p>
-<div id="fig-simulation-paper_power-fdr_plot-1" class="collapse">
+<div id="fig-simulation-paper_power-1" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -990,7 +1015,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_power-fdr_plot-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -999,10 +1024,82 @@ Pedro Baldoni
 2023-01-04
 </td>
 </tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">d34d4e6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
+<pre class="r"><code>dt.fdr.plot &lt;- rbind(subsetDT(dt.fdr,scenario.balanced,&#39;A&#39;),
+                     subsetDT(dt.fdr,scenario.unbalanced,&#39;A&#39;))
+
+dt.fdr.plot$LibsPerGroup %&lt;&gt;% 
+  mapvalues(from = paste0(&#39;#Lib/Group = &#39;, c(3, 5)),
+            to = paste0(c(3,5),&#39; samples per group&#39;))
+
+dt.fdr.plot$Scenario %&lt;&gt;% 
+  mapvalues(from = c(&#39;balanced&#39;,&#39;unbalanced&#39;),
+            to = c(&#39;Equal library sizes&#39;,&#39;Unequal library sizes&#39;))
+
+dt.fdr.plot &lt;- dt.fdr.plot[TxPerGene == &#39;All Transcripts&#39;,]
+
+plot.fdr &lt;- function(df.line,scenario,library,legend = FALSE){
+  tb.bar &lt;- df.line[Scenario == scenario &amp; LibsPerGroup == library,]
+  
+  ggplot(tb.bar,aes(x = N,y = FDR,color = Method,group = Method)) +
+    geom_line(linewidth = 1) +
+    theme_bw() +
+    scale_color_manual(values = methodsNames()$color) +
+    scale_y_continuous(limits = c(0,1250)) +
+    labs(y = &#39;False discoveries&#39;,x = &#39;Transcripts chosen&#39;) +
+    theme(panel.grid = element_blank(),
+          legend.direction = &#39;vertical&#39;,
+          legend.position = c(0.25,0.75),
+          legend.title = element_blank(),
+          axis.text = element_text(colour = &#39;black&#39;)) +
+    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha(&#39;white&#39;, 0))) else theme(legend.position = &#39;none&#39;)
+}
+
+fig.fdr.a &lt;- plot.fdr(df.line = dt.fdr.plot,scenario = &#39;Equal library sizes&#39;,library = &#39;3 samples per group&#39;)
+fig.fdr.b &lt;- plot.fdr(df.line = dt.fdr.plot,scenario = &#39;Unequal library sizes&#39;,library = &#39;3 samples per group&#39;,legend = TRUE)
+fig.fdr.c &lt;- plot.fdr(df.line = dt.fdr.plot,scenario = &#39;Equal library sizes&#39;,library = &#39;5 samples per group&#39;)
+fig.fdr.d &lt;- plot.fdr(df.line = dt.fdr.plot,scenario = &#39;Unequal library sizes&#39;,library = &#39;5 samples per group&#39;)
+
+fig.fdr &lt;- (fig.fdr.a + fig.fdr.b) / (fig.fdr.c + fig.fdr.d) +
+  plot_annotation(tag_levels = &#39;a&#39;)
+
+png(filename = file.path(path.misc,&quot;figure3.png&quot;),width = 7,height = 7,units = &#39;in&#39;,res = 300)
+fig.fdr
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<pre class="r"><code>plot.fdr</code></pre>
+<pre><code>function(df.line,scenario,library,legend = FALSE){
+  tb.bar &lt;- df.line[Scenario == scenario &amp; LibsPerGroup == library,]
+  
+  ggplot(tb.bar,aes(x = N,y = FDR,color = Method,group = Method)) +
+    geom_line(linewidth = 1) +
+    theme_bw() +
+    scale_color_manual(values = methodsNames()$color) +
+    scale_y_continuous(limits = c(0,1250)) +
+    labs(y = &#39;False discoveries&#39;,x = &#39;Transcripts chosen&#39;) +
+    theme(panel.grid = element_blank(),
+          legend.direction = &#39;vertical&#39;,
+          legend.position = c(0.25,0.75),
+          legend.title = element_blank(),
+          axis.text = element_text(colour = &#39;black&#39;)) +
+    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha(&#39;white&#39;, 0))) else theme(legend.position = &#39;none&#39;)
+}
+&lt;bytecode: 0x8be76378&gt;</code></pre>
 </div>
 <div id="type-1-error" class="section level2">
 <h2>Type 1 error</h2>
@@ -1029,50 +1126,41 @@ x.melt &lt;-
   melt(dt.type1error,id.vars = sub.byvar,
        measure.vars = c(&#39;P.SIG&#39;),variable.name = &#39;Type&#39;,value.name = &#39;Value&#39;)
 
-plot.type1error &lt;- ggplot(x.melt,aes(x = Method,y = Value)) +
-  facet_grid(rows = vars(LibsPerGroup),cols = vars(Scenario)) +
-  geom_col(fill = &quot;#bebebe&quot;,col = &#39;#595959&#39;) +
-  theme_bw() +
-  geom_hline(yintercept = 0.05,color = &#39;red&#39;,linetype = &#39;dashed&#39;) +
-  labs(x = NULL,y = paste(&#39;Proportion of p-values &lt; 0.05&#39;)) +
-  scale_y_continuous(limits = c(0,0.06),breaks = c(0,0.02,0.04,0.06)) +
-  theme(panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank(),
-        legend.position = &#39;top&#39;,legend.title = element_blank(),
-        axis.text.x = element_text(angle = 90))</code></pre>
-<pre class="r"><code>dt.pvalue.plot &lt;- subsetDT(dt.pvalue,scenario.unbalanced,&#39;C&#39;,&#39;All Transcripts&#39;)
-dt.pvalue.plot &lt;- dt.pvalue.plot[LibsPerGroup == &#39;#Lib/Group = 5&#39;,]
+plot.type1error &lt;- function(df.bar,scenario,library,legend = FALSE){
+  tb.bar &lt;- df.bar[Scenario == scenario &amp; LibsPerGroup == library,]
+  
+  ggplot(tb.bar,aes(x = Method,y = Value)) +
+    geom_col(fill = &quot;#bebebe&quot;,col = &#39;black&#39;) +
+    theme_bw() +
+    geom_hline(yintercept = 0.05,color = &#39;#ff0000&#39;,linetype = &#39;dashed&#39;) +
+    labs(x = NULL,y = paste(&#39;Proportion of p-values &lt; 0.05&#39;)) +
+    scale_y_continuous(limits = c(0,0.06),breaks = c(0,0.02,0.04,0.06)) +
+    theme(panel.grid = element_blank(),
+          axis.text.x = element_text(angle = 90),
+          axis.text = element_text(colour = &#39;black&#39;))
+}
 
-plot.hist &lt;- ggplot(data = dt.pvalue.plot,aes(x = PValue,y = Density.Avg)) +
-  facet_wrap(&#39;Method&#39;,nrow = 2,ncol = 3) +
-  geom_col(fill = &quot;#bebebe&quot;,col = &#39;#595959&#39;,position = position_dodge(),width = 0.75) +
-  geom_hline(yintercept = 1,col = &#39;red&#39;,linetype = &#39;dashed&#39;) +
-  theme_bw() +
-  theme(panel.grid = element_blank()) +
-  scale_x_discrete(breaks = c(&quot;(0.00-0.05]&quot;,&quot;(0.50-0.55]&quot;,&quot;(0.95-1.00]&quot;),
-                   labels = c(0.00,0.50,1.00)) +
-  labs(x = &#39;P-values&#39;,y = &#39;Density&#39;)</code></pre>
-<pre class="r"><code>ggarrange(plot.type1error,plot.hist,nrow = 1, ncol = 2,common.legend = FALSE,
-          labels = c(&#39;(a)&#39;,&#39;(b)&#39;))</code></pre>
-<div class="figure" style="text-align: center">
-<img src="figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-pvalue_plot-1.png" alt="Null simulation results.(a): Average proportion of transcripts with unadjusted p-values less than 0.05. (b): Density histograms with smoothing of raw p-values for a scenario with unequal library sizes and 5 samples per group. Results from the null simulation scenario with 100 bp paired-end read data quantified with Salmon, averaged over 20 simulations." width="3000" />
-<p class="caption">
-Null simulation results.(a): Average proportion of transcripts with
-unadjusted p-values less than 0.05. (b): Density histograms with
-smoothing of raw p-values for a scenario with unequal library sizes and
-5 samples per group. Results from the null simulation scenario with 100
-bp paired-end read data quantified with Salmon, averaged over 20
-simulations.
-</p>
-</div>
+fig.type1error.a &lt;- plot.type1error(df.bar = x.melt,scenario = &#39;Equal library sizes&#39;,library = &#39;3 samples per group&#39;)
+fig.type1error.b &lt;- plot.type1error(df.bar = x.melt,scenario = &#39;Unequal library sizes&#39;,library = &#39;3 samples per group&#39;)
+fig.type1error.c &lt;- plot.type1error(df.bar = x.melt,scenario = &#39;Equal library sizes&#39;,library = &#39;5 samples per group&#39;)
+fig.type1error.d &lt;- plot.type1error(df.bar = x.melt,scenario = &#39;Unequal library sizes&#39;,library = &#39;5 samples per group&#39;)
+
+fig.type1error &lt;- (fig.type1error.a + fig.type1error.b) / (fig.type1error.c + fig.type1error.d) +
+  plot_annotation(tag_levels = &#39;a&#39;)
+
+png(filename = file.path(path.misc,&quot;figure4.png&quot;),width = 7,height = 7,units = &#39;in&#39;,res = 300) 
+fig.type1error
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<pre class="r"><code>fig.type1error</code></pre>
+<p><img src="figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_barplot-pvalue_plot-1">
-Past versions of simulation-paper_type1error_barplot-pvalue_plot-1.png
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_barplot-1">
+Past versions of simulation-paper_type1error_barplot-1.png
 </button>
 </p>
-<div id="fig-simulation-paper_type1error_barplot-pvalue_plot-1"
-class="collapse">
+<div id="fig-simulation-paper_type1error_barplot-1" class="collapse">
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
 <thead>
@@ -1091,13 +1179,112 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-pvalue_plot-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
 </td>
 <td>
 2023-01-04
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">d34d4e6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>dt.pvalue.plot &lt;- subsetDT(dt.pvalue,scenario.unbalanced,&#39;C&#39;,&#39;All Transcripts&#39;)
+dt.pvalue.plot &lt;- dt.pvalue.plot[LibsPerGroup == &#39;#Lib/Group = 5&#39;,]
+
+plot.hist &lt;- function(df.hist,method,legend = FALSE){
+  tb.bar &lt;- df.hist[Method == method,]
+  
+  ggplot(data = tb.bar,aes(x = PValue,y = Density.Avg)) +
+    geom_col(fill = &quot;#bebebe&quot;,col = &#39;black&#39;,position = position_dodge(),width = 0.75) +
+    geom_hline(yintercept = 1,col = &#39;#ff0000&#39;,linetype = &#39;dashed&#39;) +
+    scale_x_discrete(breaks = c(&quot;(0.00-0.05]&quot;,&quot;(0.50-0.55]&quot;,&quot;(0.95-1.00]&quot;),
+                     labels = c(0.00,0.50,1.00)) +
+    labs(x = &#39;P-values&#39;,y = &#39;Density&#39;) +
+    theme_bw() +
+    theme(panel.grid = element_blank(),
+          axis.text = element_text(colour = &#39;black&#39;))
+}
+
+fig.hist.a &lt;- plot.hist(df.hist = dt.pvalue.plot,method = &#39;edgeR-scaled&#39;)
+fig.hist.b &lt;- plot.hist(df.hist = dt.pvalue.plot,method = &#39;edgeR-raw&#39;)
+fig.hist.c &lt;- plot.hist(df.hist = dt.pvalue.plot,method = &#39;sleuth-LRT&#39;)
+fig.hist.d &lt;- plot.hist(df.hist = dt.pvalue.plot,method = &#39;sleuth-Wald&#39;)
+fig.hist.e &lt;- plot.hist(df.hist = dt.pvalue.plot,method = &#39;Swish&#39;)
+
+design &lt;- c(
+  area(1,1),area(1,2),
+  area(2,1),area(2,2),
+  area(3,1)
+)
+
+fig.hist &lt;- fig.hist.a + fig.hist.b + fig.hist.c + fig.hist.d + fig.hist.e +
+  plot_layout(design = design) +
+  plot_annotation(tag_levels = &#39;a&#39;)
+
+png(filename = file.path(path.misc,&quot;figure5.png&quot;),width = 7,height = 10.5,units = &#39;in&#39;,res = 300)
+fig.hist
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<pre class="r"><code>fig.type1error</code></pre>
+<p><img src="figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_pvalue-1">
+Past versions of simulation-paper_type1error_pvalue-1.png
+</button>
+</p>
+<div id="fig-simulation-paper_type1error_pvalue-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">5dcd60b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-04
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">d34d4e6</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2022-11-24
 </td>
 </tr>
 </tbody>
@@ -1204,12 +1391,12 @@ dt.table.sigma2$LibsPerGroup %&lt;&gt;% mapvalues(from = c(3,5),to = c(&#39;Thre
 tb &lt;- kbl(dt.table.sigma2,digits = 3,format = &#39;latex&#39;,escape = FALSE,booktabs = TRUE,
           align = c(&#39;c&#39;,&#39;r&#39;,rep(&#39;r&#39;,6)),
           col.names = linebreak(c(&#39;Samples per\ngroup&#39;,&#39;Read Length\n(bp)&#39;,
-                        &#39;Mapping Ambiguity\nFold Change&#39;,&#39;Power&#39;,&#39;FDR&#39;,
-                        &#39;Mapping Ambiguity\nFold Change&#39;,&#39;Power&#39;,&#39;FDR&#39;),align = &quot;c&quot;)) %&gt;%
+                                  &#39;Mapping Ambiguity\nFold Change&#39;,&#39;Power&#39;,&#39;FDR&#39;,
+                                  &#39;Mapping Ambiguity\nFold Change&#39;,&#39;Power&#39;,&#39;FDR&#39;),align = &quot;c&quot;)) %&gt;%
   add_header_above(c(&quot; &quot; = 2, &quot;Single-end Read&quot; = 3, &quot;Paired-end Read&quot; = 3)) %&gt;%
   collapse_rows(1, latex_hline = &#39;major&#39;)
 
-save_kable(tb,file = file.path(path.misc,&quot;simulation-paper_read.tex&quot;))</code></pre>
+save_kable(tb,file = file.path(path.misc,&quot;table1.tex&quot;))</code></pre>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1239,11 +1426,12 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] pkg_1.0             kableExtra_1.3.4    ggpubr_0.5.0       
- [4] readr_2.1.3         purrr_0.3.5         devtools_2.4.5     
- [7] usethis_2.1.6       BiocParallel_1.32.3 edgeR_3.40.0       
-[10] limma_3.54.0        magrittr_2.0.3      plyr_1.8.8         
-[13] thematic_0.1.2.1    ggplot2_3.4.0       data.table_1.14.6  
+ [1] pkg_1.0             patchwork_1.1.2     kableExtra_1.3.4   
+ [4] ggpubr_0.5.0        readr_2.1.3         purrr_0.3.5        
+ [7] devtools_2.4.5      usethis_2.1.6       BiocParallel_1.32.3
+[10] edgeR_3.40.0        limma_3.54.0        magrittr_2.0.3     
+[13] plyr_1.8.8          thematic_0.1.2.1    ggplot2_3.4.0      
+[16] data.table_1.14.6   workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.2                    tidyselect_1.2.0             
@@ -1256,7 +1444,7 @@ loaded via a namespace (and not attached):
  [15] knitr_1.41                    rstudioapi_0.14              
  [17] stats4_4.2.1                  SingleCellExperiment_1.20.0  
  [19] ggsignif_0.6.4                Rsubread_2.12.0              
- [21] MatrixGenerics_1.10.0         labeling_0.4.2               
+ [21] labeling_0.4.2                MatrixGenerics_1.10.0        
  [23] git2r_0.30.1                  tximport_1.26.0              
  [25] GenomeInfoDbData_1.2.9        bit64_4.0.5                  
  [27] farver_2.1.1                  rhdf5_2.42.0                 
@@ -1270,59 +1458,59 @@ loaded via a namespace (and not attached):
  [43] assertthat_0.2.1              promises_1.2.0.1             
  [45] BiocIO_1.8.0                  scales_1.2.1                 
  [47] gtable_0.3.1                  processx_3.8.0               
- [49] ensembldb_2.22.0              workflowr_1.7.0              
- [51] rlang_1.0.6                   systemfonts_1.0.4            
- [53] splines_4.2.1                 rtracklayer_1.58.0           
- [55] rstatix_0.7.1                 lazyeval_0.2.2               
- [57] broom_1.0.1                   BiocManager_1.30.19          
- [59] yaml_2.3.6                    abind_1.4-5                  
- [61] GenomicFeatures_1.50.2        backports_1.4.1              
- [63] httpuv_1.6.6                  sleuth_0.30.0                
- [65] wasabi_1.0.1                  tools_4.2.1                  
- [67] ellipsis_0.3.2                jquerylib_0.1.4              
- [69] BiocGenerics_0.44.0           sessioninfo_1.2.2            
- [71] Rcpp_1.0.9                    progress_1.2.2               
- [73] zlibbioc_1.44.0               RCurl_1.98-1.9               
- [75] ps_1.7.2                      prettyunits_1.1.1            
- [77] cowplot_1.1.1                 urlchecker_1.0.1             
- [79] S4Vectors_0.36.0              SummarizedExperiment_1.28.0  
- [81] fs_1.5.2                      svMisc_1.2.3                 
- [83] whisker_0.4                   ProtGenerics_1.30.0          
- [85] matrixStats_0.63.0            pkgload_1.3.2                
- [87] hms_1.1.2                     mime_0.12                    
- [89] evaluate_0.18                 xtable_1.8-4                 
- [91] XML_3.99-0.12                 IRanges_2.32.0               
- [93] compiler_4.2.1                biomaRt_2.54.0               
- [95] tibble_3.1.8                  crayon_1.5.2                 
- [97] htmltools_0.5.3               later_1.3.0                  
- [99] tzdb_0.3.0                    tidyr_1.2.1                  
-[101] DBI_1.1.3                     dbplyr_2.2.1                 
-[103] rappdirs_0.3.3                Matrix_1.5-3                 
-[105] car_3.1-1                     cli_3.4.1                    
-[107] parallel_4.2.1                GenomicRanges_1.50.1         
-[109] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
-[111] xml2_1.3.3                    svglite_2.1.0                
-[113] bslib_0.4.1                   webshot_0.5.4                
-[115] XVector_0.38.0                rvest_1.0.3                  
-[117] stringr_1.4.1                 callr_3.7.3                  
-[119] digest_0.6.30                 Biostrings_2.66.0            
-[121] rmarkdown_2.18                tximeta_1.16.0               
-[123] restfulr_0.0.15               curl_4.3.3                   
-[125] shiny_1.7.3                   Rsamtools_2.14.0             
-[127] gtools_3.9.3                  rjson_0.2.21                 
-[129] lifecycle_1.0.3               jsonlite_1.8.3               
-[131] Rhdf5lib_1.20.0               carData_3.0-5                
-[133] desc_1.4.2                    viridisLite_0.4.1            
-[135] fansi_1.0.3                   pillar_1.8.1                 
-[137] lattice_0.20-45               KEGGREST_1.38.0              
-[139] fastmap_1.1.0                 httr_1.4.4                   
-[141] pkgbuild_1.3.1                interactiveDisplayBase_1.36.0
-[143] glue_1.6.2                    remotes_2.4.2                
-[145] png_0.1-7                     BiocVersion_3.16.0           
-[147] bit_4.0.5                     stringi_1.7.8                
-[149] sass_0.4.4                    profvis_0.3.7                
-[151] blob_1.2.3                    AnnotationHub_3.6.0          
-[153] memoise_2.0.1                 dplyr_1.0.10                 </code></pre>
+ [49] ensembldb_2.22.0              rlang_1.0.6                  
+ [51] systemfonts_1.0.4             splines_4.2.1                
+ [53] rtracklayer_1.58.0            rstatix_0.7.1                
+ [55] lazyeval_0.2.2                broom_1.0.1                  
+ [57] BiocManager_1.30.19           yaml_2.3.6                   
+ [59] abind_1.4-5                   GenomicFeatures_1.50.2       
+ [61] backports_1.4.1               httpuv_1.6.6                 
+ [63] sleuth_0.30.0                 wasabi_1.0.1                 
+ [65] tools_4.2.1                   ellipsis_0.3.2               
+ [67] jquerylib_0.1.4               BiocGenerics_0.44.0          
+ [69] sessioninfo_1.2.2             Rcpp_1.0.9                   
+ [71] progress_1.2.2                zlibbioc_1.44.0              
+ [73] RCurl_1.98-1.9                ps_1.7.2                     
+ [75] prettyunits_1.1.1             urlchecker_1.0.1             
+ [77] S4Vectors_0.36.0              SummarizedExperiment_1.28.0  
+ [79] fs_1.5.2                      svMisc_1.2.3                 
+ [81] whisker_0.4                   ProtGenerics_1.30.0          
+ [83] matrixStats_0.63.0            pkgload_1.3.2                
+ [85] hms_1.1.2                     mime_0.12                    
+ [87] evaluate_0.18                 xtable_1.8-4                 
+ [89] XML_3.99-0.12                 IRanges_2.32.0               
+ [91] compiler_4.2.1                biomaRt_2.54.0               
+ [93] tibble_3.1.8                  crayon_1.5.2                 
+ [95] htmltools_0.5.3               later_1.3.0                  
+ [97] tzdb_0.3.0                    tidyr_1.2.1                  
+ [99] DBI_1.1.3                     dbplyr_2.2.1                 
+[101] rappdirs_0.3.3                Matrix_1.5-3                 
+[103] car_3.1-1                     cli_3.4.1                    
+[105] parallel_4.2.1                GenomicRanges_1.50.1         
+[107] pkgconfig_2.0.3               getPass_0.2-2                
+[109] GenomicAlignments_1.34.0      xml2_1.3.3                   
+[111] svglite_2.1.0                 bslib_0.4.1                  
+[113] webshot_0.5.4                 XVector_0.38.0               
+[115] rvest_1.0.3                   stringr_1.4.1                
+[117] callr_3.7.3                   digest_0.6.30                
+[119] Biostrings_2.66.0             rmarkdown_2.18               
+[121] tximeta_1.16.0                restfulr_0.0.15              
+[123] curl_4.3.3                    shiny_1.7.3                  
+[125] Rsamtools_2.14.0              gtools_3.9.3                 
+[127] rjson_0.2.21                  lifecycle_1.0.3              
+[129] jsonlite_1.8.3                Rhdf5lib_1.20.0              
+[131] carData_3.0-5                 desc_1.4.2                   
+[133] viridisLite_0.4.1             fansi_1.0.3                  
+[135] pillar_1.8.1                  lattice_0.20-45              
+[137] KEGGREST_1.38.0               fastmap_1.1.0                
+[139] httr_1.4.4                    pkgbuild_1.3.1               
+[141] interactiveDisplayBase_1.36.0 glue_1.6.2                   
+[143] remotes_2.4.2                 png_0.1-7                    
+[145] BiocVersion_3.16.0            bit_4.0.5                    
+[147] stringi_1.7.8                 sass_0.4.4                   
+[149] profvis_0.3.7                 blob_1.2.3                   
+[151] AnnotationHub_3.6.0           memoise_2.0.1                
+[153] dplyr_1.0.10                 </code></pre>
 </div>
 </div>
 </div>
