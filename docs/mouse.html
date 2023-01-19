@@ -361,7 +361,7 @@ div.tocify {
 <h1 class="title toc-ignore">Transcript level analysis of mouse mammary
 gland RNA-seq data</h1>
 <h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">06 January, 2023</h4>
+<h4 class="date">19 January, 2023</h4>
 
 </div>
 
@@ -390,7 +390,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-06
+<strong>Last updated:</strong> 2023-01-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -524,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree9bdd81920622c9e710fd325d68872c1e922b0b9atargetblank9bdd819a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/9bdd81920622c9e710fd325d68872c1e922b0b9a" target="_blank">9bdd819</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree9bdd81920622c9e710fd325d68872c1e922b0b9atargetblank9bdd819a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/9bdd81920622c9e710fd325d68872c1e922b0b9a" target="_blank">9bdd819</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -560,7 +560,6 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    .gitignore
-    Ignored:    analysis/figure/
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
@@ -572,10 +571,9 @@ Ignored files:
     Ignored:    data/annotation/mm39/
     Ignored:    data/mouse/paired-end/fastq/
     Ignored:    data/mouse/single-end/fastq/
-    Ignored:    misc/mouse.Rmd/
-    Ignored:    misc/quasi_poisson/output/
     Ignored:    output/mouse/paired-end/
     Ignored:    output/mouse/single-end/
+    Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
     Ignored:    renv/
 
@@ -625,6 +623,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/analysis/mouse.Rmd" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+<td>
+Organizing output from mouse analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/mouse.html" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+<td>
+Organizing output from mouse analysis
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1106,19 +1138,20 @@ dt.mao.plot$NTranscriptPerGeneTrunc %&lt;&gt;% factor(levels = paste0(c(1:10,&#3
 
 # Number of transcripts from single-transcript genes
 dt.mao.plot[NTranscriptPerGene == 1,
-            .(.N,sum(NTranscriptPerGene == 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene == 1))]</code></pre>
-<pre><code>      N         V2
-1: 2967 0.03943377</code></pre>
+            .(.N,sum(NTranscriptPerGene == 1 &amp; Overdispersion&gt;(1/0.9))/sum(NTranscriptPerGene == 1))]</code></pre>
+<pre><code>      N        V2
+1: 2967 0.1681834</code></pre>
 <pre class="r"><code># Number of transcripts from multi-transcript genes
 dt.mao.plot[NTranscriptPerGene &gt; 1,
-            .(.N,sum(NTranscriptPerGene &gt; 1 &amp; Overdispersion&gt;2)/sum(NTranscriptPerGene &gt; 1))]</code></pre>
+            .(.N,sum(NTranscriptPerGene &gt; 1 &amp; Overdispersion&gt;(1/0.9))/sum(NTranscriptPerGene &gt; 1))]</code></pre>
 <pre><code>       N        V2
-1: 40609 0.4484966</code></pre>
+1: 40609 0.8127755</code></pre>
 <pre class="r"><code># Number of transcripts from transcript-rich genes (#tx&gt;10)
 dt.mao.plot[NTranscriptPerGene &gt;= 10,
-            .(.N,mean(Overdispersion))]</code></pre>
-<pre><code>       N       V2
-1: 12558 5.315015</code></pre>
+            .(NGeneID = length(unique(GeneID)),
+              NTranscriptID = .N,mean(Overdispersion))]</code></pre>
+<pre><code>   NGeneID NTranscriptID       V3
+1:    2172         12558 5.315015</code></pre>
 <pre class="r"><code>plot.mao.2 &lt;- 
   ggplot(data = dt.mao.plot,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
   geom_boxplot(fill = &#39;gray&#39;,outlier.alpha = 0.2) +
@@ -1131,6 +1164,43 @@ dt.mao.plot[NTranscriptPerGene &gt;= 10,
 plot.mao.2</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/mouse.Rmd/mouse_eda_plots_mao-1.png" width="1500" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse_eda_plots_mao-1">
+Past versions of mouse_eda_plots_mao-1.png
+</button>
+</p>
+<div id="fig-mouse_eda_plots_mao-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao-1.png" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Heatmap of Foxp1 transcripts
 cpm.scaled.filtr &lt;- cpm(dte.pe.scaled.filtr,log = TRUE)
 rownames(cpm.scaled.filtr) &lt;- dte.pe.scaled.filtr$genes$TranscriptName
@@ -1251,6 +1321,43 @@ wrap_plots(A = plot.mds,
            heights = c(0.35,0.65)) +
   plot_annotation(tag_levels = &#39;a&#39;,tag_prefix = &#39;(&#39;,tag_suffix = &#39;)&#39;) </code></pre>
 <p><img src="figure/mouse.Rmd/mouse_eda_plots_dte-1.png" width="2400" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse_eda_plots_dte-1">
+Past versions of mouse_eda_plots_dte-1.png
+</button>
+</p>
+<div id="fig-mouse_eda_plots_dte-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_dte-1.png" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Foxp1-216
 out.pe.LPvsB.scaled$table[&#39;ENSMUST00000175838.2&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName
@@ -1308,6 +1415,43 @@ fig.mao.gene.tx &lt;- ggplot(df.output.gene.tx,aes(x = log10(Overdispersion),y =
   theme(legend.position = &#39;none&#39;)
 fig.mao.gene.tx</code></pre>
 <p><img src="figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse_eda_plots_mao_gene-1">
+Past versions of mouse_eda_plots_mao_gene-1.png
+</button>
+</p>
+<div id="fig-mouse_eda_plots_mao_gene-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>df.output.gene.top &lt;- df.output.gene[order(-Overdispersion),][1:20,]
 df.output.gene.top[,Level := NULL]
 df.output.gene.top$Type &lt;- 
@@ -1423,6 +1567,43 @@ Up             6929</code></pre>
 <h2>Plots and other exploratory analyses</h2>
 <pre class="r"><code>plotMD(qlf.se.LPvsB.scaled,main = NULL)</code></pre>
 <p><img src="figure/mouse.Rmd/mouse_eda_se_dte-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse_eda_se_dte-1">
+Past versions of mouse_eda_se_dte-1.png
+</button>
+</p>
+<div id="fig-mouse_eda_se_dte-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_se_dte-1.png" target="_blank">9a3e926</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># Foxp1 transcripts (EntrezID 108655)
 out.se.LPvsB.scaled$table[out.se.LPvsB.scaled$table$GeneEntrezID %in% &#39;108655&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName

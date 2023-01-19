@@ -331,15 +331,16 @@ dt.mao.plot$NTranscriptPerGeneTrunc %<>% factor(levels = paste0(c(1:10,'>=10')))
 
 # Number of transcripts from single-transcript genes
 dt.mao.plot[NTranscriptPerGene == 1,
-            .(.N,sum(NTranscriptPerGene == 1 & Overdispersion>2)/sum(NTranscriptPerGene == 1))]
+            .(.N,sum(NTranscriptPerGene == 1 & Overdispersion>(1/0.9))/sum(NTranscriptPerGene == 1))]
 
 # Number of transcripts from multi-transcript genes
 dt.mao.plot[NTranscriptPerGene > 1,
-            .(.N,sum(NTranscriptPerGene > 1 & Overdispersion>2)/sum(NTranscriptPerGene > 1))]
+            .(.N,sum(NTranscriptPerGene > 1 & Overdispersion>(1/0.9))/sum(NTranscriptPerGene > 1))]
 
 # Number of transcripts from transcript-rich genes (#tx>10)
 dt.mao.plot[NTranscriptPerGene >= 10,
-            .(.N,mean(Overdispersion))]
+            .(NGeneID = length(unique(GeneID)),
+              NTranscriptID = .N,mean(Overdispersion))]
 
 plot.mao.2 <- 
   ggplot(data = dt.mao.plot,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
