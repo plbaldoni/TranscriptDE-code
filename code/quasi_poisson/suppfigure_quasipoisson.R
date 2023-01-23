@@ -67,9 +67,9 @@ is.singletx <- dge$genes$N == 1
 
 # Plots
 
-png(file = file.path(out.path,'plot.png'),height = 5,width = 10,units = 'in',res = 300)
+agg_png(filename = file.path(out.path,"suppfigure_quasipoisson.png"),width = 7.5/2,height = 7.5,units = 'in',res = 300)
 
-par(mfrow = c(1,2))
+par(mfrow = c(2,1))
 
 plot(log10(rvars.true[!is.singletx.true])~log10(rmeans.true[!is.singletx.true]),xlim = c(0,7),ylim = c(0,7),
      col = 'black',
@@ -77,7 +77,10 @@ plot(log10(rvars.true[!is.singletx.true])~log10(rmeans.true[!is.singletx.true]),
      cex = 0.01,
      ylab = "Transcript-level variance (log10 scale)",
      xlab = "Mean transcript expression (log10 scale)",
-     main = 'True (simulated) counts from technical replicates',cex.main = 0.75)
+     main = 'True (simulated) counts',
+     cex.main = 8/12,
+     cex.lab = 8/12,
+     cex.axis = 8/12)
 points(log10(rvars.true[is.singletx.true])~log10(rmeans.true[is.singletx.true]),xlim = c(0,7),ylim = c(0,7),
        col = 'red',
        pch = 20,
@@ -86,7 +89,7 @@ points(log10(rvars.true[is.singletx.true])~log10(rmeans.true[is.singletx.true]),
 legend('topleft',
        legend = c('Transcripts from multi-transcript genes',
                   'Transcripts from single-transcript-genes'),
-       pch = 16,col = c('black','red'),cex = 0.75)
+       pch = 16,col = c('black','red'),cex = 6/12)
 
 abline(a = 0,b = 1,col = 'red',lty = 2)
 
@@ -96,7 +99,10 @@ plot(log10(rvars[!is.singletx])~log10(rmeans[!is.singletx]),xlim = c(0,7),ylim =
      cex = 0.01,
      ylab = "Transcript-level variance (log10 scale)",
      xlab = "Mean transcript expression (log10 scale)",
-     main = 'Estimated (quantified) counts from technical replicates',cex.main = 0.75)
+     main = 'Estimated (quantified) counts',
+     cex.main = 8/12,
+     cex.lab = 8/12,
+     cex.axis = 8/12)
 points(log10(rvars[is.singletx])~log10(rmeans[is.singletx]),xlim = c(0,7),ylim = c(0,7),
        col = 'red',
        pch = 20,

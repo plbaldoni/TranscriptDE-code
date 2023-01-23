@@ -509,18 +509,27 @@ setnames(tb.foxp1.gene,
 
 tb.foxp1.gene$Type <- gsub("_"," ",tb.foxp1.gene$Type)
 
-tb.foxp1.gene <- tb.foxp1.gene[,c(3,4,2,5,9)]
+tb.foxp1.gene$logFC <- formatC(round(tb.foxp1.gene$logFC,3),digits = 3,format = 'f')
+tb.foxp1.gene$logCPM <- formatC(round(tb.foxp1.gene$logCPM,3),digits = 3,format = 'f')
+tb.foxp1.gene$`F` <- formatC(round(tb.foxp1.gene$`F`,3),digits = 3,format = 'f')
+tb.foxp1.gene$PValue <- formatC(tb.foxp1.gene$PValue,digits = 3,format = 'e')
+tb.foxp1.gene$FDR <- formatC(tb.foxp1.gene$FDR,digits = 3,format = 'e')
+
+tb.foxp1.gene$`Entrez ID` <- NULL
+tb.foxp1.gene$Type <- NULL
 
 kb.foxp1.gene <- 
   kbl(tb.foxp1.gene,
       escape = FALSE,
       format = 'latex',
       booktabs = TRUE,
-      caption = paste('Results from gene-level DE analysis for the Foxp1 gene',
-                      'with edgeR via count scaling comparing basal and LP',
-                      'cells using paired-end RNA-seq experiment'),
-      align = 'llccc')
-save_kable(kb.foxp1.gene,file = file.path(path.misc,"mouse_eda_table_foxp1.tex"))
+      caption = paste('edgeR results from a DE analysis at the gene-level for',
+                      'the Foxp1 gene comparing basal and LP cells using the',
+                      'paired-end RNA-seq experiment of the epithelial cell',
+                      'population of the mouse mammary gland'),
+      align = 'llccccc') %>%
+  kable_styling(font_size = 10)
+save_kable(kb.foxp1.gene,file = file.path(path.misc,"supptable_foxp1.tex"))
 ```
 
 ```{r mouse_eda_plots_mao_gene}
@@ -544,11 +553,17 @@ df.output.gene.tx <- rbindlist(list(df.output.gene,
                                     df.output.tx))
 
 fig.mao.gene.tx <- ggplot(df.output.gene.tx,aes(x = log10(Overdispersion),y = Level,fill = Level)) +
-  geom_boxplot(outlier.alpha = 0.5) +
-  scale_fill_brewer(palette = 'Set1') +
+  geom_boxplot(outlier.alpha = 0.25,fill = "#bebebe",col = 'black') +
   labs(y = NULL,x = 'Mapping ambiguity overdispersion (log10 scale)') +
-  theme_bw() +
-  theme(legend.position = 'none')
+  theme_bw(base_size = 8,base_family = 'sans') +
+  theme(legend.position = 'none',
+        panel.grid = element_blank(),
+        axis.text = element_text(colour = 'black',size = 8))
+
+agg_png(filename = file.path(path.misc,"suppfigure_overdispersion.png"),width = 7.5,height = 5,units = 'in',res = 300)
+fig.mao.gene.tx
+dev.off()
+
 fig.mao.gene.tx
 ```
 
@@ -561,14 +576,9 @@ df.output.gene.top$EntrezID[is.na(df.output.gene.top$EntrezID)] <-
   "-"
 
 cap.mao <- paste("Top 100 genes with largest mapping ambiguity overdispersion.",
-                 "Here, mapping ambiguity overdispersion at the gene-level was",
-                 "estimated with bootstrap counts summarized to the gene-wise",
-                 "counts computed with the function summarizeToGene from the",
-                 "tximport package. The majority of such genes are classified as",
-                 "gene models or pseudo-genes, and exhibit high levels of overlap",
-                 "with other annotated genes. Data from the mouse mammary gland",
-                 "epithelial cell population experiment generated with paired-end",
-                 "reads.")
+                 "Data from the RNA-seq experiment of the epithelial cell",
+                 "population from the mouse mammary gland generated with",
+                 "paired-end reads.")
 
 kb.output.gene.top <- kbl(df.output.gene.top,
                           longtable = TRUE,
@@ -580,7 +590,7 @@ kb.output.gene.top <- kbl(df.output.gene.top,
                           align = c('l',rep('r',3)),
                           col.names = c('Gene Symbol','Entrez ID','Biotype','Overdispersion')) %>%
   kable_styling(latex_options = c("scale_down","repeat_header"),font_size = 10)
-save_kable(kb.output.gene.top,file = file.path(path.misc,"mouse_eda_table_mao.tex"))
+save_kable(kb.output.gene.top,file = file.path(path.misc,"supptable_overdispersion.tex"))
 ```
 
 # Analysis of single-end data
@@ -685,12 +695,51 @@ summary(decideTests(qlf.se.LPvsB.raw))
 ## Plots and other exploratory analyses
 
 ```{r mouse_eda_se_dte}
-plotMD(qlf.se.LPvsB.scaled,main = NULL)
-
+agg_png(filename = file.path(path.misc,"suppfigure_maplot.png"),width = 6,height = 6,units = 'in',res = 300)
+plotMD(qlf.se.LPvsB.scaled,xlim = c(-1.5,17.5),
+       main = NULL,cex = 0.5,legend = FALSE,
+       cex.lab = 8/12,
+       cex.axis = 8/12)
+legend('topright',
+       legend = c('NotSig','Up','Down'),
+       pch = rep(16,3), 
+       col = c('black','red','blue'),
+       cex = 8/12,
+       pt.cex = c(0.3,0.5,0.5))
+dev.off()
 ```
 
 ```{r r mouse_eda_se_dte_foxp1}
 # Foxp1 transcripts (EntrezID 108655)
 out.se.LPvsB.scaled$table[out.se.LPvsB.scaled$table$GeneEntrezID %in% '108655',]
 out.se.LPvsB.raw$table[out.se.LPvsB.raw$table$GeneEntrezID %in% '108655',]
+
+tb.se.foxp1.gene <- 
+  out.se.LPvsB.scaled[grepl('ENSMUSG00000030067',out.se.LPvsB.scaled$table$GeneID),]$table
+tb.se.foxp1.gene <- data.frame("Ensembl ID" = rownames(tb.se.foxp1.gene),
+                               tb.se.foxp1.gene[,-c(1,2,3,5,6,7,8,9)],row.names = NULL)
+
+setnames(tb.se.foxp1.gene,
+         old = c('Ensembl.ID','TranscriptName'),
+         new = c('Ensembl ID','Name'))
+
+tb.se.foxp1.gene$logFC <- formatC(round(tb.se.foxp1.gene$logFC,3),digits = 3,format = 'f')
+tb.se.foxp1.gene$logCPM <- formatC(round(tb.se.foxp1.gene$logCPM,3),digits = 3,format = 'f')
+tb.se.foxp1.gene$`F` <- formatC(round(tb.se.foxp1.gene$`F`,3),digits = 3,format = 'f')
+tb.se.foxp1.gene$PValue <- formatC(tb.se.foxp1.gene$PValue,digits = 3,format = 'e')
+tb.se.foxp1.gene$FDR <- formatC(tb.se.foxp1.gene$FDR,digits = 3,format = 'e')
+
+kb.se.foxp1.gene <- 
+  kbl(tb.se.foxp1.gene,
+      escape = FALSE,
+      format = 'latex',
+      booktabs = TRUE,
+      caption = paste("edgeR results with count scaling from DTE analysis",
+                      "comparing basal and LP cells for the single-end RNA-seq",
+                      "experiment of the epithelia cell population from the",
+                      "mouse mammary gland. Shown are the topTags results",
+                      "restricted to the Foxp1 transcripts."),
+      align = "llccccc") %>%
+  kable_styling(font_size = 10)
+save_kable(kb.se.foxp1.gene,file = file.path(path.misc,"supptable_singleend.tex"))
 ```
