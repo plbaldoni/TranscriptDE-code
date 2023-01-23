@@ -579,7 +579,7 @@ kb.output.gene.top <- kbl(df.output.gene.top,
                           digits = 2,
                           align = c('l',rep('r',3)),
                           col.names = c('Gene Symbol','Entrez ID','Biotype','Overdispersion')) %>%
-  kable_styling(latex_options = "scale_down",font_size = 10)
+  kable_styling(latex_options = c("scale_down","repeat_header"),font_size = 10)
 save_kable(kb.output.gene.top,file = file.path(path.misc,"mouse_eda_table_mao.tex"))
 ```
 
