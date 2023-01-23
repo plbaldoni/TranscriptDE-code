@@ -361,7 +361,7 @@ div.tocify {
 <h1 class="title toc-ignore">Transcript level analysis of mouse mammary
 gland RNA-seq data</h1>
 <h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">19 January, 2023</h4>
+<h4 class="date">20 January, 2023</h4>
 
 </div>
 
@@ -390,7 +390,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-19
+<strong>Last updated:</strong> 2023-01-20
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -524,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreee64cf4d4c222149ac5cade052a4feb1ee5325e47targetblanke64cf4da">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/e64cf4d4c222149ac5cade052a4feb1ee5325e47" target="_blank">e64cf4d</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeca7c822e29561f8feab0e6c24243ba7d6986a7ebtargetblankca7c822a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreee64cf4d4c222149ac5cade052a4feb1ee5325e47targetblanke64cf4da"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/ca7c822e29561f8feab0e6c24243ba7d6986a7eb" target="_blank">ca7c822</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/e64cf4d4c222149ac5cade052a4feb1ee5325e47" target="_blank">e64cf4d</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -557,8 +557,10 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    ._.DS_Store
     Ignored:    .gitignore
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
@@ -571,14 +573,28 @@ Ignored files:
     Ignored:    data/annotation/mm39/
     Ignored:    data/mouse/paired-end/fastq/
     Ignored:    data/mouse/single-end/fastq/
+    Ignored:    misc/.DS_Store
+    Ignored:    misc/._.DS_Store
+    Ignored:    misc/mouse.Rmd/._figure6.png
+    Ignored:    misc/simulation-paper.Rmd/._figure2.png
+    Ignored:    misc/simulation-paper.Rmd/._figure5.png
     Ignored:    output/mouse/paired-end/
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
     Ignored:    renv/
 
+Untracked files:
+    Untracked:  misc/mouse.Rmd/figure1.png
+    Untracked:  misc/mouse.Rmd/figure6.png
+
 Unstaged changes:
     Modified:   analysis/mouse.Rmd
+    Modified:   analysis/simulation-paper.Rmd
+    Modified:   misc/simulation-paper.Rmd/figure2.png
+    Modified:   misc/simulation-paper.Rmd/figure3.png
+    Modified:   misc/simulation-paper.Rmd/figure4.png
+    Modified:   misc/simulation-paper.Rmd/figure5.png
 
 </code></pre>
 <p>
@@ -623,6 +639,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e64cf4d4c222149ac5cade052a4feb1ee5325e47/analysis/mouse.Rmd" target="_blank">e64cf4d</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-19
+</td>
+<td>
+Changing values of reference to report in main paper
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/e64cf4d4c222149ac5cade052a4feb1ee5325e47/docs/mouse.html" target="_blank">e64cf4d</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-19
+</td>
+<td>
+Changing values of reference to report in main paper
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -782,6 +832,7 @@ library(tximeta)
 library(tidyverse)
 library(SummarizedExperiment)
 library(stringr)
+library(ragg)
 library(kableExtra)</code></pre>
 <pre class="r"><code># &#39;AH95775&#39; annotation corresponds to Ensembl 104 (release M27)
 ah &lt;- AnnotationHub()</code></pre>
@@ -1154,14 +1205,21 @@ dt.mao.plot[NTranscriptPerGene &gt;= 10,
 1:    2172         12558 5.315015</code></pre>
 <pre class="r"><code>plot.mao.2 &lt;- 
   ggplot(data = dt.mao.plot,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
-  geom_boxplot(fill = &#39;gray&#39;,outlier.alpha = 0.2) +
-  geom_smooth(aes(group = 1),color = &#39;red&#39;,se = FALSE,span = 0.8,method = &#39;loess&#39;) +
+  geom_boxplot(fill = &#39;#bebebe&#39;,outlier.alpha = 0.2,col = &#39;black&#39;) +
+  geom_smooth(aes(group = 1),color = &#39;#ff0000&#39;,se = FALSE,span = 0.8,method = &#39;loess&#39;) +
   labs(x = &#39;Number of expressed transcripts per gene&#39;, y = &#39;Overdispersion (log10 scale)&#39;) +
   scale_y_continuous(limits = c(0,3),breaks = seq(0,3,0.5)) +
-  theme_bw() +
-  theme(panel.grid = element_blank())
+  theme_bw(base_size = 8,base_family = &#39;sans&#39;) +
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(colour = &#39;black&#39;,size = 8))
 
+agg_png(filename = file.path(path.misc,&quot;figure1.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300)
 plot.mao.2</code></pre>
+<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre class="r"><code>dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<pre class="r"><code>plot.mao.2</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/mouse.Rmd/mouse_eda_plots_mao-1.png" width="1500" style="display: block; margin: auto;" /></p>
 <p>
@@ -1213,7 +1271,7 @@ cpm.scaled.filtr.LPvsBasal &lt;- t(scale(t(cpm.scaled.filtr.LPvsBasal)))
 cpm.scaled.filtr.LPvsBasal.foxp1 &lt;- 
   cpm.scaled.filtr.LPvsBasal[grepl(&#39;foxp1&#39;,rownames(cpm.scaled.filtr.LPvsBasal),ignore.case = TRUE),]
 
-foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 10){
+foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
   tb &lt;- data.table(TranscriptName = rownames(x),x)
   tb &lt;- melt(tb,id.vars = &#39;TranscriptName&#39;,value.name = &#39;Expression&#39;)
   tb &lt;- as_tibble(tb)
@@ -1227,8 +1285,11 @@ foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 10){
             column_names_gp = gpar(fontsize = fontsize),
             clustering_method_rows = &quot;complete&quot;,
             clustering_method_columns = &quot;complete&quot;,
-            heatmap_legend_param = list(at = seq(-3,3,1),
-                                        direction = &quot;horizontal&quot;)) %&gt;%
+            heatmap_legend_param = list(direction = &quot;horizontal&quot;,
+                                        at = seq(-3,3,1),
+                                        title_position = &#39;topcenter&#39;,
+                                        title_gp = gpar(fontsize = fontsize),
+                                        labels_gp = gpar(fontsize = fontsize))) %&gt;%
     as_ComplexHeatmap() %&gt;%
     draw(heatmap_legend_side = &quot;top&quot;)
 }
@@ -1276,22 +1337,24 @@ plot.heat.breast &lt;-
 
 
 # plotMD does not return invisible(), so we just use wrap_elements
-foo.md &lt;- function(x){
+foo.md &lt;- function(x,fontsize = 8){
   par(mar = c(5, 4, 2, 2))
   plotMD(x,xlim = c(-2.5,17.5),
-         main = NULL,cex = 0.5,legend = FALSE)
+         main = NULL,cex = 0.5,legend = FALSE,
+         cex.lab = fontsize/12,
+         cex.axis = fontsize/12)
   legend(&#39;topright&#39;,
          legend = c(&#39;NotSig&#39;,&#39;Up&#39;,&#39;Down&#39;),
          pch = rep(16,3), 
          col = c(&#39;black&#39;,&#39;red&#39;,&#39;blue&#39;),
-         cex = 0.75,
+         cex = fontsize/12,
          pt.cex = c(0.3,0.5,0.5))
 }
 plot.md &lt;- 
   wrap_elements(full = ~foo.md(qlf.pe.LPvsB.scaled))
 
 # plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
-foo.mds &lt;- function(x){
+foo.mds &lt;- function(x,fontsize = 8){
   obj.mds &lt;- plotMDS(x,col = x$samples$Color,main = NULL)
   par(mar = c(5, 4, 2, 2))
   labels &lt;- colnames(obj.mds$distance.matrix.squared)
@@ -1305,59 +1368,31 @@ foo.mds &lt;- function(x){
   ylab &lt;- paste0(ylab, &quot; (&quot;, Perc[2], &quot;%)&quot;)
   
   plot(c(-6, 3), c(-3, 3),
-       #c(left.x, right.x), c(obj.mds$y, obj.mds$y), 
-       type = &quot;n&quot;,xlab = xlab,ylab = ylab)
-  text(obj.mds$x, obj.mds$y, labels = labels, cex = 1,col = x$samples$Color)
+       type = &quot;n&quot;,xlab = xlab,ylab = ylab,
+       cex.lab = fontsize/12,
+       cex.axis = fontsize/12)
+  text(obj.mds$x, obj.mds$y, labels = labels, cex = fontsize/12,col = x$samples$Color)
 }
 plot.mds &lt;- wrap_elements(full = ~foo.mds(dte.pe.scaled.filtr))
 
 plot.design &lt;- c(area(1, 1),area(1,2),area(2, 1),area(2,2))
 
-wrap_plots(A = plot.mds,
-           B = plot.md,
-           C = plot.heat,
-           D = plot.heat.breast,
-           design = plot.design,
-           heights = c(0.35,0.65)) +
-  plot_annotation(tag_levels = &#39;a&#39;,tag_prefix = &#39;(&#39;,tag_suffix = &#39;)&#39;) </code></pre>
-<p><img src="figure/mouse.Rmd/mouse_eda_plots_dte-1.png" width="2400" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-mouse_eda_plots_dte-1">
-Past versions of mouse_eda_plots_dte-1.png
-</button>
-</p>
-<div id="fig-mouse_eda_plots_dte-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_dte-1.png" target="_blank">9a3e926</a>
-</td>
-<td>
-Pedro Baldoni
-</td>
-<td>
-2023-01-06
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+fig.heatmap &lt;- wrap_plots(A = plot.mds,
+                          B = plot.md,
+                          C = plot.heat,
+                          D = plot.heat.breast,
+                          design = plot.design,
+                          heights = c(0.4,0.6)) +
+  plot_annotation(tag_levels = &#39;a&#39;) 
+
+fig.heatmap &lt;- fig.heatmap &amp;
+  theme(plot.tag = element_text(size = 8))
+
+agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),width = 10,height = 10,units = &#39;in&#39;,res = 300)
+fig.heatmap
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
 <pre class="r"><code># Foxp1-216
 out.pe.LPvsB.scaled$table[&#39;ENSMUST00000175838.2&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName
@@ -1699,103 +1734,104 @@ attached base packages:
 other attached packages:
  [1] ensembldb_2.22.0            AnnotationFilter_1.22.0    
  [3] GenomicFeatures_1.50.2      AnnotationDbi_1.60.0       
- [5] kableExtra_1.3.4            SummarizedExperiment_1.28.0
- [7] Biobase_2.58.0              MatrixGenerics_1.10.0      
- [9] matrixStats_0.63.0          forcats_0.5.2              
-[11] stringr_1.4.1               dplyr_1.0.10               
-[13] purrr_0.3.5                 tidyr_1.2.1                
-[15] tidyverse_1.3.2             tximeta_1.16.0             
-[17] fishpond_2.4.0              sleuth_0.30.0              
-[19] AnnotationHub_3.6.0         BiocFileCache_2.6.0        
-[21] dbplyr_2.2.1                tidyHeatmap_1.7.0          
-[23] tibble_3.1.8                patchwork_1.1.2            
-[25] ComplexHeatmap_2.14.0       gplots_3.1.3               
-[27] plyr_1.8.8                  ggpubr_0.5.0               
-[29] magrittr_2.0.3              rtracklayer_1.58.0         
-[31] GenomicRanges_1.50.1        GenomeInfoDb_1.34.3        
-[33] IRanges_2.32.0              S4Vectors_0.36.0           
-[35] BiocGenerics_0.44.0         Rsubread_2.12.0            
-[37] readr_2.1.3                 ggplot2_3.4.0              
-[39] data.table_1.14.6           edgeR_3.40.0               
-[41] limma_3.54.0                workflowr_1.7.0            
+ [5] kableExtra_1.3.4            ragg_1.2.4                 
+ [7] SummarizedExperiment_1.28.0 Biobase_2.58.0             
+ [9] MatrixGenerics_1.10.0       matrixStats_0.63.0         
+[11] forcats_0.5.2               stringr_1.4.1              
+[13] dplyr_1.0.10                purrr_0.3.5                
+[15] tidyr_1.2.1                 tidyverse_1.3.2            
+[17] tximeta_1.16.0              fishpond_2.4.0             
+[19] sleuth_0.30.0               AnnotationHub_3.6.0        
+[21] BiocFileCache_2.6.0         dbplyr_2.2.1               
+[23] tidyHeatmap_1.7.0           tibble_3.1.8               
+[25] patchwork_1.1.2             ComplexHeatmap_2.14.0      
+[27] gplots_3.1.3                plyr_1.8.8                 
+[29] ggpubr_0.5.0                magrittr_2.0.3             
+[31] rtracklayer_1.58.0          GenomicRanges_1.50.1       
+[33] GenomeInfoDb_1.34.3         IRanges_2.32.0             
+[35] S4Vectors_0.36.0            BiocGenerics_0.44.0        
+[37] Rsubread_2.12.0             readr_2.1.3                
+[39] ggplot2_3.4.0               data.table_1.14.6          
+[41] edgeR_3.40.0                limma_3.54.0               
+[43] workflowr_1.7.0            
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.2                    tidyselect_1.2.0             
   [3] RSQLite_2.2.19                BiocParallel_1.32.3          
-  [5] munsell_0.5.0                 ragg_1.2.4                   
-  [7] codetools_0.2-18              statmod_1.4.37               
-  [9] withr_2.5.0                   colorspace_2.0-3             
- [11] filelock_1.0.2                highr_0.9                    
- [13] knitr_1.41                    rstudioapi_0.14              
- [15] SingleCellExperiment_1.20.0   ggsignif_0.6.4               
- [17] labeling_0.4.2                git2r_0.30.1                 
- [19] tximport_1.26.0               GenomeInfoDbData_1.2.9       
- [21] farver_2.1.1                  bit64_4.0.5                  
- [23] rhdf5_2.42.0                  rprojroot_2.0.3              
- [25] vctrs_0.5.1                   generics_0.1.3               
- [27] xfun_0.35                     timechange_0.1.1             
- [29] R6_2.5.1                      doParallel_1.0.17            
- [31] clue_0.3-63                   locfit_1.5-9.6               
- [33] gridGraphics_0.5-1            bitops_1.0-7                 
- [35] rhdf5filters_1.10.0           cachem_1.0.6                 
- [37] DelayedArray_0.24.0           assertthat_0.2.1             
- [39] vroom_1.6.0                   promises_1.2.0.1             
- [41] BiocIO_1.8.0                  scales_1.2.1                 
- [43] googlesheets4_1.0.1           gtable_0.3.1                 
- [45] Cairo_1.6-0                   processx_3.8.0               
- [47] rlang_1.0.6                   systemfonts_1.0.4            
- [49] splines_4.2.1                 GlobalOptions_0.1.2          
- [51] rstatix_0.7.1                 lazyeval_0.2.2               
- [53] gargle_1.2.1                  broom_1.0.1                  
- [55] reshape2_1.4.4                modelr_0.1.10                
- [57] BiocManager_1.30.19           yaml_2.3.6                   
- [59] abind_1.4-5                   backports_1.4.1              
- [61] httpuv_1.6.6                  qvalue_2.30.0                
- [63] tools_4.2.1                   ellipsis_0.3.2               
- [65] jquerylib_0.1.4               RColorBrewer_1.1-3           
- [67] Rcpp_1.0.9                    progress_1.2.2               
- [69] zlibbioc_1.44.0               RCurl_1.98-1.9               
- [71] ps_1.7.2                      prettyunits_1.1.1            
- [73] GetoptLong_1.0.5              viridis_0.6.2                
- [75] haven_2.5.1                   cluster_2.1.4                
- [77] fs_1.5.2                      svMisc_1.2.3                 
- [79] circlize_0.4.15               reprex_2.0.2                 
- [81] googledrive_2.0.0             whisker_0.4                  
- [83] ProtGenerics_1.30.0           hms_1.1.2                    
- [85] mime_0.12                     evaluate_0.18                
- [87] xtable_1.8-4                  XML_3.99-0.12                
- [89] readxl_1.4.1                  gridExtra_2.3                
- [91] shape_1.4.6                   compiler_4.2.1               
- [93] biomaRt_2.54.0                KernSmooth_2.23-20           
- [95] crayon_1.5.2                  htmltools_0.5.3              
- [97] mgcv_1.8-41                   later_1.3.0                  
- [99] tzdb_0.3.0                    lubridate_1.9.0              
-[101] DBI_1.1.3                     rappdirs_0.3.3               
-[103] Matrix_1.5-3                  car_3.1-1                    
-[105] cli_3.4.1                     parallel_4.2.1               
-[107] pkgconfig_2.0.3               getPass_0.2-2                
-[109] GenomicAlignments_1.34.0      xml2_1.3.3                   
-[111] foreach_1.5.2                 svglite_2.1.0                
-[113] bslib_0.4.1                   webshot_0.5.4                
-[115] XVector_0.38.0                rvest_1.0.3                  
-[117] callr_3.7.3                   digest_0.6.30                
-[119] Biostrings_2.66.0             cellranger_1.1.0             
-[121] rmarkdown_2.18                dendextend_1.16.0            
-[123] restfulr_0.0.15               curl_4.3.3                   
-[125] shiny_1.7.3                   Rsamtools_2.14.0             
-[127] gtools_3.9.3                  rjson_0.2.21                 
-[129] nlme_3.1-160                  lifecycle_1.0.3              
-[131] jsonlite_1.8.3                Rhdf5lib_1.20.0              
-[133] carData_3.0-5                 viridisLite_0.4.1            
-[135] fansi_1.0.3                   pillar_1.8.1                 
-[137] lattice_0.20-45               KEGGREST_1.38.0              
-[139] fastmap_1.1.0                 httr_1.4.4                   
-[141] interactiveDisplayBase_1.36.0 glue_1.6.2                   
-[143] png_0.1-7                     iterators_1.0.14             
-[145] BiocVersion_3.16.0            bit_4.0.5                    
-[147] stringi_1.7.8                 sass_0.4.4                   
-[149] blob_1.2.3                    textshaping_0.3.6            
-[151] caTools_1.18.2                memoise_2.0.1                </code></pre>
+  [5] munsell_0.5.0                 codetools_0.2-18             
+  [7] statmod_1.4.37                withr_2.5.0                  
+  [9] colorspace_2.0-3              filelock_1.0.2               
+ [11] highr_0.9                     knitr_1.41                   
+ [13] rstudioapi_0.14               SingleCellExperiment_1.20.0  
+ [15] ggsignif_0.6.4                labeling_0.4.2               
+ [17] git2r_0.30.1                  tximport_1.26.0              
+ [19] GenomeInfoDbData_1.2.9        farver_2.1.1                 
+ [21] bit64_4.0.5                   rhdf5_2.42.0                 
+ [23] rprojroot_2.0.3               vctrs_0.5.1                  
+ [25] generics_0.1.3                xfun_0.35                    
+ [27] timechange_0.1.1              R6_2.5.1                     
+ [29] doParallel_1.0.17             clue_0.3-63                  
+ [31] locfit_1.5-9.6                gridGraphics_0.5-1           
+ [33] bitops_1.0-7                  rhdf5filters_1.10.0          
+ [35] cachem_1.0.6                  DelayedArray_0.24.0          
+ [37] assertthat_0.2.1              vroom_1.6.0                  
+ [39] promises_1.2.0.1              BiocIO_1.8.0                 
+ [41] scales_1.2.1                  googlesheets4_1.0.1          
+ [43] gtable_0.3.1                  Cairo_1.6-0                  
+ [45] processx_3.8.0                rlang_1.0.6                  
+ [47] systemfonts_1.0.4             splines_4.2.1                
+ [49] GlobalOptions_0.1.2           rstatix_0.7.1                
+ [51] lazyeval_0.2.2                gargle_1.2.1                 
+ [53] broom_1.0.1                   reshape2_1.4.4               
+ [55] modelr_0.1.10                 BiocManager_1.30.19          
+ [57] yaml_2.3.6                    abind_1.4-5                  
+ [59] backports_1.4.1               httpuv_1.6.6                 
+ [61] qvalue_2.30.0                 tools_4.2.1                  
+ [63] ellipsis_0.3.2                jquerylib_0.1.4              
+ [65] RColorBrewer_1.1-3            Rcpp_1.0.9                   
+ [67] progress_1.2.2                zlibbioc_1.44.0              
+ [69] RCurl_1.98-1.9                ps_1.7.2                     
+ [71] prettyunits_1.1.1             GetoptLong_1.0.5             
+ [73] viridis_0.6.2                 haven_2.5.1                  
+ [75] cluster_2.1.4                 fs_1.5.2                     
+ [77] svMisc_1.2.3                  circlize_0.4.15              
+ [79] reprex_2.0.2                  googledrive_2.0.0            
+ [81] whisker_0.4                   ProtGenerics_1.30.0          
+ [83] hms_1.1.2                     mime_0.12                    
+ [85] evaluate_0.18                 xtable_1.8-4                 
+ [87] XML_3.99-0.12                 readxl_1.4.1                 
+ [89] gridExtra_2.3                 shape_1.4.6                  
+ [91] compiler_4.2.1                biomaRt_2.54.0               
+ [93] KernSmooth_2.23-20            crayon_1.5.2                 
+ [95] htmltools_0.5.3               mgcv_1.8-41                  
+ [97] later_1.3.0                   tzdb_0.3.0                   
+ [99] lubridate_1.9.0               DBI_1.1.3                    
+[101] rappdirs_0.3.3                Matrix_1.5-3                 
+[103] car_3.1-1                     cli_3.4.1                    
+[105] parallel_4.2.1                pkgconfig_2.0.3              
+[107] getPass_0.2-2                 GenomicAlignments_1.34.0     
+[109] xml2_1.3.3                    foreach_1.5.2                
+[111] svglite_2.1.0                 bslib_0.4.1                  
+[113] webshot_0.5.4                 XVector_0.38.0               
+[115] rvest_1.0.3                   callr_3.7.3                  
+[117] digest_0.6.30                 Biostrings_2.66.0            
+[119] cellranger_1.1.0              rmarkdown_2.18               
+[121] dendextend_1.16.0             restfulr_0.0.15              
+[123] curl_4.3.3                    shiny_1.7.3                  
+[125] Rsamtools_2.14.0              gtools_3.9.3                 
+[127] rjson_0.2.21                  nlme_3.1-160                 
+[129] lifecycle_1.0.3               jsonlite_1.8.3               
+[131] Rhdf5lib_1.20.0               carData_3.0-5                
+[133] viridisLite_0.4.1             fansi_1.0.3                  
+[135] pillar_1.8.1                  lattice_0.20-45              
+[137] KEGGREST_1.38.0               fastmap_1.1.0                
+[139] httr_1.4.4                    interactiveDisplayBase_1.36.0
+[141] glue_1.6.2                    png_0.1-7                    
+[143] iterators_1.0.14              BiocVersion_3.16.0           
+[145] bit_4.0.5                     stringi_1.7.8                
+[147] sass_0.4.4                    blob_1.2.3                   
+[149] textshaping_0.3.6             caTools_1.18.2               
+[151] memoise_2.0.1                </code></pre>
 </div>
 </div>
 </div>

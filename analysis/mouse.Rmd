@@ -43,6 +43,7 @@ library(tximeta)
 library(tidyverse)
 library(SummarizedExperiment)
 library(stringr)
+library(ragg)
 library(kableExtra)
 ```
 
@@ -344,12 +345,17 @@ dt.mao.plot[NTranscriptPerGene >= 10,
 
 plot.mao.2 <- 
   ggplot(data = dt.mao.plot,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
-  geom_boxplot(fill = 'gray',outlier.alpha = 0.2) +
-  geom_smooth(aes(group = 1),color = 'red',se = FALSE,span = 0.8,method = 'loess') +
+  geom_boxplot(fill = '#bebebe',outlier.alpha = 0.2,col = 'black') +
+  geom_smooth(aes(group = 1),color = '#ff0000',se = FALSE,span = 0.8,method = 'loess') +
   labs(x = 'Number of expressed transcripts per gene', y = 'Overdispersion (log10 scale)') +
   scale_y_continuous(limits = c(0,3),breaks = seq(0,3,0.5)) +
-  theme_bw() +
-  theme(panel.grid = element_blank())
+  theme_bw(base_size = 8,base_family = 'sans') +
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(colour = 'black',size = 8))
+
+agg_png(filename = file.path(path.misc,"figure1.png"),width = 5,height = 5,units = 'in',res = 300)
+plot.mao.2
+dev.off()
 
 plot.mao.2
 ```
@@ -367,7 +373,7 @@ cpm.scaled.filtr.LPvsBasal <- t(scale(t(cpm.scaled.filtr.LPvsBasal)))
 cpm.scaled.filtr.LPvsBasal.foxp1 <- 
   cpm.scaled.filtr.LPvsBasal[grepl('foxp1',rownames(cpm.scaled.filtr.LPvsBasal),ignore.case = TRUE),]
 
-foo.heat <- function(x,cluster_rows = TRUE, fontsize = 10){
+foo.heat <- function(x,cluster_rows = TRUE, fontsize = 8){
   tb <- data.table(TranscriptName = rownames(x),x)
   tb <- melt(tb,id.vars = 'TranscriptName',value.name = 'Expression')
   tb <- as_tibble(tb)
@@ -381,8 +387,11 @@ foo.heat <- function(x,cluster_rows = TRUE, fontsize = 10){
             column_names_gp = gpar(fontsize = fontsize),
             clustering_method_rows = "complete",
             clustering_method_columns = "complete",
-            heatmap_legend_param = list(at = seq(-3,3,1),
-                                        direction = "horizontal")) %>%
+            heatmap_legend_param = list(direction = "horizontal",
+                                        at = seq(-3,3,1),
+                                        title_position = 'topcenter',
+                                        title_gp = gpar(fontsize = fontsize),
+                                        labels_gp = gpar(fontsize = fontsize))) %>%
     as_ComplexHeatmap() %>%
     draw(heatmap_legend_side = "top")
 }
@@ -429,22 +438,24 @@ plot.heat.breast <-
 
 
 # plotMD does not return invisible(), so we just use wrap_elements
-foo.md <- function(x){
+foo.md <- function(x,fontsize = 8){
   par(mar = c(5, 4, 2, 2))
   plotMD(x,xlim = c(-2.5,17.5),
-         main = NULL,cex = 0.5,legend = FALSE)
+         main = NULL,cex = 0.5,legend = FALSE,
+         cex.lab = fontsize/12,
+         cex.axis = fontsize/12)
   legend('topright',
          legend = c('NotSig','Up','Down'),
          pch = rep(16,3), 
          col = c('black','red','blue'),
-         cex = 0.75,
+         cex = fontsize/12,
          pt.cex = c(0.3,0.5,0.5))
 }
 plot.md <- 
   wrap_elements(full = ~foo.md(qlf.pe.LPvsB.scaled))
 
 # plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
-foo.mds <- function(x){
+foo.mds <- function(x,fontsize = 8){
   obj.mds <- plotMDS(x,col = x$samples$Color,main = NULL)
   par(mar = c(5, 4, 2, 2))
   labels <- colnames(obj.mds$distance.matrix.squared)
@@ -458,21 +469,29 @@ foo.mds <- function(x){
   ylab <- paste0(ylab, " (", Perc[2], "%)")
   
   plot(c(-6, 3), c(-3, 3),
-       #c(left.x, right.x), c(obj.mds$y, obj.mds$y), 
-       type = "n",xlab = xlab,ylab = ylab)
-  text(obj.mds$x, obj.mds$y, labels = labels, cex = 1,col = x$samples$Color)
+       type = "n",xlab = xlab,ylab = ylab,
+       cex.lab = fontsize/12,
+       cex.axis = fontsize/12)
+  text(obj.mds$x, obj.mds$y, labels = labels, cex = fontsize/12,col = x$samples$Color)
 }
 plot.mds <- wrap_elements(full = ~foo.mds(dte.pe.scaled.filtr))
 
 plot.design <- c(area(1, 1),area(1,2),area(2, 1),area(2,2))
 
-wrap_plots(A = plot.mds,
-           B = plot.md,
-           C = plot.heat,
-           D = plot.heat.breast,
-           design = plot.design,
-           heights = c(0.35,0.65)) +
-  plot_annotation(tag_levels = 'a',tag_prefix = '(',tag_suffix = ')') 
+fig.heatmap <- wrap_plots(A = plot.mds,
+                          B = plot.md,
+                          C = plot.heat,
+                          D = plot.heat.breast,
+                          design = plot.design,
+                          heights = c(0.4,0.6)) +
+  plot_annotation(tag_levels = 'a') 
+
+fig.heatmap <- fig.heatmap &
+  theme(plot.tag = element_text(size = 8))
+
+agg_png(filename = file.path(path.misc,"figure6.png"),width = 10,height = 10,units = 'in',res = 300)
+fig.heatmap
+dev.off()
 ```
 
 ```{r mouse_eda_foxp1}

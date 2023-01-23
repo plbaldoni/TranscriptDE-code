@@ -36,6 +36,8 @@ library(readr)
 library(ggpubr)
 library(kableExtra)
 library(patchwork)
+library(ragg)
+
 load_all('../code/pkg/')
 
 BPPARAM <- MulticoreParam(workers = 16,progressbar = TRUE)
@@ -232,26 +234,27 @@ x.melt <- melt(dt.power,id.vars = sub.byvar,
 x.melt$Type <- 
   factor(x.melt$Type,
          levels = c('FP','TP'),
-         labels = c('False Positive','True Positive'))
+         labels = c('False','True'))
 
-plot.power <- function(df.bar,df.txt,scenario,library,legend = FALSE){
+plot.power <- function(df.bar,df.txt,scenario,library,legend = FALSE, base_size = 8){
   tb.bar <- df.bar[Scenario == scenario & LibsPerGroup == library,]
   tb.txt <- df.txt[Scenario == scenario & LibsPerGroup == library,][FDR != 'NA',]
   
   ggplot(tb.bar,aes(x = Method,y = Value,fill = Type)) +
     geom_col(colour = 'black') +
     geom_text(aes(x = Method,y = (TP + FP) + gap,label = FDR),
-              inherit.aes = FALSE,vjust = 0,data = tb.txt) +
-    theme_bw() +
+              vjust = 0,data = tb.txt,size = base_size/.pt,inherit.aes = FALSE) +
     scale_fill_manual(values = c('#ff0000','#bebebe')) +
-    labs(x = NULL,y = paste('# DE Transcripts')) +
+    labs(x = NULL,y = paste('DE Transcripts')) +
     scale_y_continuous(limits = c(0,3000)) +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     theme(panel.grid = element_blank(),
-          legend.position = c(0.75,0.90),
-          legend.title = element_blank(),
           axis.text.x = element_text(angle = 90),
-          axis.text = element_text(colour = 'black')) +
-    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha('white', 0))) else theme(legend.position = 'none')
+          axis.text = element_text(colour = 'black',size = base_size)) +
+    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha('white', 0)),
+                              legend.text = element_text(size = base_size),
+                              legend.position = c(0.80,0.90),legend.title = element_blank(),
+                              legend.key.size = unit(0.75,"line")) else theme(legend.position = 'none')
 }
 
 fig.power.a <- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = 'Equal library sizes',library = '3 samples per group')
@@ -260,9 +263,10 @@ fig.power.c <- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = 'Equal li
 fig.power.d <- plot.power(df.bar = x.melt,df.txt = dt.power,scenario = 'Unequal library sizes',library = '5 samples per group')
 
 fig.power <- (fig.power.a + fig.power.b) / (fig.power.c + fig.power.d) +
-  plot_annotation(tag_levels = 'a')
+  plot_annotation(tag_levels = 'a') +
+  theme(plot.tag = element_text(size = 8))
 
-png(filename = file.path(path.misc,"figure2.png"),width = 7,height = 7,units = 'in',res = 300)
+agg_png(filename = file.path(path.misc,"figure2.png"),width = 5,height = 5,units = 'in',res = 300)
 fig.power
 dev.off()
 
@@ -283,21 +287,23 @@ dt.fdr.plot$Scenario %<>%
 
 dt.fdr.plot <- dt.fdr.plot[TxPerGene == 'All Transcripts',]
 
-plot.fdr <- function(df.line,scenario,library,legend = FALSE){
+plot.fdr <- function(df.line,scenario,library,legend = FALSE,base_size = 8){
   tb.bar <- df.line[Scenario == scenario & LibsPerGroup == library,]
   
   ggplot(tb.bar,aes(x = N,y = FDR,color = Method,group = Method)) +
-    geom_line(linewidth = 1) +
-    theme_bw() +
+    geom_line(linewidth = 0.5) +
     scale_color_manual(values = methodsNames()$color) +
     scale_y_continuous(limits = c(0,1250)) +
     labs(y = 'False discoveries',x = 'Transcripts chosen') +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     theme(panel.grid = element_blank(),
-          legend.direction = 'vertical',
-          legend.position = c(0.25,0.75),
-          legend.title = element_blank(),
-          axis.text = element_text(colour = 'black')) +
-    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha('white', 0))) else theme(legend.position = 'none')
+          axis.text = element_text(colour = 'black',size = base_size)) +
+    if (legend == TRUE) theme(legend.background = element_rect(fill = alpha('white', 0)),
+                              legend.direction = 'vertical',
+                              legend.position = c(0.3,0.8),
+                              legend.text = element_text(size = base_size),
+                              legend.title = element_blank(),
+                              legend.key.size = unit(0.75,"line")) else theme(legend.position = 'none')
 }
 
 fig.fdr.a <- plot.fdr(df.line = dt.fdr.plot,scenario = 'Equal library sizes',library = '3 samples per group')
@@ -308,11 +314,11 @@ fig.fdr.d <- plot.fdr(df.line = dt.fdr.plot,scenario = 'Unequal library sizes',l
 fig.fdr <- (fig.fdr.a + fig.fdr.b) / (fig.fdr.c + fig.fdr.d) +
   plot_annotation(tag_levels = 'a')
 
-png(filename = file.path(path.misc,"figure3.png"),width = 7,height = 7,units = 'in',res = 300)
+agg_png(filename = file.path(path.misc,"figure3.png"),width = 5,height = 5,units = 'in',res = 300)
 fig.fdr
 dev.off()
 
-plot.fdr
+fig.fdr
 ```
 
 ## Type 1 error 
@@ -341,18 +347,18 @@ x.melt <-
   melt(dt.type1error,id.vars = sub.byvar,
        measure.vars = c('P.SIG'),variable.name = 'Type',value.name = 'Value')
 
-plot.type1error <- function(df.bar,scenario,library,legend = FALSE){
+plot.type1error <- function(df.bar,scenario,library,legend = FALSE,base_size = 8){
   tb.bar <- df.bar[Scenario == scenario & LibsPerGroup == library,]
   
   ggplot(tb.bar,aes(x = Method,y = Value)) +
     geom_col(fill = "#bebebe",col = 'black') +
-    theme_bw() +
-    geom_hline(yintercept = 0.05,color = '#ff0000',linetype = 'dashed') +
-    labs(x = NULL,y = paste('Proportion of p-values < 0.05')) +
+    geom_hline(yintercept = 0.05,color = '#ff0000',linetype = 'dashed',linewidth = 0.5) +
+    labs(x = NULL,y = paste('Type 1 error rate')) +
     scale_y_continuous(limits = c(0,0.06),breaks = c(0,0.02,0.04,0.06)) +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     theme(panel.grid = element_blank(),
           axis.text.x = element_text(angle = 90),
-          axis.text = element_text(colour = 'black'))
+          axis.text = element_text(colour = 'black',size = base_size))
 }
 
 fig.type1error.a <- plot.type1error(df.bar = x.melt,scenario = 'Equal library sizes',library = '3 samples per group')
@@ -363,7 +369,7 @@ fig.type1error.d <- plot.type1error(df.bar = x.melt,scenario = 'Unequal library 
 fig.type1error <- (fig.type1error.a + fig.type1error.b) / (fig.type1error.c + fig.type1error.d) +
   plot_annotation(tag_levels = 'a')
 
-png(filename = file.path(path.misc,"figure4.png"),width = 7,height = 7,units = 'in',res = 300) 
+agg_png(filename = file.path(path.misc,"figure4.png"),width = 5,height = 5,units = 'in',res = 300) 
 fig.type1error
 dev.off()
 
@@ -374,22 +380,22 @@ fig.type1error
 dt.pvalue.plot <- subsetDT(dt.pvalue,scenario.unbalanced,'C','All Transcripts')
 dt.pvalue.plot <- dt.pvalue.plot[LibsPerGroup == '#Lib/Group = 5',]
 
-plot.hist <- function(df.hist,method,legend = FALSE){
+plot.hist <- function(df.hist,method,legend = FALSE,base_size = 8){
   tb.bar <- df.hist[Method == method,]
   
   ggplot(data = tb.bar,aes(x = PValue,y = Density.Avg)) +
     geom_col(fill = "#bebebe",col = 'black',position = position_dodge(),width = 0.75) +
-    geom_hline(yintercept = 1,col = '#ff0000',linetype = 'dashed') +
+    geom_hline(yintercept = 1,col = '#ff0000',linetype = 'dashed',linewidth = 0.5) +
     scale_x_discrete(breaks = c("(0.00-0.05]","(0.50-0.55]","(0.95-1.00]"),
                      labels = c(0.00,0.50,1.00)) +
     labs(x = 'P-values',y = 'Density') +
-    theme_bw() +
+    theme_bw(base_size = base_size,base_family = 8) +
     theme(panel.grid = element_blank(),
-          axis.text = element_text(colour = 'black'))
+          axis.text = element_text(colour = 'black',size = base_size))
 }
 
-fig.hist.a <- plot.hist(df.hist = dt.pvalue.plot,method = 'edgeR-scaled')
-fig.hist.b <- plot.hist(df.hist = dt.pvalue.plot,method = 'edgeR-raw')
+fig.hist.a <- plot.hist(df.hist = dt.pvalue.plot,method = 'edgeR-raw')
+fig.hist.b <- plot.hist(df.hist = dt.pvalue.plot,method = 'edgeR-scaled')
 fig.hist.c <- plot.hist(df.hist = dt.pvalue.plot,method = 'sleuth-LRT')
 fig.hist.d <- plot.hist(df.hist = dt.pvalue.plot,method = 'sleuth-Wald')
 fig.hist.e <- plot.hist(df.hist = dt.pvalue.plot,method = 'Swish')
@@ -404,7 +410,7 @@ fig.hist <- fig.hist.a + fig.hist.b + fig.hist.c + fig.hist.d + fig.hist.e +
   plot_layout(design = design) +
   plot_annotation(tag_levels = 'a')
 
-png(filename = file.path(path.misc,"figure5.png"),width = 7,height = 10.5,units = 'in',res = 300)
+agg_png(filename = file.path(path.misc,"figure5.png"),width = 5,height = 7.5,units = 'in',res = 300)
 fig.hist
 dev.off()
 
@@ -511,10 +517,21 @@ dt.table.sigma2$LibsPerGroup %<>% mapvalues(from = c(3,5),to = c('Three','Five')
 tb <- kbl(dt.table.sigma2,digits = 3,format = 'latex',escape = FALSE,booktabs = TRUE,
           align = c('c','r',rep('r',6)),
           col.names = linebreak(c('Samples per\ngroup','Read Length\n(bp)',
-                                  'Mapping Ambiguity\nFold Change','Power','FDR',
-                                  'Mapping Ambiguity\nFold Change','Power','FDR'),align = "c")) %>%
+                                  'Mapping Ambiguity\nlog-FC','Power','FDR',
+                                  'Mapping Ambiguity\nlog-FC','Power','FDR'),align = "c")) %>%
   add_header_above(c(" " = 2, "Single-end Read" = 3, "Paired-end Read" = 3)) %>%
   collapse_rows(1, latex_hline = 'major')
 
 save_kable(tb,file = file.path(path.misc,"table1.tex"))
+```
+
+## Speed
+
+Averaging over multiple scenarios:
+
+```{r simulation-paper_speed}
+dt.time[, .(min =60*min(Time),
+            mean = 60*mean(Time),
+            med = 60*median(Time),
+          max = 60*max(Time)),by = c('Quantifier','LibsPerGroup','Method')]
 ```
