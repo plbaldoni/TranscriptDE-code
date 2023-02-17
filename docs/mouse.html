@@ -518,15 +518,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree21fff0174c41654438796c73c4cd4f0588118e49targetblank21fff01a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/21fff0174c41654438796c73c4cd4f0588118e49" target="_blank">21fff01</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree21fff0174c41654438796c73c4cd4f0588118e49targetblank21fff01a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -536,7 +536,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/21fff0174c41654438796c73c4cd4f0588118e49" target="_blank">21fff01</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -621,6 +621,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/21fff0174c41654438796c73c4cd4f0588118e49/analysis/mouse.Rmd" target="_blank">21fff01</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Organizing mouse report
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/b8e397902f76d2cf942e92fb1eb38fffc7ef1eb3/docs/mouse.html" target="_blank">b8e3979</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -919,9 +953,23 @@ Updating docs
 </div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-</div>
-<div id="setup" class="section level1">
-<h1>Setup</h1>
+<p>In this page, we present the analysis of the epithelial cell
+population of the mouse mammary gland. The report is divided in two main
+parts: the analysis of the paired-end data from the basal, luminal
+progenitor (LP), and mature luminal (ML) cells, and the analysis of the
+single-end data from the basal and LP cells (<a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450">GSE60450</a>).</p>
+<p>The analysis presented in this report begins with the experimental
+data already quantified by <code>Salmon</code>. Please refer to the
+script files located in the GitHub repository of this page under the
+directory path <code>./code/mouse</code> which show the commands used to
+quantify the RNA-seq reads from these experiments. The
+<code>targets</code> files from these experiments are located in
+<code>./data/mouse</code>.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>We begin this report by setting up some options for rendering this
+webpage and loading the necessary libraries.</p>
 <pre class="r"><code>knitr::opts_chunk$set(
   dev = &quot;png&quot;,
   dpi = 300,
@@ -952,6 +1000,9 @@ library(SummarizedExperiment)
 library(stringr)
 library(ragg)
 library(kableExtra)</code></pre>
+<p>Below we load the Ensembl 104 annotation from
+<code>AnnotationHub</code> which is associated to the Ensembl M27
+annotation of the mouse mm39 genome.</p>
 <pre class="r"><code># &#39;AH95775&#39; annotation corresponds to Ensembl 104 (release M27)
 ah &lt;- AnnotationHub()</code></pre>
 <pre><code>snapshotDate(): 2022-10-31</code></pre>
@@ -972,6 +1023,7 @@ dt.anno.gene[,GeneOfInterest := GENEBIOTYPE %in% c(&#39;protein_coding&#39;,&#39
 
 dt.anno &lt;- 
   merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = &#39;GENEIDVERSION&#39;,all.x = TRUE)</code></pre>
+<p>Paths used in this report are specified below.</p>
 <pre class="r"><code>path.anno &lt;- &#39;../data/annotation/mm39&#39;
 
 path.misc &lt;- file.path(&#39;../misc&#39;,knitr::current_input())
@@ -983,12 +1035,18 @@ path.quant.pe &lt;- &#39;../output/mouse/paired-end&#39;
 path.data.se &lt;- &#39;../data/mouse/single-end&#39;
 path.quant.se &lt;- &#39;../output/mouse/single-end&#39;</code></pre>
 </div>
+</div>
 <div id="analysis-of-paired-end-data" class="section level1">
 <h1>Analysis of paired-end data</h1>
+<p>The analysis of paired-end data is divided in two parts. First, we
+present the analysis at the transcript-level. Second, we present a
+gene-level analysis. All results discussed in the main paper regarding
+these experiments are presented in this report.</p>
 <div id="transcript-level-analysis" class="section level2">
 <h2>Transcript-level analysis</h2>
 <div id="data-wrangling" class="section level3">
 <h3>Data wrangling</h3>
+<p>The transcript-level analysis starts with some data wrangling.</p>
 <pre class="r"><code>dt.targets.pe &lt;- fread(file.path(path.data.pe,&#39;misc/targets.txt&#39;))
 dt.targets.pe[,Sample := paste(Group,Replicate,sep = &#39;.&#39;)]
 dt.targets.pe[,Color := mapvalues(Group,
@@ -997,6 +1055,9 @@ dt.targets.pe[,Color := mapvalues(Group,
 setnames(dt.targets.pe,old = &#39;Group&#39;,new = &#39;group&#39;)
 dt.targets.pe[,path := 
                 file.path(path.quant.pe,&#39;salmon&#39;,gsub(&#39;_R1.fastq.gz&#39;,&#39;&#39;,File1))]</code></pre>
+<p>We then load <code>Salmon</code>’s output with the function
+<code>catchSalmon</code> from <code>edgeR</code> while bringing in some
+information about the Ensembl M27 annotation.</p>
 <pre class="r"><code>catch.pe &lt;- catchSalmon(dt.targets.pe$path,verbose = FALSE)
 
 key.catch.pe.anno &lt;- match(rownames(catch.pe$annotation),dt.anno$TXIDVERSION)
@@ -1013,17 +1074,27 @@ catch.pe$annotation$Type &lt;- dt.anno$TXBIOTYPE[key.catch.pe.anno]</code></pre>
 <h3>Differential transcript expression</h3>
 <div id="edger-with-count-scaling" class="section level4">
 <h4>edgeR with count scaling</h4>
+<p>First, we assess DTE with the <code>edgeR</code> via count scaling
+pipeline.</p>
 <pre class="r"><code>dte.pe.scaled &lt;- 
   DGEList(counts = catch.pe$counts/catch.pe$annotation$Overdispersion,
           genes = catch.pe$annotation,
           samples = dt.targets.pe)
 colnames(dte.pe.scaled) &lt;- dte.pe.scaled$samples$Sample</code></pre>
+<p>Some basic filtering is done below. We restrict our analyses to
+protein-coding genes and lncRNA.</p>
 <pre class="r"><code>keep.pe.scaled &lt;- 
   filterByExpr(dte.pe.scaled) &amp; dte.pe.scaled$genes$GeneOfInterest
 dte.pe.scaled.filtr &lt;- dte.pe.scaled[keep.pe.scaled,, keep.lib.sizes = FALSE]</code></pre>
+<p>Next, we specify the design matrix of our experiment, calculate
+normalizing factors and estimate the trended negative binomial
+dispersions.</p>
 <pre class="r"><code>design.pe &lt;- model.matrix(~0+group,data = dte.pe.scaled.filtr$samples)
 dte.pe.scaled.filtr &lt;- calcNormFactors(dte.pe.scaled.filtr)
 dte.pe.scaled.filtr &lt;- estimateDisp(dte.pe.scaled.filtr,design.pe,robust = TRUE)</code></pre>
+<p>We proceed with the QL pipeline from <code>edgeR</code> by first
+calling <code>glmQLFit</code> and then running QL tests with
+<code>glmQLFTest</code>.</p>
 <pre class="r"><code>fit.pe.scaled &lt;- glmQLFit(dte.pe.scaled.filtr,design.pe,robust = TRUE)
 
 con.LPvsB &lt;- makeContrasts(LPvsB = groupLP - groupBasal,levels = design.pe)
@@ -1048,6 +1119,10 @@ Up                     2515</code></pre>
 </div>
 <div id="edger-with-raw-counts" class="section level4">
 <h4>edgeR with raw counts</h4>
+<p>Next, we run the <code>edgeR</code> pipeline with raw counts without
+deflating counts by their associated mapping ambiguity overdispersion.
+The pipeline is similar to the one used with scaled counts, and the only
+difference is regarding count deflation which is now absent.</p>
 <pre class="r"><code>dte.pe.raw &lt;- DGEList(counts = catch.pe$counts,
                       genes = catch.pe$annotation,
                       samples = dt.targets.pe)
@@ -1078,6 +1153,7 @@ Up                      642</code></pre>
 </div>
 <div id="sleuth-lrt" class="section level4">
 <h4>sleuth-LRT</h4>
+<p>We now run <code>sleuth</code> with LRT.</p>
 <pre class="r"><code>dt.targets.pe.sleuth &lt;- dt.targets.pe[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
 setnames(dt.targets.pe.sleuth,old = &#39;Sample&#39;,new = &#39;sample&#39;)
 
@@ -1119,6 +1195,7 @@ out.pe.sleuth.lrt &lt;-
 </div>
 <div id="sleuth-wald" class="section level4">
 <h4>sleuth-Wald</h4>
+<p>We now run <code>sleuth</code> with Wald tests.</p>
 <pre class="r"><code>se.pe.sleuth.wald &lt;- 
   sleuth_prep(sample_to_covariates = dt.targets.pe.sleuth,full_model = ~ group)</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
@@ -1149,6 +1226,7 @@ out.pe.sleuth.wald &lt;-
 </div>
 <div id="swish" class="section level4">
 <h4>Swish</h4>
+<p>Finally, we run <code>Swish</code>.</p>
 <pre class="r"><code>dt.targets.pe.swish &lt;- dt.targets.pe[group %in% c(&#39;Basal&#39;,&#39;LP&#39;),]
 dt.targets.pe.swish[,files := file.path(path,&#39;quant.sf&#39;)]
 dt.targets.pe.swish$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;))
@@ -1180,10 +1258,11 @@ out.pe.swish &lt;- as.data.frame(mcols(se.pe.swish))</code></pre>
 </div>
 <div id="differential-gene-expression" class="section level2">
 <h2>Differential gene expression</h2>
+<p>Now, we perform a gene-level analysis of the same data.</p>
 <p>The function below computes estimates the mapping ambiguity
 overdispersion parameter at the level of gene-wise counts. It implements
 the exact same formula from <code>catchSalmon</code>, but it instead
-uses the aggregated counts from
+uses the aggregated counts at the gene-level from
 <code>tximport::summarizeToGene</code>.</p>
 <pre class="r"><code># Function computing catchSalmon&#39;s formula for gene-level counts
 # To be used only for exploratory purposes
@@ -1221,6 +1300,8 @@ geneLevelCatchSalmon &lt;- function(x) {
   rowData(x)$Overdispersion &lt;- OverDisp
   return(x)
 }</code></pre>
+<p>We summarize counts to the gene-level below and run the standard
+<code>edgeR</code> QL pipeline.</p>
 <pre class="r"><code>dt.targets.pe.tximeta &lt;- dt.targets.pe
 dt.targets.pe.tximeta[,files := file.path(path,&#39;quant.sf&#39;)]
 dt.targets.pe.tximeta$group %&lt;&gt;% factor(levels = c(&#39;Basal&#39;,&#39;LP&#39;,&#39;ML&#39;))
@@ -1300,6 +1381,10 @@ Up                     1718</code></pre>
 </div>
 <div id="plots-and-other-exploratory-analyses" class="section level2">
 <h2>Plots and other exploratory analyses</h2>
+<p>Here we generate a few plots. We begin by assessing the mapping
+ambiguity overdispersion parameter of each transcript (y-axis) according
+the number of expressed transcripts associated with their parent gene
+(x-axis). This is Figure 1 of the main paper.</p>
 <pre class="r"><code>dt.mao.plot &lt;- as.data.table(dte.pe.scaled.filtr$genes)
 dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene&lt;10,NTranscriptPerGene,paste0(&#39;&gt;=10&#39;))]
 
@@ -1388,6 +1473,7 @@ Pedro Baldoni
 </table>
 </div>
 </div>
+<p>Then, we generate Figure 6 of the main paper below.</p>
 <pre class="r"><code># Heatmap of Foxp1 transcripts
 cpm.scaled.filtr &lt;- cpm(dte.pe.scaled.filtr,log = TRUE)
 rownames(cpm.scaled.filtr) &lt;- dte.pe.scaled.filtr$genes$TranscriptName
@@ -1522,6 +1608,8 @@ fig.heatmap
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<p>Let’s look at the results from the paired-end read data analysis for
+the <code>Foxp1-216</code> transcript.</p>
 <pre class="r"><code># Foxp1-216
 out.pe.LPvsB.scaled$table[&#39;ENSMUST00000175838.2&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName
@@ -1532,6 +1620,8 @@ ENSMUST00000175838.2 ENSMUSG00000030067.18    Foxp1       108655           TRUE
 ENSMUST00000175838.2                 31 processed_transcript 1.806999
                          logCPM        F      PValue         FDR
 ENSMUST00000175838.2 -0.5914241 14.03927 0.002188547 0.008318195</code></pre>
+<p>At the gene-level, we summarize some of the results from the DE
+analysis for the <code>Foxp1</code> gene.</p>
 <pre class="r"><code>tb.foxp1.gene &lt;- 
   out.pe.LPvsB[grepl(&#39;ENSMUSG00000030067&#39;,out.pe.LPvsB$table$gene_id),]$table
 tb.foxp1.gene &lt;- data.frame(tb.foxp1.gene[,-c(2,3,4,5)],row.names = NULL)
@@ -1562,6 +1652,8 @@ kb.foxp1.gene &lt;-
       align = &#39;llccccc&#39;) %&gt;%
   kable_styling(font_size = 10)
 save_kable(kb.foxp1.gene,file = file.path(path.misc,&quot;supptable_foxp1.tex&quot;))</code></pre>
+<p>We can also compare the distribution of the overdispersion estimates
+between gene- and transcript-level analyses.</p>
 <pre class="r"><code>## Gene-level
 df.output.gene &lt;- 
   as.data.table(dge.pe$genes[,c(&#39;GeneName&#39;,&#39;GeneEntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;)])
@@ -1644,6 +1736,8 @@ Pedro Baldoni
 </table>
 </div>
 </div>
+<p>Below we have the top 100 genes with largest mapping ambiguity
+overdispersion.</p>
 <pre class="r"><code>df.output.gene.top &lt;- df.output.gene[order(-Overdispersion),][1:100,]
 df.output.gene.top[,Level := NULL]
 df.output.gene.top$Type &lt;- 
@@ -1673,10 +1767,14 @@ resized.</code></pre>
 </div>
 <div id="analysis-of-single-end-data" class="section level1">
 <h1>Analysis of single-end data</h1>
+<p>Now, we present a similar analysis but using the single-end read
+experiment from the same population of epithelial cells of the mouse
+mammay gland.</p>
 <div id="transcript-level-analysis-1" class="section level2">
 <h2>Transcript-level analysis</h2>
 <div id="data-wrangling-1" class="section level3">
 <h3>Data wrangling</h3>
+<p>We again begin with some data wrangling.</p>
 <pre class="r"><code>dt.targets.se &lt;- fread(file.path(path.data.se,&#39;misc/targets.txt&#39;))
 dt.targets.se[,Sample := paste(Group,Replicate,sep = &#39;.&#39;)]
 dt.targets.se[,Population := mapvalues(Population,&#39;Luminal&#39;,&#39;LP&#39;)]
@@ -1687,6 +1785,8 @@ dt.targets.se[,Color :=
                 mapvalues(Population,from = c(&#39;Basal&#39;,&#39;LP&#39;),to = c(&#39;blue&#39;,&#39;darkgreen&#39;))]
 
 dt.targets.se[,path := file.path(path.quant.se,&#39;salmon&#39;,gsub(&#39;.fastq.gz&#39;,&#39;&#39;,File))]</code></pre>
+<p>And then we load the output from <code>Salmon</code> into our R
+session with the function <code>catchSalmon</code>.</p>
 <pre class="r"><code>catch.se &lt;- catchSalmon(dt.targets.se$path,verbose = FALSE)
 
 key.catch.se.anno &lt;- match(rownames(catch.se$annotation),dt.anno$TXIDVERSION)
@@ -1700,17 +1800,23 @@ catch.se$annotation$NTranscriptPerGene &lt;- dt.anno$NTranscriptPerGene[key.catc
 </div>
 <div id="differential-transcript-expression-1" class="section level3">
 <h3>Differential transcript expression</h3>
+<p>In this analysis we only run <code>edgeR</code>. We again compare
+scaled and raw counts.</p>
 <div id="edger-with-count-scaling-1" class="section level4">
 <h4>edgeR with count scaling</h4>
+<p>We create the <code>DGEList</code> object using scaled counts.</p>
 <pre class="r"><code>dte.se.scaled &lt;- 
   DGEList(counts = catch.se$counts/catch.se$annotation$Overdispersion,
           genes = catch.se$annotation,
           samples = dt.targets.se)
 colnames(dte.se.scaled) &lt;- dte.se.scaled$samples$Sample</code></pre>
+<p>Perform some filtering:</p>
 <pre class="r"><code>keep.se.scaled &lt;- 
   filterByExpr(dte.se.scaled,group = dte.se.scaled$samples$Population) &amp; 
   dte.se.scaled$genes$GeneOfInterest
 dte.se.scaled.filtr &lt;- dte.se.scaled[keep.se.scaled,, keep.lib.sizes = FALSE]</code></pre>
+<p>Calculate normalization factors, estimate the trended negative
+binomial dispersions and perform the QL pipeline:</p>
 <pre class="r"><code>design.se &lt;- model.matrix(~Stage + Population,data = dte.se.scaled.filtr$samples)
 dte.se.scaled.filtr &lt;- calcNormFactors(dte.se.scaled.filtr)
 dte.se.scaled.filtr &lt;- estimateDisp(dte.se.scaled.filtr,design.se,robust = TRUE)</code></pre>
@@ -1728,6 +1834,7 @@ Up             6921</code></pre>
 </div>
 <div id="edger-with-raw-counts-1" class="section level4">
 <h4>edgeR with raw counts</h4>
+<p>We repeat the same analysis using raw counts:</p>
 <pre class="r"><code>dte.se.raw &lt;- 
   DGEList(counts = catch.se$counts,
           genes = catch.se$annotation,
@@ -1755,6 +1862,8 @@ Up             6929</code></pre>
 </div>
 <div id="plots-and-other-exploratory-analyses-1" class="section level2">
 <h2>Plots and other exploratory analyses</h2>
+<p>Below is a MA plot from the DTE results using single-end scaled
+data.</p>
 <pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),width = 6,height = 6,units = &#39;in&#39;,res = 300)
 plotMD(qlf.se.LPvsB.scaled,xlim = c(-1.5,17.5),
        main = NULL,cex = 0.5,legend = FALSE,
@@ -1769,6 +1878,8 @@ legend(&#39;topright&#39;,
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<p>And we tabulate the results from the analysis using single-end scaled
+counts for the Foxp1 gene.</p>
 <pre class="r"><code># Foxp1 transcripts (EntrezID 108655)
 out.se.LPvsB.scaled$table[out.se.LPvsB.scaled$table$GeneEntrezID %in% &#39;108655&#39;,]</code></pre>
 <pre><code>                     Length EffectiveLength Overdispersion TranscriptName
