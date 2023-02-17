@@ -1,4 +1,4 @@
-# wf-TranscriptDE
+# TranscriptDE-wf
 
 A [workflowr][] project.
 
