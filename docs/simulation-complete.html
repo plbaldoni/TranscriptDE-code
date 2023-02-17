@@ -349,15 +349,12 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">wf-TranscriptDE</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="about.html">About</a>
 </li>
 <li>
   <a href="license.html">License</a>
@@ -416,12 +413,12 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 1
 </p>
 <p>
-<strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
+<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
@@ -441,21 +438,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -554,15 +548,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -572,7 +566,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -597,6 +591,7 @@ Ignored files:
     Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/pkg.Rproj
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
@@ -612,17 +607,6 @@ Ignored files:
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
-
-Untracked files:
-    Untracked:  analysis/simulation-howto.Rmd
-    Untracked:  misc/bibliography/
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/license.Rmd
-    Modified:   analysis/mouse.Rmd
-    Modified:   analysis/simulation-complete.Rmd
-    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -673,7 +657,41 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/analysis/simulation-complete.Rmd" target="_blank">48c2c9b</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/analysis/simulation-complete.Rmd" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/simulation-complete.html" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/analysis/simulation-complete.Rmd" target="_blank">48c2c9b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -690,7 +708,7 @@ Updating simulation-complete report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/docs/simulation-complete.html" target="_blank">48c2c9b</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/docs/simulation-complete.html" target="_blank">48c2c9b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -707,7 +725,7 @@ Updating simulation-complete report
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/analysis/simulation-complete.Rmd" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/analysis/simulation-complete.Rmd" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -724,7 +742,7 @@ Adding complete simulation report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/simulation-complete.html" target="_blank">8c476c6</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/simulation-complete.html" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1084,7 +1102,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1127,7 +1156,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1169,7 +1209,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-3.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-3.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-3.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1219,7 +1270,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-4.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-4.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-4.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1263,7 +1325,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1319,7 +1392,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_dte-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1412,7 +1496,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1467,7 +1562,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion_hist-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion_hist-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_confusion_hist-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1537,7 +1643,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1579,7 +1696,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1620,7 +1748,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-3.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-3.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-3.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1669,7 +1808,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-4.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-4.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_loading_wrangling-4.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1713,7 +1863,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1769,7 +1930,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_dte-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1861,7 +2033,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1916,7 +2099,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion_hist-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion_hist-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-raw_confusion_hist-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2470,7 +2664,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2518,7 +2723,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2566,7 +2782,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2614,7 +2841,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2662,7 +2900,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2710,7 +2959,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2758,7 +3018,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2806,7 +3077,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2854,7 +3136,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2902,7 +3195,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2950,7 +3254,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2998,7 +3313,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3046,7 +3372,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3094,7 +3431,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3142,7 +3490,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3190,7 +3549,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3238,7 +3608,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3286,7 +3667,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3334,7 +3726,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3382,7 +3785,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3430,7 +3844,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3478,7 +3903,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3526,7 +3962,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3574,7 +4021,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3622,7 +4080,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3670,7 +4139,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3718,7 +4198,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3766,7 +4257,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3814,7 +4316,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3862,7 +4375,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3911,7 +4435,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -3960,7 +4495,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4009,7 +4555,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4058,7 +4615,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4107,7 +4675,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4156,7 +4735,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4205,7 +4795,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4254,7 +4855,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4303,7 +4915,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4352,7 +4975,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4411,7 +5045,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4460,7 +5105,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4509,7 +5165,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4558,7 +5225,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4607,7 +5285,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4656,7 +5345,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4705,7 +5405,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4754,7 +5465,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4803,7 +5525,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4852,7 +5585,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4901,7 +5645,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4950,7 +5705,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -4999,7 +5765,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5048,7 +5825,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5097,7 +5885,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5146,7 +5945,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5195,7 +6005,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5244,7 +6065,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5293,7 +6125,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5342,7 +6185,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5391,7 +6245,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5440,7 +6305,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5489,7 +6365,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5538,7 +6425,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5587,7 +6485,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5636,7 +6545,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5685,7 +6605,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5734,7 +6665,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5783,7 +6725,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5832,7 +6785,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5881,7 +6845,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5930,7 +6905,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -5979,7 +6965,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6028,7 +7025,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6077,7 +7085,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6126,7 +7145,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6175,7 +7205,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6224,7 +7265,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6273,7 +7325,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6322,7 +7385,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6379,7 +7453,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6426,7 +7511,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6473,7 +7569,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6520,7 +7627,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6567,7 +7685,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6614,7 +7743,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6661,7 +7801,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6708,7 +7859,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6755,7 +7917,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6802,7 +7975,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6849,7 +8033,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6896,7 +8091,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6943,7 +8149,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -6990,7 +8207,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7037,7 +8265,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7084,7 +8323,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7131,7 +8381,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7178,7 +8439,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7225,7 +8497,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7272,7 +8555,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7319,7 +8613,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7366,7 +8671,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7413,7 +8729,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7460,7 +8787,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7507,7 +8845,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7554,7 +8903,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7601,7 +8961,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7648,7 +9019,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7695,7 +9077,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7742,7 +9135,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7789,7 +9193,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7836,7 +9251,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7883,7 +9309,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7930,7 +9367,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -7977,7 +9425,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -8024,7 +9483,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -8071,7 +9541,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -8118,7 +9599,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -8165,7 +9657,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -8212,7 +9715,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">8c476c6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">8c476c6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -26642,7 +28156,7 @@ other attached packages:
 [13] purrr_1.0.1            devtools_2.4.5         usethis_2.1.6         
 [16] BiocParallel_1.32.5    edgeR_3.40.2           limma_3.54.1          
 [19] magrittr_2.0.3         plyr_1.8.8             thematic_0.1.2.1      
-[22] ggplot2_3.4.1          data.table_1.14.6     
+[22] ggplot2_3.4.1          data.table_1.14.6      workflowr_1.7.0       
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.3                    tidyselect_1.2.0             
@@ -26668,36 +28182,36 @@ loaded via a namespace (and not attached):
  [41] vroom_1.6.1                   promises_1.2.0.1             
  [43] BiocIO_1.8.0                  scales_1.2.1                 
  [45] gtable_0.3.1                  processx_3.8.0               
- [47] ensembldb_2.22.0              workflowr_1.7.0              
- [49] rlang_1.0.6                   systemfonts_1.0.4            
- [51] splines_4.2.1                 rtracklayer_1.58.0           
- [53] rstatix_0.7.2                 lazyeval_0.2.2               
- [55] broom_1.0.3                   reshape2_1.4.4               
- [57] BiocManager_1.30.19           yaml_2.3.7                   
- [59] abind_1.4-5                   backports_1.4.1              
- [61] httpuv_1.6.5                  sleuth_0.30.0                
- [63] qvalue_2.30.0                 wasabi_1.0.1                 
- [65] tools_4.2.1                   ellipsis_0.3.2               
- [67] RColorBrewer_1.1-3            jquerylib_0.1.4              
- [69] sessioninfo_1.2.2             Rcpp_1.0.10                  
- [71] progress_1.2.2                zlibbioc_1.44.0              
- [73] RCurl_1.98-1.10               ps_1.7.2                     
- [75] prettyunits_1.1.1             cowplot_1.1.1                
- [77] urlchecker_1.0.1              SummarizedExperiment_1.28.0  
- [79] fs_1.6.1                      svMisc_1.2.3                 
- [81] whisker_0.4.1                 ProtGenerics_1.30.0          
- [83] matrixStats_0.63.0            pkgload_1.3.2                
- [85] hms_1.1.2                     mime_0.12                    
- [87] evaluate_0.20                 xtable_1.8-4                 
- [89] XML_3.99-0.13                 compiler_4.2.1               
- [91] biomaRt_2.54.0                tibble_3.1.8                 
- [93] crayon_1.5.2                  htmltools_0.5.4              
- [95] later_1.3.0                   tzdb_0.3.0                   
- [97] tidyr_1.3.0                   DBI_1.1.3                    
- [99] dbplyr_2.3.0                  rappdirs_0.3.3               
-[101] Matrix_1.5-3                  car_3.1-1                    
-[103] cli_3.6.0                     parallel_4.2.1               
-[105] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
+ [47] ensembldb_2.22.0              rlang_1.0.6                  
+ [49] systemfonts_1.0.4             splines_4.2.1                
+ [51] rtracklayer_1.58.0            rstatix_0.7.2                
+ [53] lazyeval_0.2.2                broom_1.0.3                  
+ [55] reshape2_1.4.4                BiocManager_1.30.19          
+ [57] yaml_2.3.7                    abind_1.4-5                  
+ [59] backports_1.4.1               httpuv_1.6.5                 
+ [61] sleuth_0.30.0                 qvalue_2.30.0                
+ [63] wasabi_1.0.1                  tools_4.2.1                  
+ [65] ellipsis_0.3.2                RColorBrewer_1.1-3           
+ [67] jquerylib_0.1.4               sessioninfo_1.2.2            
+ [69] Rcpp_1.0.10                   progress_1.2.2               
+ [71] zlibbioc_1.44.0               RCurl_1.98-1.10              
+ [73] ps_1.7.2                      prettyunits_1.1.1            
+ [75] cowplot_1.1.1                 urlchecker_1.0.1             
+ [77] SummarizedExperiment_1.28.0   fs_1.6.1                     
+ [79] svMisc_1.2.3                  whisker_0.4.1                
+ [81] ProtGenerics_1.30.0           matrixStats_0.63.0           
+ [83] pkgload_1.3.2                 hms_1.1.2                    
+ [85] mime_0.12                     evaluate_0.20                
+ [87] xtable_1.8-4                  XML_3.99-0.13                
+ [89] compiler_4.2.1                biomaRt_2.54.0               
+ [91] tibble_3.1.8                  crayon_1.5.2                 
+ [93] htmltools_0.5.4               later_1.3.0                  
+ [95] tzdb_0.3.0                    tidyr_1.3.0                  
+ [97] DBI_1.1.3                     dbplyr_2.3.0                 
+ [99] rappdirs_0.3.3                Matrix_1.5-3                 
+[101] car_3.1-1                     cli_3.6.0                    
+[103] parallel_4.2.1                pkgconfig_2.0.3              
+[105] getPass_0.2-2                 GenomicAlignments_1.34.0     
 [107] xml2_1.3.3                    svglite_2.1.1                
 [109] bslib_0.4.2                   webshot_0.5.4                
 [111] XVector_0.38.0                rvest_1.0.3                  

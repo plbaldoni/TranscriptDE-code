@@ -327,15 +327,12 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">wf-TranscriptDE</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="about.html">About</a>
 </li>
 <li>
   <a href="license.html">License</a>
@@ -394,12 +391,12 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 1
 </p>
 <p>
-<strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
+<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
@@ -419,21 +416,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -532,15 +526,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -550,7 +544,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -575,6 +569,7 @@ Ignored files:
     Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/pkg.Rproj
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
@@ -590,17 +585,6 @@ Ignored files:
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
-
-Untracked files:
-    Untracked:  analysis/simulation-howto.Rmd
-    Untracked:  misc/bibliography/
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/license.Rmd
-    Modified:   analysis/mouse.Rmd
-    Modified:   analysis/simulation-complete.Rmd
-    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -651,7 +635,41 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/analysis/simulation-paper.Rmd" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/analysis/simulation-paper.Rmd" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/simulation-paper.html" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/analysis/simulation-paper.Rmd" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -668,7 +686,7 @@ Splitting figures
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/simulation-paper.html" target="_blank">623d429</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/simulation-paper.html" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -685,7 +703,7 @@ Splitting figures
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/49c9a940256334199278c62ffc22b49d22fa6883/analysis/simulation-paper.Rmd" target="_blank">49c9a94</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/49c9a940256334199278c62ffc22b49d22fa6883/analysis/simulation-paper.Rmd" target="_blank">49c9a94</a>
 </td>
 <td>
 Pedro Baldoni
@@ -702,7 +720,7 @@ Expanding panels to multiple figures
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/49c9a940256334199278c62ffc22b49d22fa6883/docs/simulation-paper.html" target="_blank">49c9a94</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/49c9a940256334199278c62ffc22b49d22fa6883/docs/simulation-paper.html" target="_blank">49c9a94</a>
 </td>
 <td>
 Pedro Baldoni
@@ -719,7 +737,7 @@ Expanding panels to multiple figures
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/4276bfc1b4f2a31caae390bb910515ab77e165cf/analysis/simulation-paper.Rmd" target="_blank">4276bfc</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/4276bfc1b4f2a31caae390bb910515ab77e165cf/analysis/simulation-paper.Rmd" target="_blank">4276bfc</a>
 </td>
 <td>
 Pedro Baldoni
@@ -736,7 +754,7 @@ Organizing output of latex table
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/4276bfc1b4f2a31caae390bb910515ab77e165cf/docs/simulation-paper.html" target="_blank">4276bfc</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/4276bfc1b4f2a31caae390bb910515ab77e165cf/docs/simulation-paper.html" target="_blank">4276bfc</a>
 </td>
 <td>
 Pedro Baldoni
@@ -753,7 +771,7 @@ Organizing output of latex table
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/analysis/simulation-paper.Rmd" target="_blank">a8c51af</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/analysis/simulation-paper.Rmd" target="_blank">a8c51af</a>
 </td>
 <td>
 Pedro Baldoni
@@ -770,7 +788,7 @@ Updating simulation-paper report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/docs/simulation-paper.html" target="_blank">a8c51af</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/a8c51afeef4ad8b3b3c30c8bbae530844427d5af/docs/simulation-paper.html" target="_blank">a8c51af</a>
 </td>
 <td>
 Pedro Baldoni
@@ -787,7 +805,7 @@ Updating simulation-paper report
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/analysis/simulation-paper.Rmd" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/analysis/simulation-paper.Rmd" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -804,7 +822,7 @@ Adding simulation-paper-report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/simulation-paper.html" target="_blank">d34d4e6</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/simulation-paper.html" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1109,7 +1127,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1120,7 +1138,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">49c9a94</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">49c9a94</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1131,7 +1149,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1142,7 +1160,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_power-1.png" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1227,7 +1245,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1238,7 +1256,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1249,7 +1267,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1342,7 +1360,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1353,7 +1371,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">49c9a94</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">49c9a94</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1364,7 +1382,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1375,7 +1393,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1453,7 +1471,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1464,7 +1482,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">49c9a94</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/49c9a940256334199278c62ffc22b49d22fa6883/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">49c9a94</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1475,7 +1493,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">5dcd60b</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/5dcd60b1e32ad8f39163c4ac3727c17220cb5ad1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">5dcd60b</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1486,7 +1504,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d34d4e689994129c6bbdc8a356fe5778afbdd1e1/docs/figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" target="_blank">d34d4e6</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1691,7 +1709,7 @@ other attached packages:
  [7] purrr_1.0.1         devtools_2.4.5      usethis_2.1.6      
 [10] BiocParallel_1.32.5 edgeR_3.40.2        limma_3.54.1       
 [13] magrittr_2.0.3      plyr_1.8.8          thematic_0.1.2.1   
-[16] ggplot2_3.4.1       data.table_1.14.6  
+[16] ggplot2_3.4.1       data.table_1.14.6   workflowr_1.7.0    
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.3                    tidyselect_1.2.0             
@@ -1719,36 +1737,36 @@ loaded via a namespace (and not attached):
  [45] promises_1.2.0.1              BiocIO_1.8.0                 
  [47] scales_1.2.1                  gtable_0.3.1                 
  [49] processx_3.8.0                ensembldb_2.22.0             
- [51] workflowr_1.7.0               rlang_1.0.6                  
- [53] systemfonts_1.0.4             splines_4.2.1                
- [55] rtracklayer_1.58.0            rstatix_0.7.2                
- [57] lazyeval_0.2.2                broom_1.0.3                  
- [59] BiocManager_1.30.19           yaml_2.3.7                   
- [61] abind_1.4-5                   GenomicFeatures_1.50.4       
- [63] backports_1.4.1               httpuv_1.6.5                 
- [65] sleuth_0.30.0                 wasabi_1.0.1                 
- [67] tools_4.2.1                   ellipsis_0.3.2               
- [69] jquerylib_0.1.4               BiocGenerics_0.44.0          
- [71] sessioninfo_1.2.2             Rcpp_1.0.10                  
- [73] progress_1.2.2                zlibbioc_1.44.0              
- [75] RCurl_1.98-1.10               ps_1.7.2                     
- [77] prettyunits_1.1.1             urlchecker_1.0.1             
- [79] S4Vectors_0.36.1              SummarizedExperiment_1.28.0  
- [81] fs_1.6.1                      svMisc_1.2.3                 
- [83] whisker_0.4.1                 ProtGenerics_1.30.0          
- [85] matrixStats_0.63.0            pkgload_1.3.2                
- [87] hms_1.1.2                     mime_0.12                    
- [89] evaluate_0.20                 xtable_1.8-4                 
- [91] XML_3.99-0.13                 IRanges_2.32.0               
- [93] compiler_4.2.1                biomaRt_2.54.0               
- [95] tibble_3.1.8                  crayon_1.5.2                 
- [97] htmltools_0.5.4               later_1.3.0                  
- [99] tzdb_0.3.0                    tidyr_1.3.0                  
-[101] DBI_1.1.3                     dbplyr_2.3.0                 
-[103] rappdirs_0.3.3                Matrix_1.5-3                 
-[105] car_3.1-1                     cli_3.6.0                    
-[107] parallel_4.2.1                GenomicRanges_1.50.2         
-[109] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
+ [51] rlang_1.0.6                   systemfonts_1.0.4            
+ [53] splines_4.2.1                 rtracklayer_1.58.0           
+ [55] rstatix_0.7.2                 lazyeval_0.2.2               
+ [57] broom_1.0.3                   BiocManager_1.30.19          
+ [59] yaml_2.3.7                    abind_1.4-5                  
+ [61] GenomicFeatures_1.50.4        backports_1.4.1              
+ [63] sleuth_0.30.0                 httpuv_1.6.5                 
+ [65] wasabi_1.0.1                  tools_4.2.1                  
+ [67] ellipsis_0.3.2                jquerylib_0.1.4              
+ [69] BiocGenerics_0.44.0           sessioninfo_1.2.2            
+ [71] Rcpp_1.0.10                   progress_1.2.2               
+ [73] zlibbioc_1.44.0               RCurl_1.98-1.10              
+ [75] ps_1.7.2                      prettyunits_1.1.1            
+ [77] urlchecker_1.0.1              S4Vectors_0.36.1             
+ [79] SummarizedExperiment_1.28.0   fs_1.6.1                     
+ [81] svMisc_1.2.3                  whisker_0.4.1                
+ [83] ProtGenerics_1.30.0           matrixStats_0.63.0           
+ [85] pkgload_1.3.2                 hms_1.1.2                    
+ [87] mime_0.12                     evaluate_0.20                
+ [89] xtable_1.8-4                  XML_3.99-0.13                
+ [91] IRanges_2.32.0                compiler_4.2.1               
+ [93] biomaRt_2.54.0                tibble_3.1.8                 
+ [95] crayon_1.5.2                  htmltools_0.5.4              
+ [97] later_1.3.0                   tzdb_0.3.0                   
+ [99] tidyr_1.3.0                   DBI_1.1.3                    
+[101] dbplyr_2.3.0                  rappdirs_0.3.3               
+[103] Matrix_1.5-3                  car_3.1-1                    
+[105] cli_3.6.0                     parallel_4.2.1               
+[107] GenomicRanges_1.50.2          pkgconfig_2.0.3              
+[109] getPass_0.2-2                 GenomicAlignments_1.34.0     
 [111] xml2_1.3.3                    svglite_2.1.1                
 [113] bslib_0.4.2                   webshot_0.5.4                
 [115] XVector_0.38.0                rvest_1.0.3                  

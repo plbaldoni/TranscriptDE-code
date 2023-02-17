@@ -327,15 +327,12 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">wf-TranscriptDE</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
-</li>
-<li>
-  <a href="about.html">About</a>
 </li>
 <li>
   <a href="license.html">License</a>
@@ -369,7 +366,7 @@ epithelial cell population of the mouse mammary gland</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -380,8 +377,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -394,12 +391,12 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
+<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
@@ -419,21 +416,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -524,15 +518,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree9b96d31002bb25d938cbe83bafbfd1adbc5d2421targetblank9b96d31a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +536,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/9b96d31002bb25d938cbe83bafbfd1adbc5d2421" target="_blank">9b96d31</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -567,6 +561,7 @@ Ignored files:
     Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/pkg.Rproj
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
@@ -582,17 +577,6 @@ Ignored files:
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
-
-Untracked files:
-    Untracked:  analysis/simulation-howto.Rmd
-    Untracked:  misc/bibliography/
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/license.Rmd
-    Modified:   analysis/mouse.Rmd
-    Modified:   analysis/simulation-complete.Rmd
-    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -642,7 +626,41 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/analysis/mouse.Rmd" target="_blank">e75e3d9</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/analysis/mouse.Rmd" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/mouse.html" target="_blank">57b0d00</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Renaming repo and organizing main page
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/analysis/mouse.Rmd" target="_blank">e75e3d9</a>
 </td>
 <td>
 Pedro Baldoni
@@ -659,7 +677,7 @@ Adjusting figures
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/mouse.html" target="_blank">e75e3d9</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/mouse.html" target="_blank">e75e3d9</a>
 </td>
 <td>
 Pedro Baldoni
@@ -676,7 +694,7 @@ Adjusting figures
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/edbcc15a55c43c524a8282264f42e3eedf65d538/analysis/mouse.Rmd" target="_blank">edbcc15</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/edbcc15a55c43c524a8282264f42e3eedf65d538/analysis/mouse.Rmd" target="_blank">edbcc15</a>
 </td>
 <td>
 Pedro Baldoni
@@ -693,7 +711,7 @@ Repeat header
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/753efade4b9b9460503137657e8c03c922fe2230/analysis/mouse.Rmd" target="_blank">753efad</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/753efade4b9b9460503137657e8c03c922fe2230/analysis/mouse.Rmd" target="_blank">753efad</a>
 </td>
 <td>
 Pedro Baldoni
@@ -710,7 +728,7 @@ Adjusting latex tables
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/analysis/mouse.Rmd" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/analysis/mouse.Rmd" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -727,7 +745,7 @@ Splitting figures
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/mouse.html" target="_blank">623d429</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/mouse.html" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -744,7 +762,7 @@ Splitting figures
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e64cf4d4c222149ac5cade052a4feb1ee5325e47/analysis/mouse.Rmd" target="_blank">e64cf4d</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/e64cf4d4c222149ac5cade052a4feb1ee5325e47/analysis/mouse.Rmd" target="_blank">e64cf4d</a>
 </td>
 <td>
 Pedro Baldoni
@@ -761,7 +779,7 @@ Changing values of reference to report in main paper
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/e64cf4d4c222149ac5cade052a4feb1ee5325e47/docs/mouse.html" target="_blank">e64cf4d</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/e64cf4d4c222149ac5cade052a4feb1ee5325e47/docs/mouse.html" target="_blank">e64cf4d</a>
 </td>
 <td>
 Pedro Baldoni
@@ -778,7 +796,7 @@ Changing values of reference to report in main paper
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/analysis/mouse.Rmd" target="_blank">9a3e926</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/analysis/mouse.Rmd" target="_blank">9a3e926</a>
 </td>
 <td>
 Pedro Baldoni
@@ -795,7 +813,7 @@ Organizing output from mouse analysis
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/mouse.html" target="_blank">9a3e926</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/mouse.html" target="_blank">9a3e926</a>
 </td>
 <td>
 Pedro Baldoni
@@ -812,7 +830,7 @@ Organizing output from mouse analysis
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/c228d3f26a2f820f85d2baa971ed77a8f554d689/analysis/mouse.Rmd" target="_blank">c228d3f</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/c228d3f26a2f820f85d2baa971ed77a8f554d689/analysis/mouse.Rmd" target="_blank">c228d3f</a>
 </td>
 <td>
 Pedro Baldoni
@@ -829,7 +847,7 @@ Updating mouse report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/c228d3f26a2f820f85d2baa971ed77a8f554d689/docs/mouse.html" target="_blank">c228d3f</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/c228d3f26a2f820f85d2baa971ed77a8f554d689/docs/mouse.html" target="_blank">c228d3f</a>
 </td>
 <td>
 Pedro Baldoni
@@ -846,7 +864,7 @@ Updating mouse report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/481735cfb080507aebd58b49f552aea110fa7ed5/docs/mouse.html" target="_blank">481735c</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/481735cfb080507aebd58b49f552aea110fa7ed5/docs/mouse.html" target="_blank">481735c</a>
 </td>
 <td>
 Pedro Baldoni
@@ -863,7 +881,7 @@ Build update from workflowr
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/3e9c510e1bf819c729c3058d6c149ee6fa1ad1de/analysis/mouse.Rmd" target="_blank">3e9c510</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/3e9c510e1bf819c729c3058d6c149ee6fa1ad1de/analysis/mouse.Rmd" target="_blank">3e9c510</a>
 </td>
 <td>
 Pedro Baldoni
@@ -880,7 +898,7 @@ Adding mouse report
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/5ee11169d27eee64b3ddaf34ea11cd4a6645871a/docs/mouse.html" target="_blank">5ee1116</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/5ee11169d27eee64b3ddaf34ea11cd4a6645871a/docs/mouse.html" target="_blank">5ee1116</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1346,7 +1364,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/mouse.Rmd/mouse_eda_plots_mao-1.png" target="_blank">623d429</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/623d4297221b6b8a0e0e44292e19626bf6ed3270/docs/figure/mouse.Rmd/mouse_eda_plots_mao-1.png" target="_blank">623d429</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1357,7 +1375,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao-1.png" target="_blank">9a3e926</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao-1.png" target="_blank">9a3e926</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1430,7 +1448,7 @@ tb.kegga &lt;- kegga(interestGenes,species = &#39;Mm&#39;)
 GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;mmu&quot;)
 tb.kegga[&#39;path:mmu05224&#39;,]</code></pre>
 <pre><code>                    Pathway   N DE      P.DE
-path:mmu05224 Breast cancer 147 15 0.2535164</code></pre>
+path:mmu05224 Breast cancer 147 15 0.2533814</code></pre>
 <pre class="r"><code>interestGenes.breast &lt;- 
   interestGenes[interestGenes %in% GK$GeneID[GK$PathwayID == &#39;path:mmu05224&#39;]]
 
@@ -1602,7 +1620,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">e75e3d9</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">e75e3d9</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1613,7 +1631,7 @@ Pedro Baldoni
 </tr>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">9a3e926</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">9a3e926</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1893,6 +1911,7 @@ other attached packages:
 [37] Rsubread_2.12.2             readr_2.1.4                
 [39] ggplot2_3.4.1               data.table_1.14.6          
 [41] edgeR_3.40.2                limma_3.54.1               
+[43] workflowr_1.7.0            
 
 loaded via a namespace (and not attached):
   [1] utf8_1.2.3                    tidyselect_1.2.0             
@@ -1917,7 +1936,7 @@ loaded via a namespace (and not attached):
  [39] promises_1.2.0.1              BiocIO_1.8.0                 
  [41] scales_1.2.1                  googlesheets4_1.0.1          
  [43] gtable_0.3.1                  Cairo_1.6-0                  
- [45] workflowr_1.7.0               rlang_1.0.6                  
+ [45] processx_3.8.0                rlang_1.0.6                  
  [47] systemfonts_1.0.4             splines_4.2.1                
  [49] GlobalOptions_0.1.2           rstatix_0.7.2                
  [51] lazyeval_0.2.2                gargle_1.3.0                 
@@ -1929,46 +1948,48 @@ loaded via a namespace (and not attached):
  [63] ellipsis_0.3.2                jquerylib_0.1.4              
  [65] RColorBrewer_1.1-3            Rcpp_1.0.10                  
  [67] progress_1.2.2                zlibbioc_1.44.0              
- [69] RCurl_1.98-1.10               prettyunits_1.1.1            
- [71] GetoptLong_1.0.5              viridis_0.6.2                
- [73] haven_2.5.1                   cluster_2.1.4                
- [75] fs_1.6.1                      svMisc_1.2.3                 
- [77] circlize_0.4.15               reprex_2.0.2                 
- [79] googledrive_2.0.0             whisker_0.4.1                
- [81] ProtGenerics_1.30.0           hms_1.1.2                    
- [83] mime_0.12                     evaluate_0.20                
- [85] xtable_1.8-4                  XML_3.99-0.13                
- [87] readxl_1.4.2                  gridExtra_2.3                
- [89] shape_1.4.6                   compiler_4.2.1               
- [91] biomaRt_2.54.0                KernSmooth_2.23-20           
- [93] crayon_1.5.2                  htmltools_0.5.4              
- [95] mgcv_1.8-41                   later_1.3.0                  
- [97] tzdb_0.3.0                    lubridate_1.9.2              
- [99] DBI_1.1.3                     rappdirs_0.3.3               
-[101] Matrix_1.5-3                  car_3.1-1                    
-[103] cli_3.6.0                     parallel_4.2.1               
-[105] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
-[107] xml2_1.3.3                    foreach_1.5.2                
-[109] svglite_2.1.1                 bslib_0.4.2                  
-[111] webshot_0.5.4                 XVector_0.38.0               
-[113] rvest_1.0.3                   digest_0.6.31                
-[115] Biostrings_2.66.0             cellranger_1.1.0             
-[117] rmarkdown_2.20                dendextend_1.16.0            
-[119] restfulr_0.0.15               curl_5.0.0                   
-[121] shiny_1.7.4                   Rsamtools_2.14.0             
-[123] gtools_3.9.4                  rjson_0.2.21                 
-[125] nlme_3.1-162                  lifecycle_1.0.3              
-[127] jsonlite_1.8.4                Rhdf5lib_1.20.0              
-[129] carData_3.0-5                 viridisLite_0.4.1            
-[131] fansi_1.0.4                   pillar_1.8.1                 
-[133] lattice_0.20-45               KEGGREST_1.38.0              
-[135] fastmap_1.1.0                 httr_1.4.4                   
-[137] interactiveDisplayBase_1.36.0 glue_1.6.2                   
-[139] png_0.1-8                     iterators_1.0.14             
-[141] BiocVersion_3.16.0            bit_4.0.5                    
-[143] stringi_1.7.12                sass_0.4.1                   
-[145] blob_1.2.3                    textshaping_0.3.6            
-[147] caTools_1.18.2                memoise_2.0.1                </code></pre>
+ [69] RCurl_1.98-1.10               ps_1.7.2                     
+ [71] prettyunits_1.1.1             GetoptLong_1.0.5             
+ [73] viridis_0.6.2                 haven_2.5.1                  
+ [75] cluster_2.1.4                 fs_1.6.1                     
+ [77] svMisc_1.2.3                  circlize_0.4.15              
+ [79] reprex_2.0.2                  googledrive_2.0.0            
+ [81] whisker_0.4.1                 ProtGenerics_1.30.0          
+ [83] hms_1.1.2                     mime_0.12                    
+ [85] evaluate_0.20                 xtable_1.8-4                 
+ [87] XML_3.99-0.13                 readxl_1.4.2                 
+ [89] gridExtra_2.3                 shape_1.4.6                  
+ [91] compiler_4.2.1                biomaRt_2.54.0               
+ [93] KernSmooth_2.23-20            crayon_1.5.2                 
+ [95] htmltools_0.5.4               mgcv_1.8-41                  
+ [97] later_1.3.0                   tzdb_0.3.0                   
+ [99] lubridate_1.9.2               DBI_1.1.3                    
+[101] rappdirs_0.3.3                Matrix_1.5-3                 
+[103] car_3.1-1                     cli_3.6.0                    
+[105] parallel_4.2.1                pkgconfig_2.0.3              
+[107] getPass_0.2-2                 GenomicAlignments_1.34.0     
+[109] xml2_1.3.3                    foreach_1.5.2                
+[111] svglite_2.1.1                 bslib_0.4.2                  
+[113] webshot_0.5.4                 XVector_0.38.0               
+[115] rvest_1.0.3                   callr_3.7.3                  
+[117] digest_0.6.31                 Biostrings_2.66.0            
+[119] cellranger_1.1.0              rmarkdown_2.20               
+[121] dendextend_1.16.0             restfulr_0.0.15              
+[123] curl_5.0.0                    shiny_1.7.4                  
+[125] Rsamtools_2.14.0              gtools_3.9.4                 
+[127] rjson_0.2.21                  nlme_3.1-162                 
+[129] lifecycle_1.0.3               jsonlite_1.8.4               
+[131] Rhdf5lib_1.20.0               carData_3.0-5                
+[133] viridisLite_0.4.1             fansi_1.0.4                  
+[135] pillar_1.8.1                  lattice_0.20-45              
+[137] KEGGREST_1.38.0               fastmap_1.1.0                
+[139] httr_1.4.4                    interactiveDisplayBase_1.36.0
+[141] glue_1.6.2                    png_0.1-8                    
+[143] iterators_1.0.14              BiocVersion_3.16.0           
+[145] bit_4.0.5                     stringi_1.7.12               
+[147] sass_0.4.1                    blob_1.2.3                   
+[149] textshaping_0.3.6             caTools_1.18.2               
+[151] memoise_2.0.1                </code></pre>
 </div>
 </div>
 </div>
