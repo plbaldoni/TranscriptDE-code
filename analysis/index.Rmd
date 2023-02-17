@@ -1,5 +1,5 @@
 ---
-title: "Workflowr page for catchSalmon/catchKallisto paper"
+title: "Workflowr page from the catchSalmon/catchKallisto paper"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
