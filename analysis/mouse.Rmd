@@ -9,7 +9,13 @@ editor_options:
 
 # Introduction
 
-# Setup
+In this page, we present the analysis of the epithelial cell population of the mouse mammary gland. The report is divided in two main parts: the analysis of the paired-end data from the basal, luminal progenitor (LP), and mature luminal (ML) cells, and the analysis of the single-end data from the basal and LP cells ([GSE60450](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450)).
+
+The analysis presented in this report begins with the experimental data already quantified by `Salmon`. Please refer to the script files located in the GitHub repository of this page under the directory path `./code/mouse` which show the commands used to quantify the RNA-seq reads from these experiments. The `targets` files from these experiments are located in `./data/mouse`.
+
+## Setup
+
+We begin this report by setting up some options for rendering this webpage and loading the necessary libraries.
 
 ```{r mouse_setup_options}
 knitr::opts_chunk$set(
@@ -47,6 +53,8 @@ library(ragg)
 library(kableExtra)
 ```
 
+Below we load the Ensembl 104 annotation from `AnnotationHub` which is associated to the Ensembl M27 annotation of the mouse mm39 genome.
+
 ```{r mouse_setup_anno}
 # 'AH95775' annotation corresponds to Ensembl 104 (release M27)
 ah <- AnnotationHub()
@@ -67,6 +75,8 @@ dt.anno <-
   merge(dt.anno,dt.anno.gene[,-c(2,3,4)],by = 'GENEIDVERSION',all.x = TRUE)
 ```
 
+Paths used in this report are specified below.
+
 ```{r mouse_setup_paths}
 path.anno <- '../data/annotation/mm39'
 
@@ -82,9 +92,13 @@ path.quant.se <- '../output/mouse/single-end'
 
 # Analysis of paired-end data
 
+The analysis of paired-end data is divided in two parts. First, we present the analysis at the transcript-level. Second, we present a gene-level analysis. All results discussed in the main paper regarding these experiments are presented in this report.
+
 ## Transcript-level analysis
 
 ### Data wrangling
+
+The transcript-level analysis starts with some data wrangling.
 
 ```{r mouse_data_pe_targets}
 dt.targets.pe <- fread(file.path(path.data.pe,'misc/targets.txt'))
@@ -96,6 +110,8 @@ setnames(dt.targets.pe,old = 'Group',new = 'group')
 dt.targets.pe[,path := 
                 file.path(path.quant.pe,'salmon',gsub('_R1.fastq.gz','',File1))]
 ```
+
+We then load `Salmon`'s output with the function `catchSalmon` from `edgeR` while bringing in some information about the Ensembl M27 annotation.
 
 ```{r mouse_data_pe_catch}
 catch.pe <- catchSalmon(dt.targets.pe$path,verbose = FALSE)
@@ -115,6 +131,8 @@ catch.pe$annotation$Type <- dt.anno$TXBIOTYPE[key.catch.pe.anno]
 
 #### edgeR with count scaling
 
+First, we assess DTE with the `edgeR` via count scaling pipeline.
+
 ```{r mouse_dte_pe_edger-cs}
 dte.pe.scaled <- 
   DGEList(counts = catch.pe$counts/catch.pe$annotation$Overdispersion,
@@ -123,17 +141,23 @@ dte.pe.scaled <-
 colnames(dte.pe.scaled) <- dte.pe.scaled$samples$Sample
 ```
 
+Some basic filtering is done below. We restrict our analyses to protein-coding genes and lncRNA.
+
 ```{r mouse_dte_pe_edger-cs_filtering}
 keep.pe.scaled <- 
   filterByExpr(dte.pe.scaled) & dte.pe.scaled$genes$GeneOfInterest
 dte.pe.scaled.filtr <- dte.pe.scaled[keep.pe.scaled,, keep.lib.sizes = FALSE]
 ```
 
+Next, we specify the design matrix of our experiment, calculate normalizing factors and estimate the trended negative binomial dispersions.
+
 ```{r mouse_dte_pe_edger-cs_norm-disp}
 design.pe <- model.matrix(~0+group,data = dte.pe.scaled.filtr$samples)
 dte.pe.scaled.filtr <- calcNormFactors(dte.pe.scaled.filtr)
 dte.pe.scaled.filtr <- estimateDisp(dte.pe.scaled.filtr,design.pe,robust = TRUE)
 ```
+
+We proceed with the QL pipeline from `edgeR` by first calling `glmQLFit` and then running QL tests with `glmQLFTest`.
 
 ```{r mouse_dte_pe_edger-cs_fit}
 fit.pe.scaled <- glmQLFit(dte.pe.scaled.filtr,design.pe,robust = TRUE)
@@ -152,6 +176,8 @@ summary(decideTests(qlf.pe.MLvsLP.scaled))
 ```
 
 #### edgeR with raw counts
+
+Next, we run the `edgeR` pipeline with raw counts without deflating counts by their associated mapping ambiguity overdispersion. The pipeline is similar to the one used with scaled counts, and the only difference is regarding count deflation which is now absent.
 
 ```{r mouse_dte_pe_edger-rc}
 dte.pe.raw <- DGEList(counts = catch.pe$counts,
@@ -186,6 +212,8 @@ summary(decideTests(qlf.pe.MLvsLP.raw))
 
 #### sleuth-LRT
 
+We now run `sleuth` with LRT.
+
 ```{r mouse_dte_pe_sleuth-lrt}
 dt.targets.pe.sleuth <- dt.targets.pe[group %in% c('Basal','LP'),]
 setnames(dt.targets.pe.sleuth,old = 'Sample',new = 'sample')
@@ -207,6 +235,8 @@ out.pe.sleuth.lrt <-
 
 #### sleuth-Wald
 
+We now run `sleuth` with Wald tests.
+
 ```{r mouse_dte_pe_sleuth-wald}
 se.pe.sleuth.wald <- 
   sleuth_prep(sample_to_covariates = dt.targets.pe.sleuth,full_model = ~ group)
@@ -222,6 +252,8 @@ out.pe.sleuth.wald <-
 ```
 
 #### Swish
+
+Finally, we run `Swish`.
 
 ```{r mouse_dte_pe_swish}
 dt.targets.pe.swish <- dt.targets.pe[group %in% c('Basal','LP'),]
@@ -239,7 +271,9 @@ out.pe.swish <- as.data.frame(mcols(se.pe.swish))
 
 ## Differential gene expression
 
-The function below computes estimates the mapping ambiguity overdispersion parameter at the level of gene-wise counts. It implements the exact same formula from `catchSalmon`, but it instead uses the aggregated counts from `tximport::summarizeToGene`.
+Now, we perform a gene-level analysis of the same data.
+
+The function below computes estimates the mapping ambiguity overdispersion parameter at the level of gene-wise counts. It implements the exact same formula from `catchSalmon`, but it instead uses the aggregated counts at the gene-level from `tximport::summarizeToGene`.
 
 ```{r mouse_dge_pe_mao}
 # Function computing catchSalmon's formula for gene-level counts
@@ -279,6 +313,8 @@ geneLevelCatchSalmon <- function(x) {
   return(x)
 }
 ```
+
+We summarize counts to the gene-level below and run the standard `edgeR` QL pipeline.
 
 ```{r mouse_dge_pe}
 dt.targets.pe.tximeta <- dt.targets.pe
@@ -324,6 +360,8 @@ summary(decideTests(qlf.pe.MLvsLP))
 
 ## Plots and other exploratory analyses
 
+Here we generate a few plots. We begin by assessing the mapping ambiguity overdispersion parameter of each transcript (y-axis) according the number of expressed transcripts associated with their parent gene (x-axis). This is Figure 1 of the main paper.
+
 ```{r mouse_eda_plots_mao,fig.height=5,fig.width=5}
 dt.mao.plot <- as.data.table(dte.pe.scaled.filtr$genes)
 dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene<10,NTranscriptPerGene,paste0('>=10'))]
@@ -359,6 +397,8 @@ dev.off()
 
 plot.mao.2
 ```
+
+Then, we generate Figure 6 of the main paper below.
 
 ```{r mouse_eda_plots_dte,fig.height=9,fig.width=8}
 # Heatmap of Foxp1 transcripts
@@ -494,10 +534,14 @@ fig.heatmap
 dev.off()
 ```
 
+Let's look at the results from the paired-end read data analysis for the `Foxp1-216` transcript.
+
 ```{r mouse_eda_foxp1}
 # Foxp1-216
 out.pe.LPvsB.scaled$table['ENSMUST00000175838.2',]
 ```
+
+At the gene-level, we summarize some of the results from the DE analysis for the `Foxp1` gene.
 
 ```{r mouse_eda_table_foxp1}
 tb.foxp1.gene <- 
@@ -531,6 +575,8 @@ kb.foxp1.gene <-
   kable_styling(font_size = 10)
 save_kable(kb.foxp1.gene,file = file.path(path.misc,"supptable_foxp1.tex"))
 ```
+
+We can also compare the distribution of the overdispersion estimates between gene- and transcript-level analyses.
 
 ```{r mouse_eda_plots_mao_gene}
 ## Gene-level
@@ -567,6 +613,8 @@ dev.off()
 fig.mao.gene.tx
 ```
 
+Below we have the top 100 genes with largest mapping ambiguity overdispersion.
+
 ```{r mouse_eda_table_mao}
 df.output.gene.top <- df.output.gene[order(-Overdispersion),][1:100,]
 df.output.gene.top[,Level := NULL]
@@ -595,9 +643,13 @@ save_kable(kb.output.gene.top,file = file.path(path.misc,"supptable_overdispersi
 
 # Analysis of single-end data
 
+Now, we present a similar analysis but using the single-end read experiment from the same population of epithelial cells of the mouse mammay gland.
+
 ## Transcript-level analysis
 
 ### Data wrangling
+
+We again begin with some data wrangling.
 
 ```{r mouse_data_se_targets}
 dt.targets.se <- fread(file.path(path.data.se,'misc/targets.txt'))
@@ -611,6 +663,8 @@ dt.targets.se[,Color :=
 
 dt.targets.se[,path := file.path(path.quant.se,'salmon',gsub('.fastq.gz','',File))]
 ```
+
+And then we load the output from `Salmon` into our R session with the function `catchSalmon`.
 
 ```{r mouse_data_se_catch}
 catch.se <- catchSalmon(dt.targets.se$path,verbose = FALSE)
@@ -627,7 +681,11 @@ catch.se$annotation$NTranscriptPerGene <- dt.anno$NTranscriptPerGene[key.catch.s
 
 ### Differential transcript expression
 
+In this analysis we only run `edgeR`. We again compare scaled and raw counts.
+
 #### edgeR with count scaling
+
+We create the `DGEList` object using scaled counts.
 
 ```{r mouse_dte_se_edger-cs}
 dte.se.scaled <- 
@@ -637,12 +695,16 @@ dte.se.scaled <-
 colnames(dte.se.scaled) <- dte.se.scaled$samples$Sample
 ```
 
+Perform some filtering:
+
 ```{r mouse_dte_se_edger-cs_filtering}
 keep.se.scaled <- 
   filterByExpr(dte.se.scaled,group = dte.se.scaled$samples$Population) & 
   dte.se.scaled$genes$GeneOfInterest
 dte.se.scaled.filtr <- dte.se.scaled[keep.se.scaled,, keep.lib.sizes = FALSE]
 ```
+
+Calculate normalization factors, estimate the trended negative binomial dispersions and perform the QL pipeline:
 
 ```{r mouse_dte_se_edger-cs_norm-disp}
 design.se <- model.matrix(~Stage + Population,data = dte.se.scaled.filtr$samples)
@@ -661,6 +723,8 @@ summary(decideTests(qlf.se.LPvsB.scaled))
 ```
 
 #### edgeR with raw counts
+
+We repeat the same analysis using raw counts:
 
 ```{r mouse_dte_se_edger-rc}
 dte.se.raw <- 
@@ -694,6 +758,8 @@ summary(decideTests(qlf.se.LPvsB.raw))
 
 ## Plots and other exploratory analyses
 
+Below is a MA plot from the DTE results using single-end scaled data.
+
 ```{r mouse_eda_se_dte}
 agg_png(filename = file.path(path.misc,"suppfigure_maplot.png"),width = 6,height = 6,units = 'in',res = 300)
 plotMD(qlf.se.LPvsB.scaled,xlim = c(-1.5,17.5),
@@ -708,6 +774,8 @@ legend('topright',
        pt.cex = c(0.3,0.5,0.5))
 dev.off()
 ```
+
+And we tabulate the results from the analysis using single-end scaled counts for the Foxp1 gene.
 
 ```{r r mouse_eda_se_dte_foxp1}
 # Foxp1 transcripts (EntrezID 108655)
