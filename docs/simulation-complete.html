@@ -9,12 +9,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Pedro Baldoni" />
+<meta name="author" content="Pedro L. Baldoni" />
 
 
-<title>simulation</title>
+<title>Simulation - Complete report (results presented in the supplementary materials)</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -73,6 +73,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -358,9 +380,10 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">simulation</h1>
-<h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">04 January, 2023</h4>
+<h1 class="title toc-ignore">Simulation - Complete report (results
+presented in the supplementary materials)</h1>
+<h4 class="author">Pedro L. Baldoni</h4>
+<h4 class="date">17 February, 2023</h4>
 
 </div>
 
@@ -389,13 +412,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-04
+<strong>Last updated:</strong> 2023-02-17
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 2
 </p>
 <p>
 <strong>Knit directory:</strong> <code>wf-TranscriptDE/analysis/</code>
@@ -492,16 +515,24 @@ versions is critical for reproducibility.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
 </p>
 </div>
-<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div id="strongCachestrongdetected" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Nice! There were no cached chunks for this analysis, so you can be
-confident that you successfully produced the results during this
-run.</p>
+The following chunks had caches available:
+<ul>
+<li>
+simulation-complete_data_load
+</li>
+</ul>
+<p>To ensure reproducibility of the results, delete the cache directory
+<code>simulation-complete_cache</code> and re-run the analysis. To have
+workflowr automatically delete the cache directory prior to building the
+file, set <code>delete_cache = TRUE</code> when running
+<code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
 </div>
 </div>
 </div>
@@ -523,15 +554,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreed34d4e689994129c6bbdc8a356fe5778afbdd1e1targetblankd34d4e6a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -541,7 +572,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/d34d4e689994129c6bbdc8a356fe5778afbdd1e1" target="_blank">d34d4e6</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -556,38 +587,42 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/figure/
-    Ignored:    analysis/mouse_cache/
+    Ignored:    ._.DS_Store
+    Ignored:    .gitignore
+    Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
     Ignored:    data/annotation/mm39/
+    Ignored:    data/mouse/paired-end/fastq/
+    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    misc/.DS_Store
+    Ignored:    misc/._.DS_Store
+    Ignored:    misc/mouse.Rmd/._figure6.png
+    Ignored:    misc/simulation-paper.Rmd/._figure2.png
+    Ignored:    misc/simulation-paper.Rmd/._figure5.png
+    Ignored:    output/mouse/paired-end/
+    Ignored:    output/mouse/single-end/
+    Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
-    Ignored:    renv/
 
 Untracked files:
-    Untracked:  code/mouse/paired-end/
-    Untracked:  code/mouse/single-end/
-    Untracked:  data/mouse/paired-end/
-    Untracked:  data/mouse/single-end/
-    Untracked:  misc/
-    Untracked:  output/mouse/paired-end/
-    Untracked:  output/mouse/single-end/
+    Untracked:  analysis/simulation-howto.Rmd
+    Untracked:  misc/bibliography/
 
 Unstaged changes:
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/license.Rmd
     Modified:   analysis/mouse.Rmd
     Modified:   analysis/simulation-complete.Rmd
     Modified:   analysis/simulation-paper.Rmd
-    Deleted:    code/mouse/salmon/runSalmon.sh
-    Deleted:    code/mouse/salmon/runWasabi.R
-    Deleted:    data/mouse/misc/targets.txt
-    Modified:   data/mouse/readme.txt
-    Modified:   output/mouse/readme.txt
 
 </code></pre>
 <p>
@@ -638,6 +673,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/analysis/simulation-complete.Rmd" target="_blank">48c2c9b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating simulation-complete report
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/48c2c9bc207b539a504b8ff3bbd6cdb35f4f2553/docs/simulation-complete.html" target="_blank">48c2c9b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-05
+</td>
+<td>
+Updating simulation-complete report
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/8c476c629ee2f7cfd0888859077ed82caf38369a/analysis/simulation-complete.Rmd" target="_blank">8c476c6</a>
 </td>
 <td>
@@ -674,6 +743,67 @@ Adding complete simulation report
 </div>
 </div>
 </div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this report, we present the analysis of the simulations for the
+<code>catchSalmon</code>/<code>catchKallisto</code> manuscript. These
+simulations aim to generate typical RNA-seq data from mouse
+experiments.</p>
+<div id="news" class="section level2">
+<h2>News</h2>
+<ul>
+<li>Changes in version 221123:
+<ul>
+<li>Fix paragraph that discusses average fragment length from
+<code>Salmon</code> and <code>kallisto</code>. Fix paths to new location
+in workflowr directory.</li>
+</ul></li>
+<li>Changes in version 221105:
+<ul>
+<li>Simulations with 50, 75, and 100 base pairs read length were re-run
+with <code>simReads</code> option
+<code>fragment.length.min = 150L</code> to match the specifications of
+the simulations using 125bp and 150bp read length.</li>
+</ul></li>
+<li>Changes in version 221007:
+<ul>
+<li>Adding simulations with read length 125bp and 150bp to assess
+methods’ performance under different read lengths.</li>
+</ul></li>
+<li>Changes in version 221007:
+<ul>
+<li>Adding simulations with read length of 50bp and 100bp to assess
+methods’ performance under different read lengths.</li>
+</ul></li>
+<li>Changes in version 220822:
+<ul>
+<li>The simulations are designed in such a way that TPM values are
+directly generated for transcripts. Previously, we found that a
+two-stage approach with a Dirichlet random variable to split gene-level
+expression into transcripts was not realistic.</li>
+<li>Transcript ranks from our reference dataset are now based on
+Salmon’s TPM from real data, not raw counts.</li>
+<li>Increased the library size from 30 mi. reads to 50 mi. reads in the
+balanced scenario. For unbalanced scenario, libraries alternate between
+25 mi. and 100 mil. reads in size.</li>
+<li>Inclusion of an extra scenario with 5 replicates per group. We only
+had 3 replicates/group until now.</li>
+<li>We now use <code>edgeR::goodTuring</code> to generate baseline
+expression values. Previously we used the Zipf law, which we thought to
+be unrealistic for the number of transcripts we are simulating. The BCV
+trend is of the form <span class="math inline">\(\text{BCV} = 0.2 +
+1/\sqrt{\text{expression}}\)</span> with gene- and group-specific
+dispersion of the form <span class="math inline">\(\text{Dispersion} =
+BCV^2\times\frac{40}{\chi^2_{40}}\)</span>. The motivation for these
+changes is mainly to match the simulation setup used in the
+<code>voom</code> paper.</li>
+</ul></li>
+</ul>
+</div>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>We load necessary libraries and set up the rendering options
+below.</p>
 <pre class="r"><code>knitr::opts_chunk$set(
   echo = TRUE,
   comment = NA,
@@ -719,75 +849,7 @@ The following object is masked from &#39;package:plyr&#39;:
     mutate
 &gt; library(kableExtra)
 &gt; load_all(&#39;../code/pkg/&#39;)
-ℹ Loading pkg
-&gt; 
-&gt; BPPARAM &lt;- MulticoreParam(workers = 16,progressbar = TRUE)
-&gt; register(BPPARAM)</code></pre>
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>In this report I present the analysis of the fifth round of
-simulations for the DTE manuscript. At this point, I have only generated
-data simulating a typical <em>mouse</em> RNA-seq data set. In the the
-future, we will also simulate bulk RNA-seq dataset from a typical
-<em>human</em> data</p>
-<div id="news" class="section level2">
-<h2>News</h2>
-<ul>
-<li>Changes in version 221123:
-<ul>
-<li>Fix paragraph that discusses average fragment length from Salmon and
-kallisto. Fix paths to new location in workflowr directory.</li>
-</ul></li>
-<li>Changes in version 221105:
-<ul>
-<li>Simulations with 50, 75, and 100 base pairs read length were re-run
-with <code>simReads</code> option
-<code>fragment.length.min = 150L</code> to match the specifications of
-the simulations using 125bp and 150bp read length.</li>
-</ul></li>
-<li>Changes in version 221007:
-<ul>
-<li>Adding simulations with read length 125bp and 150bp to assesss
-methods’ performances under different read lengths.</li>
-</ul></li>
-<li>Changes in version 221007:
-<ul>
-<li>Adding simulations with read length of 50bp and 100bp to assess
-methods’ performances under different read lengths.</li>
-</ul></li>
-<li>Changes in version 220822:
-<ul>
-<li>The simulation is no longer done in a two-stage fashion. TPM values
-are directly generated for transcripts. Previously, we were using a
-two-stage approach with a Dirichlet random variable to split gene-level
-expression into transcripts. We found that the two-stage approach was
-not realistic.</li>
-<li>Transcript ranks from our reference dataset are now based on
-Salmon’s TPM from real data, not raw counts.</li>
-<li>Increased the library size from 30 mi. reads to 50 mi. reads in the
-balanced scenario. For unbalanced scenario, libraries alternate between
-25 mi. and 100 mil. reads in size.</li>
-<li>Inclusion of an extre scenario with 5 replicates per group. We only
-had 3 replicates/group until now.</li>
-<li>We now use <code>edgeR::goodTuring</code> to generate baseline
-expression values (before we used the Zipf law, which I thought to be
-unrealistic for the number of transcripts we are simulating), and the
-BCV trend is of the form <span class="math inline">\(\text{BCV} = 0.2 +
-1/\sqrt{\text{expression}}\)</span> with gene- and group-specific
-dispersion of the form <span class="math inline">\(\text{Dispersion} =
-BCV^2\times\frac{40}{\chi^2_{40}}\)</span>. The motivation for these
-changes is mainly to mimic the simulation setup used in the
-<code>voom</code> paper.</li>
-</ul></li>
-</ul>
-</div>
-<div id="outstanding-work" class="section level2">
-<h2>Outstanding work</h2>
-<p>Here I list the aspects that still need to be addressed in our
-simulation:</p>
-<ul>
-<li>Simulation of human data</li>
-</ul>
+ℹ Loading pkg</code></pre>
 </div>
 </div>
 <div id="simulation-setup" class="section level1">
@@ -801,58 +863,55 @@ expression analysis. Below we describe each of these steps in
 detail.</p>
 <div id="reference-dataset" class="section level2">
 <h2>Reference dataset</h2>
-<p>Two reference data sets were generated from real RNA-seq data from
-mouse (GSE60450) and human (<em>to be added</em>) experiments. For each
-reference data set, a subset of relevant genes (protein-coding or lncRNA
-genes from reference chromosomes with expected CPM &gt; 1 in at least
-half of the samples) and their associated transcripts (protein-coding
-and lncRNA transcripts from relevant genes) was selected from the
-respective species’ transcriptome using the Gencode basic GTF annotation
-(M27 for mouse and v40 for human). Selected transcripts from the same
-gene were ranked (in decreasing order) according to their observed
-expression level (in TPM) averaged across all samples. In both mouse and
-human reference data sets, only transcripts with unique sequences from
-protein coding genes and long non-coding RNA (lncRNA) were
-considered.</p>
-<p>More specifically, the selection of such a subset of relevatn genes
-for which the expersion of their transcripts would be simulated was as
-follows. We summarized Salmon’s quantification to the gene level using
-the function <code>tximeta::summarizeToGene</code>. Only protein-coding
-and lncRNA genes from chromosomes 1, …, 22, X, and Y were considered.
-Next, we estimated baseline expression proportions using
-<code>edgeR::goodTuringProportions</code>. For mouse data, we selected
-relevant genes with an expected CPM&gt;1 in at least 6 of the 12
-libraries (<span class="math inline">\(N_G = 13,176\)</span>). For human
-data, (<em>to be added</em>). Only transcripts from relevant genes were
-considered in our simulation (<span class="math inline">\(N_T =
-41,372\)</span> for mouse, and <em>to be added</em> for humans). For
-each relevant gene, transcripts were ranked according to their
-sample-averaged TPM values obtained from Salmon’s TPM quantifications.
-We used the baseline expression Good-Turing proportions of relevant
-genes to create a smoothing function (using <code>approxfun</code>
-function) to be used when simulating transcript-level expression, in a
-similar fashion to what was done in the <code>voom</code> paper.</p>
+<p>A reference data set was generated from a real RNA-seq data from
+mouse experiment (NCBI Gene Expression Omnibus accession number
+GSE60450). For this reference dataset, a subset of relevant genes
+(protein-coding or lncRNA genes from reference chromosomes with expected
+CPM &gt; 1 in at least half of the samples) and their associated
+transcripts (protein-coding and lncRNA transcripts from relevant genes)
+was selected from the mouse transcriptome using the Gencode basic GTF
+annotation (version M27). Selected transcripts from the same gene were
+ranked (in decreasing order) according to their observed expression
+level (in TPM) averaged across all samples. Only transcripts with unique
+sequences from protein coding genes and long non-coding RNA (lncRNA)
+were considered.</p>
+<p>More specifically, the selection of such a subset of relevant genes
+for which the expression of their transcripts would be simulated was
+done as follows. We summarized Salmon’s quantification to the gene level
+using the function <code>tximeta::summarizeToGene</code>. Only
+protein-coding and lncRNA genes from chromosomes 1, …, 22, X, and Y were
+considered. Next, we estimated baseline expression proportions using
+<code>edgeR::goodTuringProportions</code>. We selected relevant genes
+with an expected CPM&gt;1 in at least 6 of the 12 libraries (<span
+class="math inline">\(N_G = 13,176\)</span>). Only transcripts from
+relevant genes were considered in our simulation (<span
+class="math inline">\(N_T = 41,372\)</span>). For each relevant gene,
+transcripts were ranked according to their sample-averaged TPM values
+obtained from Salmon’s TPM quantifications. We used the baseline
+expression Good-Turing proportions of relevant genes to create a
+smoothing function (using <code>approxfun</code> function) to be used
+when simulating transcript-level expression, in a similar fashion to
+what was done in <span class="citation">Law et al. (2014)</span>.</p>
 </div>
 <div id="simulation-of-sequencing-reads" class="section level2">
 <h2>Simulation of sequencing reads</h2>
-<p>For both mouse and human reference data sets, simulation scenarios
-varied according to the sequencing read length (50bp, 75bp, 100bp,
-125bp, and 150bp), library size (either balanced with 50mi reads/sample
-or unbalanced with alternating 100mi and 25mi reads/sample), sequencing
-read type (either single-end or paired-end), maximum number of
-transcripts per gene considered (either 2, 3, 4, 5, or all transcripts
-available in the reference data set), the number of biological
-replicates per group (either 3 or 5), and fold-change (either 2 or 1, in
-which the latter represents a null simulation without any differential
-expression). A total of 20 simulated experiments per scenario was
-generated. For each experiment, we simulated RNA-seq libraries for a
-total of 2 groups.</p>
+<p>Simulation scenarios varied according to the sequencing read length
+(50bp, 75bp, 100bp, 125bp, and 150bp), library size (either balanced
+with 50mi reads/sample or unbalanced with alternating 100mi and 25mi
+reads/sample), sequencing read type (either single-end or paired-end),
+maximum number of transcripts per gene considered (either 2, 3, 4, 5, or
+all transcripts available in the reference data set), the number of
+biological replicates per group (either 3 or 5), and fold-change (either
+2 or 1, in which the latter represents a null simulation without any
+differential expression). A total of 20 simulated experiments per
+scenario was generated. For each experiment, we simulated RNA-seq
+libraries for a total of 2 groups.</p>
 <p>The relative expression levels of selected transcripts (the input for
-<code>simReads</code>) was simulated as follows. First, for a particular
-scenario, baseline expression proportions were generated for all
-selected transcripts using the smoothed Good-Turing proportions from our
-reference dataset. The maximum number of transcripts/gene considered in
-a given scenario as well as the ranking of each transcript (obtained
+<code>Rsubread::simReads</code>) was simulated as follows. First, for a
+particular scenario, baseline expression proportions were generated for
+all selected transcripts using the smoothed Good-Turing proportions from
+our reference dataset. The maximum number of transcripts/gene considered
+in a given scenario as well as the ranking of each transcript (obtained
 from the reference dataset) dictated the set of selected transcripts in
 a simulation with only the most expressed ones (top ranked) being
 selected. For example, in a scenario with only 3 transcripts per gene
@@ -869,16 +928,14 @@ class="math inline">\(t\)</span> and sample <span
 class="math inline">\(s\)</span>, depending on the library size of each
 sample.</p>
 <p>Biological variation was incorporated in the simulation with a trend
-on the expected count for each sample. For mouse data, this trend had
-the form <span class="math inline">\(\text{BCV}_{ts} = 0.2 +
-1/\sqrt{\mu_{ts}}\)</span>. For human data, (<em>to be added</em>).
-Dispersions <span class="math inline">\(\phi_{ts}\)</span> were
-generated with random shifts around the trend as <span
-class="math inline">\(\phi_{ts} =
-\text{BCV}_{ts}^2\times\frac{df}{\chi^2_{df}}\)</span>. We used <span
-class="math inline">\(df = 40\)</span> for mouse data and (<em>to be
-added</em>) for human data. In this simulation, samples belonging to the
-same group share the random shift <span
+on the expected count for each sample. This trend had the form <span
+class="math inline">\(\text{BCV}_{ts} = 0.2 +
+1/\sqrt{\mu_{ts}}\)</span>. Dispersions <span
+class="math inline">\(\phi_{ts}\)</span> were generated with random
+shifts around the trend as <span class="math inline">\(\phi_{ts} =
+\text{BCV}_{ts}^2\times\frac{df}{\chi^2_{df}}\)</span> with <span
+class="math inline">\(df = 40\)</span>. In this simulation, samples
+belonging to the same group share the random shift <span
 class="math inline">\(\chi^2_{40}\)</span>. In other words, for each
 transcript and each group, a single random variable was drawn from <span
 class="math inline">\(\chi^2_{40}\)</span> and used to all biological
@@ -889,7 +946,7 @@ generate dispersions, and (2) this approach does not imply that there is
 no biological variability among samples from the same group (which will
 be introduced by the Gamma-Poisson model), but rather it just implies
 that transcript-wise expression levels from samples of the same group
-share the same mean and dispersion paramaters (as they should). Apart
+share the same mean and dispersion parameters (as they should). Apart
 from the differences in library size across replicates, the only
 variation among replicates should be a result of the variance model
 resulting from the Gamma-Poisson distribution. Since we generated
@@ -902,9 +959,9 @@ transcript-level expression following a Gamma distribution. Resulting
 transcript-wise expression levels were divided by the transcript length
 and scaled up to <span class="math inline">\(1\times 10^6\)</span> to
 generate transcript-wise TPMs that were used as input in
-<code>Rsubread::simReads</code>. For read lengths other than 75bp or
+<code>Rsubread::simReads</code>. For read lengths other than 75 bp or
 100bp, quality scores were samples from real data (ENCFF713MNU data for
-50bp, ENCFF126GLV for 125bp, and ENCFF102BXZ for 150bp experiments) and
+50bp, ENCFF126GLV for 125bp, and ENCFF102BXZ for 150 bp experiments) and
 used as an input parameter in <code>Rsubread::simReads</code>. Note that
 quality scores are disregarded by Salmon and kallisto during
 quantification, and their choice is irrelevant to the overall results of
@@ -915,23 +972,20 @@ this simulations study.</p>
 <p>Sequencing reads in FASTQ format generated by <code>simReads</code>
 were quantified by Salmon (v. 1.9.0) and kallisto (v. 0.46.1). For both
 quantification algorithms, we used transcriptomic index from the
-complete Gencode annotation (M27 for mouse and v40 for human) and we
-generated a total of 100 bootstraps samples for each library. For
-<code>Salmon</code>, we used a decoy-aware mapping-based indexed
-transcriptome generated for the mouse (mm39) and human (hg38.p13)
-reference genomes with k-mers of length 31. For Salmon, the option
-<code>--validateMappings</code> was used as recommended in the software
-documentation. For single-end read libraries, we provided kallisto the
-option <code>-l 180 -s 40</code> with the true mean and standard
-deviation fragment length that is the default and used in
-<code>simReads</code>. For Salmon, we used the default values of 250 and
-25 in single-end library quantification, because I am not interesting in
-comparing results across both tools and because the effect would be
-small anyway. To read Salmon quantification files in
-<code>sleuth</code>, Salmon quantification files <code>quant.sf</code>
-were transformed to <code>abundance.h5</code> files with the function
-<code>prepare_fish_for_sleuth</code> from the <code>wasabi</code>
-package (v. 1.0.1).</p>
+complete Gencode annotation (version M27) and we generated a total of
+100 bootstraps samples for each library. For <code>Salmon</code>, we
+used a decoy-aware mapping-based indexed transcriptome generated for the
+mouse mm39 reference genome with k-mers of length 31. For Salmon, the
+option <code>--validateMappings</code> was used as recommended in the
+software documentation. For single-end read libraries, we provided
+kallisto the option <code>-l 180 -s 40</code> with the true mean and
+standard deviation fragment length that is the default and used in
+<code>simReads</code> (Salmon uses default values 250 and 25 in
+single-end library quantification). To read Salmon quantification files
+in <code>sleuth</code>, Salmon quantification files
+<code>quant.sf</code> were transformed to <code>abundance.h5</code>
+files with the function <code>prepare_fish_for_sleuth</code> from the
+<code>wasabi</code> package (v. 1.0.1).</p>
 </div>
 <div id="differential-transcript-expression" class="section level2">
 <h2>Differential transcript expression</h2>
@@ -2111,6 +2165,7 @@ function <code>summarizeSimulation</code> in
 caption of each figure for a description of each analysis.</p>
 <div id="data-setup-and-loading-results" class="section level2">
 <h2>Data setup and loading results</h2>
+<p>Below I set up the file paths.</p>
 <pre class="r"><code>&gt; path.fdr &lt;- 
 +   list.files(&#39;../output/simulation/summary&#39;,&#39;fdr.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
 &gt; path.metrics &lt;- 
@@ -2123,6 +2178,9 @@ caption of each figure for a description of each analysis.</p>
 +   list.files(&#39;../output/simulation/summary&#39;,&#39;pvalue.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)
 &gt; path.overdispersion &lt;- 
 +   list.files(&#39;../output/simulation/summary&#39;,&#39;overdispersion.tsv.gz&#39;,recursive = TRUE,full.names = TRUE)</code></pre>
+<p>Loading all summarized results below. Because these datasets are
+quite large, I use <code>cache=TRUE</code> to save time when rendering
+this page.</p>
 <pre class="r"><code>&gt; # Loading datasets
 &gt; dt.fdr &lt;- do.call(rbind,lapply(path.fdr,fread))
 &gt; dt.metrics &lt;- do.call(rbind,lapply(path.metrics,fread))
@@ -2144,6 +2202,7 @@ remove this warning. See the
 >knitr cache options</a> for more details.
 </p>
 </div>
+<p>Some data wrangling below.</p>
 <pre class="r"><code>&gt; # Changing labels
 &gt; dt.fdr$TxPerGene %&lt;&gt;%
 +   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), &#39;TxPerGene&#39;),
@@ -2296,6 +2355,7 @@ their unadjusted p-values in a null simulation.</p>
 +   
 +   return(out)
 + })   </code></pre>
+<p>Below are the captions from each plot.</p>
 <pre class="r"><code>&gt; cap &lt;- paste0(&#39;Simulation results. Scenario with &#39;,dt.scenario$genome,&#39; genome, &#39;,
 +               dt.scenario$length,&#39; &#39;,dt.scenario$read,&#39; reads quantified with &#39;,
 +               dt.scenario$quantifier,&#39;, and &#39;,dt.scenario$scenario,&#39; libraries.&#39;)
@@ -2330,6 +2390,8 @@ present them in the same table:</p>
 +               &#39; quantified with &#39;,dt.scenario.table$quantifier,&#39;.&#39;)
 &gt; 
 &gt; cap1 &lt;- paste(cap,&#39;Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates most powerful method for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.&#39;)</code></pre>
+<p>We created the table below with the function
+<code>tabulateMetrics</code>.</p>
 <pre class="r"><code>&gt; tables &lt;- lapply(seq_len(nrow(dt.scenario.table)),function(i){
 +   scenario &lt;- as.character(dt.scenario.table[i,])
 +   names(scenario) &lt;- colnames(dt.scenario.table)
@@ -2367,6 +2429,8 @@ Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
 <div id="power-false-discovery-rate-and-computing-time"
 class="section level2">
 <h2>Power, false discovery rate, and computing time</h2>
+<p>Results from power, false discovery rate, and computing time are
+presented below.</p>
 <pre class="r"><code>&gt; for(i in seq_len(length(plots))) {
 +   fig &lt;- plots[[i]]$panelA
 +   print(fig)
@@ -4305,6 +4369,8 @@ Pedro Baldoni
 </div>
 <div id="type-1-error-rate-control" class="section level2">
 <h2>Type 1 error rate control</h2>
+<p>From null simulations, we present below the results for the type 1
+error rate assessment.</p>
 <pre class="r"><code>&gt; for(i in seq_len(length(plots))) {
 +   fig &lt;- plots[[i]]$panelB
 +   print(fig)
@@ -6273,6 +6339,8 @@ Pedro Baldoni
 </div>
 <div id="distribution-of-unadjusted-p-values" class="section level2">
 <h2>Distribution of unadjusted p-values</h2>
+<p>Distribution of unadjusted p-values from null simulations are then
+presented.</p>
 <pre class="r"><code>&gt; for(i in seq_len(length(plots))) {
 +   fig &lt;- plots[[i]]$panelC
 +   print(fig)
@@ -8162,6 +8230,8 @@ Pedro Baldoni
 <div id="power-and-false-discovery-rate-by-read-lengths"
 class="section level2">
 <h2>Power and false discovery rate by read lengths</h2>
+<p>Finally, tables assessing power and FDR by different read length
+specifications are presented.</p>
 <pre class="r"><code>&gt; for(i in seq_len(length(tables))) {
 +   tb &lt;- tables[[i]]$table1
 +   print(tb)
@@ -26527,6 +26597,14 @@ single-end
 </tbody>
 </table>
 <!-- -->
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-law2014voom" class="csl-entry">
+Law, Charity W, Yunshun Chen, Wei Shi, and Gordon K Smyth. 2014.
+<span>“Voom: Precision Weights Unlock Linear Model Analysis Tools for
+<span>RNA</span>-Seq Read Counts.”</span> <em>Genome Biology</em> 15:
+R29.
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -26557,92 +26635,92 @@ attached base packages:
 [8] base     
 
 other attached packages:
- [1] GenomicFeatures_1.50.2 AnnotationDbi_1.60.0   Biobase_2.58.0        
- [4] GenomicRanges_1.50.1   GenomeInfoDb_1.34.3    IRanges_2.32.0        
- [7] S4Vectors_0.36.0       BiocGenerics_0.44.0    pkg_1.0               
-[10] kableExtra_1.3.4       ggpubr_0.5.0           readr_2.1.3           
-[13] purrr_0.3.5            devtools_2.4.5         usethis_2.1.6         
-[16] BiocParallel_1.32.3    edgeR_3.40.0           limma_3.54.0          
+ [1] GenomicFeatures_1.50.4 AnnotationDbi_1.60.0   Biobase_2.58.0        
+ [4] GenomicRanges_1.50.2   GenomeInfoDb_1.34.9    IRanges_2.32.0        
+ [7] S4Vectors_0.36.1       BiocGenerics_0.44.0    pkg_1.0               
+[10] kableExtra_1.3.4       ggpubr_0.6.0           readr_2.1.4           
+[13] purrr_1.0.1            devtools_2.4.5         usethis_2.1.6         
+[16] BiocParallel_1.32.5    edgeR_3.40.2           limma_3.54.1          
 [19] magrittr_2.0.3         plyr_1.8.8             thematic_0.1.2.1      
-[22] ggplot2_3.4.0          data.table_1.14.6      workflowr_1.7.0       
+[22] ggplot2_3.4.1          data.table_1.14.6     
 
 loaded via a namespace (and not attached):
-  [1] utf8_1.2.2                    R.utils_2.12.2               
-  [3] tidyselect_1.2.0              RSQLite_2.2.19               
-  [5] htmlwidgets_1.5.4             grid_4.2.1                   
-  [7] munsell_0.5.0                 codetools_0.2-18             
-  [9] miniUI_0.1.1.1                withr_2.5.0                  
- [11] colorspace_2.0-3              filelock_1.0.2               
- [13] highr_0.9                     knitr_1.41                   
- [15] rstudioapi_0.14               SingleCellExperiment_1.20.0  
- [17] ggsignif_0.6.4                Rsubread_2.12.0              
- [19] labeling_0.4.2                MatrixGenerics_1.10.0        
- [21] git2r_0.30.1                  tximport_1.26.0              
- [23] GenomeInfoDbData_1.2.9        farver_2.1.1                 
- [25] bit64_4.0.5                   rhdf5_2.42.0                 
- [27] rprojroot_2.0.3               vctrs_0.5.1                  
- [29] generics_0.1.3                xfun_0.35                    
- [31] BiocFileCache_2.6.0           fishpond_2.4.0               
- [33] R6_2.5.1                      locfit_1.5-9.6               
- [35] AnnotationFilter_1.22.0       bitops_1.0-7                 
- [37] rhdf5filters_1.10.0           cachem_1.0.6                 
- [39] DelayedArray_0.24.0           assertthat_0.2.1             
- [41] promises_1.2.0.1              BiocIO_1.8.0                 
- [43] scales_1.2.1                  vroom_1.6.0                  
+  [1] utf8_1.2.3                    tidyselect_1.2.0             
+  [3] RSQLite_2.2.20                htmlwidgets_1.6.1            
+  [5] grid_4.2.1                    munsell_0.5.0                
+  [7] codetools_0.2-19              miniUI_0.1.1.1               
+  [9] withr_2.5.0                   colorspace_2.1-0             
+ [11] filelock_1.0.2                highr_0.10                   
+ [13] knitr_1.42                    rstudioapi_0.14              
+ [15] SingleCellExperiment_1.20.0   ggsignif_0.6.4               
+ [17] Rsubread_2.12.2               labeling_0.4.2               
+ [19] MatrixGenerics_1.10.0         git2r_0.31.0                 
+ [21] tximport_1.26.1               GenomeInfoDbData_1.2.9       
+ [23] farver_2.1.1                  bit64_4.0.5                  
+ [25] rhdf5_2.42.0                  rprojroot_2.0.3              
+ [27] vctrs_0.5.2                   generics_0.1.3               
+ [29] xfun_0.37                     BiocFileCache_2.6.0          
+ [31] fishpond_2.4.1                R6_2.5.1                     
+ [33] locfit_1.5-9.7                AnnotationFilter_1.22.0      
+ [35] bitops_1.0-7                  rhdf5filters_1.10.0          
+ [37] cachem_1.0.6                  DelayedArray_0.24.0          
+ [39] assertthat_0.2.1              showtext_0.9-5               
+ [41] vroom_1.6.1                   promises_1.2.0.1             
+ [43] BiocIO_1.8.0                  scales_1.2.1                 
  [45] gtable_0.3.1                  processx_3.8.0               
- [47] ensembldb_2.22.0              rlang_1.0.6                  
- [49] systemfonts_1.0.4             splines_4.2.1                
- [51] rtracklayer_1.58.0            rstatix_0.7.1                
- [53] lazyeval_0.2.2                broom_1.0.1                  
- [55] reshape2_1.4.4                BiocManager_1.30.19          
- [57] yaml_2.3.6                    abind_1.4-5                  
- [59] backports_1.4.1               httpuv_1.6.6                 
- [61] sleuth_0.30.0                 qvalue_2.30.0                
- [63] wasabi_1.0.1                  tools_4.2.1                  
- [65] ellipsis_0.3.2                RColorBrewer_1.1-3           
- [67] jquerylib_0.1.4               sessioninfo_1.2.2            
- [69] Rcpp_1.0.9                    progress_1.2.2               
- [71] zlibbioc_1.44.0               RCurl_1.98-1.9               
- [73] ps_1.7.2                      prettyunits_1.1.1            
- [75] cowplot_1.1.1                 urlchecker_1.0.1             
- [77] SummarizedExperiment_1.28.0   fs_1.5.2                     
- [79] svMisc_1.2.3                  whisker_0.4                  
- [81] ProtGenerics_1.30.0           matrixStats_0.63.0           
- [83] pkgload_1.3.2                 hms_1.1.2                    
- [85] mime_0.12                     evaluate_0.18                
- [87] xtable_1.8-4                  XML_3.99-0.12                
- [89] compiler_4.2.1                biomaRt_2.54.0               
- [91] tibble_3.1.8                  crayon_1.5.2                 
- [93] R.oo_1.25.0                   htmltools_0.5.3              
+ [47] ensembldb_2.22.0              workflowr_1.7.0              
+ [49] rlang_1.0.6                   systemfonts_1.0.4            
+ [51] splines_4.2.1                 rtracklayer_1.58.0           
+ [53] rstatix_0.7.2                 lazyeval_0.2.2               
+ [55] broom_1.0.3                   reshape2_1.4.4               
+ [57] BiocManager_1.30.19           yaml_2.3.7                   
+ [59] abind_1.4-5                   backports_1.4.1              
+ [61] httpuv_1.6.5                  sleuth_0.30.0                
+ [63] qvalue_2.30.0                 wasabi_1.0.1                 
+ [65] tools_4.2.1                   ellipsis_0.3.2               
+ [67] RColorBrewer_1.1-3            jquerylib_0.1.4              
+ [69] sessioninfo_1.2.2             Rcpp_1.0.10                  
+ [71] progress_1.2.2                zlibbioc_1.44.0              
+ [73] RCurl_1.98-1.10               ps_1.7.2                     
+ [75] prettyunits_1.1.1             cowplot_1.1.1                
+ [77] urlchecker_1.0.1              SummarizedExperiment_1.28.0  
+ [79] fs_1.6.1                      svMisc_1.2.3                 
+ [81] whisker_0.4.1                 ProtGenerics_1.30.0          
+ [83] matrixStats_0.63.0            pkgload_1.3.2                
+ [85] hms_1.1.2                     mime_0.12                    
+ [87] evaluate_0.20                 xtable_1.8-4                 
+ [89] XML_3.99-0.13                 compiler_4.2.1               
+ [91] biomaRt_2.54.0                tibble_3.1.8                 
+ [93] crayon_1.5.2                  htmltools_0.5.4              
  [95] later_1.3.0                   tzdb_0.3.0                   
- [97] tidyr_1.2.1                   DBI_1.1.3                    
- [99] dbplyr_2.2.1                  rappdirs_0.3.3               
+ [97] tidyr_1.3.0                   DBI_1.1.3                    
+ [99] dbplyr_2.3.0                  rappdirs_0.3.3               
 [101] Matrix_1.5-3                  car_3.1-1                    
-[103] cli_3.4.1                     R.methodsS3_1.8.2            
-[105] parallel_4.2.1                pkgconfig_2.0.3              
-[107] getPass_0.2-2                 GenomicAlignments_1.34.0     
-[109] xml2_1.3.3                    svglite_2.1.0                
-[111] bslib_0.4.1                   webshot_0.5.4                
-[113] XVector_0.38.0                rvest_1.0.3                  
-[115] stringr_1.4.1                 callr_3.7.3                  
-[117] digest_0.6.30                 Biostrings_2.66.0            
-[119] rmarkdown_2.18                tximeta_1.16.0               
-[121] restfulr_0.0.15               curl_4.3.3                   
-[123] shiny_1.7.3                   Rsamtools_2.14.0             
-[125] gtools_3.9.3                  rjson_0.2.21                 
-[127] lifecycle_1.0.3               jsonlite_1.8.3               
-[129] Rhdf5lib_1.20.0               carData_3.0-5                
-[131] desc_1.4.2                    viridisLite_0.4.1            
-[133] fansi_1.0.3                   pillar_1.8.1                 
-[135] lattice_0.20-45               KEGGREST_1.38.0              
-[137] fastmap_1.1.0                 httr_1.4.4                   
-[139] pkgbuild_1.3.1                interactiveDisplayBase_1.36.0
-[141] glue_1.6.2                    remotes_2.4.2                
-[143] png_0.1-7                     BiocVersion_3.16.0           
-[145] bit_4.0.5                     stringi_1.7.8                
-[147] sass_0.4.4                    profvis_0.3.7                
-[149] blob_1.2.3                    AnnotationHub_3.6.0          
-[151] memoise_2.0.1                 dplyr_1.0.10                 </code></pre>
+[103] cli_3.6.0                     parallel_4.2.1               
+[105] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
+[107] xml2_1.3.3                    svglite_2.1.1                
+[109] bslib_0.4.2                   webshot_0.5.4                
+[111] XVector_0.38.0                rvest_1.0.3                  
+[113] stringr_1.5.0                 callr_3.7.3                  
+[115] digest_0.6.31                 showtextdb_3.0               
+[117] Biostrings_2.66.0             rmarkdown_2.20               
+[119] tximeta_1.16.1                restfulr_0.0.15              
+[121] curl_5.0.0                    shiny_1.7.4                  
+[123] Rsamtools_2.14.0              gtools_3.9.4                 
+[125] rjson_0.2.21                  lifecycle_1.0.3              
+[127] jsonlite_1.8.4                Rhdf5lib_1.20.0              
+[129] carData_3.0-5                 desc_1.4.2                   
+[131] viridisLite_0.4.1             fansi_1.0.4                  
+[133] pillar_1.8.1                  lattice_0.20-45              
+[135] KEGGREST_1.38.0               fastmap_1.1.0                
+[137] httr_1.4.4                    pkgbuild_1.4.0               
+[139] interactiveDisplayBase_1.36.0 glue_1.6.2                   
+[141] remotes_2.4.2                 png_0.1-8                    
+[143] BiocVersion_3.16.0            bit_4.0.5                    
+[145] stringi_1.7.12                sass_0.4.1                   
+[147] profvis_0.3.7                 blob_1.2.3                   
+[149] AnnotationHub_3.6.0           memoise_2.0.1                
+[151] dplyr_1.1.0                   sysfonts_0.8.8               </code></pre>
 </div>
 </div>
 </div>

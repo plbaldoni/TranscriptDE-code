@@ -1,6 +1,6 @@
 ---
-title: "Transcript level analysis of mouse mammary gland RNA-seq data"
-author: "Pedro Baldoni"
+title: "Analysis of the RNA-seq data from the epithelial cell population of the mouse mammary gland"
+author: "Pedro L. Baldoni"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: workflowr::wflow_html
 editor_options:

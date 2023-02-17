@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Workflowr page for catchSalmon/catchKallisto paper"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,14 +8,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-The website hosts code for the transcript-level DE paper.
-
+This website hosts code for the transcript-level differential expression paper, which presents the methodology implemented in functions `catchSalmon` and `catchKallisto` from the R/Bioconductor package [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html).
 
 ## Simulation study
 
-* [Complete report](simulation-complete.html)
-* [Reduced report - paper figures and tables](simulation-paper.html)
+* [Complete report (results presented in the supplementary materials)](simulation-complete.html)
+* [Reduced report (results presented in the main paper)](simulation-paper.html)
   
-## Application to RNA-seq data from the mouse mammary epithelial cell population
+## Analysis of the RNA-seq data from the epithelial cell population of the mouse mammary gland
 
 * [Report](mouse.html)

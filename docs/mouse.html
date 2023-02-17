@@ -9,12 +9,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Pedro Baldoni" />
+<meta name="author" content="Pedro L. Baldoni" />
 
 
-<title>Transcript level analysis of mouse mammary gland RNA-seq data</title>
+<title>Analysis of the RNA-seq data from the epithelial cell population of the mouse mammary gland</title>
 
-<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -358,10 +358,10 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Transcript level analysis of mouse mammary
-gland RNA-seq data</h1>
-<h4 class="author">Pedro Baldoni</h4>
-<h4 class="date">24 January, 2023</h4>
+<h1 class="title toc-ignore">Analysis of the RNA-seq data from the
+epithelial cell population of the mouse mammary gland</h1>
+<h4 class="author">Pedro L. Baldoni</h4>
+<h4 class="date">17 February, 2023</h4>
 
 </div>
 
@@ -390,7 +390,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-24
+<strong>Last updated:</strong> 2023-02-17
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -524,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeedbcc15a55c43c524a8282264f42e3eedf65d538targetblankedbcc15a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/edbcc15a55c43c524a8282264f42e3eedf65d538" target="_blank">edbcc15</a>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtreeedbcc15a55c43c524a8282264f42e3eedf65d538targetblankedbcc15a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniwfTranscriptDEtree60067c3c7703adb43568ee9919c7647e6d70e430targetblank60067c3a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/edbcc15a55c43c524a8282264f42e3eedf65d538" target="_blank">edbcc15</a>.
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/tree/60067c3c7703adb43568ee9919c7647e6d70e430" target="_blank">60067c3</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -582,24 +582,17 @@ Ignored files:
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
-    Ignored:    renv/
 
 Untracked files:
-    Untracked:  code/quasi_poisson/suppfigure_quasipoisson.R
-    Untracked:  misc/mouse.Rmd/suppfigure_maplot.png
-    Untracked:  misc/mouse.Rmd/suppfigure_overdispersion.png
-    Untracked:  misc/mouse.Rmd/supptable_foxp1.tex
-    Untracked:  misc/mouse.Rmd/supptable_overdispersion.tex
-    Untracked:  misc/mouse.Rmd/supptable_singleend.tex
-    Untracked:  misc/quasi_poisson/suppfigure_quasipoisson.png
+    Untracked:  analysis/simulation-howto.Rmd
+    Untracked:  misc/bibliography/
 
 Unstaged changes:
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/license.Rmd
     Modified:   analysis/mouse.Rmd
-    Deleted:    code/quasi_poisson/plot.R
-    Modified:   code/quasi_poisson/readme.txt
-    Deleted:    misc/mouse.Rmd/mouse_eda_table_foxp1.tex
-    Deleted:    misc/mouse.Rmd/mouse_eda_table_mao.tex
-    Deleted:    misc/quasi_poisson/plot.png
+    Modified:   analysis/simulation-complete.Rmd
+    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -644,6 +637,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/analysis/mouse.Rmd" target="_blank">e75e3d9</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-23
+</td>
+<td>
+Adjusting figures
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/wf-TranscriptDE/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/mouse.html" target="_blank">e75e3d9</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-23
+</td>
+<td>
+Adjusting figures
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -791,7 +818,7 @@ Rmd
 Pedro Baldoni
 </td>
 <td>
-2023-01-06
+2023-01-05
 </td>
 <td>
 Updating mouse report
@@ -808,7 +835,7 @@ html
 Pedro Baldoni
 </td>
 <td>
-2023-01-06
+2023-01-05
 </td>
 <td>
 Updating mouse report
@@ -1403,7 +1430,7 @@ tb.kegga &lt;- kegga(interestGenes,species = &#39;Mm&#39;)
 GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;mmu&quot;)
 tb.kegga[&#39;path:mmu05224&#39;,]</code></pre>
 <pre><code>                    Pathway   N DE      P.DE
-path:mmu05224 Breast cancer 147 15 0.2535296</code></pre>
+path:mmu05224 Breast cancer 147 15 0.2535164</code></pre>
 <pre class="r"><code>interestGenes.breast &lt;- 
   interestGenes[interestGenes %in% GK$GeneID[GK$PathwayID == &#39;path:mmu05224&#39;]]
 
@@ -1573,6 +1600,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/e75e3d99d906c0c30ba538acfb3516f8fce9547d/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">e75e3d9</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-01-23
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/wf-TranscriptDE/blob/9a3e9261caa134d79e86c10b792aee7e08f08ff5/docs/figure/mouse.Rmd/mouse_eda_plots_mao_gene-1.png" target="_blank">9a3e926</a>
@@ -1835,105 +1873,102 @@ attached base packages:
 
 other attached packages:
  [1] ensembldb_2.22.0            AnnotationFilter_1.22.0    
- [3] GenomicFeatures_1.50.2      AnnotationDbi_1.60.0       
- [5] kableExtra_1.3.4            ragg_1.2.4                 
+ [3] GenomicFeatures_1.50.4      AnnotationDbi_1.60.0       
+ [5] kableExtra_1.3.4            ragg_1.2.5                 
  [7] SummarizedExperiment_1.28.0 Biobase_2.58.0             
  [9] MatrixGenerics_1.10.0       matrixStats_0.63.0         
-[11] forcats_0.5.2               stringr_1.4.1              
-[13] dplyr_1.0.10                purrr_0.3.5                
-[15] tidyr_1.2.1                 tidyverse_1.3.2            
-[17] tximeta_1.16.0              fishpond_2.4.0             
+[11] forcats_1.0.0               stringr_1.5.0              
+[13] dplyr_1.1.0                 purrr_1.0.1                
+[15] tidyr_1.3.0                 tidyverse_1.3.2            
+[17] tximeta_1.16.1              fishpond_2.4.1             
 [19] sleuth_0.30.0               AnnotationHub_3.6.0        
-[21] BiocFileCache_2.6.0         dbplyr_2.2.1               
-[23] tidyHeatmap_1.7.0           tibble_3.1.8               
+[21] BiocFileCache_2.6.0         dbplyr_2.3.0               
+[23] tidyHeatmap_1.8.1           tibble_3.1.8               
 [25] patchwork_1.1.2             ComplexHeatmap_2.14.0      
 [27] gplots_3.1.3                plyr_1.8.8                 
-[29] ggpubr_0.5.0                magrittr_2.0.3             
-[31] rtracklayer_1.58.0          GenomicRanges_1.50.1       
-[33] GenomeInfoDb_1.34.3         IRanges_2.32.0             
-[35] S4Vectors_0.36.0            BiocGenerics_0.44.0        
-[37] Rsubread_2.12.0             readr_2.1.3                
-[39] ggplot2_3.4.0               data.table_1.14.6          
-[41] edgeR_3.40.0                limma_3.54.0               
-[43] workflowr_1.7.0            
+[29] ggpubr_0.6.0                magrittr_2.0.3             
+[31] rtracklayer_1.58.0          GenomicRanges_1.50.2       
+[33] GenomeInfoDb_1.34.9         IRanges_2.32.0             
+[35] S4Vectors_0.36.1            BiocGenerics_0.44.0        
+[37] Rsubread_2.12.2             readr_2.1.4                
+[39] ggplot2_3.4.1               data.table_1.14.6          
+[41] edgeR_3.40.2                limma_3.54.1               
 
 loaded via a namespace (and not attached):
-  [1] utf8_1.2.2                    tidyselect_1.2.0             
-  [3] RSQLite_2.2.19                BiocParallel_1.32.3          
-  [5] munsell_0.5.0                 codetools_0.2-18             
-  [7] statmod_1.4.37                withr_2.5.0                  
-  [9] colorspace_2.0-3              filelock_1.0.2               
- [11] highr_0.9                     knitr_1.41                   
+  [1] utf8_1.2.3                    tidyselect_1.2.0             
+  [3] RSQLite_2.2.20                BiocParallel_1.32.5          
+  [5] munsell_0.5.0                 codetools_0.2-19             
+  [7] statmod_1.5.0                 withr_2.5.0                  
+  [9] colorspace_2.1-0              filelock_1.0.2               
+ [11] highr_0.10                    knitr_1.42                   
  [13] rstudioapi_0.14               SingleCellExperiment_1.20.0  
  [15] ggsignif_0.6.4                labeling_0.4.2               
- [17] git2r_0.30.1                  tximport_1.26.0              
+ [17] git2r_0.31.0                  tximport_1.26.1              
  [19] GenomeInfoDbData_1.2.9        farver_2.1.1                 
  [21] bit64_4.0.5                   rhdf5_2.42.0                 
- [23] rprojroot_2.0.3               vctrs_0.5.1                  
- [25] generics_0.1.3                xfun_0.35                    
- [27] timechange_0.1.1              R6_2.5.1                     
- [29] doParallel_1.0.17             clue_0.3-63                  
- [31] locfit_1.5-9.6                gridGraphics_0.5-1           
+ [23] rprojroot_2.0.3               vctrs_0.5.2                  
+ [25] generics_0.1.3                xfun_0.37                    
+ [27] timechange_0.2.0              R6_2.5.1                     
+ [29] doParallel_1.0.17             clue_0.3-64                  
+ [31] locfit_1.5-9.7                gridGraphics_0.5-1           
  [33] bitops_1.0-7                  rhdf5filters_1.10.0          
  [35] cachem_1.0.6                  DelayedArray_0.24.0          
- [37] assertthat_0.2.1              vroom_1.6.0                  
+ [37] assertthat_0.2.1              vroom_1.6.1                  
  [39] promises_1.2.0.1              BiocIO_1.8.0                 
  [41] scales_1.2.1                  googlesheets4_1.0.1          
  [43] gtable_0.3.1                  Cairo_1.6-0                  
- [45] processx_3.8.0                rlang_1.0.6                  
+ [45] workflowr_1.7.0               rlang_1.0.6                  
  [47] systemfonts_1.0.4             splines_4.2.1                
- [49] GlobalOptions_0.1.2           rstatix_0.7.1                
- [51] lazyeval_0.2.2                gargle_1.2.1                 
- [53] broom_1.0.1                   reshape2_1.4.4               
+ [49] GlobalOptions_0.1.2           rstatix_0.7.2                
+ [51] lazyeval_0.2.2                gargle_1.3.0                 
+ [53] broom_1.0.3                   reshape2_1.4.4               
  [55] modelr_0.1.10                 BiocManager_1.30.19          
- [57] yaml_2.3.6                    abind_1.4-5                  
- [59] backports_1.4.1               httpuv_1.6.6                 
+ [57] yaml_2.3.7                    abind_1.4-5                  
+ [59] backports_1.4.1               httpuv_1.6.5                 
  [61] qvalue_2.30.0                 tools_4.2.1                  
  [63] ellipsis_0.3.2                jquerylib_0.1.4              
- [65] RColorBrewer_1.1-3            Rcpp_1.0.9                   
+ [65] RColorBrewer_1.1-3            Rcpp_1.0.10                  
  [67] progress_1.2.2                zlibbioc_1.44.0              
- [69] RCurl_1.98-1.9                ps_1.7.2                     
- [71] prettyunits_1.1.1             GetoptLong_1.0.5             
- [73] viridis_0.6.2                 haven_2.5.1                  
- [75] cluster_2.1.4                 fs_1.5.2                     
- [77] svMisc_1.2.3                  circlize_0.4.15              
- [79] reprex_2.0.2                  googledrive_2.0.0            
- [81] whisker_0.4                   ProtGenerics_1.30.0          
- [83] hms_1.1.2                     mime_0.12                    
- [85] evaluate_0.18                 xtable_1.8-4                 
- [87] XML_3.99-0.12                 readxl_1.4.1                 
- [89] gridExtra_2.3                 shape_1.4.6                  
- [91] compiler_4.2.1                biomaRt_2.54.0               
- [93] KernSmooth_2.23-20            crayon_1.5.2                 
- [95] htmltools_0.5.3               mgcv_1.8-41                  
- [97] later_1.3.0                   tzdb_0.3.0                   
- [99] lubridate_1.9.0               DBI_1.1.3                    
-[101] rappdirs_0.3.3                Matrix_1.5-3                 
-[103] car_3.1-1                     cli_3.4.1                    
-[105] parallel_4.2.1                pkgconfig_2.0.3              
-[107] getPass_0.2-2                 GenomicAlignments_1.34.0     
-[109] xml2_1.3.3                    foreach_1.5.2                
-[111] svglite_2.1.0                 bslib_0.4.1                  
-[113] webshot_0.5.4                 XVector_0.38.0               
-[115] rvest_1.0.3                   callr_3.7.3                  
-[117] digest_0.6.30                 Biostrings_2.66.0            
-[119] cellranger_1.1.0              rmarkdown_2.18               
-[121] dendextend_1.16.0             restfulr_0.0.15              
-[123] curl_4.3.3                    shiny_1.7.3                  
-[125] Rsamtools_2.14.0              gtools_3.9.3                 
-[127] rjson_0.2.21                  nlme_3.1-160                 
-[129] lifecycle_1.0.3               jsonlite_1.8.3               
-[131] Rhdf5lib_1.20.0               carData_3.0-5                
-[133] viridisLite_0.4.1             fansi_1.0.3                  
-[135] pillar_1.8.1                  lattice_0.20-45              
-[137] KEGGREST_1.38.0               fastmap_1.1.0                
-[139] httr_1.4.4                    interactiveDisplayBase_1.36.0
-[141] glue_1.6.2                    png_0.1-7                    
-[143] iterators_1.0.14              BiocVersion_3.16.0           
-[145] bit_4.0.5                     stringi_1.7.8                
-[147] sass_0.4.4                    blob_1.2.3                   
-[149] textshaping_0.3.6             caTools_1.18.2               
-[151] memoise_2.0.1                </code></pre>
+ [69] RCurl_1.98-1.10               prettyunits_1.1.1            
+ [71] GetoptLong_1.0.5              viridis_0.6.2                
+ [73] haven_2.5.1                   cluster_2.1.4                
+ [75] fs_1.6.1                      svMisc_1.2.3                 
+ [77] circlize_0.4.15               reprex_2.0.2                 
+ [79] googledrive_2.0.0             whisker_0.4.1                
+ [81] ProtGenerics_1.30.0           hms_1.1.2                    
+ [83] mime_0.12                     evaluate_0.20                
+ [85] xtable_1.8-4                  XML_3.99-0.13                
+ [87] readxl_1.4.2                  gridExtra_2.3                
+ [89] shape_1.4.6                   compiler_4.2.1               
+ [91] biomaRt_2.54.0                KernSmooth_2.23-20           
+ [93] crayon_1.5.2                  htmltools_0.5.4              
+ [95] mgcv_1.8-41                   later_1.3.0                  
+ [97] tzdb_0.3.0                    lubridate_1.9.2              
+ [99] DBI_1.1.3                     rappdirs_0.3.3               
+[101] Matrix_1.5-3                  car_3.1-1                    
+[103] cli_3.6.0                     parallel_4.2.1               
+[105] pkgconfig_2.0.3               GenomicAlignments_1.34.0     
+[107] xml2_1.3.3                    foreach_1.5.2                
+[109] svglite_2.1.1                 bslib_0.4.2                  
+[111] webshot_0.5.4                 XVector_0.38.0               
+[113] rvest_1.0.3                   digest_0.6.31                
+[115] Biostrings_2.66.0             cellranger_1.1.0             
+[117] rmarkdown_2.20                dendextend_1.16.0            
+[119] restfulr_0.0.15               curl_5.0.0                   
+[121] shiny_1.7.4                   Rsamtools_2.14.0             
+[123] gtools_3.9.4                  rjson_0.2.21                 
+[125] nlme_3.1-162                  lifecycle_1.0.3              
+[127] jsonlite_1.8.4                Rhdf5lib_1.20.0              
+[129] carData_3.0-5                 viridisLite_0.4.1            
+[131] fansi_1.0.4                   pillar_1.8.1                 
+[133] lattice_0.20-45               KEGGREST_1.38.0              
+[135] fastmap_1.1.0                 httr_1.4.4                   
+[137] interactiveDisplayBase_1.36.0 glue_1.6.2                   
+[139] png_0.1-8                     iterators_1.0.14             
+[141] BiocVersion_3.16.0            bit_4.0.5                    
+[143] stringi_1.7.12                sass_0.4.1                   
+[145] blob_1.2.3                    textshaping_0.3.6            
+[147] caTools_1.18.2                memoise_2.0.1                </code></pre>
 </div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 ---
-title: "simulation"
-author: "Pedro Baldoni"
+title: "Simulation - Reduced report (results presented in the main paper)"
+author: "Pedro L. Baldoni"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: workflowr::wflow_html
 editor_options:
@@ -9,7 +9,11 @@ editor_options:
 
 # Introduction
 
-# Setup
+In this report, we present the analysis of the simulations for the `catchSalmon`/`catchKallisto` manuscript. These simulations aim to generate typical RNA-seq data from mouse experiments. This report focuses on the results presented in the main paper only. For a comprehensive report of the results, please refer to the [complete report](simulation-complete.html).
+
+## Setup
+
+We load necessary libraries and set up the rendering options below.
 
 ```{r simulation-paper_setup}
 knitr::opts_chunk$set(dev = "png",
@@ -37,12 +41,10 @@ library(ggpubr)
 library(kableExtra)
 library(patchwork)
 library(ragg)
-
 load_all('../code/pkg/')
-
-BPPARAM <- MulticoreParam(workers = 16,progressbar = TRUE)
-register(BPPARAM)
 ```
+
+I use the functions below to produce the histogram plot shown in this report and to quickly subset data tables for specific scenarios.
 
 ```{r simulation-paper_setup_functions}
 cleanPlot <- function(x,fig){
@@ -90,7 +92,11 @@ subsetDT <- function(x,scenario,panel = NULL,tx.per.gene = NULL, plot = TRUE){
 
 # Analysis
 
+Here we begin summarizing the results to generate the figures presented in the main paper.
+
 ## Data wrangling
+
+Below I set up the file paths.
 
 ```{r simulation-paper_data_paths}
 path.misc <- file.path('../misc',knitr::current_input())
@@ -110,6 +116,8 @@ path.overdispersion <-
   list.files('../output/simulation/summary','overdispersion.tsv.gz',recursive = TRUE,full.names = TRUE)
 ```
 
+Loading all summarized results below. Because these datasets are quite large, I use `cache=TRUE` to save time when rendering this page.
+
 ```{r simulation-paper_data_load,cache=TRUE}
 # Loading datasets
 dt.fdr <- do.call(rbind,lapply(path.fdr,fread))
@@ -119,6 +127,8 @@ dt.quantile <- do.call(rbind,lapply(path.quantile,fread))
 dt.pvalue <- do.call(rbind,lapply(path.pvalue,fread))
 dt.overdispersion <- do.call(rbind,lapply(path.overdispersion,fread))
 ```
+
+Some data wrangling below.
 
 ```{r simulation-paper_data_label}
 # Changing labels
@@ -183,6 +193,8 @@ dt.overdispersion$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 2
                                         to = paste0(seq(50, 150, 25), 'bp'))
 ```
 
+All the simulated scenarios are generated below.
+
 ```{r simulation-paper_data_scenario}
 dt.scenario <- expand.grid('genome' = 'mm39',
                            'length' = c('50bp','75bp','100bp','125bp','150bp'),
@@ -194,6 +206,8 @@ dt.scenario <- as.data.table(dt.scenario)
 ```
 
 ## Power plot & False discovery rate
+
+Below we generate Figure 2 of the main paper.
 
 ```{r simulation-paper_power}
 scenario.balanced <- as.character(dt.scenario[length == '100bp' &
@@ -273,6 +287,8 @@ dev.off()
 fig.power
 ```
 
+Then, we generate Figure 3 below.
+
 ```{r simulation-paper_fdr}
 dt.fdr.plot <- rbind(subsetDT(dt.fdr,scenario.balanced,'A'),
                      subsetDT(dt.fdr,scenario.unbalanced,'A'))
@@ -322,6 +338,8 @@ fig.fdr
 ```
 
 ## Type 1 error 
+
+Figure 4 is created below.
 
 ```{r simulation-paper_type1error_barplot}
 dt.type1error <- rbind(subsetDT(dt.metrics,scenario.balanced,'B'),
@@ -376,6 +394,8 @@ dev.off()
 fig.type1error
 ```
 
+Finally, we generate Figure 5.
+
 ```{r simulation-paper_type1error_pvalue}
 dt.pvalue.plot <- subsetDT(dt.pvalue,scenario.unbalanced,'C','All Transcripts')
 dt.pvalue.plot <- dt.pvalue.plot[LibsPerGroup == '#Lib/Group = 5',]
@@ -418,6 +438,8 @@ fig.type1error
 ```
 
 ## Read type
+
+Below we generate Table 1 of the main paper.
 
 ```{r simulation-paper_read}
 # Overdispersion fold-change
@@ -527,7 +549,7 @@ save_kable(tb,file = file.path(path.misc,"table1.tex"))
 
 ## Speed
 
-Averaging over multiple scenarios:
+In the main paper we also comment on methods' performance regarding computing time. The table below present such numbers.
 
 ```{r simulation-paper_speed}
 dt.time[, .(min =60*min(Time),
