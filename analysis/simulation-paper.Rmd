@@ -434,7 +434,7 @@ agg_png(filename = file.path(path.misc,"figure5.png"),width = 5,height = 7.5,uni
 fig.hist
 dev.off()
 
-fig.type1error
+fig.hist
 ```
 
 ## Read type
