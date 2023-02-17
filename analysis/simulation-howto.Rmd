@@ -1,0 +1,15 @@
+---
+title: "simulation-howto"
+author: "Pedro Baldoni"
+date: "2023-02-17"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+```{r}
+
+```
+
