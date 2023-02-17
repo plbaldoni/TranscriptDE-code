@@ -9,7 +9,7 @@ navbar:
     href: license.html
   right:
   - icon: fab fa-github
-    text: Source code
+    text: GitHub
     href: https://github.com/plbaldoni/TranscriptDE-wf
 output:
   workflowr::wflow_html:
