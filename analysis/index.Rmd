@@ -12,6 +12,7 @@ This website hosts code for the transcript-level differential expression paper, 
 
 ## Simulation study
 
+* [Rerunning the simulation study](simulation-howto.html)
 * [Complete report (results presented in the supplementary materials)](simulation-complete.html)
 * [Reduced report (results presented in the main paper)](simulation-paper.html)
   
