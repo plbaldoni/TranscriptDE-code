@@ -10,7 +10,7 @@ navbar:
   right:
   - icon: fab fa-github
     text: GitHub
-    href: https://github.com/plbaldoni/TranscriptDE-wf
+    href: https://github.com/plbaldoni/TranscriptDE-code
 output:
   workflowr::wflow_html:
     toc: yes

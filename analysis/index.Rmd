@@ -8,11 +8,11 @@ editor_options:
   chunk_output_type: console
 ---
 
-This website hosts code for the transcript-level differential expression paper, which presents the methodology implemented in functions `catchSalmon` and `catchKallisto` from the R/Bioconductor package [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html).
+This website hosts the code for the transcript-level differential expression paper, which presents the methodology implemented in the functions `catchSalmon` and `catchKallisto` from the R/Bioconductor package [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html).
 
 ## Simulation study
 
-The pages below present the necessary steps to rerun our simulation study and the code used to generaten the figures and tables from the main and supplementary texts of the transcript-level differential expression paper.
+The pages below present the necessary steps to rerun our simulation study and the code used to generate the figures and tables from the main and supplementary texts of the transcript-level differential expression paper.
 
 * [Rerunning the simulation study](simulation-howto.html)
 * [Complete report (results presented in the supplementary materials)](simulation-complete.html)
