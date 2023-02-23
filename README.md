@@ -1,4 +1,4 @@
-# Workflow page from the catchSalmon/catchKallisto paper
+# TranscriptDE-code
 
 This website hosts code for the transcript-level differential expression paper, which presents the methodology implemented in functions `catchSalmon` and `catchKallisto` from the R/Bioconductor package [edgeR](https://bioconductor.org/packages/release/bioc/html/edgeR.html). 
 

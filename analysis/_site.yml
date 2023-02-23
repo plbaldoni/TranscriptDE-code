@@ -1,7 +1,7 @@
-name: TranscriptDE-wf
+name: TranscriptDE-code
 output_dir: ../docs
 navbar:
-  title: TranscriptDE-wf
+  title: TranscriptDE-code
   left:
   - text: Home
     href: index.html
