@@ -349,7 +349,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-code</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -362,7 +362,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/plbaldoni/TranscriptDE-wf">
+  <a href="https://github.com/plbaldoni/TranscriptDE-code">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -387,7 +387,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -398,8 +398,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -412,13 +412,14 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
-<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+<strong>Knit directory:</strong>
+<code>TranscriptDE-code/analysis/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
 </p>
@@ -437,120 +438,35 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongobjectspresent">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>Environment:</strong> objects present
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
-<div id="strongEnvironmentstrongobjectspresent"
-class="panel-collapse collapse">
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
 <div class="panel-body">
-<p>
-The global environment had objects present when the code in the R
-Markdown file was run. These objects can affect the analysis in your R
-Markdown file in unknown ways. For reproduciblity it’s best to always
-run the code in an empty environment. Use <code>wflow_publish</code> or
-<code>wflow_build</code> to ensure that the code is always run in an
-empty environment.
-</p>
-<p>
-The following objects were defined in the global environment when these
-results were created:
-</p>
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th style="text-align:left;">
-Name
-</th>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:left;">
-Size
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-cmdpipe
-</td>
-<td style="text-align:left;">
-pipe;connection
-</td>
-<td style="text-align:left;">
-584 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ml
-</td>
-<td style="text-align:left;">
-function
-</td>
-<td style="text-align:left;">
-784 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-mlre
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-112 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-mlstatus
-</td>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-56 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-module
-</td>
-<td style="text-align:left;">
-function
-</td>
-<td style="text-align:left;">
-6.1 Kb
-</td>
-</tr>
-</tbody>
-</table>
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
 </div>
 </div>
 </div>
@@ -624,15 +540,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -642,7 +558,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -662,15 +578,26 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    ._.DS_Store
     Ignored:    .gitignore
+    Ignored:    TranscriptDE-code.Rproj
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/._.DS_Store
-    Ignored:    code/mouse/.DS_Store
-    Ignored:    code/mouse/._.DS_Store
-    Ignored:    code/mouse/single-end/.DS_Store
-    Ignored:    code/mouse/single-end/._.DS_Store
-    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
+    Ignored:    code/lung-se/data/slurm-10685114.out
+    Ignored:    code/lung-se/salmon/.RData
+    Ignored:    code/lung-se/salmon/runWasabi.Rout
+    Ignored:    code/lung-se/salmon/slurm-10685171.out
+    Ignored:    code/lung-se/salmon/slurm-10694099.out
+    Ignored:    code/lung/data/slurm-10678225.out
+    Ignored:    code/lung/index/slurm-10679764.out
+    Ignored:    code/lung/index/slurm-10679768.out
+    Ignored:    code/lung/index/slurm-10684814.out
+    Ignored:    code/lung/salmon/.RData
+    Ignored:    code/lung/salmon/runWasabi.Rout
+    Ignored:    code/lung/salmon/slurm-10681840.out
+    Ignored:    code/lung/salmon/slurm-10681872.out
+    Ignored:    code/lung/salmon/slurm-10684950.out
+    Ignored:    code/lung/salmon/slurm-10694066.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/pkg.Rproj
@@ -683,48 +610,35 @@ Ignored files:
     Ignored:    data/annotation/._.DS_Store
     Ignored:    data/annotation/hg38/
     Ignored:    data/annotation/mm39/
-    Ignored:    data/mouse/.DS_Store
-    Ignored:    data/mouse/._.DS_Store
-    Ignored:    data/mouse/._readme.txt
-    Ignored:    data/mouse/paired-end/fastq/
-    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    data/annotation/sequins/._rnasequin_annotation_2.4.gtf
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa.fai
+    Ignored:    data/annotation/sequins/._rnasequin_genes_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_isoforms_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_sequences_2.4.fa
+    Ignored:    data/lung-se/.DS_Store
+    Ignored:    data/lung-se/._.DS_Store
+    Ignored:    data/lung-se/fastq/
+    Ignored:    data/lung-se/misc/._filereport_read_run_PRJNA341465_tsv.txt
+    Ignored:    data/lung/.DS_Store
+    Ignored:    data/lung/._.DS_Store
+    Ignored:    data/lung/fastq/
+    Ignored:    data/lung/index/
+    Ignored:    data/lung/misc/._filereport_read_run_PRJNA723287_tsv.txt
+    Ignored:    ignore/
     Ignored:    misc/.DS_Store
     Ignored:    misc/._.DS_Store
-    Ignored:    misc/mouse.Rmd/._figure6.png
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
-    Ignored:    output/mouse/paired-end/
-    Ignored:    output/mouse/single-end/
+    Ignored:    output/lung-se/
+    Ignored:    output/lung/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
 
-Untracked files:
-    Untracked:  analysis/casestudy-howto.Rmd
-    Untracked:  analysis/casestudy.Rmd
-    Untracked:  analysis/mouse-devel.Rmd
-    Untracked:  analysis/mouse-suz12.Rmd
-    Untracked:  code/lung-se/
-    Untracked:  code/lung/
-    Untracked:  code/mouse-devel/
-    Untracked:  code/mouse-suz12/
-    Untracked:  data/annotation/sequins/
-    Untracked:  data/lung-ont/
-    Untracked:  data/lung-se/
-    Untracked:  data/lung/
-    Untracked:  data/mouse-devel/
-    Untracked:  data/mouse-suz12/
-    Untracked:  misc/casestudy.Rmd/
-    Untracked:  output/lung-se/
-    Untracked:  output/lung/
-    Untracked:  output/mouse-devel/
-    Untracked:  output/mouse-suz12/
-
 Unstaged changes:
-    Modified:   analysis/simulation-howto.Rmd
-    Modified:   code/mouse/single-end/data/runAspera.sh
-    Modified:   data/annotation/readme.txt
-    Modified:   data/mouse/readme.txt
-    Modified:   misc/bibliography/bibliography.bib
+    Modified:   analysis/_site.yml
+    Modified:   analysis/simulation-complete.Rmd
+    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -739,10 +653,74 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/casestudy-howto.Rmd</code>) and
+HTML (<code>docs/casestudy-howto.html</code>) files. If you’ve
+configured a remote Git repository (see <code>?wflow_git_remote</code>),
+click on the hyperlinks in the table below to view the files as they
+were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/analysis/casestudy-howto.Rmd" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Adding case study pages
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/casestudy-howto.html" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Adding case study pages
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -873,17 +851,21 @@ locale:
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
+other attached packages:
+[1] workflowr_1.7.0
+
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.10      rstudioapi_0.14  knitr_1.42       magrittr_2.0.3  
- [5] workflowr_1.7.0  R6_2.5.1         rlang_1.0.6      fastmap_1.1.0   
- [9] fansi_1.0.4      highr_0.10       stringr_1.5.0    tools_4.2.1     
-[13] xfun_0.37        utf8_1.2.3       cli_3.6.0        git2r_0.31.0    
-[17] jquerylib_0.1.4  htmltools_0.5.4  rprojroot_2.0.3  yaml_2.3.7      
-[21] digest_0.6.31    tibble_3.1.8     lifecycle_1.0.3  later_1.3.0     
-[25] sass_0.4.1       vctrs_0.5.2      promises_1.2.0.1 fs_1.6.1        
-[29] cachem_1.0.6     glue_1.6.2       evaluate_0.20    rmarkdown_2.20  
-[33] stringi_1.7.12   bslib_0.4.2      compiler_4.2.1   pillar_1.8.1    
-[37] jsonlite_1.8.4   httpuv_1.6.5     pkgconfig_2.0.3 </code></pre>
+ [1] Rcpp_1.0.10      compiler_4.2.1   pillar_1.8.1     bslib_0.4.2     
+ [5] later_1.3.0      git2r_0.31.0     jquerylib_0.1.4  tools_4.2.1     
+ [9] getPass_0.2-2    digest_0.6.31    jsonlite_1.8.4   evaluate_0.20   
+[13] lifecycle_1.0.3  tibble_3.1.8     pkgconfig_2.0.3  rlang_1.0.6     
+[17] cli_3.6.0        rstudioapi_0.14  yaml_2.3.7       xfun_0.37       
+[21] fastmap_1.1.0    httr_1.4.4       stringr_1.5.0    knitr_1.42      
+[25] fs_1.6.1         vctrs_0.5.2      sass_0.4.1       rprojroot_2.0.3 
+[29] glue_1.6.2       R6_2.5.1         processx_3.8.0   fansi_1.0.4     
+[33] rmarkdown_2.20   callr_3.7.3      magrittr_2.0.3   whisker_0.4.1   
+[37] ps_1.7.2         promises_1.2.0.1 htmltools_0.5.4  httpuv_1.6.5    
+[41] utf8_1.2.3       stringi_1.7.12   cachem_1.0.6    </code></pre>
 </div>
 </div>
 <div class="footnotes footnotes-end-of-document">

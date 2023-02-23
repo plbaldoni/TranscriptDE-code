@@ -349,7 +349,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-code</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -362,7 +362,7 @@ div.tocify {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/plbaldoni/TranscriptDE-wf">
+  <a href="https://github.com/plbaldoni/TranscriptDE-code">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -388,7 +388,7 @@ from human cell lines H1975 and HCC827</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -399,8 +399,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -413,13 +413,14 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 2
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
-<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+<strong>Knit directory:</strong>
+<code>TranscriptDE-code/analysis/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
 </p>
@@ -438,120 +439,35 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R
-Markdown file created these results, you’ll want to first commit it to
-the Git repo. If you’re still working on the analysis, you can ignore
-this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongobjectspresent">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>Environment:</strong> objects present
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
 </p>
 </div>
-<div id="strongEnvironmentstrongobjectspresent"
-class="panel-collapse collapse">
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
 <div class="panel-body">
-<p>
-The global environment had objects present when the code in the R
-Markdown file was run. These objects can affect the analysis in your R
-Markdown file in unknown ways. For reproduciblity it’s best to always
-run the code in an empty environment. Use <code>wflow_publish</code> or
-<code>wflow_build</code> to ensure that the code is always run in an
-empty environment.
-</p>
-<p>
-The following objects were defined in the global environment when these
-results were created:
-</p>
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th style="text-align:left;">
-Name
-</th>
-<th style="text-align:left;">
-Class
-</th>
-<th style="text-align:left;">
-Size
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-cmdpipe
-</td>
-<td style="text-align:left;">
-pipe;connection
-</td>
-<td style="text-align:left;">
-584 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ml
-</td>
-<td style="text-align:left;">
-function
-</td>
-<td style="text-align:left;">
-784 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-mlre
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-112 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-mlstatus
-</td>
-<td style="text-align:left;">
-logical
-</td>
-<td style="text-align:left;">
-56 bytes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-module
-</td>
-<td style="text-align:left;">
-function
-</td>
-<td style="text-align:left;">
-6.1 Kb
-</td>
-</tr>
-</tbody>
-</table>
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
 </div>
 </div>
 </div>
@@ -625,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -643,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -663,15 +579,26 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    ._.DS_Store
     Ignored:    .gitignore
+    Ignored:    TranscriptDE-code.Rproj
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/._.DS_Store
-    Ignored:    code/mouse/.DS_Store
-    Ignored:    code/mouse/._.DS_Store
-    Ignored:    code/mouse/single-end/.DS_Store
-    Ignored:    code/mouse/single-end/._.DS_Store
-    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
+    Ignored:    code/lung-se/data/slurm-10685114.out
+    Ignored:    code/lung-se/salmon/.RData
+    Ignored:    code/lung-se/salmon/runWasabi.Rout
+    Ignored:    code/lung-se/salmon/slurm-10685171.out
+    Ignored:    code/lung-se/salmon/slurm-10694099.out
+    Ignored:    code/lung/data/slurm-10678225.out
+    Ignored:    code/lung/index/slurm-10679764.out
+    Ignored:    code/lung/index/slurm-10679768.out
+    Ignored:    code/lung/index/slurm-10684814.out
+    Ignored:    code/lung/salmon/.RData
+    Ignored:    code/lung/salmon/runWasabi.Rout
+    Ignored:    code/lung/salmon/slurm-10681840.out
+    Ignored:    code/lung/salmon/slurm-10681872.out
+    Ignored:    code/lung/salmon/slurm-10684950.out
+    Ignored:    code/lung/salmon/slurm-10694066.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/pkg.Rproj
@@ -684,46 +611,35 @@ Ignored files:
     Ignored:    data/annotation/._.DS_Store
     Ignored:    data/annotation/hg38/
     Ignored:    data/annotation/mm39/
-    Ignored:    data/mouse/.DS_Store
-    Ignored:    data/mouse/._.DS_Store
-    Ignored:    data/mouse/._readme.txt
-    Ignored:    data/mouse/paired-end/fastq/
-    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    data/annotation/sequins/._rnasequin_annotation_2.4.gtf
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa.fai
+    Ignored:    data/annotation/sequins/._rnasequin_genes_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_isoforms_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_sequences_2.4.fa
+    Ignored:    data/lung-se/.DS_Store
+    Ignored:    data/lung-se/._.DS_Store
+    Ignored:    data/lung-se/fastq/
+    Ignored:    data/lung-se/misc/._filereport_read_run_PRJNA341465_tsv.txt
+    Ignored:    data/lung/.DS_Store
+    Ignored:    data/lung/._.DS_Store
+    Ignored:    data/lung/fastq/
+    Ignored:    data/lung/index/
+    Ignored:    data/lung/misc/._filereport_read_run_PRJNA723287_tsv.txt
+    Ignored:    ignore/
     Ignored:    misc/.DS_Store
     Ignored:    misc/._.DS_Store
-    Ignored:    misc/mouse.Rmd/._figure6.png
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
-    Ignored:    output/mouse/paired-end/
-    Ignored:    output/mouse/single-end/
+    Ignored:    output/lung-se/
+    Ignored:    output/lung/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
 
-Untracked files:
-    Untracked:  analysis/casestudy.Rmd
-    Untracked:  analysis/mouse-devel.Rmd
-    Untracked:  analysis/mouse-howto.Rmd
-    Untracked:  analysis/mouse-suz12.Rmd
-    Untracked:  code/lung-se/
-    Untracked:  code/lung/
-    Untracked:  code/mouse-devel/
-    Untracked:  code/mouse-suz12/
-    Untracked:  data/annotation/sequins/
-    Untracked:  data/lung-ont/
-    Untracked:  data/lung-se/
-    Untracked:  data/lung/
-    Untracked:  data/mouse-devel/
-    Untracked:  data/mouse-suz12/
-    Untracked:  output/lung-se/
-    Untracked:  output/lung/
-    Untracked:  output/mouse-devel/
-    Untracked:  output/mouse-suz12/
-
 Unstaged changes:
-    Modified:   code/mouse/single-end/data/runAspera.sh
-    Modified:   data/annotation/readme.txt
-    Modified:   data/mouse/readme.txt
-    Modified:   misc/bibliography/bibliography.bib
+    Modified:   analysis/_site.yml
+    Modified:   analysis/simulation-complete.Rmd
+    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -738,10 +654,74 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with
-<code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/casestudy.Rmd</code>) and HTML
+(<code>docs/casestudy.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/analysis/casestudy.Rmd" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Adding case study pages
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/casestudy.html" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Adding case study pages
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -749,13 +729,17 @@ There are no past versions. Publish this analysis with
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>In this page, we present the analysis of the RNA-seq experiments from
-the human cancer cell lines H1975 HCC827, namely the paired-end Illumina
-short read RNA-seq data (GSE172421), the single-end Illumina short read
-RNA-seq data (GSE86337), and the long read Oxford Nanopore Technologies
-(ONT) data (GSE172421). This report is divided in three main parts, one
-for each dataset. In the end, we summarize all the results and generate
-the plots and tables presented in the main and supplementary materials
-text from the edgeR with count scaling paper.</p>
+the human cancer cell lines H1975 and HCC827, namely the paired-end
+Illumina short read RNA-seq data (<a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421">GSE172421</a>),
+the single-end Illumina short read RNA-seq data (<a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE86337">GSE86337</a>)
+and the long read Oxford Nanopore Technologies (ONT) data (<a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421">GSE172421</a>).
+This report is divided in three main parts, one for each dataset. In the
+end, we summarize all the results and generate the plots and tables
+presented in the main and supplementary materials text from the edgeR
+with count scaling paper.</p>
 <p>The analysis presented in this report begins with the experimental
 data already quantified by <code>Salmon</code>. Please refer to the
 script files located in the GitHub repository of this page under the
@@ -806,28 +790,46 @@ path.data.long &lt;- &#39;../data/lung-ont&#39;</code></pre>
 <h2>Data loading</h2>
 <p>First, we load the targets data for all experiments we analyze in
 this report.</p>
-<pre class="r"><code>df.targets.short.paired &lt;- read.delim(file.path(path.data.paired,&#39;misc/targets.txt&#39;))
-df.targets.short.paired$Color &lt;- mapvalues(df.targets.short.paired$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
-<pre class="r"><code>df.targets.short.single &lt;- read.delim(file.path(path.data.single,&#39;misc/targets.txt&#39;))
-df.targets.short.single$Color &lt;- mapvalues(df.targets.short.single$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
-<pre class="r"><code>df.targets.long &lt;- read.delim(file.path(path.data.long,&#39;misc/targets.txt&#39;))
-df.targets.long$Color &lt;- mapvalues(df.targets.long$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<pre class="r"><code>df.targets.short.paired &lt;- 
+  read.delim(file.path(path.data.paired,&#39;misc/targets.txt&#39;))
+
+df.targets.short.paired$Color &lt;- 
+  mapvalues(df.targets.short.paired$Group,
+            from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<pre class="r"><code>df.targets.short.single &lt;- 
+  read.delim(file.path(path.data.single,&#39;misc/targets.txt&#39;))
+df.targets.short.single$Color &lt;- 
+  mapvalues(df.targets.short.single$Group,
+            from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<pre class="r"><code>df.targets.long &lt;- 
+  read.delim(file.path(path.data.long,&#39;misc/targets.txt&#39;))
+df.targets.long$Color &lt;- 
+  mapvalues(df.targets.long$Group,
+            from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
 <p>Next, we load the output from <code>Salmon</code> with
 <code>catchSalmon</code>. The ONT long read data have already been
 stored in a <code>DGEList</code> object and is available for download in
 the GitHub repository of this report.</p>
-<pre class="r"><code>catch.short.paired &lt;- catchSalmon(list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))</code></pre>
+<pre class="r"><code>catch.short.paired &lt;- 
+  catchSalmon(list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))</code></pre>
 <pre><code>Reading ../output/lung/salmon/GSM5255695, 227223 transcripts, 100 bootstraps
 Reading ../output/lung/salmon/GSM5255696, 227223 transcripts, 100 bootstraps
 Reading ../output/lung/salmon/GSM5255697, 227223 transcripts, 100 bootstraps
 Reading ../output/lung/salmon/GSM5255704, 227223 transcripts, 100 bootstraps
 Reading ../output/lung/salmon/GSM5255705, 227223 transcripts, 100 bootstraps
 Reading ../output/lung/salmon/GSM5255706, 227223 transcripts, 100 bootstraps</code></pre>
-<pre class="r"><code>catch.short.paired$annotation$TranscriptSymbol &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,5]
-catch.short.paired$annotation$GeneID &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,2]
-catch.short.paired$annotation$GeneSymbol &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,6]
+<pre class="r"><code>catch.short.paired$annotation$TranscriptSymbol &lt;- 
+  strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,5]
 
-catch.short.paired$samples &lt;- df.targets.short.paired[match(basename(colnames(catch.short.paired$counts)),strsplit2(df.targets.short.paired$File1,&quot;_&quot;)[,1]),]
+catch.short.paired$annotation$GeneID &lt;- 
+  strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,2]
+
+catch.short.paired$annotation$GeneSymbol &lt;- 
+  strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,6]
+
+catch.short.paired$samples &lt;- 
+  df.targets.short.paired[match(basename(colnames(catch.short.paired$counts)),
+                                strsplit2(df.targets.short.paired$File1,&quot;_&quot;)[,1]),]
 
 colnames(catch.short.paired$counts) &lt;- catch.short.paired$samples$Sample
 
@@ -840,16 +842,24 @@ dte.short.paired &lt;-
           group = strsplit2(colnames(catch.short.paired$counts),&quot;\\.&quot;)[,1],
           genes = catch.short.paired$annotation,
           samples = catch.short.paired$samples)</code></pre>
-<pre class="r"><code>catch.short.single &lt;- catchSalmon(list.dirs(file.path(path.quant.single,&#39;salmon&#39;),recursive = FALSE))</code></pre>
+<pre class="r"><code>catch.short.single &lt;- 
+  catchSalmon(list.dirs(file.path(path.quant.single,&#39;salmon&#39;),recursive = FALSE))</code></pre>
 <pre><code>Reading ../output/lung-se/salmon/GSM2300448, 227223 transcripts, 100 bootstraps
 Reading ../output/lung-se/salmon/GSM2300449, 227223 transcripts, 100 bootstraps
 Reading ../output/lung-se/salmon/GSM2300450, 227223 transcripts, 100 bootstraps
 Reading ../output/lung-se/salmon/GSM2300451, 227223 transcripts, 100 bootstraps</code></pre>
-<pre class="r"><code>catch.short.single$annotation$TranscriptSymbol &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,5]
-catch.short.single$annotation$GeneID &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,2]
-catch.short.single$annotation$GeneSymbol &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,6]
+<pre class="r"><code>catch.short.single$annotation$TranscriptSymbol &lt;- 
+  strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,5]
 
-catch.short.single$samples &lt;- df.targets.short.single[match(basename(colnames(catch.short.single$counts)),strsplit2(df.targets.short.single$File,&quot;_&quot;)[,1]),]
+catch.short.single$annotation$GeneID &lt;- 
+  strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,2]
+
+catch.short.single$annotation$GeneSymbol &lt;- 
+  strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,6]
+
+catch.short.single$samples &lt;- 
+  df.targets.short.single[match(basename(colnames(catch.short.single$counts)),
+                                strsplit2(df.targets.short.single$File,&quot;_&quot;)[,1]),]
 
 colnames(catch.short.single$counts) &lt;- catch.short.single$samples$Sample
 
@@ -862,10 +872,16 @@ dte.short.single &lt;-
           group = strsplit2(colnames(catch.short.single$counts),&quot;\\.&quot;)[,1],
           genes = catch.short.single$annotation,
           samples = catch.short.single$samples)</code></pre>
+<p>For the ONT data, we disregard the in-silico mixtures and only keep
+the pure cell lines data.</p>
 <pre class="r"><code>dte.long &lt;- readRDS(file.path(path.data.long,&#39;220928_dge.rds&#39;))
-dte.long &lt;- dte.long[,grepl(&#39;barcode&#39;,colnames(dte.long))] # Keeping only pure cell lines
 
-dte.long$samples &lt;- cbind(dte.long$samples,df.targets.long[match(basename(colnames(dte.long)),df.targets.long$File),])
+# Keeping only pure cell lines
+dte.long &lt;- dte.long[,grepl(&#39;barcode&#39;,colnames(dte.long))]
+
+dte.long$samples &lt;- 
+  cbind(dte.long$samples,
+        df.targets.long[match(basename(colnames(dte.long)),df.targets.long$File),])
 
 colnames(dte.long$counts) &lt;- 
   rownames(dte.long$samples) &lt;- 
@@ -877,7 +893,8 @@ dte.long$genes$TranscriptSymbol &lt;- strsplit2(rownames(dte.long$genes),&quot;\
 dte.long$genes$GeneID &lt;- strsplit2(rownames(dte.long$genes),&quot;\\|&quot;)[,2]
 dte.long$genes$GeneSymbol &lt;- strsplit2(rownames(dte.long$genes),&quot;\\|&quot;)[,6]
 
-rownames(dte.long$counts) &lt;- rownames(dte.long$genes) &lt;- strsplit2(rownames(dte.long$counts),&quot;\\|&quot;)[,1]</code></pre>
+rownames(dte.long$counts) &lt;- 
+  rownames(dte.long$genes) &lt;- strsplit2(rownames(dte.long$counts),&quot;\\|&quot;)[,1]</code></pre>
 <p>The ONT long read data contain the 849 duplicated transcripts that
 exist in the Gencode version 33 of the human genome hg38 (Ensembl
 annotation version 99). This is because the ONT data was processed with
@@ -914,16 +931,25 @@ contr &lt;- makeContrasts(HCC827vsH1975 = HCC827 - H1975,levels = design.short.p
 be used throughout this report. Again, all three datasets (paired-end
 reads, single-end reads, and ONT long reads) were quantified with
 <code>Salmon</code> using the Ensembl-oriented Gencode annotation
-version 33 of the human genome hg38 (Ensembl version 99).</p>
+version 33 of the human genome hg38 (Ensembl version 99). We select
+genes of interest for this analysis: only protein-coding and lncRNA
+genes with an associated Entrez ID.</p>
 <pre class="r"><code>ah &lt;- AnnotationHub()</code></pre>
 <pre><code>snapshotDate(): 2022-10-31</code></pre>
 <pre class="r"><code>edb &lt;- ah[[&#39;AH78783&#39;]] # Ensembl version 99 relative to Gencode version 33</code></pre>
 <pre><code>loading from cache</code></pre>
 <pre><code>require(&quot;ensembldb&quot;)</code></pre>
-<pre class="r"><code>dt.anno &lt;- as.data.table(select(edb,keys(edb),c(&quot;TXIDVERSION&quot;,&quot;SYMBOL&quot;,&quot;TXBIOTYPE&quot;,&quot;GENEIDVERSION&quot;,&quot;GENENAME&quot;,&quot;GENEBIOTYPE&quot;,&quot;ENTREZID&quot;)))
+<pre class="r"><code>edb.names &lt;- c(&quot;TXIDVERSION&quot;,&quot;SYMBOL&quot;,&quot;TXBIOTYPE&quot;,
+               &quot;GENEIDVERSION&quot;,&quot;GENENAME&quot;,&quot;GENEBIOTYPE&quot;,&quot;ENTREZID&quot;)
 
-dt.anno.gene &lt;- dt.anno[,.(NTranscriptPerGene = .N),by = c(&#39;GENEIDVERSION&#39;,&#39;GENEBIOTYPE&#39;,&#39;ENTREZID&#39;,&#39;GENENAME&#39;)]
-dt.anno.gene[,GeneOfInterest := GENEBIOTYPE %in% c(&#39;protein_coding&#39;,&#39;lncRNA&#39;) &amp; !is.na(ENTREZID)]
+dt.anno &lt;- as.data.table(select(edb,keys(edb),edb.names))
+
+dt.anno.gene &lt;- 
+  dt.anno[,.(NTranscriptPerGene = .N),
+          by = c(&#39;GENEIDVERSION&#39;,&#39;GENEBIOTYPE&#39;,&#39;ENTREZID&#39;,&#39;GENENAME&#39;)]
+
+dt.anno.gene[,GeneOfInterest := 
+               GENEBIOTYPE %in% c(&#39;protein_coding&#39;,&#39;lncRNA&#39;) &amp; !is.na(ENTREZID)]
 
 key.anno &lt;- match(dte.long$genes$GeneID,dt.anno.gene$GENEIDVERSION)
 
@@ -963,18 +989,32 @@ class="section level2">
 <p>Below we run <code>edgeR</code> with scaled counts using the QL
 pipeline.</p>
 <pre class="r"><code>dte.short.paired.edger.scaled &lt;- dte.short.paired
-dte.short.paired.edger.scaled$counts &lt;- dte.short.paired.edger.scaled$counts/dte.short.paired.edger.scaled$genes$Overdispersion
 
-keep.short.paired.edger.scaled &lt;- filterByExpr(dte.short.paired.edger.scaled) &amp; (dte.short.paired.edger.scaled$genes$GeneOfInterest == TRUE)
+dte.short.paired.edger.scaled$counts &lt;- 
+  dte.short.paired.edger.scaled$counts/dte.short.paired.edger.scaled$genes$Overdispersion
 
-dte.short.paired.edger.scaled.filtr &lt;- dte.short.paired.edger.scaled[keep.short.paired.edger.scaled,, keep.lib.sizes = FALSE]
+keep.short.paired.edger.scaled &lt;- 
+  filterByExpr(dte.short.paired.edger.scaled) &amp; 
+  (dte.short.paired.edger.scaled$genes$GeneOfInterest == TRUE)
 
-dte.short.paired.edger.scaled.filtr &lt;- calcNormFactors(dte.short.paired.edger.scaled.filtr)
-dte.short.paired.edger.scaled.filtr &lt;- estimateDisp(dte.short.paired.edger.scaled.filtr,design = design.short.paired,robust = TRUE)
+dte.short.paired.edger.scaled.filtr &lt;- 
+  dte.short.paired.edger.scaled[keep.short.paired.edger.scaled,, keep.lib.sizes = FALSE]
 
-fit.short.paired.edger.scaled &lt;- glmQLFit(dte.short.paired.edger.scaled.filtr,design.short.paired,robust = TRUE)
-qlf.short.paired.edger.scaled &lt;- glmQLFTest(fit.short.paired.edger.scaled,contrast = contr)
+dte.short.paired.edger.scaled.filtr &lt;- 
+  calcNormFactors(dte.short.paired.edger.scaled.filtr)
+
+dte.short.paired.edger.scaled.filtr &lt;- 
+  estimateDisp(dte.short.paired.edger.scaled.filtr,
+               design = design.short.paired,robust = TRUE)
+
+fit.short.paired.edger.scaled &lt;- 
+  glmQLFit(dte.short.paired.edger.scaled.filtr,design.short.paired,robust = TRUE)
+
+qlf.short.paired.edger.scaled &lt;- 
+  glmQLFTest(fit.short.paired.edger.scaled,contrast = contr)
+
 out.short.paired.edger.scaled &lt;- topTags(qlf.short.paired.edger.scaled,n = Inf)
+
 summary(decideTests(qlf.short.paired.edger.scaled))</code></pre>
 <pre><code>       -1*H1975 1*HCC827
 Down                9620
@@ -987,16 +1027,28 @@ Up                  9079</code></pre>
 pipeline.</p>
 <pre class="r"><code>dte.short.paired.edger.raw &lt;- dte.short.paired
 
-keep.short.paired.edger.raw &lt;- filterByExpr(dte.short.paired.edger.raw) &amp; (dte.short.paired.edger.raw$genes$GeneOfInterest == TRUE)
+keep.short.paired.edger.raw &lt;- 
+  filterByExpr(dte.short.paired.edger.raw) &amp; 
+  (dte.short.paired.edger.raw$genes$GeneOfInterest == TRUE)
 
-dte.short.paired.edger.raw.filtr &lt;- dte.short.paired.edger.raw[keep.short.paired.edger.raw,, keep.lib.sizes = FALSE]
+dte.short.paired.edger.raw.filtr &lt;- 
+  dte.short.paired.edger.raw[keep.short.paired.edger.raw,, keep.lib.sizes = FALSE]
 
-dte.short.paired.edger.raw.filtr &lt;- calcNormFactors(dte.short.paired.edger.raw.filtr)
-dte.short.paired.edger.raw.filtr &lt;- estimateDisp(dte.short.paired.edger.raw.filtr,design = design.short.paired,robust = TRUE)
+dte.short.paired.edger.raw.filtr &lt;- 
+  calcNormFactors(dte.short.paired.edger.raw.filtr)
 
-fit.short.paired.edger.raw &lt;- glmQLFit(dte.short.paired.edger.raw.filtr,design.short.paired,robust = TRUE)
-qlf.short.paired.edger.raw &lt;- glmQLFTest(fit.short.paired.edger.raw,contrast = contr)
+dte.short.paired.edger.raw.filtr &lt;- 
+  estimateDisp(dte.short.paired.edger.raw.filtr,
+               design = design.short.paired,robust = TRUE)
+
+fit.short.paired.edger.raw &lt;- 
+  glmQLFit(dte.short.paired.edger.raw.filtr,design.short.paired,robust = TRUE)
+
+qlf.short.paired.edger.raw &lt;- 
+  glmQLFTest(fit.short.paired.edger.raw,contrast = contr)
+
 out.short.paired.edger.raw &lt;- topTags(qlf.short.paired.edger.raw,n = Inf)
+
 summary(decideTests(qlf.short.paired.edger.raw))</code></pre>
 <pre><code>       -1*H1975 1*HCC827
 Down                8722
@@ -1006,43 +1058,57 @@ Up                  8234</code></pre>
 <div id="swish" class="section level3">
 <h3>Swish</h3>
 <p>We then run Swish.</p>
-<pre class="r"><code>dt.swish &lt;- data.frame(paths = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
+<pre class="r"><code>dt.swish &lt;- 
+  data.frame(paths = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
+
 dt.swish$names &lt;- df.targets.short.paired$Sample[match(basename(dt.swish$paths),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])]
+
 dt.swish$files &lt;- file.path(dt.swish$paths,&#39;quant.sf&#39;)
-dt.swish$group &lt;- factor(df.targets.short.paired$Group[match(basename(dt.swish$paths),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
+
+dt.swish$group &lt;- 
+  factor(df.targets.short.paired$Group[match(basename(dt.swish$paths),
+                                             strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
 
 dte.swish &lt;- tximeta(coldata = dt.swish,type = &#39;salmon&#39;)</code></pre>
 <pre><code>importing quantifications</code></pre>
-<pre><code>Warning in system(&quot;timedatectl&quot;, intern = TRUE): running command &#39;timedatectl&#39;
-had status 1</code></pre>
 <pre><code>reading in files with read_tsv</code></pre>
 <pre><code>1 2 3 4 5 6 
 couldn&#39;t find matching transcriptome, returning non-ranged SummarizedExperiment</code></pre>
 <pre class="r"><code>mcols(dte.swish)$GeneID &lt;- strsplit2(rownames(dte.swish),&quot;\\|&quot;)[,2]
-mcols(dte.swish)$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[match(mcols(dte.swish)$GeneID ,dt.anno.gene$GENEIDVERSION)]
+
+mcols(dte.swish)$GeneOfInterest &lt;- 
+  dt.anno.gene$GeneOfInterest[match(mcols(dte.swish)$GeneID ,dt.anno.gene$GENEIDVERSION)]
+
 mcols(dte.swish)$GeneOfInterest[is.na(mcols(dte.swish)$GeneOfInterest)] &lt;- FALSE
+
 rownames(dte.swish) &lt;- strsplit2(rownames(dte.swish),&quot;\\|&quot;)[,1]
 
 dte.swish &lt;- scaleInfReps(dte.swish)
 dte.swish &lt;- labelKeep(dte.swish)
-dte.swish &lt;- dte.swish[mcols(dte.swish)$keep &amp; (mcols(dte.swish)$GeneOfInterest == TRUE),]
+dte.swish &lt;- 
+  dte.swish[mcols(dte.swish)$keep &amp; (mcols(dte.swish)$GeneOfInterest == TRUE),]
 dte.swish &lt;- swish(y = dte.swish, x = &quot;group&quot;)
 out.swish &lt;- as.data.frame(mcols(dte.swish))</code></pre>
 </div>
 <div id="sleuth-with-wald" class="section level3">
 <h3>sleuth with Wald</h3>
-<p>Now, we run sleuth with Wald. For a fair comparison, we focus on
+<p>Now, we run sleuth with Wald test. For a fair comparison, we focus on
 genes of interest also with sleuth and Swish. In the code chunk below,
-we filter out genes that are lowly expressed (according to sleuth
-criteria) and genes that are not interesting (i.e., they are either not
-protein-coding or lncRNA, or do not have an associated Entrez ID).</p>
-<pre class="r"><code>dt.sleuth &lt;- data.frame(path = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
-dt.sleuth$sample &lt;- df.targets.short.paired$Sample[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])]
-dt.sleuth$group &lt;- factor(df.targets.short.paired$Group[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
+we filter out genes that are lowly expressed (according to sleuth’s
+criteria, similar to what we have done with Swish) and genes that are
+not interesting (i.e., they are either not protein-coding or lncRNA
+gene, or do not have an associated Entrez ID).</p>
+<pre class="r"><code>dt.sleuth &lt;- 
+  data.frame(path = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
+dt.sleuth$sample &lt;- 
+  df.targets.short.paired$Sample[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])]
+dt.sleuth$group &lt;- 
+  factor(df.targets.short.paired$Group[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
 
 ### Filtering for sleuth similarly to edgeR and swish, i.e. by expression (according to their own method) and only genes of interest
 ### (see https://github.com/pachterlab/sleuth/issues/184#issuecomment-397771403)
-sleuth.matrix &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,normalize = FALSE,filter_fun = function(x){TRUE})</code></pre>
+sleuth.matrix &lt;- 
+  sleuth_prep(sample_to_covariates = dt.sleuth,normalize = FALSE,filter_fun = function(x){TRUE})</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
 Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
 If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
@@ -1050,7 +1116,8 @@ If you wish to take advantage of multiple cores, please consider running sleuth 
 <pre><code>dropping unused factor levels</code></pre>
 <pre><code>......
 227223 targets passed the filter</code></pre>
-<pre class="r"><code>sleuth.matrix &lt;- sleuth_to_matrix(sleuth.matrix, &quot;obs_raw&quot;, &quot;est_counts&quot;)</code></pre>
+<pre class="r"><code>sleuth.matrix &lt;- 
+  sleuth_to_matrix(sleuth.matrix, &quot;obs_raw&quot;, &quot;est_counts&quot;)</code></pre>
 <pre><code>Warning: `select_()` was deprecated in dplyr 0.7.0.
 ℹ Please use `select()` instead.
 ℹ The deprecated feature was likely used in the sleuth package.
@@ -1060,9 +1127,14 @@ If you wish to take advantage of multiple cores, please consider running sleuth 
 ℹ The deprecated feature was likely used in the sleuth package.
   Please report the issue at &lt;]8;;https://github.com/pachterlab/sleuth/issueshttps://github.com/pachterlab/sleuth/issues]8;;&gt;.</code></pre>
 <pre class="r"><code>sleuth.rownames &lt;- strsplit2(rownames(sleuth.matrix),&quot;\\|&quot;)[,2]
-keep.sleuth &lt;- apply(sleuth.matrix,1,basic_filter) &amp; dt.anno.gene$GeneOfInterest[match(sleuth.rownames ,dt.anno.gene$GENEIDVERSION)]
+keep.sleuth &lt;- 
+  apply(sleuth.matrix,1,basic_filter) &amp; 
+  dt.anno.gene$GeneOfInterest[match(sleuth.rownames ,dt.anno.gene$GENEIDVERSION)]
 
-dte.sleuth.wald &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,full_model = ~ group,filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
+dte.sleuth.wald &lt;- 
+  sleuth_prep(sample_to_covariates = dt.sleuth,
+              full_model = ~ group,
+              filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
 Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
 If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
@@ -1084,12 +1156,18 @@ The LOESS fit will be repeated using exact computation of the fitted surface to 
 These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
 computing variance of betas</code></pre>
 <pre class="r"><code>dte.sleuth.wald &lt;- sleuth_wt(obj = dte.sleuth.wald,which_beta = &#39;groupHCC827&#39;,which_model = &#39;full&#39;)
-out.sleuth.wald &lt;- sleuth_results(obj = dte.sleuth.wald,test = &#39;groupHCC827&#39;, test_type = &#39;wald&#39;,show_all = FALSE)</code></pre>
+
+out.sleuth.wald &lt;- 
+  sleuth_results(obj = dte.sleuth.wald,test = &#39;groupHCC827&#39;,
+                 test_type = &#39;wald&#39;,show_all = FALSE)</code></pre>
 </div>
 <div id="sleuth-with-lrt" class="section level3">
 <h3>sleuth with LRT</h3>
 <p>We proceed similarly with sleuth using LRT.</p>
-<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,full_model = ~ group,filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- 
+  sleuth_prep(sample_to_covariates = dt.sleuth,
+              full_model = ~ group,
+              filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
 <pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
 Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
 If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
@@ -1110,15 +1188,20 @@ shrinkage estimation
 The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
 These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
 computing variance of betas</code></pre>
-<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_fit(obj = dte.sleuth.lrt,formula = ~ 1,fit_name = &#39;reduced&#39;)</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- 
+  sleuth_fit(obj = dte.sleuth.lrt,formula = ~ 1,fit_name = &#39;reduced&#39;)</code></pre>
 <pre><code>fitting measurement error models
 shrinkage estimation
 3 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
 The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
 These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
 computing variance of betas</code></pre>
-<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_lrt(obj = dte.sleuth.lrt,null_model = &#39;reduced&#39;,alt_model = &#39;full&#39;)
-out.sleuth.lrt &lt;- sleuth_results(obj = dte.sleuth.lrt,test = &#39;reduced:full&#39;, test_type = &#39;lrt&#39;,show_all = FALSE)</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- 
+  sleuth_lrt(obj = dte.sleuth.lrt,null_model = &#39;reduced&#39;,alt_model = &#39;full&#39;)
+
+out.sleuth.lrt &lt;- 
+  sleuth_results(obj = dte.sleuth.lrt,
+                 test = &#39;reduced:full&#39;,test_type = &#39;lrt&#39;,show_all = FALSE)</code></pre>
 </div>
 </div>
 <div id="differential-gene-expression-analysis" class="section level2">
@@ -1129,7 +1212,7 @@ overdispersion parameter at the level of gene-wise counts. It implements
 the exact same formula from <code>catchSalmon</code>, but it instead
 uses the aggregated counts at the gene-level from
 <code>tximport::summarizeToGene</code>.</p>
-<pre class="r"><code>## Function computing catchSalmon&#39;s formula for gene-level counts
+<pre class="r"><code>## Function with catchSalmon&#39;s estimator for gene-level counts
 ## To be used only for exploratory purposes
 geneLevelCatchSalmon &lt;- function(x) {
   NSamples &lt;- ncol(x)
@@ -1137,7 +1220,7 @@ geneLevelCatchSalmon &lt;- function(x) {
   NTx &lt;- nrow(x)
   DF &lt;- rep_len(0L, NTx)
   OverDisp &lt;- rep_len(0, NTx)
-
+  
   for (i.samples in 1:NSamples) {
     Boot &lt;- lapply(1:NBoot, function(i.boot) {
       assay(x, paste0(&#39;infRep&#39;, i.boot))[, i.samples]
@@ -1148,7 +1231,6 @@ geneLevelCatchSalmon &lt;- function(x) {
     OverDisp[i] &lt;- OverDisp[i] + rowSums((Boot[i,] - M[i]) ^ 2) / M[i]
     DF[i] &lt;- DF[i] + NBoot - 1L
   }
-
   i &lt;- (DF &gt; 0L)
   OverDisp[i] &lt;- OverDisp[i] / DF[i]
   DFMedian &lt;- median(DF[i])
@@ -1177,7 +1259,8 @@ href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421">here</a>),
 which are not present in the Ensembl annotation we get from
 <code>AnnotationHub</code>. We are ignoring such transcripts in this
 report.</p>
-<pre class="r"><code>txm &lt;- tximeta(coldata = dt.swish[,c(&#39;files&#39;,&#39;names&#39;)],tx2gene = dt.anno[,c(&#39;TXIDVERSION&#39;,&#39;GENEIDVERSION&#39;)],
+<pre class="r"><code>txm &lt;- tximeta(coldata = dt.swish[,c(&#39;files&#39;,&#39;names&#39;)],
+               tx2gene = dt.anno[,c(&#39;TXIDVERSION&#39;,&#39;GENEIDVERSION&#39;)],
                txOut = FALSE, skipMeta = TRUE, ignoreAfterBar = TRUE)</code></pre>
 <pre><code>reading in files with read_tsv</code></pre>
 <pre><code>1 2 3 4 5 6 
@@ -1233,18 +1316,32 @@ class="section level2">
 <div id="edger-with-count-scaling-1" class="section level3">
 <h3>edgeR with count scaling</h3>
 <pre class="r"><code>dte.short.single.edger.scaled &lt;- dte.short.single
-dte.short.single.edger.scaled$counts &lt;- dte.short.single.edger.scaled$counts/dte.short.single.edger.scaled$genes$Overdispersion
 
-keep.short.single.edger.scaled &lt;- filterByExpr(dte.short.single.edger.scaled) &amp; (dte.short.single.edger.scaled$genes$GeneOfInterest == TRUE)
+dte.short.single.edger.scaled$counts &lt;- 
+  dte.short.single.edger.scaled$counts/dte.short.single.edger.scaled$genes$Overdispersion
 
-dte.short.single.edger.scaled.filtr &lt;- dte.short.single.edger.scaled[keep.short.single.edger.scaled,, keep.lib.sizes = FALSE]
+keep.short.single.edger.scaled &lt;- 
+  filterByExpr(dte.short.single.edger.scaled) &amp; 
+  (dte.short.single.edger.scaled$genes$GeneOfInterest == TRUE)
 
-dte.short.single.edger.scaled.filtr &lt;- calcNormFactors(dte.short.single.edger.scaled.filtr)
-dte.short.single.edger.scaled.filtr &lt;- estimateDisp(dte.short.single.edger.scaled.filtr,design = design.short.single,robust = TRUE)
+dte.short.single.edger.scaled.filtr &lt;- 
+  dte.short.single.edger.scaled[keep.short.single.edger.scaled,, keep.lib.sizes = FALSE]
 
-fit.short.single.edger.scaled &lt;- glmQLFit(dte.short.single.edger.scaled.filtr,design.short.single,robust = TRUE)
-qlf.short.single.edger.scaled &lt;- glmQLFTest(fit.short.single.edger.scaled,contrast = contr)
-out.short.single.edger.scaled &lt;- topTags(qlf.short.single.edger.scaled,n = Inf)
+dte.short.single.edger.scaled.filtr &lt;- 
+  calcNormFactors(dte.short.single.edger.scaled.filtr)
+
+dte.short.single.edger.scaled.filtr &lt;- 
+  estimateDisp(dte.short.single.edger.scaled.filtr,design = design.short.single,robust = TRUE)
+
+fit.short.single.edger.scaled &lt;- 
+  glmQLFit(dte.short.single.edger.scaled.filtr,design.short.single,robust = TRUE)
+
+qlf.short.single.edger.scaled &lt;- 
+  glmQLFTest(fit.short.single.edger.scaled,contrast = contr)
+
+out.short.single.edger.scaled &lt;- 
+  topTags(qlf.short.single.edger.scaled,n = Inf)
+
 summary(decideTests(qlf.short.single.edger.scaled))</code></pre>
 <pre><code>       -1*H1975 1*HCC827
 Down                5401
@@ -1291,12 +1388,23 @@ class="section level2">
                        GeneSymbol = out.long$table$GeneSymbol,
                        LongRead.FDR = out.long$table$FDR)
 
-df.bench$edgeR.SE.Scaled.FDR &lt;- out.short.single.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.single.edger.scaled))]
-df.bench$edgeR.PE.Scaled.FDR &lt;- out.short.paired.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.scaled))]
-df.bench$edgeR.PE.Raw.FDR &lt;- out.short.paired.edger.raw$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.raw))]
-df.bench$swish.FDR &lt;- out.swish$qvalue[match(df.bench$TranscriptID,rownames(out.swish))]
-df.bench$sleuth.wald.FDR &lt;- out.sleuth.wald$qval[match(df.bench$TranscriptID,strsplit2(out.sleuth.wald$target_id,&quot;\\|&quot;)[,1])]
+df.bench$edgeR.SE.Scaled.FDR &lt;- 
+  out.short.single.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.single.edger.scaled))]
+
+df.bench$edgeR.PE.Scaled.FDR &lt;- 
+  out.short.paired.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.scaled))]
+
+df.bench$edgeR.PE.Raw.FDR &lt;- 
+  out.short.paired.edger.raw$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.raw))]
+
+df.bench$swish.FDR &lt;- 
+  out.swish$qvalue[match(df.bench$TranscriptID,rownames(out.swish))]
+
+df.bench$sleuth.wald.FDR &lt;- 
+  out.sleuth.wald$qval[match(df.bench$TranscriptID,strsplit2(out.sleuth.wald$target_id,&quot;\\|&quot;)[,1])]
+
 df.bench$sleuth.lrt.FDR &lt;- out.sleuth.lrt$qval[match(df.bench$TranscriptID,strsplit2(out.sleuth.lrt$target_id,&quot;\\|&quot;)[,1])]
+
 df.bench[is.na(df.bench)] &lt;- 1</code></pre>
 <p>Then, we check how many DE transcripts called using ONT long read
 data are also called by the DTE methods using short reads data.</p>
@@ -1306,7 +1414,9 @@ data are also called by the DTE methods using short reads data.</p>
 }
 
 df.bench[,lapply(.SD,foo.power,reference = df.bench$LongRead.FDR),
-         .SDcols = c(&#39;edgeR.SE.Scaled.FDR&#39;,&#39;edgeR.PE.Scaled.FDR&#39;,&#39;edgeR.PE.Raw.FDR&#39;,&#39;swish.FDR&#39;,&#39;sleuth.wald.FDR&#39;,&#39;sleuth.lrt.FDR&#39;)]</code></pre>
+         .SDcols = c(&#39;edgeR.SE.Scaled.FDR&#39;,&#39;edgeR.PE.Scaled.FDR&#39;,
+                     &#39;edgeR.PE.Raw.FDR&#39;,&#39;swish.FDR&#39;,
+                     &#39;sleuth.wald.FDR&#39;,&#39;sleuth.lrt.FDR&#39;)]</code></pre>
 <pre><code>   edgeR.SE.Scaled.FDR edgeR.PE.Scaled.FDR edgeR.PE.Raw.FDR    swish.FDR
 1:        5734.0000000         1.17800e+04     1.114800e+04 7836.0000000
 2:           0.2061329         4.23482e-01     4.007621e-01    0.2816982
@@ -1324,9 +1434,14 @@ of each transcript (y-axis) according the number of expressed
 transcripts associated with their parent gene (x-axis). This is Figure 1
 of the main paper.</p>
 <pre class="r"><code>dt.mao.plot &lt;- as.data.table(dte.short.paired.edger.scaled.filtr$genes)
+
 dt.mao.plot$TranscriptID &lt;- rownames(dte.short.paired.edger.scaled.filtr)
-dt.mao.plot$LR.Overdispersion &lt;- dte.long$genes$Overdispersion[match(dt.mao.plot$TranscriptID,rownames(dte.long$genes))]
-dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene&lt;10,NTranscriptPerGene,paste0(&#39;&gt;=10&#39;))]
+
+dt.mao.plot$LR.Overdispersion &lt;- 
+  dte.long$genes$Overdispersion[match(dt.mao.plot$TranscriptID,rownames(dte.long$genes))]
+
+dt.mao.plot[,NTranscriptPerGeneTrunc := 
+              ifelse(NTranscriptPerGene&lt;10,NTranscriptPerGene,paste0(&#39;&gt;=10&#39;))]
 
 dt.mao.plot$NTranscriptPerGeneTrunc %&lt;&gt;% factor(levels = paste0(c(1:10,&#39;&gt;=10&#39;)))
 
@@ -1346,11 +1461,14 @@ dt.mao.plot[NTranscriptPerGene &gt;= 10,
               NTranscriptID = .N,mean(Overdispersion))]</code></pre>
 <pre><code>   NGeneID NTranscriptID       V3
 1:    4687         13527 6.752402</code></pre>
-<pre class="r"><code>dt.mao.plot.long &lt;- melt(dt.mao.plot,id.vars = c(&#39;TranscriptID&#39;,&#39;NTranscriptPerGeneTrunc&#39;),
-                         measure.vars = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
-                         variable.name = &#39;Type&#39;,value.name = &#39;Overdispersion&#39;)
-dt.mao.plot.long$Type %&lt;&gt;% mapvalues(from = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
-                                     to = c(&#39;Illumina short reads&#39;,&#39;ONT long reads&#39;))
+<pre class="r"><code>dt.mao.plot.long &lt;- 
+  melt(dt.mao.plot,
+       id.vars = c(&#39;TranscriptID&#39;,&#39;NTranscriptPerGeneTrunc&#39;),
+       measure.vars = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
+       variable.name = &#39;Type&#39;,value.name = &#39;Overdispersion&#39;)
+dt.mao.plot.long$Type %&lt;&gt;% 
+  mapvalues(from = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
+            to = c(&#39;Illumina short reads&#39;,&#39;ONT long reads&#39;))
 
 plot.mao &lt;-
   ggplot(data = dt.mao.plot.long,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
@@ -1371,7 +1489,45 @@ plot.mao &lt;-
 plot.mao</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_overdispersion-1.png" width="2100" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;figure1.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300)
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_overdispersion-1">
+Past versions of casestudy_res_overdispersion-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_overdispersion-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_overdispersion-1.png" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;figure1.png&quot;),
+        width = 5,height = 5,units = &#39;in&#39;,res = 300)
 plot.mao</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
@@ -1398,7 +1554,7 @@ foo.mds &lt;- function(x,fontsize = 8){
   ylab &lt;- paste(obj.mds$axislabel, 2)
   xlab &lt;- paste0(xlab, &quot; (&quot;, Perc[1], &quot;%)&quot;)
   ylab &lt;- paste0(ylab, &quot; (&quot;, Perc[2], &quot;%)&quot;)
-
+  
   plot(c(-3.5, 3.5), c(-1, 1.5),
        type = &quot;n&quot;,xlab = xlab,ylab = ylab,
        cex.lab = fontsize/12,
@@ -1410,6 +1566,43 @@ plot.mds &lt;- wrap_elements(full = ~foo.mds(dte.short.paired.edger.scaled.filtr
 
 plot.mds</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_mds-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_mds-1">
+Past versions of casestudy_res_txgene_mds-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_mds-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_mds-1.png" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Next, we generate panel (b).</p>
 <pre class="r"><code># plotMD does not return invisible(), so we just use wrap_elements
 foo.md &lt;- function(x,fontsize = 8){
@@ -1430,52 +1623,130 @@ plot.md &lt;-
 
 plot.md</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_md-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_md-1">
+Past versions of casestudy_res_txgene_md-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_md-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_md-1.png" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Panel (c) is created below.</p>
-<pre class="r"><code>foo.lolipop &lt;- function(symbols,gene.table,transcript.table, fontsize = 8, legend = c(0.9,0.9),colornames = c(&#39;NotSig&#39; = &#39;black&#39;,&#39;Up&#39; = &#39;red&#39;,&#39;Down&#39; = &#39;blue&#39;)){
-  ls.loli &lt;- lapply(symbols,function(x){
-    df.loli &lt;-
-      rbind(as.data.table(transcript.table$table[transcript.table$table$GeneSymbol == x,c(&#39;TranscriptSymbol&#39;,&#39;FDR&#39;,&#39;logFC&#39;)]),
-            as.data.table(gene.table$table[gene.table$table$GeneName == x,c(&quot;FDR&quot;,&quot;logFC&quot;)]),fill = TRUE)
-    df.loli[is.na(df.loli)] &lt;- x
-    df.loli$Color &lt;- ifelse(df.loli$FDR &gt; 0.05,&#39;NotSig&#39;,ifelse(df.loli$logFC &lt; 0,&#39;Down&#39;,&#39;Up&#39;))
-    df.loli &lt;- df.loli[order(df.loli$TranscriptSymbol),]
-    df.loli$Gene &lt;- x
-    return(df.loli)
-  })
-
-  ls.loli &lt;- do.call(rbind,ls.loli)
-
-  ls.loli$Color &lt;- factor(ls.loli$Color,levels = names(colornames))
-
-  ggplot(data = ls.loli,aes(x = TranscriptSymbol,xend = TranscriptSymbol,yend = 0,y = logFC)) +
-    facet_wrap(&#39;Gene&#39;,nrow = 1,scales = &#39;free_x&#39;) +
-    geom_segment(color = &#39;black&#39;) +
-    geom_point(size = 2,aes(color = Color)) +
-    geom_hline(yintercept = 0) +
-    geom_vline(xintercept = 1.5,linetype = &#39;dashed&#39;,color = &#39;gray&#39;) +
-    scale_color_manual(values = colornames) +
-    labs(x = NULL) +
-    theme_bw(base_size = fontsize,base_family = &#39;sans&#39;) +
-    theme(panel.grid = element_blank(),
-          strip.background = element_blank(),
-          strip.text = element_text(face = &#39;bold&#39;),
-          axis.text = element_text(colour = &#39;black&#39;,size = fontsize),
-          legend.position = legend,
-          axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-          legend.title = element_blank(),
-          legend.text = element_text(colour = &#39;black&#39;,size = fontsize),
-          legend.background=element_rect(fill = alpha(&quot;white&quot;, 0))) +
-    guides(colour = guide_legend(keywidth=0.1,
-                                 keyheight=0.1,
-                                 default.unit=&quot;inch&quot;,
-                                 override.aes = list(size = 0.75)))
-}
+<pre class="r"><code>foo.lolipop &lt;- 
+  function(symbols,gene.table,transcript.table, fontsize = 8,
+           legend = c(0.9,0.9),
+           colornames = c(&#39;NotSig&#39; = &#39;black&#39;,&#39;Up&#39; = &#39;red&#39;,&#39;Down&#39; = &#39;blue&#39;)){
+    
+    ls.loli &lt;- lapply(symbols,function(x){
+      df.loli &lt;-
+        rbind(as.data.table(transcript.table$table[transcript.table$table$GeneSymbol == x,c(&#39;TranscriptSymbol&#39;,&#39;FDR&#39;,&#39;logFC&#39;)]),
+              as.data.table(gene.table$table[gene.table$table$GeneName == x,c(&quot;FDR&quot;,&quot;logFC&quot;)]),fill = TRUE)
+      df.loli[is.na(df.loli)] &lt;- x
+      df.loli$Color &lt;- ifelse(df.loli$FDR &gt; 0.05,&#39;NotSig&#39;,ifelse(df.loli$logFC &lt; 0,&#39;Down&#39;,&#39;Up&#39;))
+      df.loli &lt;- df.loli[order(df.loli$TranscriptSymbol),]
+      df.loli$Gene &lt;- x
+      return(df.loli)
+    })
+    
+    ls.loli &lt;- do.call(rbind,ls.loli)
+    
+    ls.loli$Color &lt;- factor(ls.loli$Color,levels = names(colornames))
+    
+    ggplot(data = ls.loli,aes(x = TranscriptSymbol,xend = TranscriptSymbol,yend = 0,y = logFC)) +
+      facet_wrap(&#39;Gene&#39;,nrow = 1,scales = &#39;free_x&#39;) +
+      geom_segment(color = &#39;black&#39;) +
+      geom_point(size = 2,aes(color = Color)) +
+      geom_hline(yintercept = 0) +
+      geom_vline(xintercept = 1.5,linetype = &#39;dashed&#39;,color = &#39;gray&#39;) +
+      scale_color_manual(values = colornames) +
+      labs(x = NULL) +
+      theme_bw(base_size = fontsize,base_family = &#39;sans&#39;) +
+      theme(panel.grid = element_blank(),
+            strip.background = element_blank(),
+            strip.text = element_text(face = &#39;bold&#39;),
+            axis.text = element_text(colour = &#39;black&#39;,size = fontsize),
+            legend.position = legend,
+            axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+            legend.title = element_blank(),
+            legend.text = element_text(colour = &#39;black&#39;,size = fontsize),
+            legend.background=element_rect(fill = alpha(&quot;white&quot;, 0))) +
+      guides(colour = guide_legend(keywidth=0.1,
+                                   keyheight=0.1,
+                                   default.unit=&quot;inch&quot;,
+                                   override.aes = list(size = 0.75)))
+  }
 
 plot.lolipop &lt;- wrap_elements(foo.lolipop(symbols = c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),
                                           gene.table = out.gene,
                                           transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
 plot.lolipop</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_loliplot-1">
+Past versions of casestudy_res_txgene_loliplot-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_loliplot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" target="_blank">1839ef1</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Finally, we create panel (d). We use that package
 <code>ComplexHeatmap</code> <span class="citation">Gu, Eils, and
 Schlesner (2016)</span> to create the heatmap plot.</p>
@@ -1485,8 +1756,12 @@ cpm.scaled &lt;- t(scale(t(cpm.scaled)))
 ## Here I want to check non-significant genes associated with cancer pathways that have at least 1 DE transcript
 
 df.tx.gene &lt;- out.short.paired.edger.scaled$table
-df.tx.gene$FDR.Gene &lt;- out.gene$table$FDR[match(df.tx.gene$GeneID,rownames(out.gene$table))]
-interestGenes.ns &lt;- unique(df.tx.gene[df.tx.gene$FDR.Gene &gt; 0.05 &amp; df.tx.gene$FDR &lt; 0.05 &amp; df.tx.gene$GeneOfInterest == TRUE,&quot;EntrezID&quot;])
+df.tx.gene$FDR.Gene &lt;- 
+  out.gene$table$FDR[match(df.tx.gene$GeneID,rownames(out.gene$table))]
+interestGenes.ns &lt;- 
+  unique(df.tx.gene[df.tx.gene$FDR.Gene &gt; 0.05 &amp; 
+                      df.tx.gene$FDR &lt; 0.05 &amp; 
+                      df.tx.gene$GeneOfInterest == TRUE,&quot;EntrezID&quot;])
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns)</code></pre>
@@ -1495,7 +1770,8 @@ length(interestGenes.ns)</code></pre>
 GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;hsa&quot;)
 
 interestGenes.ns.cancer &lt;-
-  interestGenes.ns[interestGenes.ns %in% GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05222&#39;,&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+  interestGenes.ns[interestGenes.ns %in% 
+                     GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05222&#39;,&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns.cancer)</code></pre>
@@ -1507,7 +1783,8 @@ df.tx.gene.cancer &lt;-
   df.tx.gene.cancer[df.tx.gene.cancer$FDR &lt; 0.05,]
 
 cpm.scaled.cancer &lt;- cpm.scaled[rownames(df.tx.gene.cancer),]
-rownames(cpm.scaled.cancer) &lt;- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
+rownames(cpm.scaled.cancer) &lt;- 
+  dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
 
 foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
   Heatmap(matrix = x,
@@ -1533,24 +1810,27 @@ plot.heat.cancer &lt;-
 <pre class="r"><code>plot.design &lt;- c(area(1, 1),area(1,2),area(2,1,2,2),area(3,1,3,2))
 
 fig.panel &lt;- wrap_plots(A = plot.mds,
-                          B = plot.md,
-                          C = plot.lolipop,
-                          D = plot.heat.cancer,
-                          design = plot.design,
-                          heights = c(0.3,0.35,0.35)) +
+                        B = plot.md,
+                        C = plot.lolipop,
+                        D = plot.heat.cancer,
+                        design = plot.design,
+                        heights = c(0.3,0.35,0.35)) +
   plot_annotation(tag_levels = &#39;a&#39;)
 
 fig.panel &lt;- fig.panel &amp;
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),width = 10,height = 10,units = &#39;in&#39;,res = 300)
+agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),
+        width = 10,height = 10,units = &#39;in&#39;,res = 300)
 fig.panel
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
 <p>For the genes presented in panel (b), below we present the results
 from our DE analysis at the gene-level.</p>
-<pre class="r"><code>tb.gene &lt;- out.gene$table[out.gene$table$GeneName %in% c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),]
+<pre class="r"><code>tb.gene &lt;- 
+  out.gene$table[out.gene$table$GeneName %in% c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),]
+
 tb.gene$EnsemblID &lt;- rownames(tb.gene)
 tb.gene &lt;- data.frame(tb.gene[,c(&#39;EnsemblID&#39;,&#39;GeneName&#39;,&#39;EntrezID&#39;,&#39;GeneType&#39;,
                                  &#39;logFC&#39;,&#39;logCPM&#39;,&#39;F&#39;,&#39;PValue&#39;,&#39;FDR&#39;)],row.names = NULL)
@@ -1568,16 +1848,19 @@ tb.gene$FDR &lt;- formatC(tb.gene$FDR,digits = 3,format = &#39;e&#39;)
 
 tb.gene$Biotype &lt;- NULL
 
+cap.kb.gene &lt;- 
+  paste(&#39;edgeR results from a DE analysis at the gene-level for&#39;,
+        &#39;a set of cancer-related genes comparing cell lines H1975 and HCC827.&#39;,
+        &#39;Data from the paired-end RNA-seq experiment of the the human cell lines (GSE172421).&#39;,
+        &#39;Such genes have at least one its transcripts differentially expressed between cell lines&#39;,
+        &#39;(nominal FDR 0.05 at the transcript-level).&#39;)
+
 kb.gene &lt;-
   kbl(tb.gene,
       escape = FALSE,
       format = &#39;latex&#39;,
       booktabs = TRUE,
-      caption = paste(&#39;edgeR results from a DE analysis at the gene-level for&#39;,
-                      &#39;a set of cancer-related genes comparing cell lines H1975 and HCC827.&#39;,
-                      &#39;Data from the paired-end RNA-seq experiment of the the human cell lines (GSE172421).&#39;,
-                      &#39;Such genes have at least one its transcripts differentially expressed between cell lines&#39;,
-                      &#39;(nominal FDR 0.05 at the transcript-level).&#39;),
+      caption = cap.kb.gene,
       align = &#39;llcccccc&#39;) %&gt;%
   kable_styling(font_size = 10)
 save_kable(kb.gene,file = file.path(path.misc,&quot;supptable_gene.tex&quot;))</code></pre>
@@ -1592,12 +1875,13 @@ df.output.gene[,Level := &#39;Gene&#39;]
 df.output.gene$EnsemblID &lt;- rownames(dge)
 
 ## Transcript-level
-df.output.tx &lt;- data.table(Symbol = dte.short.paired.edger.scaled$genes$TranscriptSymbol,
-                           EntrezID = dte.short.paired.edger.scaled$genes$EntrezID,
-                           Type = dte.short.paired.edger.scaled$genes$GeneType,
-                           Overdispersion = catch.short.paired$annotation$Overdispersion,
-                           Level = &#39;Transcript&#39;,
-                           EnsemblID = rownames(dte.short.paired.edger.scaled$genes))
+df.output.tx &lt;- 
+  data.table(Symbol = dte.short.paired.edger.scaled$genes$TranscriptSymbol,
+             EntrezID = dte.short.paired.edger.scaled$genes$EntrezID,
+             Type = dte.short.paired.edger.scaled$genes$GeneType,
+             Overdispersion = catch.short.paired$annotation$Overdispersion,
+             Level = &#39;Transcript&#39;,
+             EnsemblID = rownames(dte.short.paired.edger.scaled$genes))
 
 
 df.output.gene.tx &lt;- rbindlist(list(df.output.gene,df.output.tx))
@@ -1628,15 +1912,16 @@ cap.mao &lt;- paste(&quot;Top 100 genes with largest mapping ambiguity overdispe
                  &quot;Data from the RNA-seq experiment of the human cell lines&quot;,
                  &quot;generated with paired-end reads (GSE172421).&quot;)
 
-kb.output.gene.top &lt;- kbl(df.output.gene.top,
-                          longtable = TRUE,
-                          escape = FALSE,
-                          format = &#39;latex&#39;,
-                          booktabs = TRUE,
-                          caption = cap.mao,
-                          digits = 2,
-                          align = c(&#39;lllcc&#39;),
-                          col.names = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
+kb.output.gene.top &lt;- 
+  kbl(df.output.gene.top,
+      longtable = TRUE,
+      escape = FALSE,
+      format = &#39;latex&#39;,
+      booktabs = TRUE,
+      caption = cap.mao,
+      digits = 2,
+      align = c(&#39;lllcc&#39;),
+      col.names = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
   kable_styling(latex_options = c(&quot;scale_down&quot;,&quot;repeat_header&quot;),font_size = 10)</code></pre>
 <pre><code>Warning in styling_latex_scale_down(out, table_info): Longtable cannot be
 resized.</code></pre>
@@ -1649,25 +1934,32 @@ class="section level2">
 using both paired- and single-end Illumina short reads. We add the
 transcript-level results from ONT long read data as a comparison.</p>
 <pre class="r"><code>tb.tx.genes &lt;- dte.short.paired$genes
+
 tb.tx.genes$FDR.SE &lt;- 
   out.short.single.edger.scaled$table$FDR[match(rownames(tb.tx.genes),rownames(out.short.single.edger.scaled))]
+
 tb.tx.genes$FDR.PE &lt;- 
   out.short.paired.edger.scaled$table$FDR[match(rownames(tb.tx.genes),rownames(out.short.paired.edger.scaled))]
+
 tb.tx.genes$FDR.LR &lt;- out.long$table$FDR[match(rownames(tb.tx.genes),rownames(out.long))]
 
 tb.tx.genes &lt;- (tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)] &lt; 0.05)*1L
 tb.tx.genes[is.na(tb.tx.genes)] &lt;- 0L
 
-agg_png(filename = file.path(path.misc,&quot;suppfigure_venn.png&quot;),width = 6,height = 6,units = &#39;in&#39;,res = 300)
+agg_png(filename = file.path(path.misc,&quot;suppfigure_venn.png&quot;),
+        width = 6,height = 6,units = &#39;in&#39;,res = 300)
 limma::vennDiagram(tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)],
-                   names = c(&#39;Illumina\nsingle-end reads&#39;,&#39;Illumina\npaired-end reads&#39;,&#39;ONT\nlong reads&#39;),
+                   names = c(&#39;Illumina\nsingle-end reads&#39;,
+                             &#39;Illumina\npaired-end reads&#39;,
+                             &#39;ONT\nlong reads&#39;),
                    circle.col = c(&#39;salmon&#39;,&#39;red&#39;,&#39;blue&#39;),cex = c(12,10,8)/12)
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
 <p>And the MA plot highlighting DE transcripts called with single-end
 Illumina short reads is presented below.</p>
-<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),width = 6,height = 6,units = &#39;in&#39;,res = 300)
+<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),
+        width = 6,height = 6,units = &#39;in&#39;,res = 300)
 plotMD(qlf.short.single.edger.scaled,
        main = NULL,cex = 0.5,legend = FALSE,
        cex.lab = 8/12,
@@ -1744,22 +2036,23 @@ other attached packages:
 [25] BiocFileCache_2.6.0         dbplyr_2.3.0               
 [27] BiocGenerics_0.44.0         plyr_1.8.8                 
 [29] edgeR_3.40.2                limma_3.54.1               
+[31] workflowr_1.7.0            
 
 loaded via a namespace (and not attached):
-  [1] circlize_0.4.15               workflowr_1.7.0              
-  [3] systemfonts_1.0.4             lazyeval_0.2.2               
-  [5] splines_4.2.1                 BiocParallel_1.32.5          
-  [7] digest_0.6.31                 foreach_1.5.2                
-  [9] htmltools_0.5.4               fansi_1.0.4                  
- [11] memoise_2.0.1                 svMisc_1.2.3                 
- [13] cluster_2.1.4                 doParallel_1.0.17            
- [15] tzdb_0.3.0                    readr_2.1.4                  
- [17] Biostrings_2.66.0             vroom_1.6.1                  
- [19] svglite_2.1.1                 prettyunits_1.1.1            
- [21] colorspace_2.1-0              rvest_1.0.3                  
- [23] blob_1.2.3                    rappdirs_0.3.3               
- [25] textshaping_0.3.6             xfun_0.37                    
- [27] dplyr_1.1.0                   crayon_1.5.2                 
+  [1] circlize_0.4.15               systemfonts_1.0.4            
+  [3] lazyeval_0.2.2                splines_4.2.1                
+  [5] BiocParallel_1.32.5           digest_0.6.31                
+  [7] foreach_1.5.2                 htmltools_0.5.4              
+  [9] fansi_1.0.4                   memoise_2.0.1                
+ [11] svMisc_1.2.3                  cluster_2.1.4                
+ [13] doParallel_1.0.17             tzdb_0.3.0                   
+ [15] readr_2.1.4                   Biostrings_2.66.0            
+ [17] vroom_1.6.1                   svglite_2.1.1                
+ [19] prettyunits_1.1.1             colorspace_2.1-0             
+ [21] rvest_1.0.3                   blob_1.2.3                   
+ [23] rappdirs_0.3.3                textshaping_0.3.6            
+ [25] xfun_0.37                     dplyr_1.1.0                  
+ [27] callr_3.7.3                   crayon_1.5.2                 
  [29] RCurl_1.98-1.10               jsonlite_1.8.4               
  [31] tximport_1.26.1               iterators_1.0.14             
  [33] glue_1.6.2                    gtable_0.3.1                 
@@ -1784,34 +2077,36 @@ loaded via a namespace (and not attached):
  [71] cli_3.6.0                     generics_0.1.3               
  [73] RSQLite_2.2.20                evaluate_0.20                
  [75] stringr_1.5.0                 fastmap_1.1.0                
- [77] yaml_2.3.7                    knitr_1.42                   
- [79] bit64_4.0.5                   fs_1.6.1                     
- [81] purrr_1.0.1                   KEGGREST_1.38.0              
- [83] nlme_3.1-162                  mime_0.12                    
- [85] xml2_1.3.3                    biomaRt_2.54.0               
- [87] compiler_4.2.1                rstudioapi_0.14              
- [89] filelock_1.0.2                curl_5.0.0                   
- [91] png_0.1-8                     interactiveDisplayBase_1.36.0
- [93] statmod_1.5.0                 bslib_0.4.2                  
- [95] stringi_1.7.12                highr_0.10                   
- [97] lattice_0.20-45               ProtGenerics_1.30.0          
- [99] Matrix_1.5-3                  vctrs_0.5.2                  
-[101] pillar_1.8.1                  lifecycle_1.0.3              
-[103] rhdf5filters_1.10.0           BiocManager_1.30.19          
-[105] jquerylib_0.1.4               GlobalOptions_0.1.2          
-[107] bitops_1.0-7                  qvalue_2.30.0                
-[109] httpuv_1.6.5                  rtracklayer_1.58.0           
-[111] R6_2.5.1                      BiocIO_1.8.0                 
-[113] promises_1.2.0.1              codetools_0.2-19             
-[115] gtools_3.9.4                  assertthat_0.2.1             
-[117] rhdf5_2.42.0                  rprojroot_2.0.3              
-[119] rjson_0.2.21                  withr_2.5.0                  
-[121] GenomicAlignments_1.34.0      Rsamtools_2.14.0             
-[123] GenomeInfoDbData_1.2.9        mgcv_1.8-41                  
-[125] parallel_4.2.1                hms_1.1.2                    
-[127] tidyr_1.3.0                   rmarkdown_2.20               
-[129] Cairo_1.6-0                   git2r_0.31.0                 
-[131] shiny_1.7.4                   restfulr_0.0.15              </code></pre>
+ [77] yaml_2.3.7                    processx_3.8.0               
+ [79] knitr_1.42                    bit64_4.0.5                  
+ [81] fs_1.6.1                      purrr_1.0.1                  
+ [83] KEGGREST_1.38.0               nlme_3.1-162                 
+ [85] whisker_0.4.1                 mime_0.12                    
+ [87] xml2_1.3.3                    biomaRt_2.54.0               
+ [89] compiler_4.2.1                rstudioapi_0.14              
+ [91] filelock_1.0.2                curl_5.0.0                   
+ [93] png_0.1-8                     interactiveDisplayBase_1.36.0
+ [95] statmod_1.5.0                 bslib_0.4.2                  
+ [97] stringi_1.7.12                highr_0.10                   
+ [99] ps_1.7.2                      lattice_0.20-45              
+[101] ProtGenerics_1.30.0           Matrix_1.5-3                 
+[103] vctrs_0.5.2                   pillar_1.8.1                 
+[105] lifecycle_1.0.3               rhdf5filters_1.10.0          
+[107] BiocManager_1.30.19           jquerylib_0.1.4              
+[109] GlobalOptions_0.1.2           bitops_1.0-7                 
+[111] qvalue_2.30.0                 httpuv_1.6.5                 
+[113] rtracklayer_1.58.0            R6_2.5.1                     
+[115] BiocIO_1.8.0                  promises_1.2.0.1             
+[117] codetools_0.2-19              gtools_3.9.4                 
+[119] assertthat_0.2.1              rhdf5_2.42.0                 
+[121] rprojroot_2.0.3               rjson_0.2.21                 
+[123] withr_2.5.0                   GenomicAlignments_1.34.0     
+[125] Rsamtools_2.14.0              GenomeInfoDbData_1.2.9       
+[127] mgcv_1.8-41                   parallel_4.2.1               
+[129] hms_1.1.2                     tidyr_1.3.0                  
+[131] rmarkdown_2.20                Cairo_1.6-0                  
+[133] git2r_0.31.0                  getPass_0.2-2                
+[135] shiny_1.7.4                   restfulr_0.0.15              </code></pre>
 </div>
 </div>
 </div>

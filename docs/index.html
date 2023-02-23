@@ -250,7 +250,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
+      <a class="navbar-brand" href="index.html">TranscriptDE-code</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -263,7 +263,7 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/plbaldoni/TranscriptDE-wf">
+  <a href="https://github.com/plbaldoni/TranscriptDE-code">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -287,7 +287,7 @@ catchSalmon/catchKallisto paper</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -298,8 +298,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -312,13 +312,14 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
-<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+<strong>Knit directory:</strong>
+<code>TranscriptDE-code/analysis/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
 title="This is the local directory in which the code in this file was executed.">
 </span>
 </p>
@@ -337,36 +338,33 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4targetblankd6b77e7a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4" target="_blank">d6b77e7</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4targetblankd6b77e7a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree7b4aa30391aa80cd832e51065c1726b7b03a2f86targetblank7b4aa30a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -376,7 +374,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4" target="_blank">d6b77e7</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/7b4aa30391aa80cd832e51065c1726b7b03a2f86" target="_blank">7b4aa30</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -396,8 +394,7 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    ._.DS_Store
     Ignored:    .gitignore
-    Ignored:    analysis/mouse-devel.Rmd
-    Ignored:    analysis/mouse-suz12.Rmd
+    Ignored:    TranscriptDE-code.Rproj
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/.DS_Store
@@ -417,13 +414,6 @@ Ignored files:
     Ignored:    code/lung/salmon/slurm-10681872.out
     Ignored:    code/lung/salmon/slurm-10684950.out
     Ignored:    code/lung/salmon/slurm-10694066.out
-    Ignored:    code/mouse-devel/
-    Ignored:    code/mouse-suz12/
-    Ignored:    code/mouse/.DS_Store
-    Ignored:    code/mouse/._.DS_Store
-    Ignored:    code/mouse/single-end/.DS_Store
-    Ignored:    code/mouse/single-end/._.DS_Store
-    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
     Ignored:    code/pkg/pkg.Rproj
@@ -451,30 +441,20 @@ Ignored files:
     Ignored:    data/lung/fastq/
     Ignored:    data/lung/index/
     Ignored:    data/lung/misc/._filereport_read_run_PRJNA723287_tsv.txt
-    Ignored:    data/mouse-devel/
-    Ignored:    data/mouse-suz12/
-    Ignored:    data/mouse/.DS_Store
-    Ignored:    data/mouse/._.DS_Store
-    Ignored:    data/mouse/._readme.txt
-    Ignored:    data/mouse/paired-end/fastq/
-    Ignored:    data/mouse/single-end/fastq/
     Ignored:    ignore/
     Ignored:    misc/.DS_Store
     Ignored:    misc/._.DS_Store
-    Ignored:    misc/mouse.Rmd/._figure6.png
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
     Ignored:    output/lung-se/
     Ignored:    output/lung/
-    Ignored:    output/mouse-devel/
-    Ignored:    output/mouse-suz12/
-    Ignored:    output/mouse/paired-end/
-    Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
 
 Unstaged changes:
-    Modified:   analysis/index.Rmd
+    Modified:   analysis/_site.yml
+    Modified:   analysis/simulation-complete.Rmd
+    Modified:   analysis/simulation-paper.Rmd
 
 </code></pre>
 <p>
@@ -519,6 +499,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/b54a15736b4f463865aacffe1f94d2e63b8ab127/analysis/index.Rmd" target="_blank">b54a157</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Expanding index
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/b54a15736b4f463865aacffe1f94d2e63b8ab127/docs/index.html" target="_blank">b54a157</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Expanding index
+</td>
+</tr>
 <tr>
 <td>
 html
