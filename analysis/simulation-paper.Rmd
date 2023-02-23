@@ -116,9 +116,9 @@ path.overdispersion <-
   list.files('../output/simulation/summary','overdispersion.tsv.gz',recursive = TRUE,full.names = TRUE)
 ```
 
-Loading all summarized results below. Because these datasets are quite large, I use `cache=TRUE` to save time when rendering this page.
+Loading all summarized results below.
 
-```{r simulation-paper_data_load,cache=TRUE}
+```{r simulation-paper_data_load}
 # Loading datasets
 dt.fdr <- do.call(rbind,lapply(path.fdr,fread))
 dt.metrics <- do.call(rbind,lapply(path.metrics,fread))
