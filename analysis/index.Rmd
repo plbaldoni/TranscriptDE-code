@@ -12,10 +12,15 @@ This website hosts code for the transcript-level differential expression paper, 
 
 ## Simulation study
 
+The pages below present the necessary steps to rerun our simulation study and the code used to generaten the figures and tables from the main and supplementary texts of the transcript-level differential expression paper.
+
 * [Rerunning the simulation study](simulation-howto.html)
 * [Complete report (results presented in the supplementary materials)](simulation-complete.html)
 * [Reduced report (results presented in the main paper)](simulation-paper.html)
   
-## Analysis of the RNA-seq data from the epithelial cell population of the mouse mammary gland
+## Case study
 
-* [Report](mouse.html)
+The pages below present the data pre-processing steps and analysis report of the RNA-seq experiments from the human cancer cell lines H1975 and HCC827 (GEO accession [GSE172421](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421) and [GSE86337](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE86337)).
+
+* [Data pre-processing](casestudy-howto.html)
+* [Analysis report](casestudy.html)

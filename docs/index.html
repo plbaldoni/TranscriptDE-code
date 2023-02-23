@@ -287,7 +287,7 @@ catchSalmon/catchKallisto paper</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -298,8 +298,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -308,13 +308,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-02-17
+<strong>Last updated:</strong> 2023-02-24
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
@@ -337,33 +337,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree5a5a7039463bfd08f2a144a842f89873367cf51dtargetblank5a5a703a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4targetblankd6b77e7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/5a5a7039463bfd08f2a144a842f89873367cf51d" target="_blank">5a5a703</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4" target="_blank">d6b77e7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree5a5a7039463bfd08f2a144a842f89873367cf51dtargetblank5a5a703a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4targetblankd6b77e7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -373,7 +376,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/5a5a7039463bfd08f2a144a842f89873367cf51d" target="_blank">5a5a703</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d6b77e7fba92f0ee3a9153d9bb3557e2bc5c17e4" target="_blank">d6b77e7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -393,8 +396,33 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    ._.DS_Store
     Ignored:    .gitignore
+    Ignored:    analysis/mouse-devel.Rmd
+    Ignored:    analysis/mouse-suz12.Rmd
     Ignored:    analysis/simulation-complete_cache/
     Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    code/._.DS_Store
+    Ignored:    code/lung-se/data/slurm-10685114.out
+    Ignored:    code/lung-se/salmon/.RData
+    Ignored:    code/lung-se/salmon/runWasabi.Rout
+    Ignored:    code/lung-se/salmon/slurm-10685171.out
+    Ignored:    code/lung-se/salmon/slurm-10694099.out
+    Ignored:    code/lung/data/slurm-10678225.out
+    Ignored:    code/lung/index/slurm-10679764.out
+    Ignored:    code/lung/index/slurm-10679768.out
+    Ignored:    code/lung/index/slurm-10684814.out
+    Ignored:    code/lung/salmon/.RData
+    Ignored:    code/lung/salmon/runWasabi.Rout
+    Ignored:    code/lung/salmon/slurm-10681840.out
+    Ignored:    code/lung/salmon/slurm-10681872.out
+    Ignored:    code/lung/salmon/slurm-10684950.out
+    Ignored:    code/lung/salmon/slurm-10694066.out
+    Ignored:    code/mouse-devel/
+    Ignored:    code/mouse-suz12/
+    Ignored:    code/mouse/.DS_Store
+    Ignored:    code/mouse/._.DS_Store
+    Ignored:    code/mouse/single-end/.DS_Store
+    Ignored:    code/mouse/single-end/._.DS_Store
     Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
     Ignored:    code/pkg/.Rhistory
     Ignored:    code/pkg/.Rproj.user/
@@ -402,18 +430,51 @@ Ignored files:
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
+    Ignored:    data/.DS_Store
+    Ignored:    data/._.DS_Store
+    Ignored:    data/annotation/.DS_Store
+    Ignored:    data/annotation/._.DS_Store
+    Ignored:    data/annotation/hg38/
     Ignored:    data/annotation/mm39/
+    Ignored:    data/annotation/sequins/._rnasequin_annotation_2.4.gtf
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa
+    Ignored:    data/annotation/sequins/._rnasequin_decoychr_2.4.fa.fai
+    Ignored:    data/annotation/sequins/._rnasequin_genes_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_isoforms_2.4.tsv
+    Ignored:    data/annotation/sequins/._rnasequin_sequences_2.4.fa
+    Ignored:    data/lung-se/.DS_Store
+    Ignored:    data/lung-se/._.DS_Store
+    Ignored:    data/lung-se/fastq/
+    Ignored:    data/lung-se/misc/._filereport_read_run_PRJNA341465_tsv.txt
+    Ignored:    data/lung/.DS_Store
+    Ignored:    data/lung/._.DS_Store
+    Ignored:    data/lung/fastq/
+    Ignored:    data/lung/index/
+    Ignored:    data/lung/misc/._filereport_read_run_PRJNA723287_tsv.txt
+    Ignored:    data/mouse-devel/
+    Ignored:    data/mouse-suz12/
+    Ignored:    data/mouse/.DS_Store
+    Ignored:    data/mouse/._.DS_Store
+    Ignored:    data/mouse/._readme.txt
     Ignored:    data/mouse/paired-end/fastq/
     Ignored:    data/mouse/single-end/fastq/
+    Ignored:    ignore/
     Ignored:    misc/.DS_Store
     Ignored:    misc/._.DS_Store
     Ignored:    misc/mouse.Rmd/._figure6.png
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
+    Ignored:    output/lung-se/
+    Ignored:    output/lung/
+    Ignored:    output/mouse-devel/
+    Ignored:    output/mouse-suz12/
     Ignored:    output/mouse/paired-end/
     Ignored:    output/mouse/single-end/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -458,6 +519,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/2f1373b3292aa28b84f2903b9404e0d60d06b47f/docs/index.html" target="_blank">2f1373b</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -642,6 +720,10 @@ the R/Bioconductor package <a
 href="https://bioconductor.org/packages/release/bioc/html/edgeR.html">edgeR</a>.</p>
 <div id="simulation-study" class="section level2">
 <h2>Simulation study</h2>
+<p>The pages below present the necessary steps to rerun our simulation
+study and the code used to generaten the figures and tables from the
+main and supplementary texts of the transcript-level differential
+expression paper.</p>
 <ul>
 <li><a href="simulation-howto.html">Rerunning the simulation
 study</a></li>
@@ -651,13 +733,17 @@ presented in the supplementary materials)</a></li>
 the main paper)</a></li>
 </ul>
 </div>
-<div
-id="analysis-of-the-rna-seq-data-from-the-epithelial-cell-population-of-the-mouse-mammary-gland"
-class="section level2">
-<h2>Analysis of the RNA-seq data from the epithelial cell population of
-the mouse mammary gland</h2>
+<div id="case-study" class="section level2">
+<h2>Case study</h2>
+<p>The pages below present the data pre-processing steps and analysis
+report of the RNA-seq experiments from the human cancer cell lines H1975
+and HCC827 (GEO accession <a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421">GSE172421</a>
+and <a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE86337">GSE86337</a>).</p>
 <ul>
-<li><a href="mouse.html">Report</a></li>
+<li><a href="casestudy-howto.html">Data pre-processing</a></li>
+<li><a href="casestudy.html">Analysis report</a></li>
 </ul>
 </div>
 
