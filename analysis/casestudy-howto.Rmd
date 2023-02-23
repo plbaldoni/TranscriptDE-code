@@ -1,0 +1,45 @@
+---
+title: "Case study: data pre-processing"
+author: "Pedro L. Baldoni"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+bibliography: ../misc/bibliography/bibliography.bib
+---
+
+Our case study analysis is based on three RNA-seq experiments from the human lung cancer cell lines H1975 and HCC827: the paired-end Illumina short read RNA-seq data ([GSE172421](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421)), the single-end Illumina short read RNA-seq data ([GSE86337](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE86337)) and the long read Oxford Nanopore Technologies (ONT) data ([GSE172421](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421)).
+
+All the RNA-seq experiments are quantified with `Salmon` @patro2017salmon using an decoy-aware indexed transcriptome based on the Ensembl-oriented Gencode annotation version 33 (Ensembl annotation version 99) with added transcripts from spiked-in *sequins* (see @dong2022benchmarking). All necessary annotation files used to build the transcriptome index are publicly available and can also be downloaded from the GitHub repository associated to this page.
+
+# Creating the decoy-aware transcriptome index
+
+1. Run the script `code/lung/index/combineAnnotation.sh` to combine the Ensembl-oriented Gencode annotation with the sequins annotation. This script uses the `picard-tools` module.
+
+2. Run the script `code/lung/index/buildIndex.sh` to build `Salmon`'s transcriptome index. This script uses the following modules: `Salmon`, `MashMap`, `bedtools` and the [generateDecoyTranscriptome.sh](https://github.com/COMBINE-lab/SalmonTools/blob/master/scripts/generateDecoyTranscriptome.sh) script.
+
+# Download and quantifying the Illumina paired-end short read experiments
+
+1. Run `code/lung/data/runAspera.sh` to download all necessary FASTQ files. This script uses the module `aspera`.
+
+2. Run `code/lung/salmon/runSalmon.sh` to quantify the RNA-seq reads. This scripts uses the `Salmon` module.
+
+3. Run `code/lung/salmon/runWasabi.R` to generate `.h5` files from `Salmon`'s output that can be read by the DTE method `sleuth`.
+
+The targets file for this experiment is provided in our GitHub repository for convenience. See file `data/lung/misc/targets.txt`.
+
+# Download and quantifying the Illumina single-end short read experiments
+
+1. Run `code/lung-se/data/runAspera.sh` to download all necessary FASTQ files. This script uses the module `aspera`.
+
+2. Run `code/lung-se/salmon/runSalmon.sh` to quantify the RNA-seq reads. This scripts uses the `Salmon` module.
+
+3. Run `code/lung-se/salmon/runWasabi.R` to generate `.h5` files from `Salmon`'s output that can be read by the DTE method `sleuth`.
+
+The targets file for this experiment is provided in our GitHub repository for convenience. See file `data/lung-se/misc/targets.txt`.
+
+# About the ONT long read data
+
+For convenience, we provide the ONT long read data in an already processed `DGEList` object that can be used in the analysis^[Thanks to Dr. Xueyi Dong for processing and generating this file.]. The R `.rds` file containing such object is `data/lung-ont/220928_dge.rds`. The targets file for the ONT experiment is can be found at `data/lung-ont/misc/targets.txt`.
+
+# References

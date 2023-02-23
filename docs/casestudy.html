@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Pedro L. Baldoni" />
+
+
+<title>Case study: Analysis of the RNA-seq data from human cell lines H1975 and HCC827</title>
+
+<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">TranscriptDE-wf</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/plbaldoni/TranscriptDE-wf">
+    <span class="fab fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Case study: Analysis of the RNA-seq data
+from human cell lines H1975 and HCC827</h1>
+<h4 class="author">Pedro L. Baldoni</h4>
+<h4 class="date">24 February, 2023</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2023-02-24
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 2
+</p>
+<p>
+<strong>Knit directory:</strong> <code>TranscriptDE-wf/analysis/</code>
+<span class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongobjectspresent">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>Environment:</strong> objects present
+</a>
+</p>
+</div>
+<div id="strongEnvironmentstrongobjectspresent"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+The global environment had objects present when the code in the R
+Markdown file was run. These objects can affect the analysis in your R
+Markdown file in unknown ways. For reproduciblity it’s best to always
+run the code in an empty environment. Use <code>wflow_publish</code> or
+<code>wflow_build</code> to ensure that the code is always run in an
+empty environment.
+</p>
+<p>
+The following objects were defined in the global environment when these
+results were created:
+</p>
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:left;">
+Class
+</th>
+<th style="text-align:left;">
+Size
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+cmdpipe
+</td>
+<td style="text-align:left;">
+pipe;connection
+</td>
+<td style="text-align:left;">
+584 bytes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ml
+</td>
+<td style="text-align:left;">
+function
+</td>
+<td style="text-align:left;">
+784 bytes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mlre
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+112 bytes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mlstatus
+</td>
+<td style="text-align:left;">
+logical
+</td>
+<td style="text-align:left;">
+56 bytes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+module
+</td>
+<td style="text-align:left;">
+function
+</td>
+<td style="text-align:left;">
+6.1 Kb
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20221115code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20221115)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20221115code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20221115)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree24d66f4fd8d7636071951744185d01574800fcd4targetblank24d66f4a"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/24d66f4fd8d7636071951744185d01574800fcd4" target="_blank">24d66f4</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    ._.DS_Store
+    Ignored:    .gitignore
+    Ignored:    analysis/simulation-complete_cache/
+    Ignored:    analysis/simulation-paper_cache/
+    Ignored:    code/.DS_Store
+    Ignored:    code/._.DS_Store
+    Ignored:    code/mouse/.DS_Store
+    Ignored:    code/mouse/._.DS_Store
+    Ignored:    code/mouse/single-end/.DS_Store
+    Ignored:    code/mouse/single-end/._.DS_Store
+    Ignored:    code/mouse/single-end/salmon/slurm-9574761.out
+    Ignored:    code/pkg/.Rhistory
+    Ignored:    code/pkg/.Rproj.user/
+    Ignored:    code/pkg/pkg.Rproj
+    Ignored:    code/pkg/src/RcppExports.o
+    Ignored:    code/pkg/src/pkg.so
+    Ignored:    code/pkg/src/rcpparma_hello_world.o
+    Ignored:    data/.DS_Store
+    Ignored:    data/._.DS_Store
+    Ignored:    data/annotation/.DS_Store
+    Ignored:    data/annotation/._.DS_Store
+    Ignored:    data/annotation/hg38/
+    Ignored:    data/annotation/mm39/
+    Ignored:    data/mouse/.DS_Store
+    Ignored:    data/mouse/._.DS_Store
+    Ignored:    data/mouse/._readme.txt
+    Ignored:    data/mouse/paired-end/fastq/
+    Ignored:    data/mouse/single-end/fastq/
+    Ignored:    misc/.DS_Store
+    Ignored:    misc/._.DS_Store
+    Ignored:    misc/mouse.Rmd/._figure6.png
+    Ignored:    misc/simulation-paper.Rmd/._figure2.png
+    Ignored:    misc/simulation-paper.Rmd/._figure5.png
+    Ignored:    output/mouse/paired-end/
+    Ignored:    output/mouse/single-end/
+    Ignored:    output/quasi_poisson/
+    Ignored:    output/simulation/
+
+Untracked files:
+    Untracked:  analysis/casestudy.Rmd
+    Untracked:  analysis/mouse-devel.Rmd
+    Untracked:  analysis/mouse-howto.Rmd
+    Untracked:  analysis/mouse-suz12.Rmd
+    Untracked:  code/lung-se/
+    Untracked:  code/lung/
+    Untracked:  code/mouse-devel/
+    Untracked:  code/mouse-suz12/
+    Untracked:  data/annotation/sequins/
+    Untracked:  data/lung-ont/
+    Untracked:  data/lung-se/
+    Untracked:  data/lung/
+    Untracked:  data/mouse-devel/
+    Untracked:  data/mouse-suz12/
+    Untracked:  output/lung-se/
+    Untracked:  output/lung/
+    Untracked:  output/mouse-devel/
+    Untracked:  output/mouse-suz12/
+
+Unstaged changes:
+    Modified:   code/mouse/single-end/data/runAspera.sh
+    Modified:   data/annotation/readme.txt
+    Modified:   data/mouse/readme.txt
+    Modified:   misc/bibliography/bibliography.bib
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this page, we present the analysis of the RNA-seq experiments from
+the human cancer cell lines H1975 HCC827, namely the paired-end Illumina
+short read RNA-seq data (GSE172421), the single-end Illumina short read
+RNA-seq data (GSE86337), and the long read Oxford Nanopore Technologies
+(ONT) data (GSE172421). This report is divided in three main parts, one
+for each dataset. In the end, we summarize all the results and generate
+the plots and tables presented in the main and supplementary materials
+text from the edgeR with count scaling paper.</p>
+<p>The analysis presented in this report begins with the experimental
+data already quantified by <code>Salmon</code>. Please refer to the
+script files located in the GitHub repository of this page under the
+directory paths <code>./code/lung</code>, <code>./code/lung-se</code>,
+and <code>./data/lung-ont</code>, which show the commands (or the
+already prepared <code>DGEList</code> object for ONT data) used to
+quantify the RNA-seq reads from these experiments. The
+<code>targets</code> files from these experiments are located in the
+directory paths <code>./data/lung</code>, <code>./data/lung-se</code>,
+and <code>./data/lung-ont</code>, respectively.</p>
+<div id="setup" class="section level2">
+<h2>Setup</h2>
+<p>We begin this report by setting up some options for rendering this
+webpage and loading the necessary libraries.</p>
+<pre class="r"><code>knitr::opts_chunk$set(dev = &quot;png&quot;,
+                      dpi = 300,
+                      dev.args = list(type = &quot;cairo-png&quot;),
+                      root.dir = &#39;.&#39;)</code></pre>
+<pre class="r"><code>library(edgeR)
+library(plyr)
+library(AnnotationHub)
+library(data.table)
+library(tximeta)
+library(SummarizedExperiment)
+library(fishpond)
+library(sleuth)
+library(patchwork)
+library(grid)
+library(ComplexHeatmap)
+library(tibble)
+library(ragg)
+library(ggplot2)
+library(magrittr)
+library(kableExtra)</code></pre>
+<p>Paths used in this report are specified below.</p>
+<pre class="r"><code>path.misc &lt;- file.path(&#39;../misc&#39;,knitr::current_input())
+# dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+
+path.data.paired &lt;- &#39;../data/lung&#39;
+path.quant.paired &lt;- &#39;../output/lung&#39;
+
+path.data.single &lt;- &#39;../data/lung-se&#39;
+path.quant.single &lt;- &#39;../output/lung-se&#39;
+
+path.data.long &lt;- &#39;../data/lung-ont&#39;</code></pre>
+</div>
+<div id="data-loading" class="section level2">
+<h2>Data loading</h2>
+<p>First, we load the targets data for all experiments we analyze in
+this report.</p>
+<pre class="r"><code>df.targets.short.paired &lt;- read.delim(file.path(path.data.paired,&#39;misc/targets.txt&#39;))
+df.targets.short.paired$Color &lt;- mapvalues(df.targets.short.paired$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<pre class="r"><code>df.targets.short.single &lt;- read.delim(file.path(path.data.single,&#39;misc/targets.txt&#39;))
+df.targets.short.single$Color &lt;- mapvalues(df.targets.short.single$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<pre class="r"><code>df.targets.long &lt;- read.delim(file.path(path.data.long,&#39;misc/targets.txt&#39;))
+df.targets.long$Color &lt;- mapvalues(df.targets.long$Group,from = c(&#39;H1975&#39;,&#39;HCC827&#39;),to = c(&#39;blue&#39;,&#39;red&#39;))</code></pre>
+<p>Next, we load the output from <code>Salmon</code> with
+<code>catchSalmon</code>. The ONT long read data have already been
+stored in a <code>DGEList</code> object and is available for download in
+the GitHub repository of this report.</p>
+<pre class="r"><code>catch.short.paired &lt;- catchSalmon(list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))</code></pre>
+<pre><code>Reading ../output/lung/salmon/GSM5255695, 227223 transcripts, 100 bootstraps
+Reading ../output/lung/salmon/GSM5255696, 227223 transcripts, 100 bootstraps
+Reading ../output/lung/salmon/GSM5255697, 227223 transcripts, 100 bootstraps
+Reading ../output/lung/salmon/GSM5255704, 227223 transcripts, 100 bootstraps
+Reading ../output/lung/salmon/GSM5255705, 227223 transcripts, 100 bootstraps
+Reading ../output/lung/salmon/GSM5255706, 227223 transcripts, 100 bootstraps</code></pre>
+<pre class="r"><code>catch.short.paired$annotation$TranscriptSymbol &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,5]
+catch.short.paired$annotation$GeneID &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,2]
+catch.short.paired$annotation$GeneSymbol &lt;- strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,6]
+
+catch.short.paired$samples &lt;- df.targets.short.paired[match(basename(colnames(catch.short.paired$counts)),strsplit2(df.targets.short.paired$File1,&quot;_&quot;)[,1]),]
+
+colnames(catch.short.paired$counts) &lt;- catch.short.paired$samples$Sample
+
+rownames(catch.short.paired$counts) &lt;- 
+  rownames(catch.short.paired$annotation) &lt;- 
+  strsplit2(rownames(catch.short.paired$counts),&quot;\\|&quot;)[,1]
+
+dte.short.paired &lt;- 
+  DGEList(counts = catch.short.paired$counts,
+          group = strsplit2(colnames(catch.short.paired$counts),&quot;\\.&quot;)[,1],
+          genes = catch.short.paired$annotation,
+          samples = catch.short.paired$samples)</code></pre>
+<pre class="r"><code>catch.short.single &lt;- catchSalmon(list.dirs(file.path(path.quant.single,&#39;salmon&#39;),recursive = FALSE))</code></pre>
+<pre><code>Reading ../output/lung-se/salmon/GSM2300448, 227223 transcripts, 100 bootstraps
+Reading ../output/lung-se/salmon/GSM2300449, 227223 transcripts, 100 bootstraps
+Reading ../output/lung-se/salmon/GSM2300450, 227223 transcripts, 100 bootstraps
+Reading ../output/lung-se/salmon/GSM2300451, 227223 transcripts, 100 bootstraps</code></pre>
+<pre class="r"><code>catch.short.single$annotation$TranscriptSymbol &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,5]
+catch.short.single$annotation$GeneID &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,2]
+catch.short.single$annotation$GeneSymbol &lt;- strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,6]
+
+catch.short.single$samples &lt;- df.targets.short.single[match(basename(colnames(catch.short.single$counts)),strsplit2(df.targets.short.single$File,&quot;_&quot;)[,1]),]
+
+colnames(catch.short.single$counts) &lt;- catch.short.single$samples$Sample
+
+rownames(catch.short.single$counts) &lt;- 
+  rownames(catch.short.single$annotation) &lt;- 
+  strsplit2(rownames(catch.short.single$counts),&quot;\\|&quot;)[,1]
+
+dte.short.single &lt;- 
+  DGEList(counts = catch.short.single$counts,
+          group = strsplit2(colnames(catch.short.single$counts),&quot;\\.&quot;)[,1],
+          genes = catch.short.single$annotation,
+          samples = catch.short.single$samples)</code></pre>
+<pre class="r"><code>dte.long &lt;- readRDS(file.path(path.data.long,&#39;220928_dge.rds&#39;))
+dte.long &lt;- dte.long[,grepl(&#39;barcode&#39;,colnames(dte.long))] # Keeping only pure cell lines
+
+dte.long$samples &lt;- cbind(dte.long$samples,df.targets.long[match(basename(colnames(dte.long)),df.targets.long$File),])
+
+colnames(dte.long$counts) &lt;- 
+  rownames(dte.long$samples) &lt;- 
+  dte.long$samples$Sample
+
+dte.long$samples$group &lt;- dte.long$samples$Group
+
+dte.long$genes$TranscriptSymbol &lt;- strsplit2(rownames(dte.long$genes),&quot;\\|&quot;)[,5]
+dte.long$genes$GeneID &lt;- strsplit2(rownames(dte.long$genes),&quot;\\|&quot;)[,2]
+dte.long$genes$GeneSymbol &lt;- strsplit2(rownames(dte.long$genes),&quot;\\|&quot;)[,6]
+
+rownames(dte.long$counts) &lt;- rownames(dte.long$genes) &lt;- strsplit2(rownames(dte.long$counts),&quot;\\|&quot;)[,1]</code></pre>
+<p>The ONT long read data contain the 849 duplicated transcripts that
+exist in the Gencode version 33 of the human genome hg38 (Ensembl
+annotation version 99). This is because the ONT data was processed with
+<code>Salmon</code> while keeping such duplicates in the transcriptome
+index. I exclude such duplicates below.</p>
+<pre class="r"><code>stopifnot(nrow(dte.short.paired) == nrow(dte.short.single))
+stopifnot(nrow(dte.long) - nrow(dte.short.paired) == 849)
+stopifnot(rownames(dte.short.paired) %in% rownames(dte.long))
+
+dte.long &lt;- dte.long[rownames(dte.long) %in% rownames(dte.short.paired),]
+
+stopifnot(rownames(dte.long) == rownames(dte.short.paired))</code></pre>
+</div>
+<div id="design" class="section level2">
+<h2>Design</h2>
+<p>Now, we can create the design matrices (and the appropriate contrast)
+that will be used when assessing differential expression, both at the
+transcript-level and at the gene-level.</p>
+<pre class="r"><code>design.short.paired &lt;- model.matrix(~0+group,data = dte.short.paired$samples)
+colnames(design.short.paired) &lt;- gsub(&quot;group&quot;,&quot;&quot;,colnames(design.short.paired))
+
+design.short.single &lt;- model.matrix(~0+group,data = dte.short.single$samples)
+colnames(design.short.single) &lt;- gsub(&quot;group&quot;,&quot;&quot;,colnames(design.short.single))
+
+design.long &lt;- model.matrix(~0+group,data = dte.long$samples)
+colnames(design.long) &lt;- gsub(&quot;group&quot;,&quot;&quot;,colnames(design.long))
+
+contr &lt;- makeContrasts(HCC827vsH1975 = HCC827 - H1975,levels = design.short.paired)</code></pre>
+</div>
+<div id="transcriptome-annotation" class="section level2">
+<h2>Transcriptome annotation</h2>
+<p>Now, I will load the complete Ensemble annotation from
+<code>AnnotationHub</code> to bring in some extra information that will
+be used throughout this report. Again, all three datasets (paired-end
+reads, single-end reads, and ONT long reads) were quantified with
+<code>Salmon</code> using the Ensembl-oriented Gencode annotation
+version 33 of the human genome hg38 (Ensembl version 99).</p>
+<pre class="r"><code>ah &lt;- AnnotationHub()</code></pre>
+<pre><code>snapshotDate(): 2022-10-31</code></pre>
+<pre class="r"><code>edb &lt;- ah[[&#39;AH78783&#39;]] # Ensembl version 99 relative to Gencode version 33</code></pre>
+<pre><code>loading from cache</code></pre>
+<pre><code>require(&quot;ensembldb&quot;)</code></pre>
+<pre class="r"><code>dt.anno &lt;- as.data.table(select(edb,keys(edb),c(&quot;TXIDVERSION&quot;,&quot;SYMBOL&quot;,&quot;TXBIOTYPE&quot;,&quot;GENEIDVERSION&quot;,&quot;GENENAME&quot;,&quot;GENEBIOTYPE&quot;,&quot;ENTREZID&quot;)))
+
+dt.anno.gene &lt;- dt.anno[,.(NTranscriptPerGene = .N),by = c(&#39;GENEIDVERSION&#39;,&#39;GENEBIOTYPE&#39;,&#39;ENTREZID&#39;,&#39;GENENAME&#39;)]
+dt.anno.gene[,GeneOfInterest := GENEBIOTYPE %in% c(&#39;protein_coding&#39;,&#39;lncRNA&#39;) &amp; !is.na(ENTREZID)]
+
+key.anno &lt;- match(dte.long$genes$GeneID,dt.anno.gene$GENEIDVERSION)
+
+dte.short.paired$genes$EntrezID &lt;- dt.anno.gene$ENTREZID[key.anno]
+dte.short.single$genes$EntrezID &lt;- dt.anno.gene$ENTREZID[key.anno]
+dte.long$genes$EntrezID &lt;- dt.anno.gene$ENTREZID[key.anno]
+
+dte.short.paired$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.anno]
+dte.short.single$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.anno]
+dte.long$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.anno]
+
+dte.short.paired$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.anno]
+dte.short.single$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.anno]
+dte.long$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.anno]
+
+dte.short.paired$genes$GeneOfInterest[is.na(dte.short.paired$genes$GeneOfInterest)] &lt;- FALSE
+dte.short.single$genes$GeneOfInterest[is.na(dte.short.single$genes$GeneOfInterest)] &lt;- FALSE
+dte.long$genes$GeneOfInterest[is.na(dte.long$genes$GeneOfInterest)] &lt;- FALSE
+
+dte.short.paired$genes$NTranscriptPerGene &lt;- dt.anno.gene$NTranscriptPerGene[key.anno]
+dte.short.single$genes$NTranscriptPerGene &lt;- dt.anno.gene$NTranscriptPerGene[key.anno]
+dte.long$genes$NTranscriptPerGene &lt;- dt.anno.gene$NTranscriptPerGene[key.anno]</code></pre>
+</div>
+</div>
+<div id="analysis-of-illumina-paired-end-short-reads"
+class="section level1">
+<h1>Analysis of Illumina paired-end short reads</h1>
+<p>The analysis of paired-end data is divided in two parts. First, we
+present the analysis at the transcript-level. Second, we present a
+gene-level analysis. All results discussed in the main paper regarding
+these experiments are presented in this report.</p>
+<div id="differential-transcript-expression-analysis"
+class="section level2">
+<h2>Differential transcript expression analysis</h2>
+<div id="edger-with-count-scaling" class="section level3">
+<h3>edgeR with count scaling</h3>
+<p>Below we run <code>edgeR</code> with scaled counts using the QL
+pipeline.</p>
+<pre class="r"><code>dte.short.paired.edger.scaled &lt;- dte.short.paired
+dte.short.paired.edger.scaled$counts &lt;- dte.short.paired.edger.scaled$counts/dte.short.paired.edger.scaled$genes$Overdispersion
+
+keep.short.paired.edger.scaled &lt;- filterByExpr(dte.short.paired.edger.scaled) &amp; (dte.short.paired.edger.scaled$genes$GeneOfInterest == TRUE)
+
+dte.short.paired.edger.scaled.filtr &lt;- dte.short.paired.edger.scaled[keep.short.paired.edger.scaled,, keep.lib.sizes = FALSE]
+
+dte.short.paired.edger.scaled.filtr &lt;- calcNormFactors(dte.short.paired.edger.scaled.filtr)
+dte.short.paired.edger.scaled.filtr &lt;- estimateDisp(dte.short.paired.edger.scaled.filtr,design = design.short.paired,robust = TRUE)
+
+fit.short.paired.edger.scaled &lt;- glmQLFit(dte.short.paired.edger.scaled.filtr,design.short.paired,robust = TRUE)
+qlf.short.paired.edger.scaled &lt;- glmQLFTest(fit.short.paired.edger.scaled,contrast = contr)
+out.short.paired.edger.scaled &lt;- topTags(qlf.short.paired.edger.scaled,n = Inf)
+summary(decideTests(qlf.short.paired.edger.scaled))</code></pre>
+<pre><code>       -1*H1975 1*HCC827
+Down                9620
+NotSig              8667
+Up                  9079</code></pre>
+</div>
+<div id="edger-with-raw-counts" class="section level3">
+<h3>edgeR with raw counts</h3>
+<p>Below we run <code>edgeR</code> with raw counts using the QL
+pipeline.</p>
+<pre class="r"><code>dte.short.paired.edger.raw &lt;- dte.short.paired
+
+keep.short.paired.edger.raw &lt;- filterByExpr(dte.short.paired.edger.raw) &amp; (dte.short.paired.edger.raw$genes$GeneOfInterest == TRUE)
+
+dte.short.paired.edger.raw.filtr &lt;- dte.short.paired.edger.raw[keep.short.paired.edger.raw,, keep.lib.sizes = FALSE]
+
+dte.short.paired.edger.raw.filtr &lt;- calcNormFactors(dte.short.paired.edger.raw.filtr)
+dte.short.paired.edger.raw.filtr &lt;- estimateDisp(dte.short.paired.edger.raw.filtr,design = design.short.paired,robust = TRUE)
+
+fit.short.paired.edger.raw &lt;- glmQLFit(dte.short.paired.edger.raw.filtr,design.short.paired,robust = TRUE)
+qlf.short.paired.edger.raw &lt;- glmQLFTest(fit.short.paired.edger.raw,contrast = contr)
+out.short.paired.edger.raw &lt;- topTags(qlf.short.paired.edger.raw,n = Inf)
+summary(decideTests(qlf.short.paired.edger.raw))</code></pre>
+<pre><code>       -1*H1975 1*HCC827
+Down                8722
+NotSig             28799
+Up                  8234</code></pre>
+</div>
+<div id="swish" class="section level3">
+<h3>Swish</h3>
+<p>We then run Swish.</p>
+<pre class="r"><code>dt.swish &lt;- data.frame(paths = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
+dt.swish$names &lt;- df.targets.short.paired$Sample[match(basename(dt.swish$paths),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])]
+dt.swish$files &lt;- file.path(dt.swish$paths,&#39;quant.sf&#39;)
+dt.swish$group &lt;- factor(df.targets.short.paired$Group[match(basename(dt.swish$paths),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
+
+dte.swish &lt;- tximeta(coldata = dt.swish,type = &#39;salmon&#39;)</code></pre>
+<pre><code>importing quantifications</code></pre>
+<pre><code>Warning in system(&quot;timedatectl&quot;, intern = TRUE): running command &#39;timedatectl&#39;
+had status 1</code></pre>
+<pre><code>reading in files with read_tsv</code></pre>
+<pre><code>1 2 3 4 5 6 
+couldn&#39;t find matching transcriptome, returning non-ranged SummarizedExperiment</code></pre>
+<pre class="r"><code>mcols(dte.swish)$GeneID &lt;- strsplit2(rownames(dte.swish),&quot;\\|&quot;)[,2]
+mcols(dte.swish)$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[match(mcols(dte.swish)$GeneID ,dt.anno.gene$GENEIDVERSION)]
+mcols(dte.swish)$GeneOfInterest[is.na(mcols(dte.swish)$GeneOfInterest)] &lt;- FALSE
+rownames(dte.swish) &lt;- strsplit2(rownames(dte.swish),&quot;\\|&quot;)[,1]
+
+dte.swish &lt;- scaleInfReps(dte.swish)
+dte.swish &lt;- labelKeep(dte.swish)
+dte.swish &lt;- dte.swish[mcols(dte.swish)$keep &amp; (mcols(dte.swish)$GeneOfInterest == TRUE),]
+dte.swish &lt;- swish(y = dte.swish, x = &quot;group&quot;)
+out.swish &lt;- as.data.frame(mcols(dte.swish))</code></pre>
+</div>
+<div id="sleuth-with-wald" class="section level3">
+<h3>sleuth with Wald</h3>
+<p>Now, we run sleuth with Wald. For a fair comparison, we focus on
+genes of interest also with sleuth and Swish. In the code chunk below,
+we filter out genes that are lowly expressed (according to sleuth
+criteria) and genes that are not interesting (i.e., they are either not
+protein-coding or lncRNA, or do not have an associated Entrez ID).</p>
+<pre class="r"><code>dt.sleuth &lt;- data.frame(path = list.dirs(file.path(path.quant.paired,&#39;salmon&#39;),recursive = FALSE))
+dt.sleuth$sample &lt;- df.targets.short.paired$Sample[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])]
+dt.sleuth$group &lt;- factor(df.targets.short.paired$Group[match(basename(dt.sleuth$path),strsplit2(df.targets.short.paired$File1,&#39;_&#39;)[,1])],levels = c(&quot;H1975&quot;,&quot;HCC827&quot;))
+
+### Filtering for sleuth similarly to edgeR and swish, i.e. by expression (according to their own method) and only genes of interest
+### (see https://github.com/pachterlab/sleuth/issues/184#issuecomment-397771403)
+sleuth.matrix &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,normalize = FALSE,filter_fun = function(x){TRUE})</code></pre>
+<pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
+Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
+If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
+<pre><code>reading in kallisto results</code></pre>
+<pre><code>dropping unused factor levels</code></pre>
+<pre><code>......
+227223 targets passed the filter</code></pre>
+<pre class="r"><code>sleuth.matrix &lt;- sleuth_to_matrix(sleuth.matrix, &quot;obs_raw&quot;, &quot;est_counts&quot;)</code></pre>
+<pre><code>Warning: `select_()` was deprecated in dplyr 0.7.0.
+ℹ Please use `select()` instead.
+ℹ The deprecated feature was likely used in the sleuth package.
+  Please report the issue at &lt;]8;;https://github.com/pachterlab/sleuth/issueshttps://github.com/pachterlab/sleuth/issues]8;;&gt;.</code></pre>
+<pre><code>Warning: `spread_()` was deprecated in tidyr 1.2.0.
+ℹ Please use `spread()` instead.
+ℹ The deprecated feature was likely used in the sleuth package.
+  Please report the issue at &lt;]8;;https://github.com/pachterlab/sleuth/issueshttps://github.com/pachterlab/sleuth/issues]8;;&gt;.</code></pre>
+<pre class="r"><code>sleuth.rownames &lt;- strsplit2(rownames(sleuth.matrix),&quot;\\|&quot;)[,2]
+keep.sleuth &lt;- apply(sleuth.matrix,1,basic_filter) &amp; dt.anno.gene$GeneOfInterest[match(sleuth.rownames ,dt.anno.gene$GENEIDVERSION)]
+
+dte.sleuth.wald &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,full_model = ~ group,filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
+<pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
+Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
+If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
+<pre><code>reading in kallisto results
+dropping unused factor levels
+......
+normalizing est_counts
+A list of target IDs for filtering was found. Using this for filtering
+57131 targets passed the filter
+normalizing tpm
+merging in metadata
+summarizing bootstraps
+......</code></pre>
+<pre class="r"><code>dte.sleuth.wald &lt;- sleuth_fit(obj = dte.sleuth.wald, fit_name = &#39;full&#39;)</code></pre>
+<pre><code>fitting measurement error models
+shrinkage estimation
+3 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
+The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
+These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
+computing variance of betas</code></pre>
+<pre class="r"><code>dte.sleuth.wald &lt;- sleuth_wt(obj = dte.sleuth.wald,which_beta = &#39;groupHCC827&#39;,which_model = &#39;full&#39;)
+out.sleuth.wald &lt;- sleuth_results(obj = dte.sleuth.wald,test = &#39;groupHCC827&#39;, test_type = &#39;wald&#39;,show_all = FALSE)</code></pre>
+</div>
+<div id="sleuth-with-lrt" class="section level3">
+<h3>sleuth with LRT</h3>
+<p>We proceed similarly with sleuth using LRT.</p>
+<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_prep(sample_to_covariates = dt.sleuth,full_model = ~ group,filter_target_id = rownames(sleuth.matrix)[keep.sleuth])</code></pre>
+<pre><code>Warning in check_num_cores(num_cores): It appears that you are running Sleuth from within Rstudio.
+Because of concerns with forking processes from a GUI, &#39;num_cores&#39; is being set to 1.
+If you wish to take advantage of multiple cores, please consider running sleuth from the command line.</code></pre>
+<pre><code>reading in kallisto results</code></pre>
+<pre><code>dropping unused factor levels</code></pre>
+<pre><code>......
+normalizing est_counts
+A list of target IDs for filtering was found. Using this for filtering
+57131 targets passed the filter
+normalizing tpm
+merging in metadata
+summarizing bootstraps
+......</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_fit(obj = dte.sleuth.lrt, fit_name = &#39;full&#39;)</code></pre>
+<pre><code>fitting measurement error models
+shrinkage estimation
+3 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
+The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
+These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
+computing variance of betas</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_fit(obj = dte.sleuth.lrt,formula = ~ 1,fit_name = &#39;reduced&#39;)</code></pre>
+<pre><code>fitting measurement error models
+shrinkage estimation
+3 NA values were found during variance shrinkage estimation due to mean observation values outside of the range used for the LOESS fit.
+The LOESS fit will be repeated using exact computation of the fitted surface to extrapolate the missing values.
+These are the target ids with NA values: ENST00000409702.1|ENSG00000150722.10|OTTHUMG00000154326.4|OTTHUMT00000334876.1|PPP1R1C-203|PPP1R1C|1157|protein_coding|, ENST00000432789.1|ENSG00000100413.17|OTTHUMG00000150971.2|OTTHUMT00000320706.1|POLR3H-207|POLR3H|1598|nonsense_mediated_decay|, ENST00000547886.5|ENSG00000079387.14|OTTHUMG00000169896.4|OTTHUMT00000406473.1|SENP1-203|SENP1|965|processed_transcript|
+computing variance of betas</code></pre>
+<pre class="r"><code>dte.sleuth.lrt &lt;- sleuth_lrt(obj = dte.sleuth.lrt,null_model = &#39;reduced&#39;,alt_model = &#39;full&#39;)
+out.sleuth.lrt &lt;- sleuth_results(obj = dte.sleuth.lrt,test = &#39;reduced:full&#39;, test_type = &#39;lrt&#39;,show_all = FALSE)</code></pre>
+</div>
+</div>
+<div id="differential-gene-expression-analysis" class="section level2">
+<h2>Differential gene expression analysis</h2>
+<p>Now, we perform a gene-level analysis of the same data.</p>
+<p>The function below computes estimates the mapping ambiguity
+overdispersion parameter at the level of gene-wise counts. It implements
+the exact same formula from <code>catchSalmon</code>, but it instead
+uses the aggregated counts at the gene-level from
+<code>tximport::summarizeToGene</code>.</p>
+<pre class="r"><code>## Function computing catchSalmon&#39;s formula for gene-level counts
+## To be used only for exploratory purposes
+geneLevelCatchSalmon &lt;- function(x) {
+  NSamples &lt;- ncol(x)
+  NBoot &lt;- sum(grepl(&#39;infRep&#39;, assayNames(x)))
+  NTx &lt;- nrow(x)
+  DF &lt;- rep_len(0L, NTx)
+  OverDisp &lt;- rep_len(0, NTx)
+
+  for (i.samples in 1:NSamples) {
+    Boot &lt;- lapply(1:NBoot, function(i.boot) {
+      assay(x, paste0(&#39;infRep&#39;, i.boot))[, i.samples]
+    })
+    Boot &lt;- do.call(cbind, Boot)
+    M &lt;- rowMeans(Boot)
+    i &lt;- (M &gt; 0)
+    OverDisp[i] &lt;- OverDisp[i] + rowSums((Boot[i,] - M[i]) ^ 2) / M[i]
+    DF[i] &lt;- DF[i] + NBoot - 1L
+  }
+
+  i &lt;- (DF &gt; 0L)
+  OverDisp[i] &lt;- OverDisp[i] / DF[i]
+  DFMedian &lt;- median(DF[i])
+  DFPrior &lt;- 3
+  OverDispPrior &lt;-
+    median(OverDisp[i]) / qf(0.5, df1 = DFMedian, df2 = DFPrior)
+  if (OverDispPrior &lt; 1) {
+    OverDispPrior &lt;- 1
+  }
+  OverDisp[i] &lt;-
+    (DFPrior * OverDispPrior + DF[i] * OverDisp[i]) / (DFPrior + DF[i])
+  OverDisp &lt;- pmax(OverDisp, 1)
+  OverDisp[!i] &lt;- OverDispPrior
+  rowData(x)$Overdispersion &lt;- OverDisp
+  return(x)
+}</code></pre>
+<div id="edger" class="section level3">
+<h3>edgeR</h3>
+<p>We summarize counts to the gene-level below and run the standard
+<code>edgeR</code> QL pipeline. We note here that the reason why
+<code>tximeta</code> <span class="citation">Love et al. (2020)</span>
+reports 160 missing transcripts is because we quantified such RNA-seq
+dataset with the spiked-in <em>sequins</em> transcripts added to the
+transcriptomic index (see <a
+href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE172421">here</a>),
+which are not present in the Ensembl annotation we get from
+<code>AnnotationHub</code>. We are ignoring such transcripts in this
+report.</p>
+<pre class="r"><code>txm &lt;- tximeta(coldata = dt.swish[,c(&#39;files&#39;,&#39;names&#39;)],tx2gene = dt.anno[,c(&#39;TXIDVERSION&#39;,&#39;GENEIDVERSION&#39;)],
+               txOut = FALSE, skipMeta = TRUE, ignoreAfterBar = TRUE)</code></pre>
+<pre><code>reading in files with read_tsv</code></pre>
+<pre><code>1 2 3 4 5 6 
+removing duplicated transcript rows from tx2gene
+transcripts missing from tx2gene: 160
+summarizing abundance
+summarizing counts
+summarizing length
+summarizing inferential replicates</code></pre>
+<pre class="r"><code>txm &lt;- geneLevelCatchSalmon(txm)
+
+dge &lt;- DGEList(counts = assay(txm,&#39;counts&#39;),
+               samples = dt.swish,
+               genes = as.data.frame(rowData(txm)))
+
+key.gene &lt;- match(rownames(dge),dt.anno.gene$GENEIDVERSION)
+
+dge$genes$EntrezID &lt;- dt.anno.gene$ENTREZID[key.gene]
+dge$genes$GeneName &lt;- dt.anno.gene$GENENAME[key.gene]
+dge$genes$GeneType &lt;- dt.anno.gene$GENEBIOTYPE[key.gene]
+dge$genes$GeneOfInterest &lt;- dt.anno.gene$GeneOfInterest[key.gene]
+
+keep.gene &lt;- filterByExpr(dge) &amp; dge$genes$GeneOfInterest == TRUE
+
+dge.filtr &lt;- dge[keep.gene, , keep.lib.sizes = FALSE]
+dge.filtr &lt;- calcNormFactors(dge.filtr)
+dge.filtr &lt;- estimateDisp(dge.filtr, design = design.short.paired, robust = TRUE)
+
+fit.gene &lt;- glmQLFit(dge.filtr,design.short.paired, robust = TRUE)
+
+qlf.gene &lt;- glmQLFTest(fit.gene,contrast = contr)
+
+out.gene &lt;- topTags(qlf.gene,n = Inf)
+
+summary(decideTests(qlf.gene))</code></pre>
+<pre><code>       -1*H1975 1*HCC827
+Down                5634
+NotSig              2739
+Up                  5459</code></pre>
+</div>
+</div>
+</div>
+<div id="analysis-of-illumina-single-end-short-reads"
+class="section level1">
+<h1>Analysis of Illumina single-end short reads</h1>
+<p>Similarly to the paired-end read data, we now run a transcript-level
+DE analysis using the single-end read data. We note that such dataset
+only contains 2 biological replicates per group, whereas the paired-end
+data had 3 biological replicates per group.</p>
+<div id="differential-transcript-expression-analysis-1"
+class="section level2">
+<h2>Differential transcript expression analysis</h2>
+<div id="edger-with-count-scaling-1" class="section level3">
+<h3>edgeR with count scaling</h3>
+<pre class="r"><code>dte.short.single.edger.scaled &lt;- dte.short.single
+dte.short.single.edger.scaled$counts &lt;- dte.short.single.edger.scaled$counts/dte.short.single.edger.scaled$genes$Overdispersion
+
+keep.short.single.edger.scaled &lt;- filterByExpr(dte.short.single.edger.scaled) &amp; (dte.short.single.edger.scaled$genes$GeneOfInterest == TRUE)
+
+dte.short.single.edger.scaled.filtr &lt;- dte.short.single.edger.scaled[keep.short.single.edger.scaled,, keep.lib.sizes = FALSE]
+
+dte.short.single.edger.scaled.filtr &lt;- calcNormFactors(dte.short.single.edger.scaled.filtr)
+dte.short.single.edger.scaled.filtr &lt;- estimateDisp(dte.short.single.edger.scaled.filtr,design = design.short.single,robust = TRUE)
+
+fit.short.single.edger.scaled &lt;- glmQLFit(dte.short.single.edger.scaled.filtr,design.short.single,robust = TRUE)
+qlf.short.single.edger.scaled &lt;- glmQLFTest(fit.short.single.edger.scaled,contrast = contr)
+out.short.single.edger.scaled &lt;- topTags(qlf.short.single.edger.scaled,n = Inf)
+summary(decideTests(qlf.short.single.edger.scaled))</code></pre>
+<pre><code>       -1*H1975 1*HCC827
+Down                5401
+NotSig             17587
+Up                  5067</code></pre>
+</div>
+</div>
+</div>
+<div id="analysis-of-ont-long-reads" class="section level1">
+<h1>Analysis of ONT long reads</h1>
+<p>Finally, we run a transcript-level analysis with ONT long read data
+using raw counts from <code>Salmon</code>.</p>
+<div id="differential-transcript-expression-analysis-2"
+class="section level2">
+<h2>Differential transcript expression analysis</h2>
+<div id="edger-1" class="section level3">
+<h3>edgeR</h3>
+<pre class="r"><code>keep.long &lt;- filterByExpr(dte.long) &amp; dte.long$genes$GeneOfInterest == TRUE
+
+dte.long.filtr &lt;- dte.long[keep.long,, keep.lib.sizes = FALSE]
+
+dte.long.filtr &lt;- calcNormFactors(dte.long.filtr)
+dte.long.filtr &lt;- estimateDisp(dte.long.filtr,design = design.long,robust = TRUE)
+
+fit.long &lt;- glmQLFit(dte.long.filtr,design.long,robust = TRUE)
+qlf.long &lt;- glmQLFTest(fit.long,contrast = contr)
+out.long &lt;- topTags(qlf.long,n = Inf)
+summary(decideTests(qlf.long))</code></pre>
+<pre><code>       -1*H1975 1*HCC827
+Down               13671
+NotSig             23593
+Up                 14146</code></pre>
+</div>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<div id="comparison-of-dte-methods-using-long-reads-as-gold-standard"
+class="section level2">
+<h2>Comparison of DTE methods using long reads as gold-standard</h2>
+<p>We first put all the results in a single data frame.</p>
+<pre class="r"><code>df.bench &lt;- data.table(TranscriptID = rownames(out.long),
+                       GeneID = out.long$table$GeneID,
+                       GeneSymbol = out.long$table$GeneSymbol,
+                       LongRead.FDR = out.long$table$FDR)
+
+df.bench$edgeR.SE.Scaled.FDR &lt;- out.short.single.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.single.edger.scaled))]
+df.bench$edgeR.PE.Scaled.FDR &lt;- out.short.paired.edger.scaled$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.scaled))]
+df.bench$edgeR.PE.Raw.FDR &lt;- out.short.paired.edger.raw$table$FDR[match(df.bench$TranscriptID,rownames(out.short.paired.edger.raw))]
+df.bench$swish.FDR &lt;- out.swish$qvalue[match(df.bench$TranscriptID,rownames(out.swish))]
+df.bench$sleuth.wald.FDR &lt;- out.sleuth.wald$qval[match(df.bench$TranscriptID,strsplit2(out.sleuth.wald$target_id,&quot;\\|&quot;)[,1])]
+df.bench$sleuth.lrt.FDR &lt;- out.sleuth.lrt$qval[match(df.bench$TranscriptID,strsplit2(out.sleuth.lrt$target_id,&quot;\\|&quot;)[,1])]
+df.bench[is.na(df.bench)] &lt;- 1</code></pre>
+<p>Then, we check how many DE transcripts called using ONT long read
+data are also called by the DTE methods using short reads data.</p>
+<pre class="r"><code>foo.power &lt;- function(target,reference,FDR = 0.05){
+  tb &lt;- table(reference &lt; FDR,target &lt; FDR)
+  c(tb[2,2],tb[2,2]/sum(tb[2,]))
+}
+
+df.bench[,lapply(.SD,foo.power,reference = df.bench$LongRead.FDR),
+         .SDcols = c(&#39;edgeR.SE.Scaled.FDR&#39;,&#39;edgeR.PE.Scaled.FDR&#39;,&#39;edgeR.PE.Raw.FDR&#39;,&#39;swish.FDR&#39;,&#39;sleuth.wald.FDR&#39;,&#39;sleuth.lrt.FDR&#39;)]</code></pre>
+<pre><code>   edgeR.SE.Scaled.FDR edgeR.PE.Scaled.FDR edgeR.PE.Raw.FDR    swish.FDR
+1:        5734.0000000         1.17800e+04     1.114800e+04 7836.0000000
+2:           0.2061329         4.23482e-01     4.007621e-01    0.2816982
+   sleuth.wald.FDR sleuth.lrt.FDR
+1:    1.020600e+04    1.07960e+04
+2:    3.668979e-01    3.88108e-01</code></pre>
+</div>
+<div
+id="comparison-of-short-and-long-read-mapping-ambiguity-overdispersions"
+class="section level2">
+<h2>Comparison of short and long read mapping ambiguity
+overdispersions</h2>
+<p>We begin by assessing the mapping ambiguity overdispersion parameter
+of each transcript (y-axis) according the number of expressed
+transcripts associated with their parent gene (x-axis). This is Figure 1
+of the main paper.</p>
+<pre class="r"><code>dt.mao.plot &lt;- as.data.table(dte.short.paired.edger.scaled.filtr$genes)
+dt.mao.plot$TranscriptID &lt;- rownames(dte.short.paired.edger.scaled.filtr)
+dt.mao.plot$LR.Overdispersion &lt;- dte.long$genes$Overdispersion[match(dt.mao.plot$TranscriptID,rownames(dte.long$genes))]
+dt.mao.plot[,NTranscriptPerGeneTrunc := ifelse(NTranscriptPerGene&lt;10,NTranscriptPerGene,paste0(&#39;&gt;=10&#39;))]
+
+dt.mao.plot$NTranscriptPerGeneTrunc %&lt;&gt;% factor(levels = paste0(c(1:10,&#39;&gt;=10&#39;)))
+
+# Number of transcripts from single-transcript genes
+dt.mao.plot[NTranscriptPerGene == 1,
+            .(.N,sum(NTranscriptPerGene == 1 &amp; Overdispersion&gt;(1/0.9))/sum(NTranscriptPerGene == 1))]</code></pre>
+<pre><code>     N        V2
+1: 813 0.1057811</code></pre>
+<pre class="r"><code># Number of transcripts from multi-transcript genes
+dt.mao.plot[NTranscriptPerGene &gt; 1,
+            .(.N,sum(NTranscriptPerGene &gt; 1 &amp; Overdispersion&gt;(1/0.9))/sum(NTranscriptPerGene &gt; 1))]</code></pre>
+<pre><code>       N        V2
+1: 26553 0.9001243</code></pre>
+<pre class="r"><code># Number of transcripts from transcript-rich genes (#tx&gt;10)
+dt.mao.plot[NTranscriptPerGene &gt;= 10,
+            .(NGeneID = length(unique(GeneID)),
+              NTranscriptID = .N,mean(Overdispersion))]</code></pre>
+<pre><code>   NGeneID NTranscriptID       V3
+1:    4687         13527 6.752402</code></pre>
+<pre class="r"><code>dt.mao.plot.long &lt;- melt(dt.mao.plot,id.vars = c(&#39;TranscriptID&#39;,&#39;NTranscriptPerGeneTrunc&#39;),
+                         measure.vars = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
+                         variable.name = &#39;Type&#39;,value.name = &#39;Overdispersion&#39;)
+dt.mao.plot.long$Type %&lt;&gt;% mapvalues(from = c(&#39;Overdispersion&#39;,&#39;LR.Overdispersion&#39;),
+                                     to = c(&#39;Illumina short reads&#39;,&#39;ONT long reads&#39;))
+
+plot.mao &lt;-
+  ggplot(data = dt.mao.plot.long,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
+  geom_smooth(aes(group = Type,color = Type),se = FALSE,span = 0.8,method = &#39;loess&#39;,show.legend = FALSE) +
+  geom_boxplot(aes(fill = Type),outlier.alpha = 0.2,col = &#39;black&#39;,alpha = 0.5) +
+  labs(x = &#39;Number of expressed transcripts per gene&#39;, y = &#39;Overdispersion (log10 scale)&#39;) +
+  scale_y_continuous(limits = c(0,2.5),breaks = seq(0,3,0.5)) +
+  scale_fill_manual(values = c(&#39;Illumina short reads&#39; = &#39;red&#39;,&#39;ONT long reads&#39; = &#39;blue&#39;)) +
+  scale_color_manual(values = c(&#39;Illumina short reads&#39; = &#39;red&#39;,&#39;ONT long reads&#39; = &#39;blue&#39;)) +
+  theme_bw(base_size = 8,base_family = &#39;sans&#39;) +
+  theme(panel.grid = element_blank(),
+        axis.text = element_text(colour = &#39;black&#39;, size = 8),
+        legend.title = element_blank(),
+        legend.position = c(0.175, 0.925),
+        legend.text = element_text(colour = &#39;black&#39;, size = 8),
+        legend.background = element_rect(fill = alpha(&quot;white&quot;, 0)))
+
+plot.mao</code></pre>
+<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_overdispersion-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;figure1.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300)
+plot.mao</code></pre>
+<pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre class="r"><code>dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+</div>
+<div
+id="comparison-of-transcript-level-and-gene-level-results-using-paired-end-read-data"
+class="section level2">
+<h2>Comparison of transcript-level and gene-level results using
+paired-end read data</h2>
+<p>Then, we generate Figure 6 of the main paper below. First we generate
+panel (a).</p>
+<pre class="r"><code># plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
+foo.mds &lt;- function(x,fontsize = 8){
+  obj.mds &lt;- plotMDS(x,col = x$samples$Color,main = NULL)
+  par(mar = c(5, 4, 2, 2))
+  labels &lt;- colnames(obj.mds$distance.matrix.squared)
+  StringRadius &lt;- 0.15 * 1 * nchar(labels)
+  left.x &lt;- obj.mds$x - StringRadius
+  right.x &lt;- obj.mds$x + StringRadius
+  Perc &lt;- round(obj.mds$var.explained * 100)
+  xlab &lt;- paste(obj.mds$axislabel, 1)
+  ylab &lt;- paste(obj.mds$axislabel, 2)
+  xlab &lt;- paste0(xlab, &quot; (&quot;, Perc[1], &quot;%)&quot;)
+  ylab &lt;- paste0(ylab, &quot; (&quot;, Perc[2], &quot;%)&quot;)
+
+  plot(c(-3.5, 3.5), c(-1, 1.5),
+       type = &quot;n&quot;,xlab = xlab,ylab = ylab,
+       cex.lab = fontsize/12,
+       cex.axis = fontsize/12)
+  text(obj.mds$x, obj.mds$y, labels = labels, cex = fontsize/12,col = x$samples$Color)
+}
+
+plot.mds &lt;- wrap_elements(full = ~foo.mds(dte.short.paired.edger.scaled.filtr))
+
+plot.mds</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_mds-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Next, we generate panel (b).</p>
+<pre class="r"><code># plotMD does not return invisible(), so we just use wrap_elements
+foo.md &lt;- function(x,fontsize = 8){
+  par(mar = c(5, 4, 2, 2))
+  plotMD(x,
+         main = NULL,cex = 0.5,legend = FALSE,
+         cex.lab = fontsize/12,
+         cex.axis = fontsize/12)
+  legend(&#39;topright&#39;,
+         legend = c(&#39;NotSig&#39;,&#39;Up&#39;,&#39;Down&#39;),
+         pch = rep(16,3),
+         col = c(&#39;black&#39;,&#39;red&#39;,&#39;blue&#39;),
+         cex = fontsize/12,
+         pt.cex = c(0.3,0.5,0.5))
+}
+plot.md &lt;-
+  wrap_elements(full = ~foo.md(qlf.short.paired.edger.scaled))
+
+plot.md</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_md-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Panel (c) is created below.</p>
+<pre class="r"><code>foo.lolipop &lt;- function(symbols,gene.table,transcript.table, fontsize = 8, legend = c(0.9,0.9),colornames = c(&#39;NotSig&#39; = &#39;black&#39;,&#39;Up&#39; = &#39;red&#39;,&#39;Down&#39; = &#39;blue&#39;)){
+  ls.loli &lt;- lapply(symbols,function(x){
+    df.loli &lt;-
+      rbind(as.data.table(transcript.table$table[transcript.table$table$GeneSymbol == x,c(&#39;TranscriptSymbol&#39;,&#39;FDR&#39;,&#39;logFC&#39;)]),
+            as.data.table(gene.table$table[gene.table$table$GeneName == x,c(&quot;FDR&quot;,&quot;logFC&quot;)]),fill = TRUE)
+    df.loli[is.na(df.loli)] &lt;- x
+    df.loli$Color &lt;- ifelse(df.loli$FDR &gt; 0.05,&#39;NotSig&#39;,ifelse(df.loli$logFC &lt; 0,&#39;Down&#39;,&#39;Up&#39;))
+    df.loli &lt;- df.loli[order(df.loli$TranscriptSymbol),]
+    df.loli$Gene &lt;- x
+    return(df.loli)
+  })
+
+  ls.loli &lt;- do.call(rbind,ls.loli)
+
+  ls.loli$Color &lt;- factor(ls.loli$Color,levels = names(colornames))
+
+  ggplot(data = ls.loli,aes(x = TranscriptSymbol,xend = TranscriptSymbol,yend = 0,y = logFC)) +
+    facet_wrap(&#39;Gene&#39;,nrow = 1,scales = &#39;free_x&#39;) +
+    geom_segment(color = &#39;black&#39;) +
+    geom_point(size = 2,aes(color = Color)) +
+    geom_hline(yintercept = 0) +
+    geom_vline(xintercept = 1.5,linetype = &#39;dashed&#39;,color = &#39;gray&#39;) +
+    scale_color_manual(values = colornames) +
+    labs(x = NULL) +
+    theme_bw(base_size = fontsize,base_family = &#39;sans&#39;) +
+    theme(panel.grid = element_blank(),
+          strip.background = element_blank(),
+          strip.text = element_text(face = &#39;bold&#39;),
+          axis.text = element_text(colour = &#39;black&#39;,size = fontsize),
+          legend.position = legend,
+          axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+          legend.title = element_blank(),
+          legend.text = element_text(colour = &#39;black&#39;,size = fontsize),
+          legend.background=element_rect(fill = alpha(&quot;white&quot;, 0))) +
+    guides(colour = guide_legend(keywidth=0.1,
+                                 keyheight=0.1,
+                                 default.unit=&quot;inch&quot;,
+                                 override.aes = list(size = 0.75)))
+}
+
+plot.lolipop &lt;- wrap_elements(foo.lolipop(symbols = c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),
+                                          gene.table = out.gene,
+                                          transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
+plot.lolipop</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>Finally, we create panel (d). We use that package
+<code>ComplexHeatmap</code> <span class="citation">Gu, Eils, and
+Schlesner (2016)</span> to create the heatmap plot.</p>
+<pre class="r"><code>cpm.scaled &lt;- cpm(dte.short.paired.edger.scaled.filtr,log = TRUE)
+cpm.scaled &lt;- t(scale(t(cpm.scaled)))
+
+## Here I want to check non-significant genes associated with cancer pathways that have at least 1 DE transcript
+
+df.tx.gene &lt;- out.short.paired.edger.scaled$table
+df.tx.gene$FDR.Gene &lt;- out.gene$table$FDR[match(df.tx.gene$GeneID,rownames(out.gene$table))]
+interestGenes.ns &lt;- unique(df.tx.gene[df.tx.gene$FDR.Gene &gt; 0.05 &amp; df.tx.gene$FDR &lt; 0.05 &amp; df.tx.gene$GeneOfInterest == TRUE,&quot;EntrezID&quot;])
+
+# Number of non-significant genes for which at least one of their transcripts is DE
+length(interestGenes.ns)</code></pre>
+<pre><code>[1] 841</code></pre>
+<pre class="r"><code># Running KEGG analysis
+GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;hsa&quot;)
+
+interestGenes.ns.cancer &lt;-
+  interestGenes.ns[interestGenes.ns %in% GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05222&#39;,&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+
+# Number of non-significant genes for which at least one of their transcripts is DE
+length(interestGenes.ns.cancer)</code></pre>
+<pre><code>[1] 24</code></pre>
+<pre class="r"><code>df.tx.gene.cancer &lt;-
+  df.tx.gene[df.tx.gene$EntrezID %in% interestGenes.ns.cancer,]
+
+df.tx.gene.cancer &lt;-
+  df.tx.gene.cancer[df.tx.gene.cancer$FDR &lt; 0.05,]
+
+cpm.scaled.cancer &lt;- cpm.scaled[rownames(df.tx.gene.cancer),]
+rownames(cpm.scaled.cancer) &lt;- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
+
+foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
+  Heatmap(matrix = x,
+          heatmap_legend_param = list(title = &#39;Expression&#39;,
+                                      title_position = &#39;topcenter&#39;,
+                                      direction = &quot;horizontal&quot;,
+                                      at = seq(-3,3,1),
+                                      title_position = &#39;topcenter&#39;,
+                                      title_gp = gpar(fontsize = fontsize),
+                                      labels_gp = gpar(fontsize = fontsize)),
+          cluster_rows = cluster_rows,
+          row_names_gp = gpar(fontsize = fontsize),
+          column_names_gp = gpar(fontsize = fontsize),
+          col = c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;)) %&gt;%
+    draw(heatmap_legend_side = &quot;top&quot;)
+}
+
+plot.heat.cancer &lt;-
+  wrap_elements(grid.grabExpr(draw(foo.heat(t(cpm.scaled.cancer)))))</code></pre>
+<p>Finally, we put all these plots together with the package
+<code>patchwork</code> <span class="citation">Pedersen
+(2022)</span>.</p>
+<pre class="r"><code>plot.design &lt;- c(area(1, 1),area(1,2),area(2,1,2,2),area(3,1,3,2))
+
+fig.panel &lt;- wrap_plots(A = plot.mds,
+                          B = plot.md,
+                          C = plot.lolipop,
+                          D = plot.heat.cancer,
+                          design = plot.design,
+                          heights = c(0.3,0.35,0.35)) +
+  plot_annotation(tag_levels = &#39;a&#39;)
+
+fig.panel &lt;- fig.panel &amp;
+  theme(plot.tag = element_text(size = 8))
+
+agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),width = 10,height = 10,units = &#39;in&#39;,res = 300)
+fig.panel
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<p>For the genes presented in panel (b), below we present the results
+from our DE analysis at the gene-level.</p>
+<pre class="r"><code>tb.gene &lt;- out.gene$table[out.gene$table$GeneName %in% c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),]
+tb.gene$EnsemblID &lt;- rownames(tb.gene)
+tb.gene &lt;- data.frame(tb.gene[,c(&#39;EnsemblID&#39;,&#39;GeneName&#39;,&#39;EntrezID&#39;,&#39;GeneType&#39;,
+                                 &#39;logFC&#39;,&#39;logCPM&#39;,&#39;F&#39;,&#39;PValue&#39;,&#39;FDR&#39;)],row.names = NULL)
+setnames(tb.gene,
+         old = c(&#39;EnsemblID&#39;,&#39;GeneName&#39;,&#39;EntrezID&#39;,&#39;GeneType&#39;),
+         new = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;))
+
+tb.gene$Biotype &lt;- gsub(&quot;_&quot;,&quot; &quot;,tb.gene$Biotype)
+
+tb.gene$logFC &lt;- formatC(round(tb.gene$logFC,3),digits = 3,format = &#39;f&#39;)
+tb.gene$logCPM &lt;- formatC(round(tb.gene$logCPM,3),digits = 3,format = &#39;f&#39;)
+tb.gene$`F` &lt;- formatC(round(tb.gene$`F`,3),digits = 3,format = &#39;f&#39;)
+tb.gene$PValue &lt;- formatC(tb.gene$PValue,digits = 3,format = &#39;e&#39;)
+tb.gene$FDR &lt;- formatC(tb.gene$FDR,digits = 3,format = &#39;e&#39;)
+
+tb.gene$Biotype &lt;- NULL
+
+kb.gene &lt;-
+  kbl(tb.gene,
+      escape = FALSE,
+      format = &#39;latex&#39;,
+      booktabs = TRUE,
+      caption = paste(&#39;edgeR results from a DE analysis at the gene-level for&#39;,
+                      &#39;a set of cancer-related genes comparing cell lines H1975 and HCC827.&#39;,
+                      &#39;Data from the paired-end RNA-seq experiment of the the human cell lines (GSE172421).&#39;,
+                      &#39;Such genes have at least one its transcripts differentially expressed between cell lines&#39;,
+                      &#39;(nominal FDR 0.05 at the transcript-level).&#39;),
+      align = &#39;llcccccc&#39;) %&gt;%
+  kable_styling(font_size = 10)
+save_kable(kb.gene,file = file.path(path.misc,&quot;supptable_gene.tex&quot;))</code></pre>
+<p>We can also compare the distribution of the overdispersion estimates
+between gene- and transcript-level analyses.</p>
+<pre class="r"><code>df.output.gene &lt;-
+  as.data.table(dge$genes[,c(&#39;GeneName&#39;,&#39;EntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;)])
+setnames(df.output.gene,
+         old = c(&#39;GeneName&#39;,&#39;EntrezID&#39;,&#39;GeneType&#39;,&#39;Overdispersion&#39;),
+         new = c(&#39;Symbol&#39;,&#39;EntrezID&#39;,&#39;Type&#39;,&#39;Overdispersion&#39;))
+df.output.gene[,Level := &#39;Gene&#39;]
+df.output.gene$EnsemblID &lt;- rownames(dge)
+
+## Transcript-level
+df.output.tx &lt;- data.table(Symbol = dte.short.paired.edger.scaled$genes$TranscriptSymbol,
+                           EntrezID = dte.short.paired.edger.scaled$genes$EntrezID,
+                           Type = dte.short.paired.edger.scaled$genes$GeneType,
+                           Overdispersion = catch.short.paired$annotation$Overdispersion,
+                           Level = &#39;Transcript&#39;,
+                           EnsemblID = rownames(dte.short.paired.edger.scaled$genes))
+
+
+df.output.gene.tx &lt;- rbindlist(list(df.output.gene,df.output.tx))
+
+fig.mao.gene.tx &lt;- ggplot(df.output.gene.tx,aes(x = log10(Overdispersion),y = Level,fill = Level)) +
+  geom_boxplot(outlier.alpha = 0.25,fill = &quot;#bebebe&quot;,col = &#39;black&#39;) +
+  labs(y = NULL,x = &#39;Mapping ambiguity overdispersion (log10 scale)&#39;) +
+  theme_bw(base_size = 8,base_family = &#39;sans&#39;) +
+  theme(legend.position = &#39;none&#39;,
+        panel.grid = element_blank(),
+        axis.text = element_text(colour = &#39;black&#39;,size = 8))
+
+agg_png(filename = file.path(path.misc,&quot;suppfigure_overdispersion.png&quot;),
+        width = 7.5,height = 5,units = &#39;in&#39;,res = 300)
+fig.mao.gene.tx
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<p>Below we have a table of the top genes with highest mapping ambiguity
+estimated overdispersion. Most of such genes do not have an associated
+Entrez ID.</p>
+<pre class="r"><code>df.output.gene.top &lt;- 
+  df.output.gene[order(-Overdispersion),][1:100,c(&#39;EnsemblID&#39;,&#39;Symbol&#39;,&#39;Type&#39;,&#39;EntrezID&#39;,&#39;Overdispersion&#39;)]
+df.output.gene.top$Type &lt;- gsub(&quot;_&quot;,&quot; &quot;,df.output.gene.top$Type)
+df.output.gene.top$EntrezID[is.na(df.output.gene.top$EntrezID)] &lt;- &quot;-&quot;
+
+cap.mao &lt;- paste(&quot;Top 100 genes with largest mapping ambiguity overdispersion.&quot;,
+                 &quot;Data from the RNA-seq experiment of the human cell lines&quot;,
+                 &quot;generated with paired-end reads (GSE172421).&quot;)
+
+kb.output.gene.top &lt;- kbl(df.output.gene.top,
+                          longtable = TRUE,
+                          escape = FALSE,
+                          format = &#39;latex&#39;,
+                          booktabs = TRUE,
+                          caption = cap.mao,
+                          digits = 2,
+                          align = c(&#39;lllcc&#39;),
+                          col.names = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
+  kable_styling(latex_options = c(&quot;scale_down&quot;,&quot;repeat_header&quot;),font_size = 10)</code></pre>
+<pre><code>Warning in styling_latex_scale_down(out, table_info): Longtable cannot be
+resized.</code></pre>
+<pre class="r"><code>save_kable(kb.output.gene.top,file = file.path(path.misc,&quot;supptable_overdispersion.tex&quot;))</code></pre>
+</div>
+<div id="comparison-between-analyses-using-paired--and-single-end-reads"
+class="section level2">
+<h2>Comparison between analyses using paired- and single-end reads</h2>
+<p>Finally, we can compute how many transcripts are being called as DE
+using both paired- and single-end Illumina short reads. We add the
+transcript-level results from ONT long read data as a comparison.</p>
+<pre class="r"><code>tb.tx.genes &lt;- dte.short.paired$genes
+tb.tx.genes$FDR.SE &lt;- 
+  out.short.single.edger.scaled$table$FDR[match(rownames(tb.tx.genes),rownames(out.short.single.edger.scaled))]
+tb.tx.genes$FDR.PE &lt;- 
+  out.short.paired.edger.scaled$table$FDR[match(rownames(tb.tx.genes),rownames(out.short.paired.edger.scaled))]
+tb.tx.genes$FDR.LR &lt;- out.long$table$FDR[match(rownames(tb.tx.genes),rownames(out.long))]
+
+tb.tx.genes &lt;- (tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)] &lt; 0.05)*1L
+tb.tx.genes[is.na(tb.tx.genes)] &lt;- 0L
+
+agg_png(filename = file.path(path.misc,&quot;suppfigure_venn.png&quot;),width = 6,height = 6,units = &#39;in&#39;,res = 300)
+limma::vennDiagram(tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)],
+                   names = c(&#39;Illumina\nsingle-end reads&#39;,&#39;Illumina\npaired-end reads&#39;,&#39;ONT\nlong reads&#39;),
+                   circle.col = c(&#39;salmon&#39;,&#39;red&#39;,&#39;blue&#39;),cex = c(12,10,8)/12)
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<p>And the MA plot highlighting DE transcripts called with single-end
+Illumina short reads is presented below.</p>
+<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),width = 6,height = 6,units = &#39;in&#39;,res = 300)
+plotMD(qlf.short.single.edger.scaled,
+       main = NULL,cex = 0.5,legend = FALSE,
+       cex.lab = 8/12,
+       cex.axis = 8/12)
+legend(&#39;topright&#39;,
+       legend = c(&#39;NotSig&#39;,&#39;Up&#39;,&#39;Down&#39;),
+       pch = rep(16,3),
+       col = c(&#39;black&#39;,&#39;red&#39;,&#39;blue&#39;),
+       cex = 8/12,
+       pt.cex = c(0.3,0.5,0.5))
+dev.off()</code></pre>
+<pre><code>png 
+  2 </code></pre>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-gu2016complex" class="csl-entry">
+Gu, Zuguang, Roland Eils, and Matthias Schlesner. 2016. <span>“Complex
+Heatmaps Reveal Patterns and Correlations in Multidimensional Genomic
+Data.”</span> <em>Bioinformatics</em> 32 (18): 2847–49.
+</div>
+<div id="ref-love2020tximeta" class="csl-entry">
+Love, Michael I, Charlotte Soneson, Peter F Hickey, Lisa K Johnson, N
+Tessa Pierce, Lori Shepherd, Martin Morgan, and Rob Patro. 2020.
+<span>“Tximeta: Reference Sequence Checksums for Provenance
+Identification in RNA-Seq.”</span> <em>PLoS Computational Biology</em>
+16 (2): e1007664. <a
+href="https://doi.org/10.1371/journal.pcbi.1007664">https://doi.org/10.1371/journal.pcbi.1007664</a>.
+</div>
+<div id="ref-pedersen2022patchwork" class="csl-entry">
+Pedersen, Thomas Lin. 2022. <em>Patchwork: The Composer of Plots</em>.
+</div>
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.2.1 (2022-06-23)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: CentOS Linux 7 (Core)
+
+Matrix products: default
+BLAS:   /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRblas.so
+LAPACK: /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRlapack.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] grid      stats4    stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] ensembldb_2.22.0            AnnotationFilter_1.22.0    
+ [3] GenomicFeatures_1.50.4      AnnotationDbi_1.60.0       
+ [5] kableExtra_1.3.4            magrittr_2.0.3             
+ [7] ggplot2_3.4.1               ragg_1.2.5                 
+ [9] tibble_3.1.8                ComplexHeatmap_2.14.0      
+[11] patchwork_1.1.2             sleuth_0.30.0              
+[13] fishpond_2.4.1              SummarizedExperiment_1.28.0
+[15] Biobase_2.58.0              GenomicRanges_1.50.2       
+[17] GenomeInfoDb_1.34.9         IRanges_2.32.0             
+[19] S4Vectors_0.36.1            MatrixGenerics_1.10.0      
+[21] matrixStats_0.63.0          tximeta_1.16.1             
+[23] data.table_1.14.6           AnnotationHub_3.6.0        
+[25] BiocFileCache_2.6.0         dbplyr_2.3.0               
+[27] BiocGenerics_0.44.0         plyr_1.8.8                 
+[29] edgeR_3.40.2                limma_3.54.1               
+
+loaded via a namespace (and not attached):
+  [1] circlize_0.4.15               workflowr_1.7.0              
+  [3] systemfonts_1.0.4             lazyeval_0.2.2               
+  [5] splines_4.2.1                 BiocParallel_1.32.5          
+  [7] digest_0.6.31                 foreach_1.5.2                
+  [9] htmltools_0.5.4               fansi_1.0.4                  
+ [11] memoise_2.0.1                 svMisc_1.2.3                 
+ [13] cluster_2.1.4                 doParallel_1.0.17            
+ [15] tzdb_0.3.0                    readr_2.1.4                  
+ [17] Biostrings_2.66.0             vroom_1.6.1                  
+ [19] svglite_2.1.1                 prettyunits_1.1.1            
+ [21] colorspace_2.1-0              rvest_1.0.3                  
+ [23] blob_1.2.3                    rappdirs_0.3.3               
+ [25] textshaping_0.3.6             xfun_0.37                    
+ [27] dplyr_1.1.0                   crayon_1.5.2                 
+ [29] RCurl_1.98-1.10               jsonlite_1.8.4               
+ [31] tximport_1.26.1               iterators_1.0.14             
+ [33] glue_1.6.2                    gtable_0.3.1                 
+ [35] zlibbioc_1.44.0               XVector_0.38.0               
+ [37] webshot_0.5.4                 GetoptLong_1.0.5             
+ [39] DelayedArray_0.24.0           Rhdf5lib_1.20.0              
+ [41] shape_1.4.6                   SingleCellExperiment_1.20.0  
+ [43] abind_1.4-5                   scales_1.2.1                 
+ [45] DBI_1.1.3                     Rcpp_1.0.10                  
+ [47] viridisLite_0.4.1             xtable_1.8-4                 
+ [49] progress_1.2.2                clue_0.3-64                  
+ [51] gridGraphics_0.5-1            bit_4.0.5                    
+ [53] httr_1.4.4                    RColorBrewer_1.1-3           
+ [55] ellipsis_0.3.2                farver_2.1.1                 
+ [57] pkgconfig_2.0.3               XML_3.99-0.13                
+ [59] sass_0.4.1                    locfit_1.5-9.7               
+ [61] utf8_1.2.3                    labeling_0.4.2               
+ [63] reshape2_1.4.4                tidyselect_1.2.0             
+ [65] rlang_1.0.6                   later_1.3.0                  
+ [67] munsell_0.5.0                 BiocVersion_3.16.0           
+ [69] tools_4.2.1                   cachem_1.0.6                 
+ [71] cli_3.6.0                     generics_0.1.3               
+ [73] RSQLite_2.2.20                evaluate_0.20                
+ [75] stringr_1.5.0                 fastmap_1.1.0                
+ [77] yaml_2.3.7                    knitr_1.42                   
+ [79] bit64_4.0.5                   fs_1.6.1                     
+ [81] purrr_1.0.1                   KEGGREST_1.38.0              
+ [83] nlme_3.1-162                  mime_0.12                    
+ [85] xml2_1.3.3                    biomaRt_2.54.0               
+ [87] compiler_4.2.1                rstudioapi_0.14              
+ [89] filelock_1.0.2                curl_5.0.0                   
+ [91] png_0.1-8                     interactiveDisplayBase_1.36.0
+ [93] statmod_1.5.0                 bslib_0.4.2                  
+ [95] stringi_1.7.12                highr_0.10                   
+ [97] lattice_0.20-45               ProtGenerics_1.30.0          
+ [99] Matrix_1.5-3                  vctrs_0.5.2                  
+[101] pillar_1.8.1                  lifecycle_1.0.3              
+[103] rhdf5filters_1.10.0           BiocManager_1.30.19          
+[105] jquerylib_0.1.4               GlobalOptions_0.1.2          
+[107] bitops_1.0-7                  qvalue_2.30.0                
+[109] httpuv_1.6.5                  rtracklayer_1.58.0           
+[111] R6_2.5.1                      BiocIO_1.8.0                 
+[113] promises_1.2.0.1              codetools_0.2-19             
+[115] gtools_3.9.4                  assertthat_0.2.1             
+[117] rhdf5_2.42.0                  rprojroot_2.0.3              
+[119] rjson_0.2.21                  withr_2.5.0                  
+[121] GenomicAlignments_1.34.0      Rsamtools_2.14.0             
+[123] GenomeInfoDbData_1.2.9        mgcv_1.8-41                  
+[125] parallel_4.2.1                hms_1.1.2                    
+[127] tidyr_1.3.0                   rmarkdown_2.20               
+[129] Cairo_1.6-0                   git2r_0.31.0                 
+[131] shiny_1.7.4                   restfulr_0.0.15              </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
