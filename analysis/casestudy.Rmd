@@ -4,7 +4,7 @@ author: "Pedro L. Baldoni"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: workflowr::wflow_html
 editor_options:
-  chunk_output_type: console
+  chunk_output_type: inline
 bibliography: ../misc/bibliography/bibliography.bib
 ---
 
@@ -48,7 +48,7 @@ Paths used in this report are specified below.
 
 ```{r casestudy_intro_setup_paths}
 path.misc <- file.path('../misc',knitr::current_input())
-# dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
 
 path.data.paired <- '../data/lung'
 path.quant.paired <- '../output/lung'
@@ -841,14 +841,14 @@ fig.panel <- wrap_plots(A = plot.mds,
                         C = plot.lolipop,
                         D = plot.heat.cancer,
                         design = plot.design,
-                        heights = c(0.3,0.35,0.35)) +
+                        heights = c(0.35,0.25,0.4)) +
   plot_annotation(tag_levels = 'a')
 
 fig.panel <- fig.panel &
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,"figure6.png"),
-        width = 10,height = 10,units = 'in',res = 300)
+agg_png(filename = '../misc/casestudy.Rmd/figure6.png',#file.path(path.misc,"figure6.png"),
+        width = 10,height = 12,units = 'in',res = 300)
 fig.panel
 dev.off()
 ```
