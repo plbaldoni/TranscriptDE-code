@@ -366,7 +366,7 @@ presented in the main paper)</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -377,8 +377,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -391,9 +391,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -488,24 +488,16 @@ versions is critical for reproducibility.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
 </p>
 </div>
-<div id="strongCachestrongdetected" class="panel-collapse collapse">
+<div id="strongCachestrongnone" class="panel-collapse collapse">
 <div class="panel-body">
-The following chunks had caches available:
-<ul>
-<li>
-simulation-paper_data_load
-</li>
-</ul>
-<p>To ensure reproducibility of the results, delete the cache directory
-<code>simulation-paper_cache</code> and re-run the analysis. To have
-workflowr automatically delete the cache directory prior to building the
-file, set <code>delete_cache = TRUE</code> when running
-<code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
 </div>
 </div>
 </div>
@@ -527,15 +519,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree04f8afa2e57652ab6f7a53864126847c105752aftargetblank04f8afaa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef01c7b4c2b01f0cdbe011f33e7e961e756fa140dtargetblankf01c7b4a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/04f8afa2e57652ab6f7a53864126847c105752af" target="_blank">04f8afa</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f01c7b4c2b01f0cdbe011f33e7e961e756fa140d" target="_blank">f01c7b4</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree04f8afa2e57652ab6f7a53864126847c105752aftargetblank04f8afaa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef01c7b4c2b01f0cdbe011f33e7e961e756fa140dtargetblankf01c7b4a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -545,7 +537,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/04f8afa2e57652ab6f7a53864126847c105752af" target="_blank">04f8afa</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f01c7b4c2b01f0cdbe011f33e7e961e756fa140d" target="_blank">f01c7b4</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,8 +558,6 @@ Ignored files:
     Ignored:    ._.DS_Store
     Ignored:    .gitignore
     Ignored:    TranscriptDE-code.Rproj
-    Ignored:    analysis/simulation-complete_cache/
-    Ignored:    analysis/simulation-paper_cache/
     Ignored:    code/.DS_Store
     Ignored:    code/._.DS_Store
     Ignored:    code/lung-se/data/slurm-10685114.out
@@ -615,6 +605,11 @@ Ignored files:
     Ignored:    ignore/
     Ignored:    misc/.DS_Store
     Ignored:    misc/._.DS_Store
+    Ignored:    misc/casestudy.Rmd/._suppfigure_maplot.png
+    Ignored:    misc/casestudy.Rmd/._suppfigure_overdispersion.png
+    Ignored:    misc/casestudy.Rmd/._suppfigure_venn.png
+    Ignored:    misc/casestudy.Rmd/._supptable_gene.tex
+    Ignored:    misc/casestudy.Rmd/._supptable_overdispersion.tex
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
     Ignored:    output/lung-se/
@@ -666,6 +661,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/f01c7b4c2b01f0cdbe011f33e7e961e756fa140d/docs/simulation-paper.html" target="_blank">f01c7b4</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
