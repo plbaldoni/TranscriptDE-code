@@ -602,6 +602,12 @@ df.bench[,lapply(.SD,foo.power,reference = df.bench$LongRead.FDR),
                      'sleuth.wald.FDR','sleuth.lrt.FDR')]
 ```
 
+Differential isoform expression for genes KRAS (Entrez ID 3845) and PD-L1 (CD274, Entrez ID 29126) has been previously identified in the literature (@yang2018isoform @qu2021pd):
+
+```{r casestudy_res_dte_long_isoforms}
+df.bench[df.bench$GeneSymbol %in% c('KRAS','CD274'),]
+```
+
 ## Comparison of short and long read mapping ambiguity overdispersions
 
 We begin by assessing the mapping ambiguity overdispersion parameter of each transcript (y-axis) according the number of expressed transcripts associated with their parent gene (x-axis). This is Figure 1 of the main paper.
@@ -796,7 +802,7 @@ GK <- getGeneKEGGLinks(species.KEGG = "hsa")
 
 interestGenes.ns.cancer <-
   interestGenes.ns[interestGenes.ns %in% 
-                     GK$GeneID[GK$PathwayID %in% c('path:hsa05222','path:hsa05223','path:hsa05200')]]
+                     GK$GeneID[GK$PathwayID %in% c('path:hsa05223','path:hsa05200')]]
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns.cancer)
