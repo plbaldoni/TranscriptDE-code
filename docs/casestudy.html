@@ -380,7 +380,7 @@ div.tocify {
 <h1 class="title toc-ignore">Case study: Analysis of the RNA-seq data
 from human cell lines H1975 and HCC827</h1>
 <h4 class="author">Pedro L. Baldoni</h4>
-<h4 class="date">24 February, 2023</h4>
+<h4 class="date">25 February, 2023</h4>
 
 </div>
 
@@ -409,7 +409,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-02-24
+<strong>Last updated:</strong> 2023-02-25
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree0c56b9c83e194af40bdcb9564102d3dcd894a94dtargetblank0c56b9ca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef298b23589285089d0921197133c02afc5306602targetblankf298b23a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/0c56b9c83e194af40bdcb9564102d3dcd894a94d" target="_blank">0c56b9c</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f298b23589285089d0921197133c02afc5306602" target="_blank">f298b23</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree0c56b9c83e194af40bdcb9564102d3dcd894a94dtargetblank0c56b9ca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef298b23589285089d0921197133c02afc5306602targetblankf298b23a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/0c56b9c83e194af40bdcb9564102d3dcd894a94d" target="_blank">0c56b9c</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f298b23589285089d0921197133c02afc5306602" target="_blank">f298b23</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -684,6 +684,41 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/f298b23589285089d0921197133c02afc5306602/analysis/casestudy.Rmd" target="_blank">f298b23</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-24
+</td>
+<td>
+Removing small cancel KEGG pathway and adding table for KRAS and CD274
+genes (with references)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/9814e84b895d00e01924db0408e10345c5a63837/docs/casestudy.html" target="_blank">9814e84</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1457,6 +1492,26 @@ df.bench[,lapply(.SD,foo.power,reference = df.bench$LongRead.FDR),
    sleuth.wald.FDR sleuth.lrt.FDR
 1:    1.020600e+04    1.07960e+04
 2:    3.668979e-01    3.88108e-01</code></pre>
+<p>Differential isoform expression for genes KRAS (Entrez ID 3845) and
+PD-L1 (CD274, Entrez ID 29126) has been previously identified in the
+literature (<span class="citation">Yang and Kim (2018)</span> <span
+class="citation">Qu et al. (2021)</span>):</p>
+<pre class="r"><code>df.bench[df.bench$GeneSymbol %in% c(&#39;KRAS&#39;,&#39;CD274&#39;),]</code></pre>
+<pre><code>        TranscriptID             GeneID GeneSymbol LongRead.FDR
+1: ENST00000256078.9 ENSG00000133703.12       KRAS  0.005625001
+2: ENST00000381577.4 ENSG00000120217.14      CD274  0.112219353
+3: ENST00000311936.8 ENSG00000133703.12       KRAS  0.262346227
+4: ENST00000381573.8 ENSG00000120217.14      CD274  0.414941458
+   edgeR.SE.Scaled.FDR edgeR.PE.Scaled.FDR edgeR.PE.Raw.FDR swish.FDR
+1:        4.438211e-03        0.0006684569      0.006746031 0.1269837
+2:        5.203877e-01        0.0054850903      0.067250683 0.1336139
+3:        5.780247e-06        0.7044697409      0.769575093 0.8352103
+4:        1.000000e+00        1.0000000000      1.000000000 1.0000000
+   sleuth.wald.FDR sleuth.lrt.FDR
+1:     0.000108482    0.005220296
+2:     0.025719153    0.028812393
+3:     0.842825570    0.035237275
+4:     1.000000000    1.000000000</code></pre>
 </div>
 <div
 id="comparison-of-short-and-long-read-mapping-ambiguity-overdispersions"
@@ -1805,7 +1860,7 @@ GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;hsa&quot;)
 
 interestGenes.ns.cancer &lt;-
   interestGenes.ns[interestGenes.ns %in% 
-                     GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05222&#39;,&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+                     GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns.cancer)</code></pre>
@@ -2023,6 +2078,17 @@ href="https://doi.org/10.1371/journal.pcbi.1007664">https://doi.org/10.1371/jour
 </div>
 <div id="ref-pedersen2022patchwork" class="csl-entry">
 Pedersen, Thomas Lin. 2022. <em>Patchwork: The Composer of Plots</em>.
+</div>
+<div id="ref-qu2021pd" class="csl-entry">
+Qu, Shuang, Zichen Jiao, Geng Lu, Bing Yao, Ting Wang, Weiwei Rong,
+Jiahan Xu, et al. 2021. <span>“PD-L1 lncRNA Splice Isoform Promotes Lung
+Adenocarcinoma Progression via Enhancing c-Myc Activity.”</span>
+<em>Genome Biology</em> 22 (1): 1–24.
+</div>
+<div id="ref-yang2018isoform" class="csl-entry">
+Yang, In Seok, and Sangwoo Kim. 2018. <span>“Isoform Specific Gene
+Expression Analysis of KRAS in the Prognosis of Lung Adenocarcinoma
+Patients.”</span> <em>BMC Bioinformatics</em> 19 (1): 1–10.
 </div>
 </div>
 <br>
