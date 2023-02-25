@@ -855,12 +855,10 @@ fig.panel <- wrap_plots(A = plot.mds,
 fig.panel <- fig.panel &
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = '../misc/casestudy.Rmd/figure6.png',#file.path(path.misc,"figure6.png"),
+agg_png(filename = file.path(path.misc,"figure6.png"),
         width = 10,height = 12,units = 'in',res = 300)
 fig.panel
 dev.off()
-
-fig.panel
 ```
 
 For the genes presented in panel (b), below we present the results from our DE analysis at the gene-level.
@@ -904,6 +902,59 @@ kb.gene <-
 save_kable(kb.gene,file = file.path(path.misc,"supptable_gene.tex"))
 
 tb.gene
+```
+
+Another set of interesting genes are those that are statistically significant and have trnascripts being DE in a different direction between conditions. Let's take a look at those.
+
+```{r casestudy_res_txgene_switch}
+df.tx.gene$logFC.Gene <- 
+  out.gene$table$logFC[match(df.tx.gene$GeneID,rownames(out.gene$table))]
+
+interestGenes.s <-
+  unique(df.tx.gene[df.tx.gene$FDR.Gene < 0.05 &
+                      df.tx.gene$FDR < 0.05 &
+                      sign(df.tx.gene$logFC) != sign(df.tx.gene$logFC.Gene) &
+                      !is.na(df.tx.gene$logFC.Gene) &
+                      df.tx.gene$GeneOfInterest == TRUE,"EntrezID"])
+
+interestGenes.s.cancer <-
+  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c('path:hsa05223','path:hsa05200')]]
+
+# Number of significant genes (and cancer-related genes) for which at least one of their transcripts is DE and going in the opposite direction
+length(interestGenes.s)
+length(interestGenes.s.cancer)
+
+# Creating heatmat for such genes and their DE transcripts
+
+df.tx.gene.s <-
+  df.tx.gene[df.tx.gene$EntrezID %in% interestGenes.s,]
+
+df.tx.gene.s.cancer <-
+  df.tx.gene[df.tx.gene$EntrezID %in% interestGenes.s.cancer,]
+
+df.tx.gene.s <-
+  df.tx.gene.s[df.tx.gene.s$FDR < 0.05 & 
+                 sign(df.tx.gene.s$logFC) != sign(df.tx.gene.s$logFC.Gene),]
+
+df.tx.gene.s.cancer <-
+  df.tx.gene.s.cancer[df.tx.gene.s.cancer$FDR < 0.05 & 
+                        sign(df.tx.gene.s.cancer$logFC) != sign(df.tx.gene.s.cancer$logFC.Gene),]
+
+cpm.scaled.s.cancer <- cpm.scaled[rownames(df.tx.gene.s.cancer),]
+rownames(cpm.scaled.s.cancer) <- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
+
+cpm.scaled.s <- cpm.scaled[rownames(df.tx.gene.s),]
+rownames(cpm.scaled.s) <- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s),rownames(dte.short.paired.edger.scaled.filtr))]
+
+plot.heat.s <-
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s))))
+
+plot.heat.s.cancer <-
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s.cancer))))
+
+plot.heat.s
+
+plot.heat.s.cancer
 ```
 
 We can also compare the distribution of the overdispersion estimates between gene- and transcript-level analyses.
