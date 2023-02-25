@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef298b23589285089d0921197133c02afc5306602targetblankf298b23a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree149e445637723ada32e163fd8ce74681f5967057targetblank149e445a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f298b23589285089d0921197133c02afc5306602" target="_blank">f298b23</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/149e445637723ada32e163fd8ce74681f5967057" target="_blank">149e445</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreef298b23589285089d0921197133c02afc5306602targetblankf298b23a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree149e445637723ada32e163fd8ce74681f5967057targetblank149e445a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/f298b23589285089d0921197133c02afc5306602" target="_blank">f298b23</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/149e445637723ada32e163fd8ce74681f5967057" target="_blank">149e445</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -684,6 +684,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/149e445637723ada32e163fd8ce74681f5967057/analysis/casestudy.Rmd" target="_blank">149e445</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Exporting figures and tables
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/97d1c4ce99a81df49c4c6186b7de9b472e1a3f99/docs/casestudy.html" target="_blank">97d1c4c</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1892,7 +1926,10 @@ foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
 }
 
 plot.heat.cancer &lt;-
-  wrap_elements(grid.grabExpr(draw(foo.heat(t(cpm.scaled.cancer)))))</code></pre>
+  wrap_elements(grid.grabExpr(draw(foo.heat(t(cpm.scaled.cancer)))))
+
+plot.heat.cancer</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_heat-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Finally, we put all these plots together with the package
 <code>patchwork</code> <span class="citation">Pedersen
 (2022)</span>.</p>
@@ -1915,6 +1952,9 @@ fig.panel
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<pre class="r"><code>fig.panel</code></pre>
+<pre><code>Error in graphics::par(old_gp) : 
+  invalid value specified for graphical parameter &quot;pin&quot;</code></pre>
 <p>For the genes presented in panel (b), below we present the results
 from our DE analysis at the gene-level.</p>
 <pre class="r"><code>tb.gene &lt;- 
@@ -1952,7 +1992,15 @@ kb.gene &lt;-
       caption = cap.kb.gene,
       align = &#39;llcccccc&#39;) %&gt;%
   kable_styling(font_size = 10)
-save_kable(kb.gene,file = file.path(path.misc,&quot;supptable_gene.tex&quot;))</code></pre>
+save_kable(kb.gene,file = file.path(path.misc,&quot;supptable_gene.tex&quot;))
+
+tb.gene</code></pre>
+<pre><code>          Ensembl ID Symbol Entrez ID  logFC logCPM      F    PValue       FDR
+1 ENSG00000132155.12   RAF1      5894 -0.623  5.942 39.959 1.465e-05 3.090e-05
+2 ENSG00000171552.13 BCL2L1       598  0.723  8.187 28.776 8.277e-05 1.511e-04
+3 ENSG00000105976.15    MET      4233  0.552  9.092 24.635 1.773e-04 3.064e-04
+4 ENSG00000129521.14  EGLN3    112399 -0.272  5.197  7.648 1.458e-02 1.923e-02
+5 ENSG00000142208.16   AKT1       207  0.268  7.431  5.828 2.922e-02 3.714e-02</code></pre>
 <p>We can also compare the distribution of the overdispersion estimates
 between gene- and transcript-level analyses.</p>
 <pre class="r"><code>df.output.gene &lt;-
@@ -1989,6 +2037,8 @@ fig.mao.gene.tx
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<pre class="r"><code>fig.mao.gene.tx</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_overdispersion-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>Below we have a table of the top genes with highest mapping ambiguity
 estimated overdispersion. Most of such genes do not have an associated
 Entrez ID.</p>
@@ -2014,7 +2064,213 @@ kb.output.gene.top &lt;-
   kable_styling(latex_options = c(&quot;scale_down&quot;,&quot;repeat_header&quot;),font_size = 10)</code></pre>
 <pre><code>Warning in styling_latex_scale_down(out, table_info): Longtable cannot be
 resized.</code></pre>
-<pre class="r"><code>save_kable(kb.output.gene.top,file = file.path(path.misc,&quot;supptable_overdispersion.tex&quot;))</code></pre>
+<pre class="r"><code>save_kable(kb.output.gene.top,file = file.path(path.misc,&quot;supptable_overdispersion.tex&quot;))
+
+df.output.gene.top</code></pre>
+<pre><code>              EnsemblID         Symbol                             Type
+  1: ENSG00000205609.12         EIF3CL                   protein coding
+  2:  ENSG00000278996.1     FP671120.5                           lncRNA
+  3:  ENSG00000268861.7     AC008878.3                   protein coding
+  4:  ENSG00000285238.2     AC006064.6                   protein coding
+  5: ENSG00000015568.13          RGPD5                   protein coding
+  6: ENSG00000178397.13        FAM220A                   protein coding
+  7:  ENSG00000253797.2         UTP14C                   protein coding
+  8:  ENSG00000277067.4     CU634019.2                           lncRNA
+  9:  ENSG00000259040.5 BLOC1S5-TXNDC5                   protein coding
+ 10:  ENSG00000254692.1     AL136295.1                   protein coding
+ 11:  ENSG00000283782.2     AC116366.3                   protein coding
+ 12:  ENSG00000285447.1         ZNF883                   protein coding
+ 13:  ENSG00000279809.1     AC005538.2                              TEC
+ 14:  ENSG00000259132.1     AL132780.3                   protein coding
+ 15:  ENSG00000269547.1     AC011455.2                   protein coding
+ 16:  ENSG00000284057.1     AP001273.2                   protein coding
+ 17: ENSG00000154545.16         MAGED4                   protein coding
+ 18:  ENSG00000288534.1     AP001931.2                   protein coding
+ 19:  ENSG00000257411.2     AC034102.2                   protein coding
+ 20:  ENSG00000261771.5   DNAAF4-CCPG1                           lncRNA
+ 21:  ENSG00000256861.1     AC048338.1                   protein coding
+ 22:  ENSG00000260537.2     AC012184.2                   protein coding
+ 23:  ENSG00000202198.1     AL162581.1                         misc RNA
+ 24:  ENSG00000273590.4        SMIM11B                   protein coding
+ 25:  ENSG00000234289.6          H2BS1                   protein coding
+ 26:  ENSG00000268738.3          HSFX2                   protein coding
+ 27:  ENSG00000270276.2          H4C15                   protein coding
+ 28:  ENSG00000276077.4     CU633904.2                           lncRNA
+ 29:  ENSG00000286600.1     AC119427.2                           lncRNA
+ 30:  ENSG00000235655.3           H3P6             processed pseudogene
+ 31:  ENSG00000249624.9     AP000295.1                   protein coding
+ 32:  ENSG00000249590.7     AC004832.3                   protein coding
+ 33: ENSG00000132207.17          SLX1A                   protein coding
+ 34:  ENSG00000261915.6     AC026954.2                   protein coding
+ 35:  ENSG00000283239.1     AC019257.8                   protein coding
+ 36:  ENSG00000286075.1     AC009412.1                   protein coding
+ 37:  ENSG00000272921.1     AC005832.4                   protein coding
+ 38:  ENSG00000270181.3     BIVM-ERCC5                   protein coding
+ 39: ENSG00000183054.11          RGPD6                   protein coding
+ 40:  ENSG00000180658.4          OR2A4                   protein coding
+ 41:  ENSG00000249839.1     AC011330.1           unprocessed pseudogene
+ 42:  ENSG00000196826.7     AC008758.1                   protein coding
+ 43:  ENSG00000269900.3           RMRP                           lncRNA
+ 44:  ENSG00000270316.1    BORCS7-ASMT                   protein coding
+ 45:  ENSG00000130283.9           GDF1                   protein coding
+ 46:  ENSG00000260371.1     AC026464.3                   protein coding
+ 47:  ENSG00000285258.1          ATXN7                   protein coding
+ 48:  ENSG00000188223.9     AD000671.1                   protein coding
+ 49:  ENSG00000254673.1     AC110275.1                   protein coding
+ 50:  ENSG00000271672.1         DUXAP8 transcribed processed pseudogene
+ 51: ENSG00000167131.17        CCDC103                   protein coding
+ 52:  ENSG00000231259.5     AC125232.1           unprocessed pseudogene
+ 53:  ENSG00000256349.1     AP002748.5                   protein coding
+ 54: ENSG00000160201.11          U2AF1                   protein coding
+ 55:  ENSG00000234964.4        FABP5P7             processed pseudogene
+ 56:  ENSG00000284554.2     AL022318.4                   protein coding
+ 57:  ENSG00000258465.8     AL139011.2                   protein coding
+ 58: ENSG00000124208.16 TMEM189-UBE2V1                   protein coding
+ 59: ENSG00000184110.14          EIF3C                   protein coding
+ 60:  ENSG00000285901.1     AC008012.1                   protein coding
+ 61:  ENSG00000284989.1     AL451062.4                   protein coding
+ 62:  ENSG00000257315.2          ZBED6                   protein coding
+ 63:  ENSG00000285404.1       Z82190.2                   protein coding
+ 64:  ENSG00000287856.1     AL445524.2                   protein coding
+ 65: ENSG00000205670.11        SMIM11A                   protein coding
+ 66:  ENSG00000180581.7         SRP9P1             processed pseudogene
+ 67:  ENSG00000235288.3     AC099329.1                           lncRNA
+ 68:  ENSG00000262526.2     AC120057.2                   protein coding
+ 69:  ENSG00000285304.1       Z83844.3                   protein coding
+ 70:  ENSG00000224831.3       TMEM183B             processed pseudogene
+ 71:  ENSG00000285130.2     AL358113.1                   protein coding
+ 72:  ENSG00000214076.3        CPSF1P1 transcribed processed pseudogene
+ 73:  ENSG00000267645.5     AC105052.3                   protein coding
+ 74:  ENSG00000279423.1     AL445363.3                              TEC
+ 75:  ENSG00000268173.3     AC007192.1                   protein coding
+ 76:  ENSG00000280987.4          MATR3                   protein coding
+ 77:  ENSG00000285585.1     AC069444.2                   protein coding
+ 78:  ENSG00000281453.1      TGFB2-OT1                           lncRNA
+ 79:  ENSG00000235884.4      LINC00941                           lncRNA
+ 80:  ENSG00000271153.1      RPL23AP88             processed pseudogene
+ 81:  ENSG00000285920.2     AC087721.2                   protein coding
+ 82:  ENSG00000285053.1           TBCE                   protein coding
+ 83:  ENSG00000277125.1    AC211476.10           unprocessed pseudogene
+ 84:  ENSG00000283201.1     AC092329.3                   protein coding
+ 85:  ENSG00000257767.3     AC002996.1                   protein coding
+ 86:  ENSG00000285953.1     AC000120.4                   protein coding
+ 87:  ENSG00000270066.3     AL356488.2                           lncRNA
+ 88:  ENSG00000285565.1     AL671762.1                           lncRNA
+ 89:  ENSG00000270882.2          H4C14                   protein coding
+ 90:  ENSG00000198406.7         BZW1P2             processed pseudogene
+ 91:  ENSG00000269711.1     AC008763.3                   protein coding
+ 92:  ENSG00000286098.1     AC008770.4                   protein coding
+ 93:  ENSG00000283765.1     AC131160.1                   protein coding
+ 94:  ENSG00000264545.2     AL359922.1                   protein coding
+ 95:  ENSG00000288380.1     AC118281.1                   protein coding
+ 96: ENSG00000243708.10        PLA2G4B                   protein coding
+ 97:  ENSG00000232882.1        PHKA1P1             processed pseudogene
+ 98: ENSG00000163635.18          ATXN7                   protein coding
+ 99:  ENSG00000264668.2     AC138696.1                   protein coding
+100: ENSG00000172780.16          RAB43                   protein coding
+              EnsemblID         Symbol                             Type
+      EntrezID Overdispersion
+  1:    728689      341.55329
+  2:         -      179.20069
+  3:     23370      146.41457
+  4:         -      142.45960
+  5:     84220      120.50852
+  6:     84792      115.78457
+  7:      9724      102.41948
+  8: 102724843      101.81897
+  9:         -       97.40022
+ 10:         -       95.06763
+ 11:         -       92.76017
+ 12:    169834       86.45160
+ 13:         -       86.20744
+ 14:         -       77.62727
+ 15:         -       72.68414
+ 16:         -       71.60434
+ 17:    728239       69.52741
+ 18:         -       66.12744
+ 19:         -       62.77753
+ 20:         -       57.69913
+ 21:         -       56.66263
+ 22:         -       56.46824
+ 23:         -       56.15088
+ 24: 102723553       54.19200
+ 25:     54145       54.01728
+ 26: 100130086       50.75873
+ 27:    554313       48.34551
+ 28: 102724951       46.84375
+ 29:         -       46.00233
+ 30:         -       45.17108
+ 31:         -       42.82163
+ 32:         -       41.94934
+ 33:    548593       40.81429
+ 34:         -       40.80824
+ 35:         -       40.72144
+ 36:         -       40.08434
+ 37:         -       39.92555
+ 38:         -       37.08285
+ 39:    729540       36.74529
+ 40:     79541       36.51568
+ 41:         -       35.48179
+ 42:         -       35.26890
+ 43:         -       35.17539
+ 44:         -       34.80449
+ 45:      2657       34.07745
+ 46:         -       32.72416
+ 47:      6314       32.57430
+ 48:         -       32.55255
+ 49:         -       32.18210
+ 50:         -       31.58082
+ 51:    388389       31.58059
+ 52:         -       31.44377
+ 53:         -       31.32582
+ 54:      7307       30.91959
+ 55:         -       30.72538
+ 56:         -       30.62995
+ 57:         -       30.62523
+ 58:    387522       30.39804
+ 59:      8663       30.31766
+ 60:         -       29.90434
+ 61:         -       29.06666
+ 62: 100381270       28.83286
+ 63:         -       28.79896
+ 64:         -       28.14299
+ 65:     54065       27.81531
+ 66:         -       27.74589
+ 67:         -       27.42346
+ 68:         -       26.60494
+ 69:         -       26.17273
+ 70:         -       26.16531
+ 71:         -       25.91874
+ 72:         -       25.53335
+ 73:         -       25.42465
+ 74:         -       25.18152
+ 75:         -       25.17870
+ 76:      9782       24.43611
+ 77:         -       24.25211
+ 78:         -       23.69302
+ 79:         -       23.51383
+ 80:         -       23.32973
+ 81:         -       22.44191
+ 82:      6905       22.12165
+ 83:         -       22.02204
+ 84:    440519       21.67864
+ 85:         -       21.65601
+ 86:         -       21.53951
+ 87:         -       21.32237
+ 88:         -       21.11837
+ 89:      8370       20.78220
+ 90:         -       20.66036
+ 91:         -       20.46554
+ 92:    284391       20.30157
+ 93:     55486       20.23441
+ 94:         -       20.11421
+ 95:         -       20.08538
+ 96: 100137049       20.06304
+ 97:         -       19.97567
+ 98:      6314       19.81824
+ 99:         -       19.63181
+100:    339122       19.61291
+      EntrezID Overdispersion</code></pre>
 </div>
 <div id="comparison-between-analyses-using-paired--and-single-end-reads"
 class="section level2">
@@ -2035,33 +2291,34 @@ tb.tx.genes$FDR.LR &lt;- out.long$table$FDR[match(rownames(tb.tx.genes),rownames
 tb.tx.genes &lt;- (tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)] &lt; 0.05)*1L
 tb.tx.genes[is.na(tb.tx.genes)] &lt;- 0L
 
+plot.venn &lt;- 
+  wrap_elements(full = ~ vennDiagram(tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)],
+                                     names = c(&#39;Illumina\nsingle-end reads&#39;,
+                                               &#39;Illumina\npaired-end reads&#39;,
+                                               &#39;ONT\nlong reads&#39;),
+                                     circle.col = c(&#39;salmon&#39;,&#39;red&#39;,&#39;blue&#39;),cex = c(12,10,8)/12))
+
 agg_png(filename = file.path(path.misc,&quot;suppfigure_venn.png&quot;),
         width = 6,height = 6,units = &#39;in&#39;,res = 300)
-limma::vennDiagram(tb.tx.genes[,c(&#39;FDR.SE&#39;,&#39;FDR.PE&#39;,&#39;FDR.LR&#39;)],
-                   names = c(&#39;Illumina\nsingle-end reads&#39;,
-                             &#39;Illumina\npaired-end reads&#39;,
-                             &#39;ONT\nlong reads&#39;),
-                   circle.col = c(&#39;salmon&#39;,&#39;red&#39;,&#39;blue&#39;),cex = c(12,10,8)/12)
+plot.venn
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<pre class="r"><code>plot.venn</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_sepe_venn-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>And the MA plot highlighting DE transcripts called with single-end
 Illumina short reads is presented below.</p>
-<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),
+<pre class="r"><code>plot.md.se &lt;-
+  wrap_elements(full = ~foo.md(qlf.short.single.edger.scaled))
+
+agg_png(filename = file.path(path.misc,&quot;suppfigure_maplot.png&quot;),
         width = 6,height = 6,units = &#39;in&#39;,res = 300)
-plotMD(qlf.short.single.edger.scaled,
-       main = NULL,cex = 0.5,legend = FALSE,
-       cex.lab = 8/12,
-       cex.axis = 8/12)
-legend(&#39;topright&#39;,
-       legend = c(&#39;NotSig&#39;,&#39;Up&#39;,&#39;Down&#39;),
-       pch = rep(16,3),
-       col = c(&#39;black&#39;,&#39;red&#39;,&#39;blue&#39;),
-       cex = 8/12,
-       pt.cex = c(0.3,0.5,0.5))
+plot.md.se
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
+<pre class="r"><code>plot.md.se</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_sepe_ma-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-gu2016complex" class="csl-entry">
 Gu, Zuguang, Roland Eils, and Matthias Schlesner. 2016. <span>“Complex
