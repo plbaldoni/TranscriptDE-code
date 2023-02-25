@@ -817,7 +817,7 @@ cpm.scaled.cancer <- cpm.scaled[rownames(df.tx.gene.cancer),]
 rownames(cpm.scaled.cancer) <- 
   dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
 
-foo.heat <- function(x,cluster_rows = TRUE, fontsize = 8){
+foo.heat <- function(x,cluster_rows = TRUE, fontsize = 8,...){
   Heatmap(matrix = x,
           heatmap_legend_param = list(title = 'Expression',
                                       title_position = 'topcenter',
@@ -829,7 +829,7 @@ foo.heat <- function(x,cluster_rows = TRUE, fontsize = 8){
           cluster_rows = cluster_rows,
           row_names_gp = gpar(fontsize = fontsize),
           column_names_gp = gpar(fontsize = fontsize),
-          col = c("blue", "white", "red")) %>%
+          col = c("blue", "white", "red"),...) %>%
     draw(heatmap_legend_side = "top")
 }
 
@@ -947,7 +947,7 @@ cpm.scaled.s <- cpm.scaled[rownames(df.tx.gene.s),]
 rownames(cpm.scaled.s) <- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s),rownames(dte.short.paired.edger.scaled.filtr))]
 
 plot.heat.s <-
-  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s))))
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s,show_row_names = FALSE))))
 
 plot.heat.s.cancer <-
   wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s.cancer))))
