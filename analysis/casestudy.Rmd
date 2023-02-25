@@ -835,6 +835,8 @@ foo.heat <- function(x,cluster_rows = TRUE, fontsize = 8){
 
 plot.heat.cancer <-
   wrap_elements(grid.grabExpr(draw(foo.heat(t(cpm.scaled.cancer)))))
+
+plot.heat.cancer
 ```
 
 Finally, we put all these plots together with the package `patchwork` @pedersen2022patchwork.
@@ -857,6 +859,8 @@ agg_png(filename = '../misc/casestudy.Rmd/figure6.png',#file.path(path.misc,"fig
         width = 10,height = 12,units = 'in',res = 300)
 fig.panel
 dev.off()
+
+fig.panel
 ```
 
 For the genes presented in panel (b), below we present the results from our DE analysis at the gene-level.
@@ -898,6 +902,8 @@ kb.gene <-
       align = 'llcccccc') %>%
   kable_styling(font_size = 10)
 save_kable(kb.gene,file = file.path(path.misc,"supptable_gene.tex"))
+
+tb.gene
 ```
 
 We can also compare the distribution of the overdispersion estimates between gene- and transcript-level analyses.
@@ -935,6 +941,8 @@ agg_png(filename = file.path(path.misc,"suppfigure_overdispersion.png"),
         width = 7.5,height = 5,units = 'in',res = 300)
 fig.mao.gene.tx
 dev.off()
+
+fig.mao.gene.tx
 ```
 
 Below we have a table of the top genes with highest mapping ambiguity estimated overdispersion. Most of such genes do not have an associated Entrez ID.
@@ -961,6 +969,8 @@ kb.output.gene.top <-
       col.names = c('Ensembl ID','Symbol','Entrez ID','Biotype','Overdispersion')) %>%
   kable_styling(latex_options = c("scale_down","repeat_header"),font_size = 10)
 save_kable(kb.output.gene.top,file = file.path(path.misc,"supptable_overdispersion.tex"))
+
+df.output.gene.top
 ```
 
 ## Comparison between analyses using paired- and single-end reads
@@ -981,30 +991,31 @@ tb.tx.genes$FDR.LR <- out.long$table$FDR[match(rownames(tb.tx.genes),rownames(ou
 tb.tx.genes <- (tb.tx.genes[,c('FDR.SE','FDR.PE','FDR.LR')] < 0.05)*1L
 tb.tx.genes[is.na(tb.tx.genes)] <- 0L
 
+plot.venn <- 
+  wrap_elements(full = ~ vennDiagram(tb.tx.genes[,c('FDR.SE','FDR.PE','FDR.LR')],
+                                     names = c('Illumina\nsingle-end reads',
+                                               'Illumina\npaired-end reads',
+                                               'ONT\nlong reads'),
+                                     circle.col = c('salmon','red','blue'),cex = c(12,10,8)/12))
+
 agg_png(filename = file.path(path.misc,"suppfigure_venn.png"),
         width = 6,height = 6,units = 'in',res = 300)
-limma::vennDiagram(tb.tx.genes[,c('FDR.SE','FDR.PE','FDR.LR')],
-                   names = c('Illumina\nsingle-end reads',
-                             'Illumina\npaired-end reads',
-                             'ONT\nlong reads'),
-                   circle.col = c('salmon','red','blue'),cex = c(12,10,8)/12)
+plot.venn
 dev.off()
+
+plot.venn
 ```
 
 And the MA plot highlighting DE transcripts called with single-end Illumina short reads is presented below.
 
 ```{r casestudy_res_sepe_ma}
+plot.md.se <-
+  wrap_elements(full = ~foo.md(qlf.short.single.edger.scaled))
+
 agg_png(filename = file.path(path.misc,"suppfigure_maplot.png"),
         width = 6,height = 6,units = 'in',res = 300)
-plotMD(qlf.short.single.edger.scaled,
-       main = NULL,cex = 0.5,legend = FALSE,
-       cex.lab = 8/12,
-       cex.axis = 8/12)
-legend('topright',
-       legend = c('NotSig','Up','Down'),
-       pch = rep(16,3),
-       col = c('black','red','blue'),
-       cex = 8/12,
-       pt.cex = c(0.3,0.5,0.5))
+plot.md.se
 dev.off()
+
+plot.md.se
 ```
