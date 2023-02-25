@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree149e445637723ada32e163fd8ce74681f5967057targetblank149e445a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40targetblank86dcc05a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/149e445637723ada32e163fd8ce74681f5967057" target="_blank">149e445</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40" target="_blank">86dcc05</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree149e445637723ada32e163fd8ce74681f5967057targetblank149e445a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40targetblank86dcc05a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/149e445637723ada32e163fd8ce74681f5967057" target="_blank">149e445</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40" target="_blank">86dcc05</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -684,6 +684,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40/analysis/casestudy.Rmd" target="_blank">86dcc05</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Adding heatmaps for DE genes with iso switching
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/afee716717c8de657a9fc99f4f99ff45038404e0/docs/casestudy.html" target="_blank">afee716</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1930,6 +1964,43 @@ plot.heat.cancer &lt;-
 
 plot.heat.cancer</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_heat-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_heat-1">
+Past versions of casestudy_res_txgene_heat-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_heat-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_heat-1.png" target="_blank">afee716</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Finally, we put all these plots together with the package
 <code>patchwork</code> <span class="citation">Pedersen
 (2022)</span>.</p>
@@ -1946,15 +2017,12 @@ fig.panel &lt;- wrap_plots(A = plot.mds,
 fig.panel &lt;- fig.panel &amp;
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = &#39;../misc/casestudy.Rmd/figure6.png&#39;,#file.path(path.misc,&quot;figure6.png&quot;),
+agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),
         width = 10,height = 12,units = &#39;in&#39;,res = 300)
 fig.panel
 dev.off()</code></pre>
 <pre><code>png 
   2 </code></pre>
-<pre class="r"><code>fig.panel</code></pre>
-<pre><code>Error in graphics::par(old_gp) : 
-  invalid value specified for graphical parameter &quot;pin&quot;</code></pre>
 <p>For the genes presented in panel (b), below we present the results
 from our DE analysis at the gene-level.</p>
 <pre class="r"><code>tb.gene &lt;- 
@@ -2001,6 +2069,59 @@ tb.gene</code></pre>
 3 ENSG00000105976.15    MET      4233  0.552  9.092 24.635 1.773e-04 3.064e-04
 4 ENSG00000129521.14  EGLN3    112399 -0.272  5.197  7.648 1.458e-02 1.923e-02
 5 ENSG00000142208.16   AKT1       207  0.268  7.431  5.828 2.922e-02 3.714e-02</code></pre>
+<p>Another set of interesting genes are those that are statistically
+significant and have trnascripts being DE in a different direction
+between conditions. Let’s take a look at those.</p>
+<pre class="r"><code>df.tx.gene$logFC.Gene &lt;- 
+  out.gene$table$logFC[match(df.tx.gene$GeneID,rownames(out.gene$table))]
+
+interestGenes.s &lt;-
+  unique(df.tx.gene[df.tx.gene$FDR.Gene &lt; 0.05 &amp;
+                      df.tx.gene$FDR &lt; 0.05 &amp;
+                      sign(df.tx.gene$logFC) != sign(df.tx.gene$logFC.Gene) &amp;
+                      !is.na(df.tx.gene$logFC.Gene) &amp;
+                      df.tx.gene$GeneOfInterest == TRUE,&quot;EntrezID&quot;])
+
+interestGenes.s.cancer &lt;-
+  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+
+# Number of significant genes (and cancer-related genes) for which at least one of their transcripts is DE and going in the opposite direction
+length(interestGenes.s)</code></pre>
+<pre><code>[1] 403</code></pre>
+<pre class="r"><code>length(interestGenes.s.cancer)</code></pre>
+<pre><code>[1] 12</code></pre>
+<pre class="r"><code># Creating heatmat for such genes and their DE transcripts
+
+df.tx.gene.s &lt;-
+  df.tx.gene[df.tx.gene$EntrezID %in% interestGenes.s,]
+
+df.tx.gene.s.cancer &lt;-
+  df.tx.gene[df.tx.gene$EntrezID %in% interestGenes.s.cancer,]
+
+df.tx.gene.s &lt;-
+  df.tx.gene.s[df.tx.gene.s$FDR &lt; 0.05 &amp; 
+                 sign(df.tx.gene.s$logFC) != sign(df.tx.gene.s$logFC.Gene),]
+
+df.tx.gene.s.cancer &lt;-
+  df.tx.gene.s.cancer[df.tx.gene.s.cancer$FDR &lt; 0.05 &amp; 
+                        sign(df.tx.gene.s.cancer$logFC) != sign(df.tx.gene.s.cancer$logFC.Gene),]
+
+cpm.scaled.s.cancer &lt;- cpm.scaled[rownames(df.tx.gene.s.cancer),]
+rownames(cpm.scaled.s.cancer) &lt;- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
+
+cpm.scaled.s &lt;- cpm.scaled[rownames(df.tx.gene.s),]
+rownames(cpm.scaled.s) &lt;- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s),rownames(dte.short.paired.edger.scaled.filtr))]
+
+plot.heat.s &lt;-
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s))))
+
+plot.heat.s.cancer &lt;-
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s.cancer))))
+
+plot.heat.s</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot.heat.s.cancer</code></pre>
+<p><img src="figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>We can also compare the distribution of the overdispersion estimates
 between gene- and transcript-level analyses.</p>
 <pre class="r"><code>df.output.gene &lt;-
@@ -2039,6 +2160,43 @@ dev.off()</code></pre>
   2 </code></pre>
 <pre class="r"><code>fig.mao.gene.tx</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_overdispersion-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_overdispersion-1">
+Past versions of casestudy_res_txgene_overdispersion-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_overdispersion-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_overdispersion-1.png" target="_blank">afee716</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below we have a table of the top genes with highest mapping ambiguity
 estimated overdispersion. Most of such genes do not have an associated
 Entrez ID.</p>
@@ -2306,6 +2464,43 @@ dev.off()</code></pre>
   2 </code></pre>
 <pre class="r"><code>plot.venn</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_sepe_venn-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_sepe_venn-1">
+Past versions of casestudy_res_sepe_venn-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_sepe_venn-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_venn-1.png" target="_blank">afee716</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>And the MA plot highlighting DE transcripts called with single-end
 Illumina short reads is presented below.</p>
 <pre class="r"><code>plot.md.se &lt;-
@@ -2319,6 +2514,43 @@ dev.off()</code></pre>
   2 </code></pre>
 <pre class="r"><code>plot.md.se</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_sepe_ma-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_sepe_ma-1">
+Past versions of casestudy_res_sepe_ma-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_sepe_ma-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_ma-1.png" target="_blank">afee716</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-gu2016complex" class="csl-entry">
 Gu, Zuguang, Roland Eils, and Matthias Schlesner. 2016. <span>“Complex
