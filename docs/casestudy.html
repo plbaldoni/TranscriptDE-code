@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40targetblank86dcc05a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed52be0a99d4feb53343838e488bf39e36869f4cftargetblankd52be0aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40" target="_blank">86dcc05</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d52be0a99d4feb53343838e488bf39e36869f4cf" target="_blank">d52be0a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftree86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40targetblank86dcc05a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed52be0a99d4feb53343838e488bf39e36869f4cftargetblankd52be0aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40" target="_blank">86dcc05</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d52be0a99d4feb53343838e488bf39e36869f4cf" target="_blank">d52be0a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -684,6 +684,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d52be0a99d4feb53343838e488bf39e36869f4cf/analysis/casestudy.Rmd" target="_blank">d52be0a</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Removing row names
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/casestudy.html" target="_blank">280d68a</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1943,7 +1977,7 @@ cpm.scaled.cancer &lt;- cpm.scaled[rownames(df.tx.gene.cancer),]
 rownames(cpm.scaled.cancer) &lt;- 
   dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.cancer),rownames(dte.short.paired.edger.scaled.filtr))]
 
-foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
+foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8,...){
   Heatmap(matrix = x,
           heatmap_legend_param = list(title = &#39;Expression&#39;,
                                       title_position = &#39;topcenter&#39;,
@@ -1955,7 +1989,7 @@ foo.heat &lt;- function(x,cluster_rows = TRUE, fontsize = 8){
           cluster_rows = cluster_rows,
           row_names_gp = gpar(fontsize = fontsize),
           column_names_gp = gpar(fontsize = fontsize),
-          col = c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;)) %&gt;%
+          col = c(&quot;blue&quot;, &quot;white&quot;, &quot;red&quot;),...) %&gt;%
     draw(heatmap_legend_side = &quot;top&quot;)
 }
 
@@ -2113,15 +2147,89 @@ cpm.scaled.s &lt;- cpm.scaled[rownames(df.tx.gene.s),]
 rownames(cpm.scaled.s) &lt;- dte.short.paired.edger.scaled.filtr$genes$TranscriptSymbol[match(rownames(cpm.scaled.s),rownames(dte.short.paired.edger.scaled.filtr))]
 
 plot.heat.s &lt;-
-  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s))))
+  wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s,show_row_names = FALSE))))
 
 plot.heat.s.cancer &lt;-
   wrap_elements(grid.grabExpr(draw(foo.heat(cpm.scaled.s.cancer))))
 
 plot.heat.s</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_switch-1">
+Past versions of casestudy_res_txgene_switch-1.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_switch-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" target="_blank">280d68a</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>plot.heat.s.cancer</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" width="2100" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_switch-2">
+Past versions of casestudy_res_txgene_switch-2.png
+</button>
+</p>
+<div id="fig-casestudy_res_txgene_switch-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">280d68a</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>We can also compare the distribution of the overdispersion estimates
 between gene- and transcript-level analyses.</p>
 <pre class="r"><code>df.output.gene &lt;-
