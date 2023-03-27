@@ -521,7 +521,7 @@ tabulateMetrics <- function(x,cap,
                             lib.size = c('50M','25/100M'),
                             color = TRUE,
                             color.fdr = 0.05,
-                            format = 'latex'){
+                            format = 'latex',...){
 
   dt <- copy(x)
 
@@ -571,7 +571,7 @@ tabulateMetrics <- function(x,cap,
             booktabs = TRUE,
             align = c('l',rep('r',13)),
             caption = cap,
-            col.names = c('Read','Samples/Group','Library Size','Read Length',rep(methods,2))) %>%
+            col.names = c('Read','Samples/Group','Library Size','Read Length',rep(methods,2)),...) %>%
     add_header_above(c(" " = 4, "Power" = length(methods), "False Discovery Rate" = length(methods))) %>%
     { if(format == 'latex'){
         kable_styling(kable_input = .,latex_options = "scale_down") %>%
