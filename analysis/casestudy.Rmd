@@ -918,7 +918,7 @@ interestGenes.s <-
                       df.tx.gene$GeneOfInterest == TRUE,"EntrezID"])
 
 interestGenes.s.cancer <-
-  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c('path:hsa05223','path:hsa05200')]]
+  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c('hsa05223','hsa05200')]]
 
 # Number of significant genes (and cancer-related genes) for which at least one of their transcripts is DE and going in the opposite direction
 length(interestGenes.s)
