@@ -14,7 +14,7 @@
 
 <title>Case study: Analysis of the RNA-seq data from human cell lines H1975 and HCC827</title>
 
-<script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -36,8 +36,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.2.1/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.2.1/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -380,7 +380,7 @@ div.tocify {
 <h1 class="title toc-ignore">Case study: Analysis of the RNA-seq data
 from human cell lines H1975 and HCC827</h1>
 <h4 class="author">Pedro L. Baldoni</h4>
-<h4 class="date">25 February, 2023</h4>
+<h4 class="date">30 March, 2023</h4>
 
 </div>
 
@@ -409,7 +409,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-02-25
+<strong>Last updated:</strong> 2023-03-30
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed52be0a99d4feb53343838e488bf39e36869f4cftargetblankd52be0aa">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0dbb40296205189e4450c400ce7f5460d01ae4b9targetblank0dbb402a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d52be0a99d4feb53343838e488bf39e36869f4cf" target="_blank">d52be0a</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0dbb40296205189e4450c400ce7f5460d01ae4b9" target="_blank">0dbb402</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEwftreed52be0a99d4feb53343838e488bf39e36869f4cftargetblankd52be0aa"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0dbb40296205189e4450c400ce7f5460d01ae4b9targetblank0dbb402a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/tree/d52be0a99d4feb53343838e488bf39e36869f4cf" target="_blank">d52be0a</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0dbb40296205189e4450c400ce7f5460d01ae4b9" target="_blank">0dbb402</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -603,10 +603,6 @@ Ignored files:
     Ignored:    code/pkg/src/RcppExports.o
     Ignored:    code/pkg/src/pkg.so
     Ignored:    code/pkg/src/rcpparma_hello_world.o
-    Ignored:    data/.DS_Store
-    Ignored:    data/._.DS_Store
-    Ignored:    data/annotation/.DS_Store
-    Ignored:    data/annotation/._.DS_Store
     Ignored:    data/annotation/hg38/
     Ignored:    data/annotation/mm39/
     Ignored:    data/annotation/sequins/._rnasequin_annotation_2.4.gtf
@@ -615,12 +611,8 @@ Ignored files:
     Ignored:    data/annotation/sequins/._rnasequin_genes_2.4.tsv
     Ignored:    data/annotation/sequins/._rnasequin_isoforms_2.4.tsv
     Ignored:    data/annotation/sequins/._rnasequin_sequences_2.4.fa
-    Ignored:    data/lung-se/.DS_Store
-    Ignored:    data/lung-se/._.DS_Store
     Ignored:    data/lung-se/fastq/
     Ignored:    data/lung-se/misc/._filereport_read_run_PRJNA341465_tsv.txt
-    Ignored:    data/lung/.DS_Store
-    Ignored:    data/lung/._.DS_Store
     Ignored:    data/lung/fastq/
     Ignored:    data/lung/index/
     Ignored:    data/lung/misc/._filereport_read_run_PRJNA723287_tsv.txt
@@ -635,10 +627,16 @@ Ignored files:
     Ignored:    misc/casestudy.Rmd/._supptable_overdispersion.tex
     Ignored:    misc/simulation-paper.Rmd/._figure2.png
     Ignored:    misc/simulation-paper.Rmd/._figure5.png
+    Ignored:    output/.DS_Store
+    Ignored:    output/._.DS_Store
     Ignored:    output/lung-se/
     Ignored:    output/lung/
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
+
+Unstaged changes:
+    Modified:   misc/casestudy.Rmd/figure6.png
+    Modified:   misc/casestudy.Rmd/supptable_overdispersion.tex
 
 </code></pre>
 <p>
@@ -689,7 +687,41 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/d52be0a99d4feb53343838e488bf39e36869f4cf/analysis/casestudy.Rmd" target="_blank">d52be0a</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/0dbb40296205189e4450c400ce7f5460d01ae4b9/analysis/casestudy.Rmd" target="_blank">0dbb402</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+<td>
+Fix KEGG link and variable names
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/69f0aa2ddfea2b82c6611d0c02fb0d4976452fd8/docs/casestudy.html" target="_blank">69f0aa2</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/d52be0a99d4feb53343838e488bf39e36869f4cf/analysis/casestudy.Rmd" target="_blank">d52be0a</a>
 </td>
 <td>
 Pedro Baldoni
@@ -706,7 +738,7 @@ Removing row names
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/casestudy.html" target="_blank">280d68a</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/casestudy.html" target="_blank">280d68a</a>
 </td>
 <td>
 Pedro Baldoni
@@ -723,7 +755,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40/analysis/casestudy.Rmd" target="_blank">86dcc05</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/86dcc057c2f20f1efb2c0bfa8a064eeb4d657a40/analysis/casestudy.Rmd" target="_blank">86dcc05</a>
 </td>
 <td>
 Pedro Baldoni
@@ -740,7 +772,7 @@ Adding heatmaps for DE genes with iso switching
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/afee716717c8de657a9fc99f4f99ff45038404e0/docs/casestudy.html" target="_blank">afee716</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/afee716717c8de657a9fc99f4f99ff45038404e0/docs/casestudy.html" target="_blank">afee716</a>
 </td>
 <td>
 Pedro Baldoni
@@ -757,7 +789,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/149e445637723ada32e163fd8ce74681f5967057/analysis/casestudy.Rmd" target="_blank">149e445</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/149e445637723ada32e163fd8ce74681f5967057/analysis/casestudy.Rmd" target="_blank">149e445</a>
 </td>
 <td>
 Pedro Baldoni
@@ -774,7 +806,7 @@ Exporting figures and tables
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/97d1c4ce99a81df49c4c6186b7de9b472e1a3f99/docs/casestudy.html" target="_blank">97d1c4c</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/97d1c4ce99a81df49c4c6186b7de9b472e1a3f99/docs/casestudy.html" target="_blank">97d1c4c</a>
 </td>
 <td>
 Pedro Baldoni
@@ -791,7 +823,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/f298b23589285089d0921197133c02afc5306602/analysis/casestudy.Rmd" target="_blank">f298b23</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/f298b23589285089d0921197133c02afc5306602/analysis/casestudy.Rmd" target="_blank">f298b23</a>
 </td>
 <td>
 Pedro Baldoni
@@ -809,7 +841,7 @@ genes (with references)
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/9814e84b895d00e01924db0408e10345c5a63837/docs/casestudy.html" target="_blank">9814e84</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/9814e84b895d00e01924db0408e10345c5a63837/docs/casestudy.html" target="_blank">9814e84</a>
 </td>
 <td>
 Pedro Baldoni
@@ -826,7 +858,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/0c56b9c83e194af40bdcb9564102d3dcd894a94d/analysis/casestudy.Rmd" target="_blank">0c56b9c</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/0c56b9c83e194af40bdcb9564102d3dcd894a94d/analysis/casestudy.Rmd" target="_blank">0c56b9c</a>
 </td>
 <td>
 Pedro Baldoni
@@ -844,7 +876,7 @@ dimensions
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/ac417e892d888475383838b12d8d3187e38914fa/docs/casestudy.html" target="_blank">ac417e8</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/ac417e892d888475383838b12d8d3187e38914fa/docs/casestudy.html" target="_blank">ac417e8</a>
 </td>
 <td>
 Pedro Baldoni
@@ -861,7 +893,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/analysis/casestudy.Rmd" target="_blank">1839ef1</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/analysis/casestudy.Rmd" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -878,7 +910,7 @@ Adding case study pages
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-wf/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/casestudy.html" target="_blank">1839ef1</a>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/casestudy.html" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1110,6 +1142,7 @@ genes with an associated Entrez ID.</p>
 <pre class="r"><code>edb &lt;- ah[[&#39;AH78783&#39;]] # Ensembl version 99 relative to Gencode version 33</code></pre>
 <pre><code>loading from cache</code></pre>
 <pre><code>require(&quot;ensembldb&quot;)</code></pre>
+<pre><code>Warning: package &#39;AnnotationDbi&#39; was built under R version 4.2.3</code></pre>
 <pre class="r"><code>edb.names &lt;- c(&quot;TXIDVERSION&quot;,&quot;SYMBOL&quot;,&quot;TXBIOTYPE&quot;,
                &quot;GENEIDVERSION&quot;,&quot;GENENAME&quot;,&quot;GENEBIOTYPE&quot;,&quot;ENTREZID&quot;)
 
@@ -1292,11 +1325,17 @@ If you wish to take advantage of multiple cores, please consider running sleuth 
 <pre><code>Warning: `select_()` was deprecated in dplyr 0.7.0.
 ℹ Please use `select()` instead.
 ℹ The deprecated feature was likely used in the sleuth package.
-  Please report the issue at &lt;]8;;https://github.com/pachterlab/sleuth/issueshttps://github.com/pachterlab/sleuth/issues]8;;&gt;.</code></pre>
+  Please report the issue at &lt;https://github.com/pachterlab/sleuth/issues&gt;.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+generated.</code></pre>
 <pre><code>Warning: `spread_()` was deprecated in tidyr 1.2.0.
 ℹ Please use `spread()` instead.
 ℹ The deprecated feature was likely used in the sleuth package.
-  Please report the issue at &lt;]8;;https://github.com/pachterlab/sleuth/issueshttps://github.com/pachterlab/sleuth/issues]8;;&gt;.</code></pre>
+  Please report the issue at &lt;https://github.com/pachterlab/sleuth/issues&gt;.
+This warning is displayed once every 8 hours.
+Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+generated.</code></pre>
 <pre class="r"><code>sleuth.rownames &lt;- strsplit2(rownames(sleuth.matrix),&quot;\\|&quot;)[,2]
 keep.sleuth &lt;- 
   apply(sleuth.matrix,1,basic_filter) &amp; 
@@ -1704,7 +1743,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_overdispersion-1.png" target="_blank">1839ef1</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_overdispersion-1.png" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1781,7 +1820,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_mds-1.png" target="_blank">1839ef1</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_mds-1.png" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1838,7 +1877,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_md-1.png" target="_blank">1839ef1</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_md-1.png" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1852,7 +1891,7 @@ Pedro Baldoni
 </div>
 </div>
 <p>Panel (c) is created below.</p>
-<pre class="r"><code>foo.lolipop &lt;- 
+<pre class="r"><code>foo.lollipop &lt;- 
   function(symbols,gene.table,transcript.table, fontsize = 8,
            legend = c(0.9,0.9),
            colornames = c(&#39;NotSig&#39; = &#39;black&#39;,&#39;Up&#39; = &#39;red&#39;,&#39;Down&#39; = &#39;blue&#39;)){
@@ -1896,10 +1935,10 @@ Pedro Baldoni
                                    override.aes = list(size = 0.75)))
   }
 
-plot.lolipop &lt;- wrap_elements(foo.lolipop(symbols = c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),
+plot.lollipop &lt;- wrap_elements(foo.lollipop(symbols = c(&#39;EGLN3&#39;,&#39;RAF1&#39;,&#39;MET&#39;,&#39;AKT1&#39;,&#39;BCL2L1&#39;),
                                           gene.table = out.gene,
                                           transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
-plot.lolipop</code></pre>
+plot.lollipop</code></pre>
 <p><img src="figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-casestudy_res_txgene_loliplot-1">
@@ -1925,7 +1964,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" target="_blank">1839ef1</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/1839ef1c705729d0a3c8c0c078610bb93cbf8c25/docs/figure/casestudy.Rmd/casestudy_res_txgene_loliplot-1.png" target="_blank">1839ef1</a>
 </td>
 <td>
 Pedro Baldoni
@@ -1962,7 +2001,7 @@ GK &lt;- getGeneKEGGLinks(species.KEGG = &quot;hsa&quot;)
 
 interestGenes.ns.cancer &lt;-
   interestGenes.ns[interestGenes.ns %in% 
-                     GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+                     GK$GeneID[GK$PathwayID %in% c(&#39;hsa05223&#39;,&#39;hsa05200&#39;)]]
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns.cancer)</code></pre>
@@ -2022,7 +2061,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_heat-1.png" target="_blank">afee716</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_heat-1.png" target="_blank">afee716</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2042,7 +2081,7 @@ Pedro Baldoni
 
 fig.panel &lt;- wrap_plots(A = plot.mds,
                         B = plot.md,
-                        C = plot.lolipop,
+                        C = plot.lollipop,
                         D = plot.heat.cancer,
                         design = plot.design,
                         heights = c(0.35,0.25,0.4)) +
@@ -2123,7 +2162,7 @@ interestGenes.s.cancer &lt;-
 length(interestGenes.s)</code></pre>
 <pre><code>[1] 403</code></pre>
 <pre class="r"><code>length(interestGenes.s.cancer)</code></pre>
-<pre><code>[1] 12</code></pre>
+<pre><code>[1] 0</code></pre>
 <pre class="r"><code># Creating heatmat for such genes and their DE transcripts
 
 df.tx.gene.s &lt;-
@@ -2178,7 +2217,18 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" target="_blank">280d68a</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/69f0aa2ddfea2b82c6611d0c02fb0d4976452fd8/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" target="_blank">69f0aa2</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-02-25
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-1.png" target="_blank">280d68a</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2217,7 +2267,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">280d68a</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">280d68a</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2292,7 +2342,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_overdispersion-1.png" target="_blank">afee716</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_txgene_overdispersion-1.png" target="_blank">afee716</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2326,7 +2376,7 @@ kb.output.gene.top &lt;-
       caption = cap.mao,
       digits = 2,
       align = c(&#39;lllcc&#39;),
-      col.names = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Entrez ID&#39;,&#39;Biotype&#39;,&#39;Overdispersion&#39;)) %&gt;%
+      col.names = c(&#39;Ensembl ID&#39;,&#39;Symbol&#39;,&#39;Biotype&#39;,&#39;Entrez ID&#39;,&#39;Overdispersion&#39;)) %&gt;%
   kable_styling(latex_options = c(&quot;scale_down&quot;,&quot;repeat_header&quot;),font_size = 10)</code></pre>
 <pre><code>Warning in styling_latex_scale_down(out, table_info): Longtable cannot be
 resized.</code></pre>
@@ -2596,7 +2646,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_venn-1.png" target="_blank">afee716</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_venn-1.png" target="_blank">afee716</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2646,7 +2696,7 @@ Date
 <tbody>
 <tr>
 <td>
-<a href="https://github.com/plbaldoni/TranscriptDE-wf/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_ma-1.png" target="_blank">afee716</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/afee716717c8de657a9fc99f4f99ff45038404e0/docs/figure/casestudy.Rmd/casestudy_res_sepe_ma-1.png" target="_blank">afee716</a>
 </td>
 <td>
 Pedro Baldoni
@@ -2719,91 +2769,91 @@ attached base packages:
 
 other attached packages:
  [1] ensembldb_2.22.0            AnnotationFilter_1.22.0    
- [3] GenomicFeatures_1.50.4      AnnotationDbi_1.60.0       
+ [3] GenomicFeatures_1.50.4      AnnotationDbi_1.60.2       
  [5] kableExtra_1.3.4            magrittr_2.0.3             
  [7] ggplot2_3.4.1               ragg_1.2.5                 
- [9] tibble_3.1.8                ComplexHeatmap_2.14.0      
+ [9] tibble_3.2.1                ComplexHeatmap_2.14.0      
 [11] patchwork_1.1.2             sleuth_0.30.0              
 [13] fishpond_2.4.1              SummarizedExperiment_1.28.0
 [15] Biobase_2.58.0              GenomicRanges_1.50.2       
 [17] GenomeInfoDb_1.34.9         IRanges_2.32.0             
-[19] S4Vectors_0.36.1            MatrixGenerics_1.10.0      
+[19] S4Vectors_0.36.2            MatrixGenerics_1.10.0      
 [21] matrixStats_0.63.0          tximeta_1.16.1             
-[23] data.table_1.14.6           AnnotationHub_3.6.0        
-[25] BiocFileCache_2.6.0         dbplyr_2.3.0               
+[23] data.table_1.14.8           AnnotationHub_3.6.0        
+[25] BiocFileCache_2.6.1         dbplyr_2.3.2               
 [27] BiocGenerics_0.44.0         plyr_1.8.8                 
-[29] edgeR_3.40.2                limma_3.54.1               
+[29] edgeR_3.40.2                limma_3.54.2               
 [31] workflowr_1.7.0            
 
 loaded via a namespace (and not attached):
   [1] circlize_0.4.15               systemfonts_1.0.4            
   [3] lazyeval_0.2.2                splines_4.2.1                
-  [5] BiocParallel_1.32.5           digest_0.6.31                
-  [7] foreach_1.5.2                 htmltools_0.5.4              
+  [5] BiocParallel_1.32.6           digest_0.6.31                
+  [7] foreach_1.5.2                 htmltools_0.5.5              
   [9] fansi_1.0.4                   memoise_2.0.1                
  [11] svMisc_1.2.3                  cluster_2.1.4                
  [13] doParallel_1.0.17             tzdb_0.3.0                   
  [15] readr_2.1.4                   Biostrings_2.66.0            
  [17] vroom_1.6.1                   svglite_2.1.1                
  [19] prettyunits_1.1.1             colorspace_2.1-0             
- [21] rvest_1.0.3                   blob_1.2.3                   
+ [21] rvest_1.0.3                   blob_1.2.4                   
  [23] rappdirs_0.3.3                textshaping_0.3.6            
- [25] xfun_0.37                     dplyr_1.1.0                  
+ [25] xfun_0.38                     dplyr_1.1.1                  
  [27] callr_3.7.3                   crayon_1.5.2                 
- [29] RCurl_1.98-1.10               jsonlite_1.8.4               
+ [29] RCurl_1.98-1.12               jsonlite_1.8.4               
  [31] tximport_1.26.1               iterators_1.0.14             
- [33] glue_1.6.2                    gtable_0.3.1                 
+ [33] glue_1.6.2                    gtable_0.3.3                 
  [35] zlibbioc_1.44.0               XVector_0.38.0               
  [37] webshot_0.5.4                 GetoptLong_1.0.5             
  [39] DelayedArray_0.24.0           Rhdf5lib_1.20.0              
- [41] shape_1.4.6                   SingleCellExperiment_1.20.0  
+ [41] shape_1.4.6                   SingleCellExperiment_1.20.1  
  [43] abind_1.4-5                   scales_1.2.1                 
  [45] DBI_1.1.3                     Rcpp_1.0.10                  
  [47] viridisLite_0.4.1             xtable_1.8-4                 
  [49] progress_1.2.2                clue_0.3-64                  
  [51] gridGraphics_0.5-1            bit_4.0.5                    
- [53] httr_1.4.4                    RColorBrewer_1.1-3           
+ [53] httr_1.4.5                    RColorBrewer_1.1-3           
  [55] ellipsis_0.3.2                farver_2.1.1                 
- [57] pkgconfig_2.0.3               XML_3.99-0.13                
+ [57] pkgconfig_2.0.3               XML_3.99-0.14                
  [59] sass_0.4.1                    locfit_1.5-9.7               
  [61] utf8_1.2.3                    labeling_0.4.2               
  [63] reshape2_1.4.4                tidyselect_1.2.0             
- [65] rlang_1.0.6                   later_1.3.0                  
+ [65] rlang_1.1.0                   later_1.3.0                  
  [67] munsell_0.5.0                 BiocVersion_3.16.0           
- [69] tools_4.2.1                   cachem_1.0.6                 
- [71] cli_3.6.0                     generics_0.1.3               
- [73] RSQLite_2.2.20                evaluate_0.20                
- [75] stringr_1.5.0                 fastmap_1.1.0                
+ [69] tools_4.2.1                   cachem_1.0.7                 
+ [71] cli_3.6.1                     generics_0.1.3               
+ [73] RSQLite_2.3.0                 evaluate_0.20                
+ [75] stringr_1.5.0                 fastmap_1.1.1                
  [77] yaml_2.3.7                    processx_3.8.0               
  [79] knitr_1.42                    bit64_4.0.5                  
  [81] fs_1.6.1                      purrr_1.0.1                  
  [83] KEGGREST_1.38.0               nlme_3.1-162                 
  [85] whisker_0.4.1                 mime_0.12                    
- [87] xml2_1.3.3                    biomaRt_2.54.0               
+ [87] xml2_1.3.3                    biomaRt_2.54.1               
  [89] compiler_4.2.1                rstudioapi_0.14              
  [91] filelock_1.0.2                curl_5.0.0                   
  [93] png_0.1-8                     interactiveDisplayBase_1.36.0
  [95] statmod_1.5.0                 bslib_0.4.2                  
  [97] stringi_1.7.12                highr_0.10                   
- [99] ps_1.7.2                      lattice_0.20-45              
+ [99] ps_1.7.3                      lattice_0.20-45              
 [101] ProtGenerics_1.30.0           Matrix_1.5-3                 
-[103] vctrs_0.5.2                   pillar_1.8.1                 
-[105] lifecycle_1.0.3               rhdf5filters_1.10.0          
-[107] BiocManager_1.30.19           jquerylib_0.1.4              
+[103] vctrs_0.6.1                   pillar_1.9.0                 
+[105] lifecycle_1.0.3               rhdf5filters_1.10.1          
+[107] BiocManager_1.30.20           jquerylib_0.1.4              
 [109] GlobalOptions_0.1.2           bitops_1.0-7                 
-[111] qvalue_2.30.0                 httpuv_1.6.5                 
+[111] qvalue_2.30.0                 httpuv_1.6.9                 
 [113] rtracklayer_1.58.0            R6_2.5.1                     
 [115] BiocIO_1.8.0                  promises_1.2.0.1             
 [117] codetools_0.2-19              gtools_3.9.4                 
-[119] assertthat_0.2.1              rhdf5_2.42.0                 
-[121] rprojroot_2.0.3               rjson_0.2.21                 
-[123] withr_2.5.0                   GenomicAlignments_1.34.0     
-[125] Rsamtools_2.14.0              GenomeInfoDbData_1.2.9       
-[127] mgcv_1.8-41                   parallel_4.2.1               
-[129] hms_1.1.2                     tidyr_1.3.0                  
-[131] rmarkdown_2.20                Cairo_1.6-0                  
-[133] git2r_0.31.0                  getPass_0.2-2                
-[135] shiny_1.7.4                   restfulr_0.0.15              </code></pre>
+[119] rhdf5_2.42.0                  rprojroot_2.0.3              
+[121] rjson_0.2.21                  withr_2.5.0                  
+[123] GenomicAlignments_1.34.1      Rsamtools_2.14.0             
+[125] GenomeInfoDbData_1.2.9        mgcv_1.8-42                  
+[127] parallel_4.2.1                hms_1.1.3                    
+[129] tidyr_1.3.0                   rmarkdown_2.21               
+[131] Cairo_1.6-0                   git2r_0.31.0                 
+[133] getPass_0.2-2                 shiny_1.7.4                  
+[135] restfulr_0.0.15              </code></pre>
 </div>
 </div>
 </div>
