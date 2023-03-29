@@ -728,7 +728,7 @@ plot.md
 Panel (c) is created below.
 
 ```{r casestudy_res_txgene_loliplot}
-foo.lolipop <- 
+foo.lollipop <- 
   function(symbols,gene.table,transcript.table, fontsize = 8,
            legend = c(0.9,0.9),
            colornames = c('NotSig' = 'black','Up' = 'red','Down' = 'blue')){
@@ -772,10 +772,10 @@ foo.lolipop <-
                                    override.aes = list(size = 0.75)))
   }
 
-plot.lolipop <- wrap_elements(foo.lolipop(symbols = c('EGLN3','RAF1','MET','AKT1','BCL2L1'),
+plot.lollipop <- wrap_elements(foo.lollipop(symbols = c('EGLN3','RAF1','MET','AKT1','BCL2L1'),
                                           gene.table = out.gene,
                                           transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
-plot.lolipop
+plot.lollipop
 ```
 
 Finally, we create panel (d). We use that package `ComplexHeatmap` @gu2016complex to create the heatmap plot.
@@ -802,7 +802,7 @@ GK <- getGeneKEGGLinks(species.KEGG = "hsa")
 
 interestGenes.ns.cancer <-
   interestGenes.ns[interestGenes.ns %in% 
-                     GK$GeneID[GK$PathwayID %in% c('path:hsa05223','path:hsa05200')]]
+                     GK$GeneID[GK$PathwayID %in% c('hsa05223','hsa05200')]]
 
 # Number of non-significant genes for which at least one of their transcripts is DE
 length(interestGenes.ns.cancer)
@@ -846,7 +846,7 @@ plot.design <- c(area(1, 1),area(1,2),area(2,1,2,2),area(3,1,3,2))
 
 fig.panel <- wrap_plots(A = plot.mds,
                         B = plot.md,
-                        C = plot.lolipop,
+                        C = plot.lollipop,
                         D = plot.heat.cancer,
                         design = plot.design,
                         heights = c(0.35,0.25,0.4)) +
@@ -1017,7 +1017,7 @@ kb.output.gene.top <-
       caption = cap.mao,
       digits = 2,
       align = c('lllcc'),
-      col.names = c('Ensembl ID','Symbol','Entrez ID','Biotype','Overdispersion')) %>%
+      col.names = c('Ensembl ID','Symbol','Biotype','Entrez ID','Overdispersion')) %>%
   kable_styling(latex_options = c("scale_down","repeat_header"),font_size = 10)
 save_kable(kb.output.gene.top,file = file.path(path.misc,"supptable_overdispersion.tex"))
 
