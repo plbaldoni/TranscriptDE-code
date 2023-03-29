@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0dbb40296205189e4450c400ce7f5460d01ae4b9targetblank0dbb402a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree527c405e6af4ee4dac95a5cf531339d17fcf13e3targetblank527c405a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0dbb40296205189e4450c400ce7f5460d01ae4b9" target="_blank">0dbb402</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/527c405e6af4ee4dac95a5cf531339d17fcf13e3" target="_blank">527c405</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0dbb40296205189e4450c400ce7f5460d01ae4b9targetblank0dbb402a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree527c405e6af4ee4dac95a5cf531339d17fcf13e3targetblank527c405a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0dbb40296205189e4450c400ce7f5460d01ae4b9" target="_blank">0dbb402</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/527c405e6af4ee4dac95a5cf531339d17fcf13e3" target="_blank">527c405</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -635,7 +635,6 @@ Ignored files:
     Ignored:    output/simulation/
 
 Unstaged changes:
-    Modified:   misc/casestudy.Rmd/figure6.png
     Modified:   misc/casestudy.Rmd/supptable_overdispersion.tex
 
 </code></pre>
@@ -682,6 +681,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/527c405e6af4ee4dac95a5cf531339d17fcf13e3/analysis/casestudy.Rmd" target="_blank">527c405</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+<td>
+Fix KEGG link
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/69e688c3bfd52873796a70a0930caddd4af6e150/docs/casestudy.html" target="_blank">69e688c</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2156,13 +2189,13 @@ interestGenes.s &lt;-
                       df.tx.gene$GeneOfInterest == TRUE,&quot;EntrezID&quot;])
 
 interestGenes.s.cancer &lt;-
-  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c(&#39;path:hsa05223&#39;,&#39;path:hsa05200&#39;)]]
+  interestGenes.s[interestGenes.s %in% GK$GeneID[GK$PathwayID %in% c(&#39;hsa05223&#39;,&#39;hsa05200&#39;)]]
 
 # Number of significant genes (and cancer-related genes) for which at least one of their transcripts is DE and going in the opposite direction
 length(interestGenes.s)</code></pre>
 <pre><code>[1] 403</code></pre>
 <pre class="r"><code>length(interestGenes.s.cancer)</code></pre>
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 12</code></pre>
 <pre class="r"><code># Creating heatmat for such genes and their DE transcripts
 
 df.tx.gene.s &lt;-
@@ -2265,6 +2298,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/69e688c3bfd52873796a70a0930caddd4af6e150/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">69e688c</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/280d68a0139304b4aefb0bec01c03fbd77e3b251/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">280d68a</a>
