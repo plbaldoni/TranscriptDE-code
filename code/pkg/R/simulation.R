@@ -158,8 +158,8 @@ simulateFASTQ <- function(fasta,n.libs,lib.sizes,dest,tmpdir,paired.end,
   
   # Checking if simulation has already been run
   dir.create(dest,showWarnings = FALSE,recursive = TRUE)
-  out.files <- file.path(dest,c('counts.tsv.gz','targets.tsv.gz'))
-  names(out.files) <- c('counts','targets')
+  out.files <- file.path(dest,c('counts.tsv.gz','targets.tsv.gz','tpm.tsv.gz'))
+  names(out.files) <- c('counts','targets','tpm')
   if (all(file.exists(out.files))) {
     message('Reads already simulated!')
     return(invisible(NULL))
@@ -206,6 +206,12 @@ simulateFASTQ <- function(fasta,n.libs,lib.sizes,dest,tmpdir,paired.end,
   out <- cbind(contigs[,c("TranscriptID","Length",'GeneID')],'status' = txTPM$de,mat)
   rownames(out) <- NULL
   write_tsv(x = out,file = out.files['counts'],col_names = TRUE,quote = 'none')
+  
+  out.tpm <- txTPM$tpm
+  out.tpm[is.na(out.tpm)] <- 0L
+  out.tpm <- cbind(contigs[,c("TranscriptID","Length",'GeneID')],'status' = txTPM$de,out.tpm)
+  rownames(out.tpm) <- NULL
+  write_tsv(x = out.tpm,file = out.files['tpm'],col_names = TRUE,quote = 'none')
   
   targets <- data.frame('R1' = out.fastq[grepl("R1.fastq.gz",out.fastq)])
   if (isTRUE(paired.end)) {
