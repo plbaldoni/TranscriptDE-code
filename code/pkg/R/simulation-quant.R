@@ -32,7 +32,7 @@ runSalmon <- function(bin,index,targets,dest,
     
     if (isTRUE(run)) {
       if (isFALSE(paired.end)) {
-        cmd.sample <- paste('-r',targets.file)
+        cmd.sample <- paste('--fldMean 180 --fldSD 40 -r',targets.file)
       } else {
         cmd.sample <- paste(c('-1','-2'),targets.file,collapse = ' ')
       }
