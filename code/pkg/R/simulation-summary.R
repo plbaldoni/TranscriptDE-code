@@ -489,7 +489,7 @@ summarizeSimulation <- function(path,
                                 read = c('single-end','paired-end'),
                                 tx.per.gene = c(2,3,4,5,9999),
                                 scenario = c('balanced','unbalanced'),
-                                libs.per.group = c(3,5), workers = 1){
+                                libs.per.group = c(3,5,10), workers = 1){
 
   path <- normalizePath(path)
   dir.create(dest,showWarnings = FALSE,recursive = TRUE)
@@ -517,7 +517,7 @@ summarizeSimulation <- function(path,
 #' @importFrom kableExtra landscape collapse_rows
 tabulateMetrics <- function(x,cap,
                             seq.len = seq(50,150,25),
-                            lib.group = c(3,5),
+                            lib.group = c(3,5,10),
                             lib.size = c('50M','25/100M'),
                             color = TRUE,
                             color.fdr = 0.05,

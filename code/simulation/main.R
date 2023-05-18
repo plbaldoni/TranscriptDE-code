@@ -15,15 +15,16 @@ max.tx <- as.integer(args[['mtx']])
 scenario <- args[['scenario']]
 libs.per.group <- as.integer(args[['libs']])
 workers <- as.integer(args[['workers']])
+projdir <- normalizePath(file.path(dirname(as.character(args[['file']])),"../.."))
 ################################################################################
 
 tmpdir <- tempdir(check = TRUE)
 print(tmpdir)
 
-devtools::load_all("../pkg")
+devtools::load_all(file.path(projdir,"code/pkg"))
 
 if (genome == 'mm39') {
-  fasta <- '../../data/annotation/mm39/gencode.vM27.transcripts.fa.gz'
+  fasta <- file.path(projdir,'data/annotation/mm39/gencode.vM27.transcripts.fa.gz')
 } else {
   stop('only simulations for mm39 were run')
 }
@@ -37,7 +38,7 @@ if (scenario == 'unbalanced') {
   lib.sizes <- rep(rep(c(25e6,100e6),length.out = libs.per.group),2)
 }
 
-dest <- '../../output/simulation/'
+dest <- normalizePath('.')
 dir.create(dest,showWarnings = FALSE,recursive = TRUE)
 
 simulateExperiment(dest = dest,

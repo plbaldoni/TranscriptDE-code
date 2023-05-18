@@ -12,7 +12,7 @@ for (genome in c('mm39')) {
       for (scenario in c('balanced', 'unbalanced')) {
         for (paired.end in c(FALSE, TRUE)) {
           for (max.tx in c(2, 3, 4, 5, 9999)) {
-            for (libs.per.group in c(3, 5)) {
+            for (libs.per.group in c(3, 5, 10)) {
               for (simulation in 1:20) {
                 dest <- file.path(dest.data,
                                   genome,
