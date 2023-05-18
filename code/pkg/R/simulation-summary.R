@@ -175,25 +175,32 @@ computeFDRCurve <- function(x,simulation,features,fdr,seq.n){
 #' @importFrom ggplot2 ggplot geom_line theme_bw scale_color_manual
 #' @importFrom ggplot2 scale_x_continuous theme element_blank labs aes
 #' @importFrom ggplot2 scale_y_continuous geom_abline facet_grid vars
-plotFDRCurve <- function(x,max.n){
+plotFDRCurve <- function(x,max.n,base_size = 8){
 
   meth <- methodsNames()
 
   plot <- ggplot(x,aes(x = N,y = FDR,color = Method,group = Method)) +
     facet_grid(rows = vars(LibsPerGroup),cols = vars(TxPerGene)) +
     geom_line(size = 0.75) +
-    theme_bw() +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     scale_color_manual(values = meth$color) +
     scale_y_continuous(limits = c(0,1300)) +
-    theme(panel.grid = element_blank(),
-          legend.position = 'top',legend.title = element_blank()) +
-    labs(y = 'False discoveries',x = 'Transcripts chosen')
+    theme(strip.text = element_text(colour = 'black',size = base_size),
+          legend.background = element_rect(fill = alpha('white', 0)),
+          legend.text = element_text(size = base_size),
+          legend.title = element_blank(),
+          legend.key.size = unit(0.75,"line"),
+          legend.position = 'top',
+          panel.grid = element_blank(),
+          axis.text = element_text(colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size)) +
+          labs(y = 'False discoveries',x = 'Transcripts chosen')
 
-  return(plot)
+          return(plot)
 }
 
 #' @importFrom ggplot2 geom_col geom_text scale_fill_brewer
-plotPowerBars <- function(x,fdr,max.n){
+plotPowerBars <- function(x,fdr,max.n,base_size = 8){
 
   sub.byvar <- colnames(x)[-which(colnames(x) %in% c('P.SIG','TP','FP'))]
 
@@ -210,20 +217,26 @@ plotPowerBars <- function(x,fdr,max.n){
     geom_col() +
     geom_text(aes(x = Method,y = (TP + FP) + gap,
                   label = roundPretty(ifelse((FP+TP) == 0,NA,100*FP/(FP+TP)),1)),
-              inherit.aes = FALSE,data = x,vjust = 0) +
-    theme_bw() +
+              inherit.aes = FALSE,data = x,vjust = 0,size = base_size/.pt) +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     scale_fill_brewer(palette = 'Set1') +
     labs(x = NULL,y = paste('# DE Transcripts at FDR <',roundPretty(fdr,2))) +
     scale_y_continuous(limits = c(0,max.n)) +
-    theme(panel.grid.major.x = element_blank(),
+    theme(strip.text = element_text(colour = 'black',size = base_size),
+          panel.grid.major.x = element_blank(),
           panel.grid.minor.x = element_blank(),
-          legend.position = 'top',legend.title = element_blank(),
-          axis.text.x = element_text(angle = 90))
+          legend.position = 'top',
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = 90,colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size),
+          legend.background = element_rect(fill = alpha('white', 0)),
+          legend.text = element_text(size = base_size),
+          legend.key.size = unit(0.75,"line"))
 
   return(plot)
 }
 
-plotType1Error <- function(x,alpha){
+plotType1Error <- function(x,alpha,base_size = 8){
 
   sub.byvar <- colnames(x)[-which(colnames(x) %in% c('P.SIG','TP','FP'))]
 
@@ -233,13 +246,20 @@ plotType1Error <- function(x,alpha){
   plot <- ggplot(x.melt,aes(x = Method,y = Value)) +
     facet_grid(rows = vars(LibsPerGroup),cols = vars(TxPerGene)) +
     geom_col() +
-    theme_bw() +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     geom_hline(yintercept = alpha,color = 'red',linetype = 'dashed') +
     labs(x = NULL,y = paste('Proportion of transcripts with p-value <',roundPretty(alpha,2))) +
-    theme(panel.grid.major.x = element_blank(),
+    theme(strip.text = element_text(colour = 'black',size = base_size),
+          legend.background = element_rect(fill = alpha('white', 0)),
+          legend.text = element_text(size = base_size),
+          legend.title = element_blank(),
+          legend.key.size = unit(0.75,"line"),
+          legend.position = 'top',
+          panel.grid.major.x = element_blank(),
           panel.grid.minor.x = element_blank(),
-          legend.position = 'top',legend.title = element_blank(),
-          axis.text.x = element_text(angle = 90))
+          axis.text.x = element_text(angle = 90),
+          axis.text = element_text(colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size))
 
   return(plot)
 }
@@ -269,31 +289,41 @@ summarizePValue <- function(x,byvar,step = 0.05){
 }
 
 #' @importFrom ggplot2 facet_wrap geom_histogram geom_hline scale_x_discrete rel
-plotPValues <- function(x){
+plotPValues <- function(x,base_size = 8){
   plot <- ggplot(data = x,aes(x = PValue,y = Density.Avg)) +
     facet_grid(rows = vars(LibsPerGroup),cols = vars(Method)) +
     geom_col(col = 'black',fill = 'grey',position = position_dodge(0.9),width = 0.8) +
     geom_hline(yintercept = 1,col = 'red',linetype = 'dashed') +
-    theme_bw() +
-    theme(panel.grid = element_blank(),
-          axis.text.x = element_text(angle = 90,size = rel(0.75)),
-          strip.text.y = element_text(size = rel(0.75))) +
+    theme_bw(base_size = base_size,base_family = 'sans') +
+    theme(strip.text = element_text(colour = 'black',size = base_size),
+          legend.background = element_rect(fill = alpha('white', 0)),
+          legend.text = element_text(size = base_size),
+          legend.title = element_blank(),
+          legend.key.size = unit(0.75,"line"),
+          legend.position = 'top',
+          panel.grid = element_blank(),
+          axis.text.x = element_text(angle = 90),
+          axis.text = element_text(colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size)) +
     labs(x = 'P-values',y = 'Density')
   return(plot)
 }
 
 #' @importFrom ggplot2 geom_bar position_dodge element_text
-plotTime <- function(x){
+plotTime <- function(x,base_size = 8){
   plot <- ggplot(data = x,aes(x = Method,y = Time)) +
     facet_grid(rows = vars(LibsPerGroup),cols = vars(TxPerGene)) +
     geom_bar(stat = 'identity',position = position_dodge()) +
-    theme_bw() +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     scale_y_continuous(limits = c(0,max(5,max(x$Time)))) +
     theme(panel.grid.major.x = element_blank(),
           panel.grid.minor.x = element_blank(),
           panel.grid.minor.y = element_blank(),
-          legend.position = 'top',legend.title = element_blank(),
-          axis.text.x = element_text(angle = 90)) +
+          legend.position = 'top',
+          legend.title = element_blank(),
+          axis.text.x = element_text(angle = 90,colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size),
+          strip.text = element_text(colour = 'black',size = base_size)) +
     labs(y = 'Time (min)',x = NULL)
   return(plot)
 }
@@ -353,8 +383,7 @@ summarizeQQ <- function(x,byvar,step = 0.001){
   return(table)
 }
 
-plotQQPlot <- function(x){
-
+plotQQPlot <- function(x,base_size = 8){
   meth <- methodsNames()
 
   plot <- ggplot(x,
@@ -363,12 +392,18 @@ plotQQPlot <- function(x){
     # geom_abline(intercept = 0,slope = 1,colour = 'black',linetype = 'dashed') +
     geom_line(alpha = 0,size = 0) +
     geom_point(pch = '.',size = 2) +
-    theme_bw() +
+    theme_bw(base_size = base_size,base_family = 'sans') +
     scale_color_manual(values = meth$color) +
     scale_x_continuous(breaks = c(0,0.5,1),labels = c(0,0.5,1)) +
-    theme(panel.grid = element_blank(),
+    theme(strip.text = element_text(colour = 'black',size = base_size),
+          legend.background = element_rect(fill = alpha('white', 0)),
+          legend.text = element_text(size = base_size),
+          legend.title = element_blank(),
+          legend.key.size = unit(0.75,"line"),
           legend.position = 'top',
-          legend.title = element_blank()) +
+          panel.grid = element_blank(),
+          axis.text = element_text(colour = 'black',size = base_size),
+          axis.title = element_text(colour = 'black',size = base_size)) +
     labs(y = 'Sample Quantiles',x = 'Theoretical Quantiles')
 
   return(plot)
@@ -574,12 +609,12 @@ tabulateMetrics <- function(x,cap,
             col.names = c('Read','Samples/Group','Library Size','Read Length',rep(methods,2)),...) %>%
     add_header_above(c(" " = 4, "Power" = length(methods), "False Discovery Rate" = length(methods))) %>%
     { if(format == 'latex'){
-        kable_styling(kable_input = .,latex_options = "scale_down") %>%
+      kable_styling(kable_input = .,latex_options = "scale_down") %>%
         collapse_rows(columns = 1, latex_hline = "major", valign = "top")
-      } else{
-        kable_styling(kable_input = .,bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+    } else{
+      kable_styling(kable_input = .,bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
         collapse_rows(kable_input = .,columns = 1, valign = "top")
-      }
+    }
     } %>%
     landscape()
 
