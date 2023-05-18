@@ -1,6 +1,6 @@
 #!/bin/bash 
 #SBATCH --job-name=tx-pipe
-#SBATCH --array=601-800
+#SBATCH --array=801-1000
 #SBATCH --mem=66G
 #SBATCH --cpus-per-task=11
 #SBATCH --time=48:00:00
@@ -12,8 +12,8 @@ CurrentDir=$(pwd)
 MaxJobNum=$(tail -n +2 parameters.txt | wc -l)
 
 # Turn on below for job numbers greater than 1000 (there is an array limit in the HPC)
-# StepSize=3000
-# SLURM_ARRAY_TASK_ID=$((SLURM_ARRAY_TASK_ID+StepSize))
+StepSize=4000
+SLURM_ARRAY_TASK_ID=$((SLURM_ARRAY_TASK_ID+StepSize))
 
 # If array job is greater than the maximum number of jobs, exit
 if [[ $SLURM_ARRAY_TASK_ID -gt $MaxJobNum ]]; then

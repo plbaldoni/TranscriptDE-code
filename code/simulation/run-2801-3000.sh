@@ -1,13 +1,13 @@
 #!/bin/bash 
 #SBATCH --job-name=tx-pipe
 #SBATCH --array=801-1000
-#SBATCH --mem=36G
-#SBATCH --cpus-per-task=6
+#SBATCH --mem=66G
+#SBATCH --cpus-per-task=11
 #SBATCH --time=48:00:00
 #SBATCH --qos=bonus
 #SBATCH --output=slurm-%A_%a.out
 
-workers=6
+workers=10
 CurrentDir=$(pwd)
 MaxJobNum=$(tail -n +2 parameters.txt | wc -l)
 
