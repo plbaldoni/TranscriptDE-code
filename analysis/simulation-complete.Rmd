@@ -4,7 +4,7 @@ author: "Pedro L. Baldoni"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: workflowr::wflow_html
 editor_options:
-  chunk_output_type: console
+  chunk_output_type: inline
 bibliography: ../misc/bibliography/bibliography.bib
 ---
 
@@ -14,24 +14,27 @@ In this report, we present the analysis of the simulations for the `catchSalmon`
 
 ## News
 
+- Changes in version 230518:
+- With single-end experiments, we now give salmon the true mean/sd of the fragment length distribution. Inclusion of a new simulation scenario with n=10 samples per group.
+
 - Changes in version 221123:
-  - Fix paragraph that discusses average fragment length from `Salmon` and `kallisto`. Fix paths to new location in workflowr directory.
+- Fix paragraph that discusses average fragment length from `Salmon` and `kallisto`. Fix paths to new location in workflowr directory.
 
 - Changes in version 221105:
-  - Simulations with 50, 75, and 100 base pairs read length were re-run with `simReads` option `fragment.length.min = 150L` to match the specifications of the simulations using 125bp and 150bp read length.
+- Simulations with 50, 75, and 100 base pairs read length were re-run with `simReads` option `fragment.length.min = 150L` to match the specifications of the simulations using 125bp and 150bp read length.
 
 - Changes in version 221007:
-  - Adding simulations with read length 125bp and 150bp to assess methods' performance under different read lengths.
+- Adding simulations with read length 125bp and 150bp to assess methods' performance under different read lengths.
 
 - Changes in version 221007:
-  - Adding simulations with read length of 50bp and 100bp to assess methods' performance under different read lengths.
+- Adding simulations with read length of 50bp and 100bp to assess methods' performance under different read lengths.
 
 - Changes in version 220822:
-  - The simulations are designed in such a way that TPM values are directly generated for transcripts. Previously, we found that a two-stage approach with a Dirichlet random variable to split gene-level expression into transcripts was not realistic.
-  - Transcript ranks from our reference dataset are now based on Salmon's TPM from real data, not raw counts.
-  - Increased the library size from 30 mi. reads to 50 mi. reads in the balanced scenario. For unbalanced scenario, libraries alternate between 25 mi. and 100 mil. reads in size.
-  - Inclusion of an extra scenario with 5 replicates per group. We only had 3 replicates/group until now.
-  - We now use `edgeR::goodTuring` to generate baseline expression values. Previously we used the Zipf law, which we thought to be unrealistic for the number of transcripts we are simulating. The BCV trend is of the form $\text{BCV} = 0.2 + 1/\sqrt{\text{expression}}$ with gene- and group-specific dispersion of the form $\text{Dispersion} = BCV^2\times\frac{40}{\chi^2_{40}}$. The motivation for these changes is mainly to match the simulation setup used in the `voom` paper.
+- The simulations are designed in such a way that TPM values are directly generated for transcripts. Previously, we found that a two-stage approach with a Dirichlet random variable to split gene-level expression into transcripts was not realistic.
+- Transcript ranks from our reference dataset are now based on Salmon's TPM from real data, not raw counts.
+- Increased the library size from 30 mi. reads to 50 mi. reads in the balanced scenario. For unbalanced scenario, libraries alternate between 25 mi. and 100 mil. reads in size.
+- Inclusion of an extra scenario with 5 replicates per group. We only had 3 replicates/group until now.
+- We now use `edgeR::goodTuring` to generate baseline expression values. Previously we used the Zipf law, which we thought to be unrealistic for the number of transcripts we are simulating. The BCV trend is of the form $\text{BCV} = 0.2 + 1/\sqrt{\text{expression}}$ with gene- and group-specific dispersion of the form $\text{Dispersion} = BCV^2\times\frac{40}{\chi^2_{40}}$. The motivation for these changes is mainly to match the simulation setup used in the `voom` paper.
 
 ## Setup
 
@@ -83,7 +86,7 @@ More specifically, the selection of such a subset of relevant genes for which th
 
 ## Simulation of sequencing reads
 
-Simulation scenarios varied according to the sequencing read length (50bp, 75bp, 100bp, 125bp, and 150bp), library size (either balanced with 50mi reads/sample or unbalanced with alternating 100mi and 25mi reads/sample), sequencing read type (either single-end or paired-end), maximum number of transcripts per gene considered (either 2, 3, 4, 5, or all transcripts available in the reference data set), the number of biological replicates per group (either 3 or 5), and fold-change (either 2 or 1, in which the latter represents a null simulation without any differential expression). A total of 20 simulated experiments per scenario was generated. For each experiment, we simulated RNA-seq libraries for a total of 2 groups.
+Simulation scenarios varied according to the sequencing read length (50bp, 75bp, 100bp, 125bp, and 150bp), library size (either balanced with 50mi reads/sample or unbalanced with alternating 100mi and 25mi reads/sample), sequencing read type (either single-end or paired-end), maximum number of transcripts per gene considered (either 2, 3, 4, 5, or all transcripts available in the reference data set), the number of biological replicates per group (either 3, 5, or 10), and fold-change (either 2 or 1, in which the latter represents a null simulation without any differential expression). A total of 20 simulated experiments per scenario was generated. For each experiment, we simulated RNA-seq libraries for a total of 2 groups.
 
 The relative expression levels of selected transcripts (the input for `Rsubread::simReads`) was simulated as follows. First, for a particular scenario, baseline expression proportions were generated for all selected transcripts using the smoothed Good-Turing proportions from our reference dataset. The maximum number of transcripts/gene considered in a given scenario as well as the ranking of each transcript (obtained from the reference dataset) dictated the set of selected transcripts in a simulation with only the most expressed ones (top ranked) being selected. For example, in a scenario with only 3 transcripts per gene being expressed, we simulate a positive expression level for all transcripts from genes that express at most 1 or 2 transcripts and, for genes that expresses 3 or more transcripts, only the top-ranked 3 transcripts had a positive expression. A subset of 3000 randomly selected transcripts had their baseline proportions adjusted with a 2 fold-change to create group-specific proportions with 1500 up-regulated and 1500 down-regulated transcripts. For each group, proportions were then transformed to sample-specific expected counts $\mu_{ts}$, for transcript $t$ and sample $s$, depending on the library size of each sample. 
 
@@ -93,7 +96,7 @@ Expected counts and dispersions were used to generate transcript-level expressio
 
 ## Quantification
 
-Sequencing reads in FASTQ format generated by `simReads` were quantified by Salmon (v. 1.9.0) and kallisto (v. 0.46.1). For both quantification algorithms, we used transcriptomic index from the complete Gencode annotation (version M27) and we generated a total of 100 bootstraps samples for each library. For `Salmon`, we used a decoy-aware mapping-based indexed transcriptome generated for the mouse mm39 reference genome with k-mers of length 31. For Salmon, the option `--validateMappings` was used as recommended in the software documentation. For single-end read libraries, we provided kallisto the option `-l 180 -s 40` with the true mean and standard deviation fragment length that is the default and used in `simReads` (Salmon uses default values 250 and 25 in single-end library quantification). To read Salmon quantification files in `sleuth`, Salmon quantification files `quant.sf` were transformed to `abundance.h5` files with the function `prepare_fish_for_sleuth` from the `wasabi` package (v. 1.0.1).
+Sequencing reads in FASTQ format generated by `simReads` were quantified by Salmon (v. 1.9.0) and kallisto (v. 0.46.1). For both quantification algorithms, we used transcriptomic index from the complete Gencode annotation (version M27) and we generated a total of 100 bootstraps samples for each library. For `Salmon`, we used a decoy-aware mapping-based indexed transcriptome generated for the mouse mm39 reference genome with k-mers of length 31. For Salmon, the option `--validateMappings` was used as recommended in the software documentation. For single-end read libraries, we provided kallisto and salmon the true mean and standard deviation of the fragment length distribution (180 and 40, respectively) that is the default and used in `simReads`. To read Salmon quantification files in `sleuth`, Salmon quantification files `quant.sf` were transformed to `abundance.h5` files with the function `prepare_fish_for_sleuth` from the `wasabi` package (v. 1.0.1).
 
 ## Differential transcript expression
 
@@ -386,7 +389,7 @@ abline(v = log2(1/2),col = 'red')
 Now I run sleuth LRT:
 
 ```{r simulation-complete_sleuth-lrt}
-# See ../rfun/ function runSleuth
+# See ../pkg/ function runSleuth
 dge.sleuth_lrt <- runSleuth(targets = df.example.targets,test = 'lrt',quantifier = 'salmon')
 
 # Plotting false negatives
@@ -419,7 +422,7 @@ message('FDR = ',tb.metrics.sleuth_lrt['0','1']/sum(tb.metrics.sleuth_lrt[,'1'])
 Now I run sleuth Wald:
 
 ```{r simulation-complete_sleuth-wald}
-# See ../rfun/ function runSleuth
+# See ../pkg/ function runSleuth
 dge.sleuth_wald <- runSleuth(targets = df.example.targets,test = 'wald',quantifier = 'salmon')
 
 # Plotting false negatives
@@ -452,7 +455,7 @@ message('FDR = ',tb.metrics.sleuth_wald['0','1']/sum(tb.metrics.sleuth_wald[,'1'
 Now I run Swish:
 
 ```{r simulation-complete_swish}
-# See ../rfun/ function runSwish
+# See ../pkg/ function runSwish
 df.example.targets.swish <- df.example.targets
 df.example.targets.swish$group %<>% as.factor()
 
@@ -526,8 +529,9 @@ dt.fdr$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.fdr$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.fdr$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.fdr$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                              to = paste0(seq(50, 150, 25), 'bp'))
@@ -536,8 +540,9 @@ dt.metrics$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.metrics$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.metrics$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.metrics$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                  to = paste0(seq(50, 150, 25), 'bp'))
@@ -546,8 +551,9 @@ dt.time$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.time$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.time$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.time$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                               to = paste0(seq(50, 150, 25), 'bp'))
@@ -556,8 +562,9 @@ dt.quantile$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.quantile$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.quantile$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.quantile$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                   to = paste0(seq(50, 150, 25), 'bp'))
@@ -566,8 +573,9 @@ dt.pvalue$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.pvalue$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.pvalue$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.pvalue$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                 to = paste0(seq(50, 150, 25), 'bp'))
@@ -576,8 +584,9 @@ dt.overdispersion$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.overdispersion$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.overdispersion$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.overdispersion$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                         to = paste0(seq(50, 150, 25), 'bp'))
@@ -642,10 +651,10 @@ dt.scenario <- expand.grid('genome' = 'mm39',
 plots <- lapply(seq_len(nrow(dt.scenario)),function(i){
   scenario <- as.character(dt.scenario[i,])
   names(scenario) <- colnames(dt.scenario)
-  
+
   figA <- 
     list(plotFDRCurve(x = subsetDT(dt.fdr,scenario,'A'),3000),
-         plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3000),
+         plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3100),
          plotTime(x = subsetDT(dt.time,scenario,'A')))
   
   figB <- 
@@ -691,7 +700,7 @@ capB <- paste(cap,
               '(B) Proportion of transcripts with unadjusted p-values less than 0.05 for simulations without any differential expression (averaged over 20 simulations)') 
 
 capC <- paste(cap,
-              '(A) Density histograms for simulations without any differential expression (averaged over 20 simulations).')  
+              'Density histograms for simulations without any differential expression with a maximum of (A) 2 trancripts/gene expressed, (B) 3 trancripts/gene expressed, (C) 4 trancripts/gene expressed, (D) 5 trancripts/gene expressed, and (E) all reference transcripts expressed (averaged over 20 simulations).')  
 ```
 
 I also compute the observed power and false discovery rate for different types of reads (paired- or single-end) and read lengths and present them in the same table:
@@ -737,7 +746,7 @@ cat('\n\n<!-- -->\n\n')
 
 Results from power, false discovery rate, and computing time are presented below.
 
-```{r simulation-complete_results_panelA,fig.cap=capA,fig.height=11,fig.width=8.5,results='asis'}
+```{r simulation-complete_results_panelA,fig.cap=capA,fig.height=13,fig.width=8.5,results='asis'}
 for(i in seq_len(length(plots))) {
   fig <- plots[[i]]$panelA
   print(fig)
@@ -761,7 +770,7 @@ for(i in seq_len(length(plots))) {
 
 Distribution of unadjusted p-values from null simulations are then presented.
 
-```{r simulation-complete_results_panelC,fig.cap=capC,fig.height=11,fig.width=8.5,results='asis'}
+```{r simulation-complete_results_panelC,fig.cap=capC,fig.height=16,fig.width=8.5,results='asis'}
 for(i in seq_len(length(plots))) {
   fig <- plots[[i]]$panelC
   print(fig)
