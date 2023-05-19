@@ -399,7 +399,7 @@ plotQQPlot <- function(x,base_size = 8){
           legend.background = element_rect(fill = alpha('white', 0)),
           legend.text = element_text(size = base_size),
           legend.title = element_blank(),
-          legend.key.size = unit(0.75,"line"),
+          legend.key.size = unit(2,"line"),
           legend.position = 'top',
           panel.grid = element_blank(),
           axis.text = element_text(colour = 'black',size = base_size),
