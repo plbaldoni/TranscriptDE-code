@@ -380,7 +380,7 @@ div.tocify {
 <h1 class="title toc-ignore">Simulation - Complete report (results
 presented in the supplementary materials)</h1>
 <h4 class="author">Pedro L. Baldoni</h4>
-<h4 class="date">19 May, 2023</h4>
+<h4 class="date">22 May, 2023</h4>
 
 </div>
 
@@ -409,7 +409,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-05-19
+<strong>Last updated:</strong> 2023-05-22
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -541,15 +541,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree300b94671f690e569abcfd7e34edb0b648cf1af5targetblank300b946a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetreefa24322613ee230ea248bd76822efacf15e6af17targetblankfa24322a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/300b94671f690e569abcfd7e34edb0b648cf1af5" target="_blank">300b946</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/fa24322613ee230ea248bd76822efacf15e6af17" target="_blank">fa24322</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree300b94671f690e569abcfd7e34edb0b648cf1af5targetblank300b946a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetreefa24322613ee230ea248bd76822efacf15e6af17targetblankfa24322a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +559,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/300b94671f690e569abcfd7e34edb0b648cf1af5" target="_blank">300b946</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/fa24322613ee230ea248bd76822efacf15e6af17" target="_blank">fa24322</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -678,6 +678,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/fa24322613ee230ea248bd76822efacf15e6af17/analysis/simulation-complete.Rmd" target="_blank">fa24322</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-21
+</td>
+<td>
+Adjusting aesthetics of FDR plot and tables
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/simulation-complete.html" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1223,6 +1257,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_example_edgeR-scaled_loading_wrangling-1.png" target="_blank">57b0d00</a>
@@ -2700,7 +2745,7 @@ present them in the same table:</p>
 +               dt.scenario.table$genome,&#39; genome, &#39;,cap.txpergene,&#39;, and reads &#39;,
 +               &#39; quantified with &#39;,dt.scenario.table$quantifier,&#39;.&#39;)
 &gt; 
-&gt; cap1 &lt;- paste(cap,&#39;Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates most powerful method for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.&#39;)</code></pre>
+&gt; cap1 &lt;- paste(cap,&#39;Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates the most powerful method that controls the FDR at the nominal level for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.&#39;)</code></pre>
 <p>We created the table below with the function
 <code>tabulateMetrics</code>.</p>
 <pre class="r"><code>&gt; tables &lt;- lapply(seq_len(nrow(dt.scenario.table)),function(i){
@@ -2715,10 +2760,28 @@ present them in the same table:</p>
 +   
 +   return(out)
 + })
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
+
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
+
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
+
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
+
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
+
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
 Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
 
 Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
-
+Warning in max(mat.power[i, which(mat.fdr[i, ] &lt; color.fdr)]): no non-missing
+arguments to max; returning -Inf
 Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
 
 Warning in class(mat.fdr) &lt;- &quot;numeric&quot;: NAs introduced by coercion
@@ -2777,6 +2840,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-1.png" target="_blank">57b0d00</a>
@@ -2838,6 +2912,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-2.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -2895,6 +2980,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-3.png" target="_blank">57b0d00</a>
@@ -2956,6 +3052,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-4.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3013,6 +3120,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-5.png" target="_blank">57b0d00</a>
@@ -3074,6 +3192,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-6.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3131,6 +3260,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-7.png" target="_blank">57b0d00</a>
@@ -3192,6 +3332,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-8.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3249,6 +3400,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-9.png" target="_blank">57b0d00</a>
@@ -3310,6 +3472,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-10.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3367,6 +3540,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-11.png" target="_blank">57b0d00</a>
@@ -3428,6 +3612,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-12.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3485,6 +3680,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-13.png" target="_blank">57b0d00</a>
@@ -3546,6 +3752,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-14.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3603,6 +3820,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-15.png" target="_blank">57b0d00</a>
@@ -3664,6 +3892,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-16.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3721,6 +3960,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-17.png" target="_blank">57b0d00</a>
@@ -3782,6 +4032,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-18.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3839,6 +4100,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-19.png" target="_blank">57b0d00</a>
@@ -3900,6 +4172,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-20.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -3957,6 +4240,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-21.png" target="_blank">57b0d00</a>
@@ -4018,6 +4312,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-22.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4075,6 +4380,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-23.png" target="_blank">57b0d00</a>
@@ -4136,6 +4452,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-24.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4193,6 +4520,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-25.png" target="_blank">57b0d00</a>
@@ -4254,6 +4592,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-26.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4311,6 +4660,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-27.png" target="_blank">57b0d00</a>
@@ -4372,6 +4732,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-28.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4431,6 +4802,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-29.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4488,6 +4870,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-30.png" target="_blank">57b0d00</a>
@@ -4550,6 +4943,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-31.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4608,6 +5012,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-32.png" target="_blank">57b0d00</a>
@@ -4670,6 +5085,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-33.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4728,6 +5154,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-34.png" target="_blank">57b0d00</a>
@@ -4790,6 +5227,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-35.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4848,6 +5296,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-36.png" target="_blank">57b0d00</a>
@@ -4910,6 +5369,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-37.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -4968,6 +5438,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-38.png" target="_blank">57b0d00</a>
@@ -5030,6 +5511,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-39.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5088,6 +5580,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelA-40.png" target="_blank">57b0d00</a>
@@ -5160,6 +5663,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-1.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5218,6 +5732,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-2.png" target="_blank">57b0d00</a>
@@ -5280,6 +5805,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-3.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5338,6 +5874,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-4.png" target="_blank">57b0d00</a>
@@ -5400,6 +5947,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-5.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5458,6 +6016,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-6.png" target="_blank">57b0d00</a>
@@ -5520,6 +6089,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-7.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5578,6 +6158,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-8.png" target="_blank">57b0d00</a>
@@ -5640,6 +6231,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-9.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5698,6 +6300,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-10.png" target="_blank">57b0d00</a>
@@ -5760,6 +6373,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-11.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5818,6 +6442,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-12.png" target="_blank">57b0d00</a>
@@ -5880,6 +6515,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-13.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -5938,6 +6584,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-14.png" target="_blank">57b0d00</a>
@@ -6000,6 +6657,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-15.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6058,6 +6726,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-16.png" target="_blank">57b0d00</a>
@@ -6120,6 +6799,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-17.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6178,6 +6868,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-18.png" target="_blank">57b0d00</a>
@@ -6240,6 +6941,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-19.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6298,6 +7010,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-20.png" target="_blank">57b0d00</a>
@@ -6360,6 +7083,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-21.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6418,6 +7152,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-22.png" target="_blank">57b0d00</a>
@@ -6480,6 +7225,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-23.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6538,6 +7294,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-24.png" target="_blank">57b0d00</a>
@@ -6600,6 +7367,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-25.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6658,6 +7436,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-26.png" target="_blank">57b0d00</a>
@@ -6720,6 +7509,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-27.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6778,6 +7578,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-28.png" target="_blank">57b0d00</a>
@@ -6840,6 +7651,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-29.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -6898,6 +7720,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-30.png" target="_blank">57b0d00</a>
@@ -6960,6 +7793,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-31.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7018,6 +7862,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-32.png" target="_blank">57b0d00</a>
@@ -7080,6 +7935,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-33.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7138,6 +8004,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-34.png" target="_blank">57b0d00</a>
@@ -7200,6 +8077,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-35.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7258,6 +8146,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-36.png" target="_blank">57b0d00</a>
@@ -7320,6 +8219,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-37.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7378,6 +8288,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-38.png" target="_blank">57b0d00</a>
@@ -7440,6 +8361,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-39.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7498,6 +8430,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelB-40.png" target="_blank">57b0d00</a>
@@ -7570,6 +8513,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-1.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7628,6 +8582,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-2.png" target="_blank">57b0d00</a>
@@ -7690,6 +8655,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-3.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7748,6 +8724,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-4.png" target="_blank">57b0d00</a>
@@ -7810,6 +8797,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-5.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7868,6 +8866,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-6.png" target="_blank">57b0d00</a>
@@ -7930,6 +8939,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-7.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -7988,6 +9008,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-8.png" target="_blank">57b0d00</a>
@@ -8050,6 +9081,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-9.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8108,6 +9150,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-10.png" target="_blank">57b0d00</a>
@@ -8170,6 +9223,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-11.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8228,6 +9292,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-12.png" target="_blank">57b0d00</a>
@@ -8290,6 +9365,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-13.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8348,6 +9434,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-14.png" target="_blank">57b0d00</a>
@@ -8410,6 +9507,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-15.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8468,6 +9576,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-16.png" target="_blank">57b0d00</a>
@@ -8530,6 +9649,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-17.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8588,6 +9718,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-18.png" target="_blank">57b0d00</a>
@@ -8650,6 +9791,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-19.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8708,6 +9860,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-20.png" target="_blank">57b0d00</a>
@@ -8770,6 +9933,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-21.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8828,6 +10002,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-22.png" target="_blank">57b0d00</a>
@@ -8890,6 +10075,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-23.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -8948,6 +10144,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-24.png" target="_blank">57b0d00</a>
@@ -9010,6 +10217,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-25.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9068,6 +10286,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-26.png" target="_blank">57b0d00</a>
@@ -9130,6 +10359,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-27.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9188,6 +10428,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-28.png" target="_blank">57b0d00</a>
@@ -9250,6 +10501,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-29.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9308,6 +10570,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-30.png" target="_blank">57b0d00</a>
@@ -9370,6 +10643,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-31.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9428,6 +10712,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-32.png" target="_blank">57b0d00</a>
@@ -9490,6 +10785,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-33.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9548,6 +10854,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-34.png" target="_blank">57b0d00</a>
@@ -9610,6 +10927,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-35.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9668,6 +10996,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-36.png" target="_blank">57b0d00</a>
@@ -9730,6 +11069,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-37.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9788,6 +11138,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-38.png" target="_blank">57b0d00</a>
@@ -9850,6 +11211,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-39.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9910,6 +11282,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/3673f28ab1ce85bbca982ad944e680d8e4ea26cf/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">3673f28</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-19
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/57b0d0081f0113c473a272fb1b8ef921d68ee788/docs/figure/simulation-complete.Rmd/simulation-complete_results_panelC-40.png" target="_blank">57b0d00</a>
 </td>
 <td>
@@ -9955,8 +11338,9 @@ reads quantified with Salmon. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -12671,8 +14055,9 @@ reads quantified with kallisto. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -14072,10 +15457,10 @@ single-end
 <span style="     color: black !important;">0.080</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.492</span>
+<span style="     color: black !important;">0.492</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.086</span>
+<span style="     color: blue !important;">0.086</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.429</span>
@@ -14116,10 +15501,10 @@ single-end
 <span style="     color: black !important;">0.116</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.502</span>
+<span style="     color: black !important;">0.502</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.095</span>
+<span style="     color: blue !important;">0.095</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.437</span>
@@ -14160,10 +15545,10 @@ single-end
 <span style="     color: black !important;">0.114</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.502</span>
+<span style="     color: black !important;">0.502</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.080</span>
+<span style="     color: blue !important;">0.080</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.441</span>
@@ -14509,10 +15894,10 @@ single-end
 50bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.601</span>
+<span style="     color: blue !important;">0.601</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.735</span>
+<span style="     color: black !important;">0.735</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.591</span>
@@ -14553,10 +15938,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.610</span>
+<span style="     color: blue !important;">0.610</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.744</span>
+<span style="     color: black !important;">0.744</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.596</span>
@@ -14597,10 +15982,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.620</span>
+<span style="     color: blue !important;">0.620</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.748</span>
+<span style="     color: black !important;">0.748</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.603</span>
@@ -14641,10 +16026,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.642</span>
+<span style="     color: blue !important;">0.642</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.757</span>
+<span style="     color: black !important;">0.757</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.621</span>
@@ -14688,13 +16073,13 @@ single-end
 <span style="     color: black !important;">0.648</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.759</span>
+<span style="     color: black !important;">0.759</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.626</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.691</span>
+<span style="     color: blue !important;">0.691</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.507</span>
@@ -14732,13 +16117,13 @@ single-end
 <span style="     color: black !important;">0.553</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.696</span>
+<span style="     color: black !important;">0.696</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.526</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.596</span>
+<span style="     color: blue !important;">0.596</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.443</span>
@@ -14820,13 +16205,13 @@ single-end
 <span style="     color: black !important;">0.582</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.710</span>
+<span style="     color: black !important;">0.710</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.545</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.615</span>
+<span style="     color: blue !important;">0.615</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.458</span>
@@ -14952,7 +16337,7 @@ single-end
 <span style="     color: black !important;">0.834</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.847</span>
+<span style="     color: black !important;">0.847</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.807</span>
@@ -14996,7 +16381,7 @@ single-end
 <span style="     color: black !important;">0.836</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.851</span>
+<span style="     color: black !important;">0.851</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.813</span>
@@ -15040,7 +16425,7 @@ single-end
 <span style="     color: black !important;">0.843</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.858</span>
+<span style="     color: black !important;">0.858</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.820</span>
@@ -15084,7 +16469,7 @@ single-end
 <span style="     color: black !important;">0.852</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.864</span>
+<span style="     color: black !important;">0.864</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.833</span>
@@ -15128,7 +16513,7 @@ single-end
 <span style="     color: black !important;">0.858</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.869</span>
+<span style="     color: black !important;">0.869</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.839</span>
@@ -15172,10 +16557,10 @@ single-end
 <span style="     color: black !important;">0.807</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.853</span>
+<span style="     color: black !important;">0.853</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.757</span>
+<span style="     color: blue !important;">0.757</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.762</span>
@@ -15216,10 +16601,10 @@ single-end
 <span style="     color: black !important;">0.815</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.858</span>
+<span style="     color: black !important;">0.858</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.766</span>
+<span style="     color: blue !important;">0.766</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.771</span>
@@ -15260,7 +16645,7 @@ single-end
 <span style="     color: black !important;">0.822</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.865</span>
+<span style="     color: black !important;">0.865</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.776</span>
@@ -15304,10 +16689,10 @@ single-end
 <span style="     color: black !important;">0.831</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.869</span>
+<span style="     color: black !important;">0.869</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.787</span>
+<span style="     color: blue !important;">0.787</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.792</span>
@@ -15348,13 +16733,13 @@ single-end
 <span style="     color: black !important;">0.841</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.877</span>
+<span style="     color: black !important;">0.877</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.799</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.803</span>
+<span style="     color: blue !important;">0.803</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.846</span>
@@ -15387,8 +16772,9 @@ reads quantified with Salmon. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -15600,7 +16986,7 @@ paired-end
 <span style="     color: black !important;">0.139</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.433</span>
+<span style="     color: blue !important;">0.433</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -15609,7 +16995,7 @@ paired-end
 <span style="     color: black !important;">0.400</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.434</span>
+<span style="     color: black !important;">0.434</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.046</span>
@@ -16797,7 +18183,7 @@ single-end
 <span style="     color: black !important;">0.366</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.405</span>
+<span style="     color: black !important;">0.405</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.431</span>
@@ -16964,7 +18350,7 @@ single-end
 <span style="     color: black !important;">0.077</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.424</span>
+<span style="     color: blue !important;">0.424</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -16973,7 +18359,7 @@ single-end
 <span style="     color: black !important;">0.391</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.427</span>
+<span style="     color: black !important;">0.427</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.081</span>
@@ -18103,8 +19489,9 @@ reads quantified with kallisto. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -18184,7 +19571,7 @@ paired-end
 <span style="     color: black !important;">0.075</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.428</span>
+<span style="     color: blue !important;">0.428</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18193,7 +19580,7 @@ paired-end
 <span style="     color: black !important;">0.391</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.435</span>
+<span style="     color: black !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.093</span>
@@ -18228,7 +19615,7 @@ paired-end
 <span style="     color: black !important;">0.111</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.435</span>
+<span style="     color: blue !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18237,7 +19624,7 @@ paired-end
 <span style="     color: black !important;">0.396</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.443</span>
+<span style="     color: black !important;">0.443</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.080</span>
@@ -18272,7 +19659,7 @@ paired-end
 <span style="     color: black !important;">0.121</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.435</span>
+<span style="     color: blue !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18281,7 +19668,7 @@ paired-end
 <span style="     color: black !important;">0.399</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.442</span>
+<span style="     color: black !important;">0.442</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.076</span>
@@ -18316,7 +19703,7 @@ paired-end
 <span style="     color: black !important;">0.127</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.437</span>
+<span style="     color: blue !important;">0.437</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18325,7 +19712,7 @@ paired-end
 <span style="     color: black !important;">0.399</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.445</span>
+<span style="     color: black !important;">0.445</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.079</span>
@@ -18360,7 +19747,7 @@ paired-end
 <span style="     color: black !important;">0.142</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.445</span>
+<span style="     color: blue !important;">0.445</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18369,7 +19756,7 @@ paired-end
 <span style="     color: black !important;">0.408</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.450</span>
+<span style="     color: black !important;">0.450</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.080</span>
@@ -18404,7 +19791,7 @@ paired-end
 <span style="     color: black !important;">0.005</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.375</span>
+<span style="     color: blue !important;">0.375</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18413,7 +19800,7 @@ paired-end
 <span style="     color: black !important;">0.334</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.381</span>
+<span style="     color: black !important;">0.381</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.182</span>
@@ -18448,7 +19835,7 @@ paired-end
 <span style="     color: black !important;">0.014</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.379</span>
+<span style="     color: blue !important;">0.379</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18457,7 +19844,7 @@ paired-end
 <span style="     color: black !important;">0.341</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.384</span>
+<span style="     color: black !important;">0.384</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.086</span>
@@ -18536,7 +19923,7 @@ paired-end
 <span style="     color: black !important;">0.032</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.384</span>
+<span style="     color: blue !important;">0.384</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18545,7 +19932,7 @@ paired-end
 <span style="     color: black !important;">0.346</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.388</span>
+<span style="     color: black !important;">0.388</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.103</span>
@@ -18580,7 +19967,7 @@ paired-end
 <span style="     color: black !important;">0.038</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.385</span>
+<span style="     color: blue !important;">0.385</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -18589,7 +19976,7 @@ paired-end
 <span style="     color: black !important;">0.344</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.386</span>
+<span style="     color: black !important;">0.386</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.084</span>
@@ -19504,7 +20891,7 @@ single-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.409</span>
+<span style="     color: blue !important;">0.409</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19513,7 +20900,7 @@ single-end
 <span style="     color: black !important;">0.365</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.415</span>
+<span style="     color: black !important;">0.415</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.648</span>
@@ -19548,7 +20935,7 @@ single-end
 <span style="     color: black !important;">0.003</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.409</span>
+<span style="     color: blue !important;">0.409</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19557,7 +20944,7 @@ single-end
 <span style="     color: black !important;">0.366</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.413</span>
+<span style="     color: black !important;">0.413</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.411</span>
@@ -19592,7 +20979,7 @@ single-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.413</span>
+<span style="     color: blue !important;">0.413</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19601,7 +20988,7 @@ single-end
 <span style="     color: black !important;">0.369</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.420</span>
+<span style="     color: black !important;">0.420</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.366</span>
@@ -19636,7 +21023,7 @@ single-end
 <span style="     color: black !important;">0.015</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.428</span>
+<span style="     color: blue !important;">0.428</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19645,7 +21032,7 @@ single-end
 <span style="     color: black !important;">0.386</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.431</span>
+<span style="     color: black !important;">0.431</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.177</span>
@@ -19680,7 +21067,7 @@ single-end
 <span style="     color: black !important;">0.034</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.423</span>
+<span style="     color: blue !important;">0.423</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19689,7 +21076,7 @@ single-end
 <span style="     color: black !important;">0.386</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.435</span>
+<span style="     color: black !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.161</span>
@@ -19900,7 +21287,7 @@ single-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.374</span>
+<span style="     color: blue !important;">0.374</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -19909,7 +21296,7 @@ single-end
 <span style="     color: black !important;">0.331</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.376</span>
+<span style="     color: black !important;">0.376</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.343</span>
@@ -19941,10 +21328,10 @@ single-end
 50bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.501</span>
+<span style="     color: blue !important;">0.501</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.665</span>
+<span style="     color: black !important;">0.665</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.499</span>
@@ -19985,10 +21372,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.513</span>
+<span style="     color: blue !important;">0.513</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.671</span>
+<span style="     color: black !important;">0.671</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.506</span>
@@ -20029,10 +21416,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.527</span>
+<span style="     color: blue !important;">0.527</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.679</span>
+<span style="     color: black !important;">0.679</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.516</span>
@@ -20073,10 +21460,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.552</span>
+<span style="     color: blue !important;">0.552</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.690</span>
+<span style="     color: black !important;">0.690</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.533</span>
@@ -20120,13 +21507,13 @@ single-end
 <span style="     color: black !important;">0.558</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.692</span>
+<span style="     color: black !important;">0.692</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.537</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.622</span>
+<span style="     color: blue !important;">0.622</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.426</span>
@@ -20384,7 +21771,7 @@ single-end
 <span style="     color: black !important;">0.773</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.794</span>
+<span style="     color: black !important;">0.794</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.742</span>
@@ -20428,10 +21815,10 @@ single-end
 <span style="     color: black !important;">0.783</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.804</span>
+<span style="     color: black !important;">0.804</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.754</span>
+<span style="     color: blue !important;">0.754</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.762</span>
@@ -20472,10 +21859,10 @@ single-end
 <span style="     color: black !important;">0.790</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.809</span>
+<span style="     color: black !important;">0.809</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.763</span>
+<span style="     color: blue !important;">0.763</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.770</span>
@@ -20516,10 +21903,10 @@ single-end
 <span style="     color: black !important;">0.800</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.820</span>
+<span style="     color: black !important;">0.820</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.777</span>
+<span style="     color: blue !important;">0.777</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.785</span>
@@ -20560,10 +21947,10 @@ single-end
 <span style="     color: black !important;">0.809</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.827</span>
+<span style="     color: black !important;">0.827</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.788</span>
+<span style="     color: blue !important;">0.788</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.796</span>
@@ -20604,10 +21991,10 @@ single-end
 <span style="     color: black !important;">0.746</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.804</span>
+<span style="     color: black !important;">0.804</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.691</span>
+<span style="     color: blue !important;">0.691</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.697</span>
@@ -20648,13 +22035,13 @@ single-end
 <span style="     color: black !important;">0.752</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.808</span>
+<span style="     color: black !important;">0.808</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.697</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.705</span>
+<span style="     color: blue !important;">0.705</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.770</span>
@@ -20692,13 +22079,13 @@ single-end
 <span style="     color: black !important;">0.761</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.814</span>
+<span style="     color: black !important;">0.814</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.708</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.715</span>
+<span style="     color: blue !important;">0.715</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.775</span>
@@ -20733,10 +22120,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.777</span>
+<span style="     color: blue !important;">0.777</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.826</span>
+<span style="     color: black !important;">0.826</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.726</span>
@@ -20777,10 +22164,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.784</span>
+<span style="     color: blue !important;">0.784</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.831</span>
+<span style="     color: black !important;">0.831</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.736</span>
@@ -20819,8 +22206,9 @@ reads quantified with Salmon. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -20900,7 +22288,7 @@ paired-end
 <span style="     color: black !important;">0.007</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.433</span>
+<span style="     color: blue !important;">0.433</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -20909,7 +22297,7 @@ paired-end
 <span style="     color: black !important;">0.397</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.436</span>
+<span style="     color: black !important;">0.436</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.365</span>
@@ -20944,7 +22332,7 @@ paired-end
 <span style="     color: black !important;">0.047</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.437</span>
+<span style="     color: blue !important;">0.437</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -20953,7 +22341,7 @@ paired-end
 <span style="     color: black !important;">0.403</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.438</span>
+<span style="     color: black !important;">0.438</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.134</span>
@@ -21032,7 +22420,7 @@ paired-end
 <span style="     color: black !important;">0.065</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.443</span>
+<span style="     color: blue !important;">0.443</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -21041,7 +22429,7 @@ paired-end
 <span style="     color: black !important;">0.409</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.444</span>
+<span style="     color: black !important;">0.444</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.095</span>
@@ -21085,7 +22473,7 @@ paired-end
 <span style="     color: black !important;">0.412</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.444</span>
+<span style="     color: black !important;">0.444</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.099</span>
@@ -21120,7 +22508,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.372</span>
+<span style="     color: blue !important;">0.372</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -21129,7 +22517,7 @@ paired-end
 <span style="     color: black !important;">0.329</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.374</span>
+<span style="     color: black !important;">0.374</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.810</span>
@@ -22220,7 +23608,7 @@ single-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.399</span>
+<span style="     color: blue !important;">0.399</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -22229,7 +23617,7 @@ single-end
 <span style="     color: black !important;">0.363</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.407</span>
+<span style="     color: black !important;">0.407</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.651</span>
@@ -22352,7 +23740,7 @@ single-end
 <span style="     color: black !important;">0.009</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.423</span>
+<span style="     color: blue !important;">0.423</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -22361,7 +23749,7 @@ single-end
 <span style="     color: black !important;">0.394</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.430</span>
+<span style="     color: black !important;">0.430</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.388</span>
@@ -22396,7 +23784,7 @@ single-end
 <span style="     color: black !important;">0.017</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.434</span>
+<span style="     color: blue !important;">0.434</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -22405,7 +23793,7 @@ single-end
 <span style="     color: black !important;">0.400</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.438</span>
+<span style="     color: black !important;">0.438</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.259</span>
@@ -23535,8 +24923,9 @@ reads quantified with kallisto. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -23616,7 +25005,7 @@ paired-end
 <span style="     color: black !important;">0.026</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.435</span>
+<span style="     color: blue !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23625,7 +25014,7 @@ paired-end
 <span style="     color: black !important;">0.396</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.448</span>
+<span style="     color: black !important;">0.448</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.155</span>
@@ -23660,7 +25049,7 @@ paired-end
 <span style="     color: black !important;">0.047</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.436</span>
+<span style="     color: blue !important;">0.436</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23669,7 +25058,7 @@ paired-end
 <span style="     color: black !important;">0.405</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.455</span>
+<span style="     color: black !important;">0.455</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.128</span>
@@ -23704,7 +25093,7 @@ paired-end
 <span style="     color: black !important;">0.049</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.440</span>
+<span style="     color: blue !important;">0.440</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23713,7 +25102,7 @@ paired-end
 <span style="     color: black !important;">0.406</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.458</span>
+<span style="     color: black !important;">0.458</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.122</span>
@@ -23748,7 +25137,7 @@ paired-end
 <span style="     color: black !important;">0.057</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.447</span>
+<span style="     color: blue !important;">0.447</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23757,7 +25146,7 @@ paired-end
 <span style="     color: black !important;">0.408</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.459</span>
+<span style="     color: black !important;">0.459</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.113</span>
@@ -23792,7 +25181,7 @@ paired-end
 <span style="     color: black !important;">0.065</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.447</span>
+<span style="     color: blue !important;">0.447</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23801,7 +25190,7 @@ paired-end
 <span style="     color: black !important;">0.413</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.459</span>
+<span style="     color: black !important;">0.459</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.110</span>
@@ -23836,7 +25225,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.369</span>
+<span style="     color: blue !important;">0.369</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23845,7 +25234,7 @@ paired-end
 <span style="     color: black !important;">0.330</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.382</span>
+<span style="     color: black !important;">0.382</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.590</span>
@@ -23880,7 +25269,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.390</span>
+<span style="     color: blue !important;">0.390</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23889,7 +25278,7 @@ paired-end
 <span style="     color: black !important;">0.345</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.394</span>
+<span style="     color: black !important;">0.394</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.636</span>
@@ -23924,7 +25313,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.392</span>
+<span style="     color: blue !important;">0.392</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23933,7 +25322,7 @@ paired-end
 <span style="     color: black !important;">0.347</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.395</span>
+<span style="     color: black !important;">0.395</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.474</span>
@@ -23968,7 +25357,7 @@ paired-end
 <span style="     color: black !important;">0.005</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.392</span>
+<span style="     color: blue !important;">0.392</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -23977,7 +25366,7 @@ paired-end
 <span style="     color: black !important;">0.351</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.397</span>
+<span style="     color: black !important;">0.397</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.245</span>
@@ -24012,7 +25401,7 @@ paired-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.390</span>
+<span style="     color: blue !important;">0.390</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -24021,7 +25410,7 @@ paired-end
 <span style="     color: black !important;">0.350</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.396</span>
+<span style="     color: black !important;">0.396</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.209</span>
@@ -24936,7 +26325,7 @@ single-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.406</span>
+<span style="     color: blue !important;">0.406</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -24945,7 +26334,7 @@ single-end
 <span style="     color: black !important;">0.365</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.415</span>
+<span style="     color: black !important;">0.415</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.801</span>
@@ -24980,7 +26369,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.406</span>
+<span style="     color: blue !important;">0.406</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -24989,7 +26378,7 @@ single-end
 <span style="     color: black !important;">0.371</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.421</span>
+<span style="     color: black !important;">0.421</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.771</span>
@@ -25024,7 +26413,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.416</span>
+<span style="     color: blue !important;">0.416</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25033,7 +26422,7 @@ single-end
 <span style="     color: black !important;">0.377</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.429</span>
+<span style="     color: black !important;">0.429</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.754</span>
@@ -25068,7 +26457,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.423</span>
+<span style="     color: blue !important;">0.423</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25077,7 +26466,7 @@ single-end
 <span style="     color: black !important;">0.392</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.442</span>
+<span style="     color: black !important;">0.442</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.809</span>
@@ -25112,7 +26501,7 @@ single-end
 <span style="     color: black !important;">0.007</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.431</span>
+<span style="     color: blue !important;">0.431</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25121,7 +26510,7 @@ single-end
 <span style="     color: black !important;">0.398</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.449</span>
+<span style="     color: black !important;">0.449</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.301</span>
@@ -25156,7 +26545,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.350</span>
+<span style="     color: blue !important;">0.350</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25165,7 +26554,7 @@ single-end
 <span style="     color: black !important;">0.298</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.354</span>
+<span style="     color: black !important;">0.354</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.800</span>
@@ -25200,7 +26589,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.359</span>
+<span style="     color: blue !important;">0.359</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25209,7 +26598,7 @@ single-end
 <span style="     color: black !important;">0.310</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.360</span>
+<span style="     color: black !important;">0.360</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.824</span>
@@ -25288,7 +26677,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.375</span>
+<span style="     color: blue !important;">0.375</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25297,7 +26686,7 @@ single-end
 <span style="     color: black !important;">0.327</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.377</span>
+<span style="     color: black !important;">0.377</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.871</span>
@@ -25332,7 +26721,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.375</span>
+<span style="     color: blue !important;">0.375</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -25341,7 +26730,7 @@ single-end
 <span style="     color: black !important;">0.331</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.381</span>
+<span style="     color: black !important;">0.381</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.645</span>
@@ -25376,13 +26765,13 @@ single-end
 <span style="     color: black !important;">0.499</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.689</span>
+<span style="     color: black !important;">0.689</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.505</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.600</span>
+<span style="     color: blue !important;">0.600</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.404</span>
@@ -25417,10 +26806,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.515</span>
+<span style="     color: blue !important;">0.515</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.696</span>
+<span style="     color: black !important;">0.696</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.513</span>
@@ -25461,10 +26850,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.527</span>
+<span style="     color: blue !important;">0.527</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.702</span>
+<span style="     color: black !important;">0.702</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.522</span>
@@ -25508,13 +26897,13 @@ single-end
 <span style="     color: black !important;">0.551</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.716</span>
+<span style="     color: black !important;">0.716</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.539</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.637</span>
+<span style="     color: blue !important;">0.637</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.412</span>
@@ -25816,10 +27205,10 @@ single-end
 <span style="     color: black !important;">0.812</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.834</span>
+<span style="     color: black !important;">0.834</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.776</span>
+<span style="     color: blue !important;">0.776</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.785</span>
@@ -25860,10 +27249,10 @@ single-end
 <span style="     color: black !important;">0.825</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.847</span>
+<span style="     color: black !important;">0.847</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.791</span>
+<span style="     color: blue !important;">0.791</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.800</span>
@@ -25904,10 +27293,10 @@ single-end
 <span style="     color: black !important;">0.834</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.855</span>
+<span style="     color: black !important;">0.855</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.803</span>
+<span style="     color: blue !important;">0.803</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.812</span>
@@ -25948,10 +27337,10 @@ single-end
 <span style="     color: black !important;">0.849</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.866</span>
+<span style="     color: black !important;">0.866</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.821</span>
+<span style="     color: blue !important;">0.821</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.829</span>
@@ -25989,10 +27378,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.854</span>
+<span style="     color: blue !important;">0.854</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.871</span>
+<span style="     color: black !important;">0.871</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.828</span>
@@ -26036,13 +27425,13 @@ single-end
 <span style="     color: black !important;">0.785</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.846</span>
+<span style="     color: black !important;">0.846</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.720</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.727</span>
+<span style="     color: blue !important;">0.727</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.805</span>
@@ -26077,10 +27466,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.796</span>
+<span style="     color: blue !important;">0.796</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.854</span>
+<span style="     color: black !important;">0.854</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.734</span>
@@ -26121,10 +27510,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.805</span>
+<span style="     color: blue !important;">0.805</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.862</span>
+<span style="     color: black !important;">0.862</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.746</span>
@@ -26165,10 +27554,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.821</span>
+<span style="     color: blue !important;">0.821</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.875</span>
+<span style="     color: black !important;">0.875</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.767</span>
@@ -26209,10 +27598,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.827</span>
+<span style="     color: blue !important;">0.827</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.878</span>
+<span style="     color: black !important;">0.878</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.775</span>
@@ -26251,8 +27640,9 @@ reads quantified with Salmon. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -26332,7 +27722,7 @@ paired-end
 <span style="     color: black !important;">0.005</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.437</span>
+<span style="     color: blue !important;">0.437</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26341,7 +27731,7 @@ paired-end
 <span style="     color: black !important;">0.407</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.449</span>
+<span style="     color: black !important;">0.449</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.477</span>
@@ -26376,7 +27766,7 @@ paired-end
 <span style="     color: black !important;">0.025</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.453</span>
+<span style="     color: blue !important;">0.453</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26385,7 +27775,7 @@ paired-end
 <span style="     color: black !important;">0.418</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.454</span>
+<span style="     color: black !important;">0.454</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.211</span>
@@ -26429,7 +27819,7 @@ paired-end
 <span style="     color: black !important;">0.406</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.440</span>
+<span style="     color: black !important;">0.440</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.278</span>
@@ -26464,7 +27854,7 @@ paired-end
 <span style="     color: black !important;">0.027</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.450</span>
+<span style="     color: blue !important;">0.450</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26473,7 +27863,7 @@ paired-end
 <span style="     color: black !important;">0.425</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.464</span>
+<span style="     color: black !important;">0.464</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.197</span>
@@ -26508,7 +27898,7 @@ paired-end
 <span style="     color: black !important;">0.027</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.448</span>
+<span style="     color: blue !important;">0.448</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26517,7 +27907,7 @@ paired-end
 <span style="     color: black !important;">0.420</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.458</span>
+<span style="     color: black !important;">0.458</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.196</span>
@@ -26552,7 +27942,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.386</span>
+<span style="     color: blue !important;">0.386</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26561,7 +27951,7 @@ paired-end
 <span style="     color: black !important;">0.341</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.387</span>
+<span style="     color: black !important;">0.387</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.847</span>
@@ -26596,7 +27986,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.392</span>
+<span style="     color: blue !important;">0.392</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26605,7 +27995,7 @@ paired-end
 <span style="     color: black !important;">0.349</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.393</span>
+<span style="     color: black !important;">0.393</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.702</span>
@@ -26684,7 +28074,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.396</span>
+<span style="     color: blue !important;">0.396</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26693,7 +28083,7 @@ paired-end
 <span style="     color: black !important;">0.354</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.397</span>
+<span style="     color: black !important;">0.397</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.689</span>
@@ -26728,7 +28118,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.400</span>
+<span style="     color: blue !important;">0.400</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -26737,7 +28127,7 @@ paired-end
 <span style="     color: black !important;">0.359</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.402</span>
+<span style="     color: black !important;">0.402</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.689</span>
@@ -27652,7 +29042,7 @@ single-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.399</span>
+<span style="     color: blue !important;">0.399</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -27661,7 +29051,7 @@ single-end
 <span style="     color: black !important;">0.370</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.414</span>
+<span style="     color: black !important;">0.414</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.661</span>
@@ -27696,7 +29086,7 @@ single-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.420</span>
+<span style="     color: blue !important;">0.420</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -27705,7 +29095,7 @@ single-end
 <span style="     color: black !important;">0.381</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.421</span>
+<span style="     color: black !important;">0.421</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.700</span>
@@ -27784,7 +29174,7 @@ single-end
 <span style="     color: black !important;">0.004</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.429</span>
+<span style="     color: blue !important;">0.429</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -27793,7 +29183,7 @@ single-end
 <span style="     color: black !important;">0.401</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.441</span>
+<span style="     color: black !important;">0.441</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.544</span>
@@ -27828,7 +29218,7 @@ single-end
 <span style="     color: black !important;">0.008</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.441</span>
+<span style="     color: blue !important;">0.441</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -27837,7 +29227,7 @@ single-end
 <span style="     color: black !important;">0.411</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.448</span>
+<span style="     color: black !important;">0.448</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.406</span>
@@ -28004,7 +29394,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.376</span>
+<span style="     color: blue !important;">0.376</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -28013,7 +29403,7 @@ single-end
 <span style="     color: black !important;">0.333</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.377</span>
+<span style="     color: black !important;">0.377</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.757</span>
@@ -28967,8 +30357,9 @@ reads quantified with kallisto. Library size shown in million reads (M)
 with 25/100 indicating library sizes alternating between 25M and 100M
 across replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -29048,7 +30439,7 @@ paired-end
 <span style="     color: black !important;">0.019</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.436</span>
+<span style="     color: blue !important;">0.436</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29057,7 +30448,7 @@ paired-end
 <span style="     color: black !important;">0.407</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.461</span>
+<span style="     color: black !important;">0.461</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.180</span>
@@ -29092,7 +30483,7 @@ paired-end
 <span style="     color: black !important;">0.033</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.454</span>
+<span style="     color: blue !important;">0.454</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29101,7 +30492,7 @@ paired-end
 <span style="     color: black !important;">0.420</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.471</span>
+<span style="     color: black !important;">0.471</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.150</span>
@@ -29136,7 +30527,7 @@ paired-end
 <span style="     color: black !important;">0.016</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.443</span>
+<span style="     color: blue !important;">0.443</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29145,7 +30536,7 @@ paired-end
 <span style="     color: black !important;">0.415</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.467</span>
+<span style="     color: black !important;">0.467</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.192</span>
@@ -29180,7 +30571,7 @@ paired-end
 <span style="     color: black !important;">0.021</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.453</span>
+<span style="     color: blue !important;">0.453</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29189,7 +30580,7 @@ paired-end
 <span style="     color: black !important;">0.425</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.477</span>
+<span style="     color: black !important;">0.477</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.175</span>
@@ -29224,7 +30615,7 @@ paired-end
 <span style="     color: black !important;">0.027</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.451</span>
+<span style="     color: blue !important;">0.451</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29233,7 +30624,7 @@ paired-end
 <span style="     color: black !important;">0.422</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.473</span>
+<span style="     color: black !important;">0.473</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.149</span>
@@ -29268,7 +30659,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.384</span>
+<span style="     color: blue !important;">0.384</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29277,7 +30668,7 @@ paired-end
 <span style="     color: black !important;">0.341</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.396</span>
+<span style="     color: black !important;">0.396</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.474</span>
@@ -29312,7 +30703,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.391</span>
+<span style="     color: blue !important;">0.391</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29321,7 +30712,7 @@ paired-end
 <span style="     color: black !important;">0.353</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.403</span>
+<span style="     color: black !important;">0.403</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.545</span>
@@ -29356,7 +30747,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.402</span>
+<span style="     color: blue !important;">0.402</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29365,7 +30756,7 @@ paired-end
 <span style="     color: black !important;">0.358</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.405</span>
+<span style="     color: black !important;">0.405</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.810</span>
@@ -29400,7 +30791,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.397</span>
+<span style="     color: blue !important;">0.397</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29409,7 +30800,7 @@ paired-end
 <span style="     color: black !important;">0.356</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.406</span>
+<span style="     color: black !important;">0.406</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.618</span>
@@ -29444,7 +30835,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.403</span>
+<span style="     color: blue !important;">0.403</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -29453,7 +30844,7 @@ paired-end
 <span style="     color: black !important;">0.361</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.411</span>
+<span style="     color: black !important;">0.411</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.744</span>
@@ -30368,7 +31759,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.404</span>
+<span style="     color: blue !important;">0.404</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30377,7 +31768,7 @@ single-end
 <span style="     color: black !important;">0.372</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.426</span>
+<span style="     color: black !important;">0.426</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.762</span>
@@ -30412,7 +31803,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.417</span>
+<span style="     color: blue !important;">0.417</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30421,7 +31812,7 @@ single-end
 <span style="     color: black !important;">0.383</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.432</span>
+<span style="     color: black !important;">0.432</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.812</span>
@@ -30456,7 +31847,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.429</span>
+<span style="     color: blue !important;">0.429</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30465,7 +31856,7 @@ single-end
 <span style="     color: black !important;">0.389</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.441</span>
+<span style="     color: black !important;">0.441</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.848</span>
@@ -30500,7 +31891,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.432</span>
+<span style="     color: blue !important;">0.432</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30509,7 +31900,7 @@ single-end
 <span style="     color: black !important;">0.400</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.452</span>
+<span style="     color: black !important;">0.452</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.817</span>
@@ -30544,7 +31935,7 @@ single-end
 <span style="     color: black !important;">0.005</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.441</span>
+<span style="     color: blue !important;">0.441</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30553,7 +31944,7 @@ single-end
 <span style="     color: black !important;">0.409</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.460</span>
+<span style="     color: black !important;">0.460</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.361</span>
@@ -30588,7 +31979,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.358</span>
+<span style="     color: blue !important;">0.358</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30597,7 +31988,7 @@ single-end
 <span style="     color: black !important;">0.311</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.361</span>
+<span style="     color: black !important;">0.361</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.857</span>
@@ -30632,7 +32023,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.365</span>
+<span style="     color: blue !important;">0.365</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30641,7 +32032,7 @@ single-end
 <span style="     color: black !important;">0.317</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.368</span>
+<span style="     color: black !important;">0.368</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.938</span>
@@ -30676,7 +32067,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.373</span>
+<span style="     color: blue !important;">0.373</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30685,7 +32076,7 @@ single-end
 <span style="     color: black !important;">0.324</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.375</span>
+<span style="     color: black !important;">0.375</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.588</span>
@@ -30720,7 +32111,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.373</span>
+<span style="     color: blue !important;">0.373</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30729,7 +32120,7 @@ single-end
 <span style="     color: black !important;">0.336</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.385</span>
+<span style="     color: black !important;">0.385</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.762</span>
@@ -30764,7 +32155,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.389</span>
+<span style="     color: blue !important;">0.389</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -30773,7 +32164,7 @@ single-end
 <span style="     color: black !important;">0.342</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.396</span>
+<span style="     color: black !important;">0.396</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.833</span>
@@ -30808,13 +32199,13 @@ single-end
 <span style="     color: black !important;">0.515</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.708</span>
+<span style="     color: black !important;">0.708</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.525</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.625</span>
+<span style="     color: blue !important;">0.625</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.420</span>
@@ -30852,13 +32243,13 @@ single-end
 <span style="     color: black !important;">0.528</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.713</span>
+<span style="     color: black !important;">0.713</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.530</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.633</span>
+<span style="     color: blue !important;">0.633</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.423</span>
@@ -30896,13 +32287,13 @@ single-end
 <span style="     color: black !important;">0.546</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.727</span>
+<span style="     color: black !important;">0.727</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.543</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.646</span>
+<span style="     color: blue !important;">0.646</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.429</span>
@@ -31248,10 +32639,10 @@ single-end
 <span style="     color: black !important;">0.839</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.858</span>
+<span style="     color: black !important;">0.858</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.803</span>
+<span style="     color: blue !important;">0.803</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.811</span>
@@ -31292,10 +32683,10 @@ single-end
 <span style="     color: black !important;">0.851</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.868</span>
+<span style="     color: black !important;">0.868</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.815</span>
+<span style="     color: blue !important;">0.815</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.824</span>
@@ -31336,10 +32727,10 @@ single-end
 <span style="     color: black !important;">0.866</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.882</span>
+<span style="     color: black !important;">0.882</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.833</span>
+<span style="     color: blue !important;">0.833</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.841</span>
@@ -31380,13 +32771,13 @@ single-end
 <span style="     color: black !important;">0.872</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.887</span>
+<span style="     color: black !important;">0.887</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.843</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.851</span>
+<span style="     color: blue !important;">0.851</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.868</span>
@@ -31421,10 +32812,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.885</span>
+<span style="     color: blue !important;">0.885</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.898</span>
+<span style="     color: black !important;">0.898</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.858</span>
@@ -31465,10 +32856,10 @@ single-end
 50bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.810</span>
+<span style="     color: blue !important;">0.810</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.866</span>
+<span style="     color: black !important;">0.866</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.744</span>
@@ -31509,10 +32900,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.820</span>
+<span style="     color: blue !important;">0.820</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.875</span>
+<span style="     color: black !important;">0.875</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.760</span>
@@ -31553,10 +32944,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.835</span>
+<span style="     color: blue !important;">0.835</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.887</span>
+<span style="     color: black !important;">0.887</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.776</span>
@@ -31597,10 +32988,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.849</span>
+<span style="     color: blue !important;">0.849</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.895</span>
+<span style="     color: black !important;">0.895</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.794</span>
@@ -31641,10 +33032,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.860</span>
+<span style="     color: blue !important;">0.860</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.904</span>
+<span style="     color: black !important;">0.904</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.807</span>
@@ -31683,8 +33074,9 @@ quantified with Salmon. Library size shown in million reads (M) with
 25/100 indicating library sizes alternating between 25M and 100M across
 replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -31764,7 +33156,7 @@ paired-end
 <span style="     color: black !important;">0.004</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.433</span>
+<span style="     color: blue !important;">0.433</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31773,7 +33165,7 @@ paired-end
 <span style="     color: black !important;">0.417</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.462</span>
+<span style="     color: black !important;">0.462</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.640</span>
@@ -31808,7 +33200,7 @@ paired-end
 <span style="     color: black !important;">0.003</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.440</span>
+<span style="     color: blue !important;">0.440</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31817,7 +33209,7 @@ paired-end
 <span style="     color: black !important;">0.422</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.466</span>
+<span style="     color: black !important;">0.466</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.664</span>
@@ -31852,7 +33244,7 @@ paired-end
 <span style="     color: black !important;">0.004</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.441</span>
+<span style="     color: blue !important;">0.441</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31861,7 +33253,7 @@ paired-end
 <span style="     color: black !important;">0.414</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.453</span>
+<span style="     color: black !important;">0.453</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.638</span>
@@ -31896,7 +33288,7 @@ paired-end
 <span style="     color: black !important;">0.004</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.440</span>
+<span style="     color: blue !important;">0.440</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31905,7 +33297,7 @@ paired-end
 <span style="     color: black !important;">0.428</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.475</span>
+<span style="     color: black !important;">0.475</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.625</span>
@@ -31940,7 +33332,7 @@ paired-end
 <span style="     color: black !important;">0.006</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.444</span>
+<span style="     color: blue !important;">0.444</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31949,7 +33341,7 @@ paired-end
 <span style="     color: black !important;">0.430</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.475</span>
+<span style="     color: black !important;">0.475</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.570</span>
@@ -31984,7 +33376,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.378</span>
+<span style="     color: blue !important;">0.378</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -31993,7 +33385,7 @@ paired-end
 <span style="     color: black !important;">0.346</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.398</span>
+<span style="     color: black !important;">0.398</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.812</span>
@@ -32028,7 +33420,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.389</span>
+<span style="     color: blue !important;">0.389</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -32037,7 +33429,7 @@ paired-end
 <span style="     color: black !important;">0.357</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.402</span>
+<span style="     color: black !important;">0.402</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.761</span>
@@ -32072,7 +33464,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.387</span>
+<span style="     color: blue !important;">0.387</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -32081,7 +33473,7 @@ paired-end
 <span style="     color: black !important;">0.342</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.390</span>
+<span style="     color: black !important;">0.390</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.771</span>
@@ -32116,7 +33508,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.397</span>
+<span style="     color: blue !important;">0.397</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -32125,7 +33517,7 @@ paired-end
 <span style="     color: black !important;">0.364</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.412</span>
+<span style="     color: black !important;">0.412</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.755</span>
@@ -32160,7 +33552,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.395</span>
+<span style="     color: blue !important;">0.395</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -32169,7 +33561,7 @@ paired-end
 <span style="     color: black !important;">0.362</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.410</span>
+<span style="     color: black !important;">0.410</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.773</span>
@@ -33084,7 +34476,7 @@ single-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.396</span>
+<span style="     color: blue !important;">0.396</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33093,7 +34485,7 @@ single-end
 <span style="     color: black !important;">0.375</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.424</span>
+<span style="     color: black !important;">0.424</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.701</span>
@@ -33128,7 +34520,7 @@ single-end
 <span style="     color: black !important;">0.002</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.418</span>
+<span style="     color: blue !important;">0.418</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33137,7 +34529,7 @@ single-end
 <span style="     color: black !important;">0.386</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.430</span>
+<span style="     color: black !important;">0.430</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.743</span>
@@ -33172,7 +34564,7 @@ single-end
 <span style="     color: black !important;">0.003</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.421</span>
+<span style="     color: blue !important;">0.421</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33181,7 +34573,7 @@ single-end
 <span style="     color: black !important;">0.388</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.431</span>
+<span style="     color: black !important;">0.431</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.712</span>
@@ -33216,7 +34608,7 @@ single-end
 <span style="     color: black !important;">0.003</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.424</span>
+<span style="     color: blue !important;">0.424</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33225,7 +34617,7 @@ single-end
 <span style="     color: black !important;">0.411</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.455</span>
+<span style="     color: black !important;">0.455</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.692</span>
@@ -33260,7 +34652,7 @@ single-end
 <span style="     color: black !important;">0.004</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.433</span>
+<span style="     color: blue !important;">0.433</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33269,7 +34661,7 @@ single-end
 <span style="     color: black !important;">0.419</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.461</span>
+<span style="     color: black !important;">0.461</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.647</span>
@@ -33304,7 +34696,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.353</span>
+<span style="     color: blue !important;">0.353</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33313,7 +34705,7 @@ single-end
 <span style="     color: black !important;">0.305</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.362</span>
+<span style="     color: black !important;">0.362</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.800</span>
@@ -33348,7 +34740,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.357</span>
+<span style="     color: blue !important;">0.357</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33357,7 +34749,7 @@ single-end
 <span style="     color: black !important;">0.309</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.362</span>
+<span style="     color: black !important;">0.362</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.818</span>
@@ -33401,7 +34793,7 @@ single-end
 <span style="     color: black !important;">0.320</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.369</span>
+<span style="     color: black !important;">0.369</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.762</span>
@@ -33436,7 +34828,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.381</span>
+<span style="     color: blue !important;">0.381</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33445,7 +34837,7 @@ single-end
 <span style="     color: black !important;">0.335</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.383</span>
+<span style="     color: black !important;">0.383</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.800</span>
@@ -33480,7 +34872,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.386</span>
+<span style="     color: blue !important;">0.386</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -33489,7 +34881,7 @@ single-end
 <span style="     color: black !important;">0.343</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.394</span>
+<span style="     color: black !important;">0.394</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.798</span>
@@ -34399,8 +35791,9 @@ quantified with kallisto. Library size shown in million reads (M) with
 25/100 indicating library sizes alternating between 25M and 100M across
 replicates. Read lengths are shown in base pairs (bp). Red color
 indicates observed FDR values greater than the nominal 0.05. Blue color
-indicates most powerful method for a given scenario (row). Empty cells
-indicate cases in which a method failed to call any transcript as DE.
+indicates the most powerful method that controls the FDR at the nominal
+level for a given scenario (row). Empty cells indicate cases in which a
+method failed to call any transcript as DE.
 </caption>
 <thead>
 <tr>
@@ -34480,7 +35873,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.434</span>
+<span style="     color: blue !important;">0.434</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34489,7 +35882,7 @@ paired-end
 <span style="     color: black !important;">0.418</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.474</span>
+<span style="     color: black !important;">0.474</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.694</span>
@@ -34524,7 +35917,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.440</span>
+<span style="     color: blue !important;">0.440</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34533,7 +35926,7 @@ paired-end
 <span style="     color: black !important;">0.425</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.484</span>
+<span style="     color: black !important;">0.484</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.619</span>
@@ -34568,7 +35961,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.445</span>
+<span style="     color: blue !important;">0.445</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34577,7 +35970,7 @@ paired-end
 <span style="     color: black !important;">0.425</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.482</span>
+<span style="     color: black !important;">0.482</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.703</span>
@@ -34612,7 +36005,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.445</span>
+<span style="     color: blue !important;">0.445</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34621,7 +36014,7 @@ paired-end
 <span style="     color: black !important;">0.429</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.490</span>
+<span style="     color: black !important;">0.490</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.841</span>
@@ -34656,7 +36049,7 @@ paired-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.451</span>
+<span style="     color: blue !important;">0.451</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34665,7 +36058,7 @@ paired-end
 <span style="     color: black !important;">0.433</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.491</span>
+<span style="     color: black !important;">0.491</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.689</span>
@@ -34700,7 +36093,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.376</span>
+<span style="     color: blue !important;">0.376</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34709,7 +36102,7 @@ paired-end
 <span style="     color: black !important;">0.347</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.404</span>
+<span style="     color: black !important;">0.404</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.650</span>
@@ -34744,7 +36137,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.390</span>
+<span style="     color: blue !important;">0.390</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34753,7 +36146,7 @@ paired-end
 <span style="     color: black !important;">0.364</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.415</span>
+<span style="     color: black !important;">0.415</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.727</span>
@@ -34788,7 +36181,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.387</span>
+<span style="     color: blue !important;">0.387</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34797,7 +36190,7 @@ paired-end
 <span style="     color: black !important;">0.356</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.412</span>
+<span style="     color: black !important;">0.412</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.769</span>
@@ -34832,7 +36225,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.399</span>
+<span style="     color: blue !important;">0.399</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34841,7 +36234,7 @@ paired-end
 <span style="     color: black !important;">0.369</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.422</span>
+<span style="     color: black !important;">0.422</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.771</span>
@@ -34876,7 +36269,7 @@ paired-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.395</span>
+<span style="     color: blue !important;">0.395</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -34885,7 +36278,7 @@ paired-end
 <span style="     color: black !important;">0.367</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.420</span>
+<span style="     color: black !important;">0.420</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.833</span>
@@ -35800,7 +37193,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.401</span>
+<span style="     color: blue !important;">0.401</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -35809,7 +37202,7 @@ single-end
 <span style="     color: black !important;">0.378</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.436</span>
+<span style="     color: black !important;">0.436</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.850</span>
@@ -35844,7 +37237,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.413</span>
+<span style="     color: blue !important;">0.413</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -35853,7 +37246,7 @@ single-end
 <span style="     color: black !important;">0.389</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.444</span>
+<span style="     color: black !important;">0.444</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.860</span>
@@ -35888,7 +37281,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.416</span>
+<span style="     color: blue !important;">0.416</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -35897,7 +37290,7 @@ single-end
 <span style="     color: black !important;">0.394</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.451</span>
+<span style="     color: black !important;">0.451</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.803</span>
@@ -35932,7 +37325,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.426</span>
+<span style="     color: blue !important;">0.426</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -35941,7 +37334,7 @@ single-end
 <span style="     color: black !important;">0.413</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.467</span>
+<span style="     color: black !important;">0.467</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.856</span>
@@ -35976,7 +37369,7 @@ single-end
 <span style="     color: black !important;">0.001</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.435</span>
+<span style="     color: blue !important;">0.435</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -35985,7 +37378,7 @@ single-end
 <span style="     color: black !important;">0.420</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.473</span>
+<span style="     color: black !important;">0.473</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.667</span>
@@ -36020,7 +37413,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.351</span>
+<span style="     color: blue !important;">0.351</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -36029,7 +37422,7 @@ single-end
 <span style="     color: black !important;">0.312</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.368</span>
+<span style="     color: black !important;">0.368</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.750</span>
@@ -36064,7 +37457,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.356</span>
+<span style="     color: blue !important;">0.356</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -36073,7 +37466,7 @@ single-end
 <span style="     color: black !important;">0.316</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.372</span>
+<span style="     color: black !important;">0.372</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.882</span>
@@ -36108,7 +37501,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.365</span>
+<span style="     color: blue !important;">0.365</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -36117,7 +37510,7 @@ single-end
 <span style="     color: black !important;">0.328</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.382</span>
+<span style="     color: black !important;">0.382</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.824</span>
@@ -36152,7 +37545,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.377</span>
+<span style="     color: blue !important;">0.377</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -36161,7 +37554,7 @@ single-end
 <span style="     color: black !important;">0.339</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.392</span>
+<span style="     color: black !important;">0.392</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.769</span>
@@ -36196,7 +37589,7 @@ single-end
 <span style="     color: black !important;">0.000</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.380</span>
+<span style="     color: blue !important;">0.380</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.000</span>
@@ -36205,7 +37598,7 @@ single-end
 <span style="     color: black !important;">0.347</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.401</span>
+<span style="     color: black !important;">0.401</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: red !important;">0.588</span>
@@ -36240,13 +37633,13 @@ single-end
 <span style="     color: black !important;">0.506</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.715</span>
+<span style="     color: black !important;">0.715</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.526</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.639</span>
+<span style="     color: blue !important;">0.639</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.445</span>
@@ -36284,13 +37677,13 @@ single-end
 <span style="     color: black !important;">0.528</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.728</span>
+<span style="     color: black !important;">0.728</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.539</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.653</span>
+<span style="     color: blue !important;">0.653</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.452</span>
@@ -36328,13 +37721,13 @@ single-end
 <span style="     color: black !important;">0.545</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.732</span>
+<span style="     color: black !important;">0.732</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.548</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.662</span>
+<span style="     color: blue !important;">0.662</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.450</span>
@@ -36372,13 +37765,13 @@ single-end
 <span style="     color: black !important;">0.569</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.743</span>
+<span style="     color: black !important;">0.743</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.566</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.678</span>
+<span style="     color: blue !important;">0.678</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.471</span>
@@ -36680,10 +38073,10 @@ single-end
 <span style="     color: black !important;">0.863</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.875</span>
+<span style="     color: black !important;">0.875</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.825</span>
+<span style="     color: blue !important;">0.825</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.833</span>
@@ -36724,10 +38117,10 @@ single-end
 <span style="     color: black !important;">0.875</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.886</span>
+<span style="     color: black !important;">0.886</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.839</span>
+<span style="     color: blue !important;">0.839</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.847</span>
@@ -36768,10 +38161,10 @@ single-end
 <span style="     color: black !important;">0.886</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.894</span>
+<span style="     color: black !important;">0.894</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.851</span>
+<span style="     color: blue !important;">0.851</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.860</span>
@@ -36812,13 +38205,13 @@ single-end
 <span style="     color: black !important;">0.897</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.904</span>
+<span style="     color: black !important;">0.904</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.866</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.874</span>
+<span style="     color: blue !important;">0.874</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.888</span>
@@ -36853,10 +38246,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.905</span>
+<span style="     color: blue !important;">0.905</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.911</span>
+<span style="     color: black !important;">0.911</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.875</span>
@@ -36897,10 +38290,10 @@ single-end
 50bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.833</span>
+<span style="     color: blue !important;">0.833</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.880</span>
+<span style="     color: black !important;">0.880</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.768</span>
@@ -36941,10 +38334,10 @@ single-end
 75bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.846</span>
+<span style="     color: blue !important;">0.846</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.891</span>
+<span style="     color: black !important;">0.891</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.782</span>
@@ -36985,10 +38378,10 @@ single-end
 100bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.859</span>
+<span style="     color: blue !important;">0.859</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.902</span>
+<span style="     color: black !important;">0.902</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.798</span>
@@ -37029,10 +38422,10 @@ single-end
 125bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.874</span>
+<span style="     color: blue !important;">0.874</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.909</span>
+<span style="     color: black !important;">0.909</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.820</span>
@@ -37073,10 +38466,10 @@ single-end
 150bp
 </td>
 <td style="text-align:right;">
-<span style="     color: black !important;">0.883</span>
+<span style="     color: blue !important;">0.883</span>
 </td>
 <td style="text-align:right;">
-<span style="     color: blue !important;">0.915</span>
+<span style="     color: black !important;">0.915</span>
 </td>
 <td style="text-align:right;">
 <span style="     color: black !important;">0.830</span>
