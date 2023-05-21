@@ -721,7 +721,7 @@ cap <- paste0('Simulation results - observed power and false discovery rate for'
               dt.scenario.table$genome,' genome, ',cap.txpergene,', and reads ',
               ' quantified with ',dt.scenario.table$quantifier,'.')
 
-cap1 <- paste(cap,'Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates most powerful method for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.')
+cap1 <- paste(cap,'Library size shown in million reads (M) with 25/100 indicating library sizes alternating between 25M and 100M across replicates. Read lengths are shown in base pairs (bp). Red color indicates observed FDR values greater than the nominal 0.05. Blue color indicates the most powerful method that controls the FDR at the nominal level for a given scenario (row). Empty cells indicate cases in which a method failed to call any transcript as DE.')
 ```
 
 We created the table below with the function `tabulateMetrics`.
