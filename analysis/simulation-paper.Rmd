@@ -99,8 +99,8 @@ Here we begin summarizing the results to generate the figures presented in the m
 Below I set up the file paths.
 
 ```{r simulation-paper_data_paths}
-path.misc <- file.path('../misc',knitr::current_input())
-dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+path.misc <- '../misc/simulation-paper.Rmd/'# file.path('../misc',knitr::current_input())
+# dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
 
 path.fdr <- 
   list.files('../output/simulation/summary','fdr.tsv.gz',recursive = TRUE,full.names = TRUE)
@@ -136,8 +136,9 @@ dt.fdr$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.fdr$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.fdr$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.fdr$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                              to = paste0(seq(50, 150, 25), 'bp'))
@@ -146,8 +147,9 @@ dt.metrics$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.metrics$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.metrics$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.metrics$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                  to = paste0(seq(50, 150, 25), 'bp'))
@@ -156,8 +158,9 @@ dt.time$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.time$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.time$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.time$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                               to = paste0(seq(50, 150, 25), 'bp'))
@@ -166,8 +169,9 @@ dt.quantile$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.quantile$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.quantile$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.quantile$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                   to = paste0(seq(50, 150, 25), 'bp'))
@@ -176,8 +180,9 @@ dt.pvalue$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.pvalue$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.pvalue$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.pvalue$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                 to = paste0(seq(50, 150, 25), 'bp'))
@@ -186,8 +191,9 @@ dt.overdispersion$TxPerGene %<>%
   mapvalues(from = paste0(c(2, 3, 4, 5, 9999), 'TxPerGene'),
             to = c(paste0("#Tx/Gene = ", c(2, 3, 4, 5)), 'All Transcripts'))
 dt.overdispersion$LibsPerGroup %<>%
-  mapvalues(from = paste0(c(3, 5), 'libsPerGroup'),
-            to = paste0('#Lib/Group = ', c(3, 5)))
+  mapvalues(from = paste0(c(3, 5, 10), 'libsPerGroup'),
+            to = paste0('#Lib/Group = ', c(3, 5, 10))) %>%
+  factor(levels = paste0('#Lib/Group = ', c(3, 5, 10)))
 dt.overdispersion$Quantifier %<>% mapvalues(from = 'salmon', to = 'Salmon')
 dt.overdispersion$Length %<>% mapvalues(from = paste0('readlen-', seq(50, 150, 25)),
                                         to = paste0(seq(50, 150, 25), 'bp'))
@@ -224,6 +230,8 @@ names(scenario.unbalanced) <- colnames(dt.scenario)
 
 dt.power <- rbind(subsetDT(dt.metrics,scenario.balanced,'A'),
                   subsetDT(dt.metrics,scenario.unbalanced,'A'))
+
+dt.power <- dt.power[LibsPerGroup != '#Lib/Group = 10',]
 
 dt.power$LibsPerGroup %<>% mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
                                      to = paste0(c(3,5),' samples per group'))
@@ -293,6 +301,8 @@ Then, we generate Figure 3 below.
 dt.fdr.plot <- rbind(subsetDT(dt.fdr,scenario.balanced,'A'),
                      subsetDT(dt.fdr,scenario.unbalanced,'A'))
 
+dt.fdr.plot <- dt.fdr.plot[LibsPerGroup != "#Lib/Group = 10",]
+
 dt.fdr.plot$LibsPerGroup %<>% 
   mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
             to = paste0(c(3,5),' samples per group'))
@@ -344,6 +354,8 @@ Figure 4 is created below.
 ```{r simulation-paper_type1error_barplot}
 dt.type1error <- rbind(subsetDT(dt.metrics,scenario.balanced,'B'),
                        subsetDT(dt.metrics,scenario.unbalanced,'B'))
+
+dt.type1error <- dt.type1error[LibsPerGroup != "#Lib/Group = 10",]
 
 dt.type1error$LibsPerGroup %<>% 
   mapvalues(from = paste0('#Lib/Group = ', c(3, 5)),
@@ -446,7 +458,8 @@ Below we generate Table 1 of the main paper.
 dt.sigma2 <- dt.overdispersion[TxPerGene == 'All Transcripts' & 
                                  Quantifier == 'Salmon' & 
                                  Scenario == 'unbalanced' & 
-                                 FC == 'fc2',]
+                                 FC == 'fc2' &
+                                 LibsPerGroup != '#Lib/Group = 10',]
 
 dt.sigma2 <- dt.sigma2[,-c(1,3,5,6,8,10:15)]
 
@@ -496,7 +509,8 @@ names(scenario.table) <- colnames(dt.scenario.table)
 
 dt.table <- subsetDT(dt.metrics,scenario = scenario.table,plot = FALSE)
 dt.table <- dt.table[Method == 'edgeR-scaled' &
-                       Scenario == 'unbalanced',]
+                       Scenario == 'unbalanced' &
+                       LibsPerGroup != '#Lib/Group = 10',]
 
 dt.table[,Power := TP/3000]
 dt.table[,FDR := ifelse((FP+TP) == 0,NA,FP/(FP+TP))]
