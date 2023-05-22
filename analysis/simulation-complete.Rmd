@@ -654,7 +654,7 @@ plots <- lapply(seq_len(nrow(dt.scenario)),function(i){
 
   figA <- 
     list(plotFDRCurve(x = subsetDT(dt.fdr,scenario,'A'),3000),
-         plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3100),
+         plotPowerBars(x = subsetDT(dt.metrics,scenario,'A'),0.05,3600),
          plotTime(x = subsetDT(dt.time,scenario,'A')))
   
   figB <- 
