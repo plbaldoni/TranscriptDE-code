@@ -390,7 +390,7 @@ plotQQPlot <- function(x,base_size = 8){
                  aes(x = Q.Theory.Midpoint,y = Q.Sample.Avg,color = Method,group = Method)) +
     facet_grid(rows = vars(LibsPerGroup),cols = vars(TxPerGene)) +
     # geom_abline(intercept = 0,slope = 1,colour = 'black',linetype = 'dashed') +
-    geom_line(alpha = 0,size = 0) +
+    geom_line(inherit.aes = FALSE,aes(x=0,y = 0,color = Method,group = Method)) +
     geom_point(pch = '.',size = 2) +
     theme_bw(base_size = base_size,base_family = 'sans') +
     scale_color_manual(values = meth$color) +
@@ -399,7 +399,7 @@ plotQQPlot <- function(x,base_size = 8){
           legend.background = element_rect(fill = alpha('white', 0)),
           legend.text = element_text(size = base_size),
           legend.title = element_blank(),
-          legend.key.size = unit(2,"line"),
+          # legend.key.size = unit(2,"line"),
           legend.position = 'top',
           panel.grid = element_blank(),
           axis.text = element_text(colour = 'black',size = base_size),
