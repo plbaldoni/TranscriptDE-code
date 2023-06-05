@@ -1,4 +1,24 @@
-simulateExpr <- function(n.feat,n.libs,lib.sizes,top.cutoff,num.DE,fc,
+gammaToLogNormal <- function(x,shape,scale){
+  # This function transforms a vector of gamma random variables to an equivalent
+  # vector of log-normal random variables using quantile transformation. We 
+  # implemented this function aiming to compare downstream DTE results between
+  # scenarios in which the expression levels follow either a gamma or log-normal
+  # distribution
+  
+  sigma2 <- log((shape + 1) / shape)
+  mu <- 3 / 2 * log(shape) + log(scale) - 0.5 * log(shape + 1)
+  
+  ylnorm <- x
+  pupper <- pgamma(x,shape = shape,scale = scale,lower.tail = FALSE,log.p = TRUE)
+  plower <- pgamma(x,shape = shape,scale = scale,lower.tail = TRUE,log.p = TRUE)
+  up <- pupper < plower
+  if(any(up)) ylnorm[up] <- qlnorm(pupper[up],meanlog=mu,sdlog=sqrt(sigma2),lower.tail=FALSE,log.p=TRUE)
+  if(any(!up)) ylnorm[!up] <- qlnorm(plower[!up],meanlog=mu,sdlog=sqrt(sigma2),lower.tail=TRUE,log.p=TRUE)
+  
+  return(ylnorm)
+}
+
+simulateExpr <- function(n.feat,n.libs,lib.sizes,top.cutoff,num.DE,fc,lognormal,
                          df.bcv = 40, bcv.true = 0.2){
   # This function was written with the goal of mimicking the simulation setup
   # used in the voom paper. Specifically, we use goodTuringProportions to
@@ -63,8 +83,14 @@ simulateExpr <- function(n.feat,n.libs,lib.sizes,top.cutoff,num.DE,fc,
   shape <- 1/disp
   scale <- mu0/shape
   
-  expr <- matrix(rgamma(n.feat * n.samples, shape = shape, scale = scale),
-                 nrow =  n.feat, ncol =  n.samples)
+  expr <- rgamma(n.feat * n.samples, shape = shape, scale = scale)
+  
+  if (isTRUE(lognormal)) {
+    gammaToLogNormalVectorized <- Vectorize(gammaToLogNormal)
+    expr <- gammaToLogNormalVectorized(expr,shape = c(shape),scale = c(scale))
+  }
+  
+  expr <- matrix(expr,nrow =  n.feat, ncol =  n.samples)
   
   # Shuffling matrices (to be matched with reference data)
   key <- sample(n.feat,replace = FALSE)
@@ -78,7 +104,8 @@ simulateExpr <- function(n.feat,n.libs,lib.sizes,top.cutoff,num.DE,fc,
 
 #' @importFrom data.table setkey copy setnames
 simulateTPM <- function(contigs,contigs.subset,
-                        n.libs,lib.sizes,top.cutoff,num.DE,fc){
+                        n.libs,lib.sizes,top.cutoff,
+                        num.DE,fc,lognormal){
   
   # Generating sample labels
   group <- rep(LETTERS[seq_len(length(n.libs))],times = n.libs)
@@ -88,7 +115,8 @@ simulateTPM <- function(contigs,contigs.subset,
   # Simulating transcript-wise expression
   trExpr <- simulateExpr(n.feat = nrow(contigs.subset),
                          n.libs = n.libs,lib.sizes = lib.sizes,
-                         top.cutoff = top.cutoff,num.DE = num.DE,fc = fc)
+                         top.cutoff = top.cutoff,num.DE = num.DE,fc = fc,
+                         lognormal = lognormal)
   
   # Generating TPM values
   tpm <- trExpr$expr / contigs.subset$Length
@@ -154,7 +182,7 @@ readFasta <- function(fasta){
 #' @importFrom readr write_tsv
 simulateFASTQ <- function(fasta,n.libs,lib.sizes,dest,tmpdir,paired.end,
                           fc,num.DE,top.cutoff,max.tx,genome,BPPARAM,read.length,
-                          fragment.length.min){
+                          fragment.length.min,lognormal){
   
   # Checking if simulation has already been run
   dir.create(dest,showWarnings = FALSE,recursive = TRUE)
@@ -177,7 +205,8 @@ simulateFASTQ <- function(fasta,n.libs,lib.sizes,dest,tmpdir,paired.end,
   message('Simulating transcript-wise TPM...')
   txTPM <- simulateTPM(contigs = contigs, contigs.subset = contigs.subset,
                        lib.sizes = lib.sizes,n.libs = n.libs, 
-                       top.cutoff = top.cutoff,num.DE = num.DE,fc = fc)
+                       top.cutoff = top.cutoff,num.DE = num.DE,fc = fc,
+                       lognormal = lognormal)
   
   # Getting quality reference
   quality.source <- ifelse(read.length %in% c(75, 100),'Rsubread','rfun')
@@ -238,6 +267,7 @@ simulateExperiment <- function(dest,
                                keep.fastq = FALSE,
                                read.length = 75,
                                fragment.length.min = 150,
+                               lognormal = FALSE,
                                bin.salmon = "/stornext/General/data/academic/lab_smyth/baldoni.p/software/salmon-1.9.0_linux_x86_64/bin/salmon",
                                index.salmon = file.path("/stornext/General/data/academic/lab_smyth/baldoni.p/software/SalmonIndex",genome,"transcripts_index/"),
                                opts.salmon =  paste('-p',workers,'-l A --numBootstraps 100 --validateMappings'),
@@ -245,10 +275,16 @@ simulateExperiment <- function(dest,
                                index.kallisto = file.path("/stornext/General/data/academic/lab_smyth/baldoni.p/software/kallistoIndex",genome,"transcripts_index"),
                                opts.kallisto = paste0('--bootstrap-samples=100 --threads=',workers),
                                run.salmon = TRUE,
-                               run.kallisto = TRUE){
+                               run.kallisto = TRUE,
+                               seed = NULL){
   
   # Setting up parallel computing
-  BPPARAM <- MulticoreParam(workers = workers, progressbar = TRUE)
+  if(is.null(seed)){
+    BPPARAM <- MulticoreParam(workers = workers, progressbar = TRUE)
+  } else{
+    set.seed(seed)
+    BPPARAM <- MulticoreParam(workers = workers, progressbar = TRUE,RNGseed = seed)
+  }
   register(BPPARAM = BPPARAM)
   
   # Preparing directories
@@ -263,7 +299,8 @@ simulateExperiment <- function(dest,
                 lib.sizes = lib.sizes,dest = file.path(dest,'meta'), fc = fc,
                 paired.end = paired.end,num.DE = num.DE,top.cutoff = top.cutoff,
                 genome = genome, max.tx = max.tx,BPPARAM = BPPARAM,
-                read.length = read.length,fragment.length.min = fragment.length.min)
+                read.length = read.length,fragment.length.min = fragment.length.min,
+                lognormal = lognormal)
   
   # Quantifying FASTQs
   path.targets <- file.path(dest,'meta/targets.tsv.gz')
