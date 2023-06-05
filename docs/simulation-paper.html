@@ -358,7 +358,7 @@ div.tocify {
 <h1 class="title toc-ignore">Simulation - Reduced report (results
 presented in the main paper)</h1>
 <h4 class="author">Pedro L. Baldoni</h4>
-<h4 class="date">21 May, 2023</h4>
+<h4 class="date">05 June, 2023</h4>
 
 </div>
 
@@ -366,7 +366,7 @@ presented in the main paper)</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -377,8 +377,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -387,13 +387,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-05-21
+<strong>Last updated:</strong> 2023-06-05
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -417,18 +417,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -519,15 +522,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree1a75b185cb0bf29fc175bf1eaece7f559e2e96aatargetblank1a75b18a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0173696f69044307194e2d007e9d4c4d67298079targetblank0173696a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/1a75b185cb0bf29fc175bf1eaece7f559e2e96aa" target="_blank">1a75b18</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0173696f69044307194e2d007e9d4c4d67298079" target="_blank">0173696</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree1a75b185cb0bf29fc175bf1eaece7f559e2e96aatargetblank1a75b18a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0173696f69044307194e2d007e9d4c4d67298079targetblank0173696a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -537,7 +540,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/1a75b185cb0bf29fc175bf1eaece7f559e2e96aa" target="_blank">1a75b18</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0173696f69044307194e2d007e9d4c4d67298079" target="_blank">0173696</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -612,6 +615,15 @@ Ignored files:
     Ignored:    output/quasi_poisson/
     Ignored:    output/simulation/
 
+Untracked files:
+    Untracked:  misc/casestudy.Rmd/figure1.pdf
+    Untracked:  misc/casestudy.Rmd/figure6.pdf
+
+Unstaged changes:
+    Modified:   analysis/casestudy.Rmd
+    Modified:   analysis/simulation-paper.Rmd
+    Modified:   code/pkg/R/simulation.R
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not
@@ -656,6 +668,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/bfd4304523dda9223897c987496afecaef34b5ad/docs/simulation-paper.html" target="_blank">bfd4304</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-05-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1298,12 +1327,11 @@ fig.power &lt;- (fig.power.a + fig.power.b) / (fig.power.c + fig.power.d) +
   plot_annotation(tag_levels = &#39;a&#39;) +
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,&quot;figure2.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300)
-fig.power
-dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
-<pre class="r"><code>fig.power</code></pre>
+ggsave(plot = fig.power,
+       filename = file.path(path.misc,&quot;figure2.pdf&quot;),
+       device = &#39;pdf&#39;,width = 5,height = 5,units = &#39;in&#39;,dpi = 300)
+
+fig.power</code></pre>
 <p><img src="figure/simulation-paper.Rmd/simulation-paper_power-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_power-1">
@@ -1418,12 +1446,11 @@ fig.fdr.d &lt;- plot.fdr(df.line = dt.fdr.plot,scenario = &#39;Unequal library s
 fig.fdr &lt;- (fig.fdr.a + fig.fdr.b) / (fig.fdr.c + fig.fdr.d) +
   plot_annotation(tag_levels = &#39;a&#39;)
 
-agg_png(filename = file.path(path.misc,&quot;figure3.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300)
-fig.fdr
-dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
-<pre class="r"><code>fig.fdr</code></pre>
+ggsave(plot = fig.fdr,
+       filename = file.path(path.misc,&quot;figure3.pdf&quot;),
+       device = &#39;pdf&#39;,width = 5,height = 5,units = &#39;in&#39;,dpi = 300)
+
+fig.fdr</code></pre>
 <p><img src="figure/simulation-paper.Rmd/simulation-paper_fdr-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_fdr-1">
@@ -1535,12 +1562,11 @@ fig.type1error.d &lt;- plot.type1error(df.bar = x.melt,scenario = &#39;Unequal l
 fig.type1error &lt;- (fig.type1error.a + fig.type1error.b) / (fig.type1error.c + fig.type1error.d) +
   plot_annotation(tag_levels = &#39;a&#39;)
 
-agg_png(filename = file.path(path.misc,&quot;figure4.png&quot;),width = 5,height = 5,units = &#39;in&#39;,res = 300) 
-fig.type1error
-dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
-<pre class="r"><code>fig.type1error</code></pre>
+ggsave(plot = fig.type1error,
+       filename = file.path(path.misc,&quot;figure4.pdf&quot;),
+       device = &#39;pdf&#39;,width = 5,height = 5,units = &#39;in&#39;,dpi = 300)
+
+fig.type1error</code></pre>
 <p><img src="figure/simulation-paper.Rmd/simulation-paper_type1error_barplot-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_barplot-1">
@@ -1646,12 +1672,11 @@ fig.hist &lt;- fig.hist.a + fig.hist.b + fig.hist.c + fig.hist.d + fig.hist.e +
   plot_layout(design = design) +
   plot_annotation(tag_levels = &#39;a&#39;)
 
-agg_png(filename = file.path(path.misc,&quot;figure5.png&quot;),width = 5,height = 7.5,units = &#39;in&#39;,res = 300)
-fig.hist
-dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
-<pre class="r"><code>fig.hist</code></pre>
+ggsave(plot = fig.hist,
+       filename = file.path(path.misc,&quot;figure5.pdf&quot;),
+       device = &#39;pdf&#39;,width = 5,height = 7.5,units = &#39;in&#39;,dpi = 300)
+
+fig.hist</code></pre>
 <p><img src="figure/simulation-paper.Rmd/simulation-paper_type1error_pvalue-1.png" width="2100" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-simulation-paper_type1error_pvalue-1">

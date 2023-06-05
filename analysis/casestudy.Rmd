@@ -665,10 +665,9 @@ plot.mao <-
 
 plot.mao
 
-agg_png(filename = file.path(path.misc,"figure1.png"),
-        width = 5,height = 5,units = 'in',res = 300)
-plot.mao
-dev.off()
+ggsave(plot = plot.mao,
+       filename = file.path(path.misc,"figure1.pdf"),
+       device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 ```
 
 ## Comparison of transcript-level and gene-level results using paired-end read data
@@ -855,10 +854,9 @@ fig.panel <- wrap_plots(A = plot.mds,
 fig.panel <- fig.panel &
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,"figure6.png"),
-        width = 10,height = 12,units = 'in',res = 300)
-fig.panel
-dev.off()
+ggsave(plot = fig.panel,
+       filename = file.path(path.misc,"figure6.pdf"),
+       device = 'pdf',width = 10,height = 12,units = 'in',dpi = 300)
 ```
 
 For the genes presented in panel (b), below we present the results from our DE analysis at the gene-level.

@@ -288,9 +288,9 @@ fig.power <- (fig.power.a + fig.power.b) / (fig.power.c + fig.power.d) +
   plot_annotation(tag_levels = 'a') +
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,"figure2.png"),width = 5,height = 5,units = 'in',res = 300)
-fig.power
-dev.off()
+ggsave(plot = fig.power,
+       filename = file.path(path.misc,"figure2.pdf"),
+       device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.power
 ```
@@ -340,9 +340,9 @@ fig.fdr.d <- plot.fdr(df.line = dt.fdr.plot,scenario = 'Unequal library sizes',l
 fig.fdr <- (fig.fdr.a + fig.fdr.b) / (fig.fdr.c + fig.fdr.d) +
   plot_annotation(tag_levels = 'a')
 
-agg_png(filename = file.path(path.misc,"figure3.png"),width = 5,height = 5,units = 'in',res = 300)
-fig.fdr
-dev.off()
+ggsave(plot = fig.fdr,
+       filename = file.path(path.misc,"figure3.pdf"),
+       device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.fdr
 ```
@@ -399,9 +399,9 @@ fig.type1error.d <- plot.type1error(df.bar = x.melt,scenario = 'Unequal library 
 fig.type1error <- (fig.type1error.a + fig.type1error.b) / (fig.type1error.c + fig.type1error.d) +
   plot_annotation(tag_levels = 'a')
 
-agg_png(filename = file.path(path.misc,"figure4.png"),width = 5,height = 5,units = 'in',res = 300) 
-fig.type1error
-dev.off()
+ggsave(plot = fig.type1error,
+       filename = file.path(path.misc,"figure4.pdf"),
+       device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.type1error
 ```
@@ -442,9 +442,9 @@ fig.hist <- fig.hist.a + fig.hist.b + fig.hist.c + fig.hist.d + fig.hist.e +
   plot_layout(design = design) +
   plot_annotation(tag_levels = 'a')
 
-agg_png(filename = file.path(path.misc,"figure5.png"),width = 5,height = 7.5,units = 'in',res = 300)
-fig.hist
-dev.off()
+ggsave(plot = fig.hist,
+       filename = file.path(path.misc,"figure5.pdf"),
+       device = 'pdf',width = 5,height = 7.5,units = 'in',dpi = 300)
 
 fig.hist
 ```

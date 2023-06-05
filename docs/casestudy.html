@@ -380,7 +380,7 @@ div.tocify {
 <h1 class="title toc-ignore">Case study: Analysis of the RNA-seq data
 from human cell lines H1975 and HCC827</h1>
 <h4 class="author">Pedro L. Baldoni</h4>
-<h4 class="date">30 March, 2023</h4>
+<h4 class="date">05 June, 2023</h4>
 
 </div>
 
@@ -388,7 +388,7 @@ from human cell lines H1975 and HCC827</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -399,8 +399,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -409,13 +409,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-03-30
+<strong>Last updated:</strong> 2023-06-05
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -439,18 +439,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -541,15 +544,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree527c405e6af4ee4dac95a5cf531339d17fcf13e3targetblank527c405a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0173696f69044307194e2d007e9d4c4d67298079targetblank0173696a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/527c405e6af4ee4dac95a5cf531339d17fcf13e3" target="_blank">527c405</a>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0173696f69044307194e2d007e9d4c4d67298079" target="_blank">0173696</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree527c405e6af4ee4dac95a5cf531339d17fcf13e3targetblank527c405a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomplbaldoniTranscriptDEcodetree0173696f69044307194e2d007e9d4c4d67298079targetblank0173696a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -559,7 +562,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/527c405e6af4ee4dac95a5cf531339d17fcf13e3" target="_blank">527c405</a>.
+<a href="https://github.com/plbaldoni/TranscriptDE-code/tree/0173696f69044307194e2d007e9d4c4d67298079" target="_blank">0173696</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -635,7 +638,9 @@ Ignored files:
     Ignored:    output/simulation/
 
 Unstaged changes:
-    Modified:   misc/casestudy.Rmd/supptable_overdispersion.tex
+    Modified:   analysis/casestudy.Rmd
+    Modified:   analysis/simulation-paper.Rmd
+    Modified:   code/pkg/R/simulation.R
 
 </code></pre>
 <p>
@@ -681,6 +686,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/plbaldoni/TranscriptDE-code/28636ac496adc4537b71669025eaddfb42c75d69/docs/casestudy.html" target="_blank">28636ac</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1175,7 +1197,6 @@ genes with an associated Entrez ID.</p>
 <pre class="r"><code>edb &lt;- ah[[&#39;AH78783&#39;]] # Ensembl version 99 relative to Gencode version 33</code></pre>
 <pre><code>loading from cache</code></pre>
 <pre><code>require(&quot;ensembldb&quot;)</code></pre>
-<pre><code>Warning: package &#39;AnnotationDbi&#39; was built under R version 4.2.3</code></pre>
 <pre class="r"><code>edb.names &lt;- c(&quot;TXIDVERSION&quot;,&quot;SYMBOL&quot;,&quot;TXBIOTYPE&quot;,
                &quot;GENEIDVERSION&quot;,&quot;GENENAME&quot;,&quot;GENEBIOTYPE&quot;,&quot;ENTREZID&quot;)
 
@@ -1789,13 +1810,10 @@ Pedro Baldoni
 </table>
 </div>
 </div>
-<pre class="r"><code>agg_png(filename = file.path(path.misc,&quot;figure1.png&quot;),
-        width = 5,height = 5,units = &#39;in&#39;,res = 300)
-plot.mao</code></pre>
+<pre class="r"><code>ggsave(plot = plot.mao,
+       filename = file.path(path.misc,&quot;figure1.pdf&quot;),
+       device = &#39;pdf&#39;,width = 5,height = 5,units = &#39;in&#39;,dpi = 300)</code></pre>
 <pre><code>`geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
-<pre class="r"><code>dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
 </div>
 <div
 id="comparison-of-transcript-level-and-gene-level-results-using-paired-end-read-data"
@@ -2123,12 +2141,9 @@ fig.panel &lt;- wrap_plots(A = plot.mds,
 fig.panel &lt;- fig.panel &amp;
   theme(plot.tag = element_text(size = 8))
 
-agg_png(filename = file.path(path.misc,&quot;figure6.png&quot;),
-        width = 10,height = 12,units = &#39;in&#39;,res = 300)
-fig.panel
-dev.off()</code></pre>
-<pre><code>png 
-  2 </code></pre>
+ggsave(plot = fig.panel,
+       filename = file.path(path.misc,&quot;figure6.pdf&quot;),
+       device = &#39;pdf&#39;,width = 10,height = 12,units = &#39;in&#39;,dpi = 300)</code></pre>
 <p>For the genes presented in panel (b), below we present the results
 from our DE analysis at the gene-level.</p>
 <pre class="r"><code>tb.gene &lt;- 
@@ -2298,6 +2313,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/plbaldoni/TranscriptDE-code/blob/28636ac496adc4537b71669025eaddfb42c75d69/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">28636ac</a>
+</td>
+<td>
+Pedro Baldoni
+</td>
+<td>
+2023-03-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/plbaldoni/TranscriptDE-code/blob/69e688c3bfd52873796a70a0930caddd4af6e150/docs/figure/casestudy.Rmd/casestudy_res_txgene_switch-2.png" target="_blank">69e688c</a>
@@ -2791,13 +2817,13 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.2.1 (2022-06-23)
+<pre><code>R version 4.3.0 (2023-04-21)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: CentOS Linux 7 (Core)
 
 Matrix products: default
-BLAS:   /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRblas.so
-LAPACK: /stornext/System/data/apps/R/R-4.2.1/lib64/R/lib/libRlapack.so
+BLAS:   /stornext/System/data/apps/R/R-4.3.0/lib64/R/lib/libRblas.so 
+LAPACK: /stornext/System/data/apps/R/R-4.3.0/lib64/R/lib/libRlapack.so;  LAPACK version 3.11.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -2807,6 +2833,9 @@ locale:
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
+time zone: UTC
+tzcode source: system (glibc)
+
 attached base packages:
 [1] grid      stats4    stats     graphics  grDevices utils     datasets 
 [8] methods   base     
@@ -2815,7 +2844,7 @@ other attached packages:
  [1] ensembldb_2.22.0            AnnotationFilter_1.22.0    
  [3] GenomicFeatures_1.50.4      AnnotationDbi_1.60.2       
  [5] kableExtra_1.3.4            magrittr_2.0.3             
- [7] ggplot2_3.4.1               ragg_1.2.5                 
+ [7] ggplot2_3.4.2               ragg_1.2.5                 
  [9] tibble_3.2.1                ComplexHeatmap_2.14.0      
 [11] patchwork_1.1.2             sleuth_0.30.0              
 [13] fishpond_2.4.1              SummarizedExperiment_1.28.0
@@ -2830,74 +2859,74 @@ other attached packages:
 [31] workflowr_1.7.0            
 
 loaded via a namespace (and not attached):
-  [1] circlize_0.4.15               systemfonts_1.0.4            
-  [3] lazyeval_0.2.2                splines_4.2.1                
-  [5] BiocParallel_1.32.6           digest_0.6.31                
-  [7] foreach_1.5.2                 htmltools_0.5.5              
-  [9] fansi_1.0.4                   memoise_2.0.1                
- [11] svMisc_1.2.3                  cluster_2.1.4                
- [13] doParallel_1.0.17             tzdb_0.3.0                   
- [15] readr_2.1.4                   Biostrings_2.66.0            
- [17] vroom_1.6.1                   svglite_2.1.1                
- [19] prettyunits_1.1.1             colorspace_2.1-0             
- [21] rvest_1.0.3                   blob_1.2.4                   
- [23] rappdirs_0.3.3                textshaping_0.3.6            
- [25] xfun_0.38                     dplyr_1.1.1                  
- [27] callr_3.7.3                   crayon_1.5.2                 
- [29] RCurl_1.98-1.12               jsonlite_1.8.4               
- [31] tximport_1.26.1               iterators_1.0.14             
- [33] glue_1.6.2                    gtable_0.3.3                 
- [35] zlibbioc_1.44.0               XVector_0.38.0               
- [37] webshot_0.5.4                 GetoptLong_1.0.5             
- [39] DelayedArray_0.24.0           Rhdf5lib_1.20.0              
- [41] shape_1.4.6                   SingleCellExperiment_1.20.1  
- [43] abind_1.4-5                   scales_1.2.1                 
- [45] DBI_1.1.3                     Rcpp_1.0.10                  
- [47] viridisLite_0.4.1             xtable_1.8-4                 
- [49] progress_1.2.2                clue_0.3-64                  
- [51] gridGraphics_0.5-1            bit_4.0.5                    
- [53] httr_1.4.5                    RColorBrewer_1.1-3           
- [55] ellipsis_0.3.2                farver_2.1.1                 
- [57] pkgconfig_2.0.3               XML_3.99-0.14                
- [59] sass_0.4.1                    locfit_1.5-9.7               
- [61] utf8_1.2.3                    labeling_0.4.2               
- [63] reshape2_1.4.4                tidyselect_1.2.0             
- [65] rlang_1.1.0                   later_1.3.0                  
- [67] munsell_0.5.0                 BiocVersion_3.16.0           
- [69] tools_4.2.1                   cachem_1.0.7                 
- [71] cli_3.6.1                     generics_0.1.3               
- [73] RSQLite_2.3.0                 evaluate_0.20                
- [75] stringr_1.5.0                 fastmap_1.1.1                
- [77] yaml_2.3.7                    processx_3.8.0               
- [79] knitr_1.42                    bit64_4.0.5                  
- [81] fs_1.6.1                      purrr_1.0.1                  
- [83] KEGGREST_1.38.0               nlme_3.1-162                 
- [85] whisker_0.4.1                 mime_0.12                    
- [87] xml2_1.3.3                    biomaRt_2.54.1               
- [89] compiler_4.2.1                rstudioapi_0.14              
- [91] filelock_1.0.2                curl_5.0.0                   
- [93] png_0.1-8                     interactiveDisplayBase_1.36.0
- [95] statmod_1.5.0                 bslib_0.4.2                  
- [97] stringi_1.7.12                highr_0.10                   
- [99] ps_1.7.3                      lattice_0.20-45              
-[101] ProtGenerics_1.30.0           Matrix_1.5-3                 
-[103] vctrs_0.6.1                   pillar_1.9.0                 
-[105] lifecycle_1.0.3               rhdf5filters_1.10.1          
-[107] BiocManager_1.30.20           jquerylib_0.1.4              
-[109] GlobalOptions_0.1.2           bitops_1.0-7                 
-[111] qvalue_2.30.0                 httpuv_1.6.9                 
-[113] rtracklayer_1.58.0            R6_2.5.1                     
-[115] BiocIO_1.8.0                  promises_1.2.0.1             
-[117] codetools_0.2-19              gtools_3.9.4                 
-[119] rhdf5_2.42.0                  rprojroot_2.0.3              
-[121] rjson_0.2.21                  withr_2.5.0                  
-[123] GenomicAlignments_1.34.1      Rsamtools_2.14.0             
-[125] GenomeInfoDbData_1.2.9        mgcv_1.8-42                  
-[127] parallel_4.2.1                hms_1.1.3                    
-[129] tidyr_1.3.0                   rmarkdown_2.21               
-[131] Cairo_1.6-0                   git2r_0.31.0                 
-[133] getPass_0.2-2                 shiny_1.7.4                  
-[135] restfulr_0.0.15              </code></pre>
+  [1] splines_4.3.0                 later_1.3.0                  
+  [3] BiocIO_1.8.0                  bitops_1.0-7                 
+  [5] filelock_1.0.2                XML_3.99-0.14                
+  [7] lifecycle_1.0.3               doParallel_1.0.17            
+  [9] rprojroot_2.0.3               processx_3.8.0               
+ [11] lattice_0.21-8                vroom_1.6.1                  
+ [13] sass_0.4.5                    rmarkdown_2.21               
+ [15] jquerylib_0.1.4               yaml_2.3.7                   
+ [17] httpuv_1.6.9                  DBI_1.1.3                    
+ [19] RColorBrewer_1.1-3            abind_1.4-5                  
+ [21] zlibbioc_1.44.0               rvest_1.0.3                  
+ [23] purrr_1.0.1                   RCurl_1.98-1.12              
+ [25] rappdirs_0.3.3                git2r_0.32.0                 
+ [27] circlize_0.4.15               GenomeInfoDbData_1.2.9       
+ [29] svglite_2.1.1                 codetools_0.2-19             
+ [31] DelayedArray_0.24.0           xml2_1.3.3                   
+ [33] tidyselect_1.2.0              shape_1.4.6                  
+ [35] farver_2.1.1                  webshot_0.5.4                
+ [37] GenomicAlignments_1.34.1      jsonlite_1.8.4               
+ [39] GetoptLong_1.0.5              ellipsis_0.3.2               
+ [41] iterators_1.0.14              systemfonts_1.0.4            
+ [43] foreach_1.5.2                 tools_4.3.0                  
+ [45] progress_1.2.2                Rcpp_1.0.10                  
+ [47] glue_1.6.2                    svMisc_1.2.3                 
+ [49] mgcv_1.8-42                   xfun_0.38                    
+ [51] qvalue_2.30.0                 dplyr_1.1.1                  
+ [53] withr_2.5.0                   BiocManager_1.30.20          
+ [55] fastmap_1.1.1                 rhdf5filters_1.10.1          
+ [57] fansi_1.0.4                   callr_3.7.3                  
+ [59] digest_0.6.31                 gridGraphics_0.5-1           
+ [61] R6_2.5.1                      mime_0.12                    
+ [63] textshaping_0.3.6             colorspace_2.1-0             
+ [65] Cairo_1.6-0                   gtools_3.9.4                 
+ [67] biomaRt_2.54.1                RSQLite_2.3.1                
+ [69] tidyr_1.3.0                   utf8_1.2.3                   
+ [71] generics_0.1.3                rtracklayer_1.58.0           
+ [73] prettyunits_1.1.1             httr_1.4.5                   
+ [75] whisker_0.4.1                 pkgconfig_2.0.3              
+ [77] gtable_0.3.3                  blob_1.2.4                   
+ [79] SingleCellExperiment_1.20.1   XVector_0.38.0               
+ [81] htmltools_0.5.5               ProtGenerics_1.30.0          
+ [83] clue_0.3-64                   scales_1.2.1                 
+ [85] png_0.1-8                     knitr_1.42                   
+ [87] rstudioapi_0.14               reshape2_1.4.4               
+ [89] tzdb_0.3.0                    rjson_0.2.21                 
+ [91] nlme_3.1-162                  curl_5.0.0                   
+ [93] cachem_1.0.7                  rhdf5_2.42.1                 
+ [95] GlobalOptions_0.1.2           stringr_1.5.0                
+ [97] BiocVersion_3.16.0            parallel_4.3.0               
+ [99] restfulr_0.0.15               pillar_1.9.0                 
+[101] vctrs_0.6.1                   promises_1.2.0.1             
+[103] xtable_1.8-4                  cluster_2.1.4                
+[105] tximport_1.26.1               evaluate_0.20                
+[107] readr_2.1.4                   cli_3.6.1                    
+[109] locfit_1.5-9.7                compiler_4.3.0               
+[111] Rsamtools_2.14.0              rlang_1.1.0                  
+[113] crayon_1.5.2                  labeling_0.4.2               
+[115] ps_1.7.4                      getPass_0.2-2                
+[117] fs_1.6.1                      stringi_1.7.12               
+[119] viridisLite_0.4.1             BiocParallel_1.32.6          
+[121] munsell_0.5.0                 Biostrings_2.66.0            
+[123] lazyeval_0.2.2                Matrix_1.5-4                 
+[125] hms_1.1.3                     bit64_4.0.5                  
+[127] Rhdf5lib_1.20.0               statmod_1.5.0                
+[129] KEGGREST_1.38.0               shiny_1.7.4                  
+[131] highr_0.10                    interactiveDisplayBase_1.36.0
+[133] memoise_2.0.1                 bslib_0.4.2                  
+[135] bit_4.0.5                    </code></pre>
 </div>
 </div>
 </div>
