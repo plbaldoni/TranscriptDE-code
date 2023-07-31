@@ -99,8 +99,8 @@ Here we begin summarizing the results to generate the figures presented in the m
 Below I set up the file paths.
 
 ```{r simulation-paper_data_paths}
-path.misc <- '../misc/simulation-paper.Rmd/'# file.path('../misc',knitr::current_input())
-# dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
+path.misc <- file.path('../misc',knitr::current_input())
+dir.create(path.misc,recursive = TRUE,showWarnings = FALSE)
 
 path.fdr <- 
   list.files('../output/simulation/summary','fdr.tsv.gz',recursive = TRUE,full.names = TRUE)
@@ -213,7 +213,7 @@ dt.scenario <- as.data.table(dt.scenario)
 
 ## Power plot & False discovery rate
 
-Below we generate Figure 2 of the main paper.
+Below we generate Figure 3 of the main paper.
 
 ```{r simulation-paper_power}
 scenario.balanced <- as.character(dt.scenario[length == '100bp' &
@@ -289,13 +289,13 @@ fig.power <- (fig.power.a + fig.power.b) / (fig.power.c + fig.power.d) +
   theme(plot.tag = element_text(size = 8))
 
 ggsave(plot = fig.power,
-       filename = file.path(path.misc,"figure2.pdf"),
+       filename = file.path(path.misc,"figure3.pdf"),
        device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.power
 ```
 
-Then, we generate Figure 3 below.
+Then, we generate Figure 4 below.
 
 ```{r simulation-paper_fdr}
 dt.fdr.plot <- rbind(subsetDT(dt.fdr,scenario.balanced,'A'),
@@ -341,7 +341,7 @@ fig.fdr <- (fig.fdr.a + fig.fdr.b) / (fig.fdr.c + fig.fdr.d) +
   plot_annotation(tag_levels = 'a')
 
 ggsave(plot = fig.fdr,
-       filename = file.path(path.misc,"figure3.pdf"),
+       filename = file.path(path.misc,"figure4.pdf"),
        device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.fdr
@@ -349,7 +349,7 @@ fig.fdr
 
 ## Type 1 error 
 
-Figure 4 is created below.
+Figure 5 is created below.
 
 ```{r simulation-paper_type1error_barplot}
 dt.type1error <- rbind(subsetDT(dt.metrics,scenario.balanced,'B'),
@@ -400,13 +400,13 @@ fig.type1error <- (fig.type1error.a + fig.type1error.b) / (fig.type1error.c + fi
   plot_annotation(tag_levels = 'a')
 
 ggsave(plot = fig.type1error,
-       filename = file.path(path.misc,"figure4.pdf"),
+       filename = file.path(path.misc,"figure5.pdf"),
        device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 
 fig.type1error
 ```
 
-Finally, we generate Figure 5.
+Finally, we generate Figure 6.
 
 ```{r simulation-paper_type1error_pvalue}
 dt.pvalue.plot <- subsetDT(dt.pvalue,scenario.unbalanced,'C','All Transcripts')
@@ -443,7 +443,7 @@ fig.hist <- fig.hist.a + fig.hist.b + fig.hist.c + fig.hist.d + fig.hist.e +
   plot_annotation(tag_levels = 'a')
 
 ggsave(plot = fig.hist,
-       filename = file.path(path.misc,"figure5.pdf"),
+       filename = file.path(path.misc,"figure6.pdf"),
        device = 'pdf',width = 5,height = 7.5,units = 'in',dpi = 300)
 
 fig.hist

@@ -57,6 +57,10 @@ path.data.single <- '../data/lung-se'
 path.quant.single <- '../output/lung-se'
 
 path.data.long <- '../data/lung-ont'
+
+path.sim <- 
+  file.path('../output/simulation/data/mm39/readlen-100/fc2',
+            'paired-end/9999TxPerGene/unbalanced/5libsPerGroup/simulation-1/')
 ```
 
 ## Data loading
@@ -670,9 +674,156 @@ ggsave(plot = plot.mao,
        device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
 ```
 
+## Comparison of biological coefficient of variation between raw and scaled counts
+
+The biological coefficient of variation (BCV) plot is a key plot to assess the improvements of the count scaling approach. 
+
+In the `edgeR` terminology, BCV refers to the square-root of the negative binomial (NB) dispersion parameter. For RNA-seq data summarized at the gene-level, in which case the mapping ambiguity is nearly negligible, the NB dispersions tend to be higher for genes with low counts and its trend decreases smoothly with abundance while asymptoting to a constant value for genes with large counts. At the transcript-level, on the other hand, mapping ambiguity is often highly transcript-specific, and estimated NB dispersions based on raw counts should be artificially higher for transcripts associated with high mapping ambiguity. As a result, the estimated NB dispersions of such ambiguous transcripts will deviate from the standard smooth decreasing NB dispersion trend when raw counts are considered.
+
+Under the assumptions of our presented overdispersed Poisson model, effective counts computed via the presented count scaling approach should lead to estimated NB dispersions that, in a BCV plot, present themselves without strong transcript-specific mapping ambiguity effects and, in principle, should result in BCV plots similar to those from gene-level analyses.
+
+Below we compare the BCV plots using raw and scaled counts. First, I recode the plotBCV function into `foo.bcv` so that we can place the plots into panels with the `patchwork` package.
+
+```{r casestudy_res_bcv}
+# plotBCV returns invisible(), we need to manually export the plot (code from edgeR::plotBCV)
+foo.bcv <- function (y, 
+                     xlab = "Average log CPM", 
+                     ylab = "Biological coefficient of variation", 
+                     pch = 16, cex = 0.2,
+                     col.common = "red", 
+                     col.trend = "blue", 
+                     col.tagwise = "black", 
+                     fontsize = 8, ...) {
+  if (!is(y, "DGEList")) 
+    stop("y must be a DGEList.")
+  A <- y$AveLogCPM
+  if (is.null(A)) 
+    A <- aveLogCPM(y$counts, offset = getOffset(y))
+  disp <- getDispersion(y)
+  if (is.null(disp)) 
+    stop("No dispersions to plot")
+  if (attr(disp, "type") == "common") 
+    disp <- rep_len(disp, length(A))
+  par(mar = c(3, 3, 0.25, 0.25),mgp = c(1.25,0.5,0))
+  plot(A, sqrt(disp), xlab = xlab, ylab = ylab, type = "n", 
+       cex.lab = fontsize/12,
+       cex.axis = fontsize/12,
+       ...)
+  labels <- cols <- lty <- pt <- NULL
+  if (!is.null(y$tagwise.dispersion)) {
+    points(A, sqrt(y$tagwise.dispersion), pch = pch, cex = cex, 
+           col = col.tagwise)
+    labels <- c(labels, "Tagwise")
+    cols <- c(cols, col.tagwise)
+    lty <- c(lty, -1)
+    pt <- c(pt, pch)
+  }
+  if (!is.null(y$common.dispersion)) {
+    abline(h = sqrt(y$common.dispersion), col = col.common, 
+           lwd = 2)
+    labels <- c(labels, "Common")
+    cols <- c(cols, col.common)
+    lty <- c(lty, 1)
+    pt <- c(pt, -1)
+  }
+  if (!is.null(y$trended.dispersion)) {
+    o <- order(A)
+    lines(A[o], sqrt(y$trended.dispersion)[o], col = col.trend, 
+          lwd = 2)
+    labels <- c(labels, "Trend")
+    cols <- c(cols, col.trend)
+    lty <- c(lty, 1)
+    pt <- c(pt, -1)
+  }
+  legend("topright", legend = labels, lty = lty, pch = pt, 
+         pt.cex = cex, lwd = 2, col = cols,cex = fontsize/12)
+}
+```
+
+Then, I generate the BCV plots from the real datasets.
+
+```{r casestudy_res_real}
+# Scaled counts
+dte.short.paired.bcv.scaled <- dte.short.paired
+dte.short.paired.bcv.scaled$counts <- 
+  dte.short.paired.bcv.scaled$counts/dte.short.paired.bcv.scaled$genes$Overdispersion
+keep.short.paired.bcv.scaled <- filterByExpr(dte.short.paired.bcv.scaled)
+dte.short.paired.bcv.scaled.filtr <- 
+  dte.short.paired.bcv.scaled[keep.short.paired.bcv.scaled,, keep.lib.sizes = FALSE]
+dte.short.paired.bcv.scaled.filtr <- calcNormFactors(dte.short.paired.bcv.scaled.filtr)
+dte.short.paired.bcv.scaled.filtr <- estimateDisp(dte.short.paired.bcv.scaled.filtr,design = design.short.paired)
+
+# Raw counts
+dte.short.paired.bcv.raw <- dte.short.paired
+keep.short.paired.bcv.raw <- filterByExpr(dte.short.paired.bcv.raw)
+dte.short.paired.bcv.raw.filtr <- 
+  dte.short.paired.bcv.raw[keep.short.paired.bcv.raw,, keep.lib.sizes = FALSE]
+dte.short.paired.bcv.raw.filtr <- calcNormFactors(dte.short.paired.bcv.raw.filtr)
+dte.short.paired.bcv.raw.filtr <- estimateDisp(dte.short.paired.bcv.raw.filtr,design = design.short.paired)
+
+plot.bcv.real.raw <- wrap_elements(full = ~foo.bcv(dte.short.paired.bcv.raw.filtr))
+plot.bcv.real.scaled <- wrap_elements(full = ~foo.bcv(dte.short.paired.bcv.scaled.filtr))
+
+plot.bcv.real.raw
+plot.bcv.real.scaled
+```
+
+To verify whether our simulated reproduces the caracteristics of the real data, we present BCV plots from raw and scaled counts from a single simulated dataset generated with unbalanced library sizes, 5 samples per group, 100bp paired-end read data, all references transcripts expressed, and quantified with Salmon.
+
+```{r casestudy_res_bcv_sim}
+catch.sim <- catchSalmon(list.dirs(file.path(path.sim,'quant-salmon'),recursive = FALSE))
+colnames(catch.sim$counts) <- gsub("group|_R1","",basename(colnames(catch.sim$counts)))
+
+dte.sim.raw <- DGEList(counts = catch.sim$counts,
+                       genes = catch.sim$annotation,
+                       samples = colnames(catch.sim$counts),
+                       group = strsplit2(colnames(catch.sim$counts),"_")[,1])
+
+design.sim <- model.matrix( ~ 0 + group,data = dte.sim.raw$samples)
+
+keep.sim.raw <- filterByExpr(dte.sim.raw)
+dte.sim.raw.filtr <- dte.sim.raw[keep.sim.raw,, keep.lib.sizes = FALSE]
+dte.sim.raw.filtr <- calcNormFactors(dte.sim.raw.filtr)
+dte.sim.raw.filtr <- estimateDisp(dte.sim.raw.filtr,design = design.sim)
+
+dte.sim.scaled <- dte.sim.raw
+dte.sim.scaled$counts <- dte.sim.scaled$counts/dte.sim.scaled$genes$Overdispersion
+
+keep.sim.scaled <- filterByExpr(dte.sim.scaled)
+dte.sim.scaled.filtr <- dte.sim.scaled[keep.sim.scaled,, keep.lib.sizes = FALSE]
+dte.sim.scaled.filtr <- calcNormFactors(dte.sim.scaled.filtr)
+dte.sim.scaled.filtr <- estimateDisp(dte.sim.scaled.filtr,design = design.sim)
+
+plot.bcv.sim.raw <- wrap_elements(full = ~foo.bcv(dte.sim.raw.filtr))
+plot.bcv.sim.scaled <- wrap_elements(full = ~foo.bcv(dte.sim.scaled.filtr))
+
+plot.bcv.sim.raw
+plot.bcv.sim.scaled
+```
+
+We put together these four BCV plots into Figure 2 of the main paper.
+
+```{r casestudy_res_bcv_sim_plot}
+plot.design.sim <- c(area(1,1),area(1,2),
+                     area(2,1),area(2,2))
+
+
+fig.panel.sim <- wrap_plots(A = plot.bcv.real.raw,
+                            B = plot.bcv.real.scaled,
+                            C = plot.bcv.sim.raw,
+                            D = plot.bcv.sim.scaled,
+                            design = plot.design.sim) +
+  plot_annotation(tag_levels = 'a') &
+  theme(plot.tag = element_text(size = 8))
+
+ggsave(plot = fig.panel.sim,
+       filename = file.path(path.misc,"figure2.pdf"),
+       device = 'pdf',width = 5,height = 5,units = 'in',dpi = 300)
+```
+
 ## Comparison of transcript-level and gene-level results using paired-end read data
 
-Then, we generate Figure 6 of the main paper below. First we generate panel (a).
+Then, we generate Figure 7 of the main paper below. First we generate panel (a).
 
 ```{r casestudy_res_txgene_mds}
 # plotMDS returns invisible(), we need to manually export the plot (code from limma::plotMDS.MDS)
@@ -772,8 +923,8 @@ foo.lollipop <-
   }
 
 plot.lollipop <- wrap_elements(foo.lollipop(symbols = c('EGLN3','RAF1','MET','AKT1','BCL2L1'),
-                                          gene.table = out.gene,
-                                          transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
+                                            gene.table = out.gene,
+                                            transcript.table = out.short.paired.edger.scaled,legend = c(0.95,0.875)))
 plot.lollipop
 ```
 
@@ -849,13 +1000,11 @@ fig.panel <- wrap_plots(A = plot.mds,
                         D = plot.heat.cancer,
                         design = plot.design,
                         heights = c(0.35,0.25,0.4)) +
-  plot_annotation(tag_levels = 'a')
-
-fig.panel <- fig.panel &
+  plot_annotation(tag_levels = 'a') &
   theme(plot.tag = element_text(size = 8))
 
 ggsave(plot = fig.panel,
-       filename = file.path(path.misc,"figure6.pdf"),
+       filename = file.path(path.misc,"figure7.pdf"),
        device = 'pdf',width = 10,height = 12,units = 'in',dpi = 300)
 ```
 
