@@ -655,7 +655,7 @@ plot.mao <-
   ggplot(data = dt.mao.plot.long,aes(x = NTranscriptPerGeneTrunc,y = log10(Overdispersion))) +
   geom_smooth(aes(group = Type,color = Type),se = FALSE,span = 0.8,method = 'loess',show.legend = FALSE) +
   geom_boxplot(aes(fill = Type),outlier.alpha = 0.2,col = 'black',alpha = 0.5) +
-  labs(x = 'Number of expressed transcripts per gene', y = 'Overdispersion (log10 scale)') +
+  labs(x = 'Number of transcripts per gene', y = 'Overdispersion (log10 scale)') +
   scale_y_continuous(limits = c(0,2.5),breaks = seq(0,3,0.5)) +
   scale_fill_manual(values = c('Illumina short reads' = 'red','ONT long reads' = 'blue')) +
   scale_color_manual(values = c('Illumina short reads' = 'red','ONT long reads' = 'blue')) +
