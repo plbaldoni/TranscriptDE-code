@@ -550,11 +550,15 @@ setcolorder(dt.table.sigma2,
 dt.table.sigma2[,Length := gsub('bp','',Length)]
 dt.table.sigma2$LibsPerGroup %<>% mapvalues(from = c(3,5),to = c('Three','Five'))
 
+dt.table.sigma2[,FC.SE := roundPretty(100*(10^(dt.table.sigma2$FC.SE)-1),1)]
+dt.table.sigma2[,FC.PE := roundPretty(100*(10^(dt.table.sigma2$FC.PE)-1),1)]
+
 tb <- kbl(dt.table.sigma2,digits = 3,format = 'latex',escape = FALSE,booktabs = TRUE,
-          align = c('c','r',rep('r',6)),
+          align = c('c','c',rep('c',6)),
           col.names = linebreak(c('Samples per\ngroup','Read Length\n(bp)',
-                                  'Mapping Ambiguity\nlog-FC','Power','FDR',
-                                  'Mapping Ambiguity\nlog-FC','Power','FDR'),align = "c")) %>%
+                                  'Increase in overdispersion \n(percentage)','Power','FDR',
+                                  'Increase in overdispersion \n(percentage)','Power','FDR'),
+                                align = "c")) %>%
   add_header_above(c(" " = 2, "Single-end Read" = 3, "Paired-end Read" = 3)) %>%
   collapse_rows(1, latex_hline = 'major')
 

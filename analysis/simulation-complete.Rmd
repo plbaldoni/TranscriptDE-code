@@ -14,27 +14,27 @@ In this report, we present the analysis of the simulations for the `catchSalmon`
 
 ## News
 
-- Changes in version 230518:
-- With single-end experiments, we now give salmon the true mean/sd of the fragment length distribution. Inclusion of a new simulation scenario with n=10 samples per group.
+* Changes in version 230518:
+    + With single-end experiments, we now give salmon the true mean/sd of the fragment length distribution. Inclusion of a new simulation scenario with n=10 samples per group.
 
-- Changes in version 221123:
-- Fix paragraph that discusses average fragment length from `Salmon` and `kallisto`. Fix paths to new location in workflowr directory.
+* Changes in version 221123:
+    + Fix paragraph that discusses average fragment length from `Salmon` and `kallisto`. Fix paths to new location in workflowr directory.
 
-- Changes in version 221105:
-- Simulations with 50, 75, and 100 base pairs read length were re-run with `simReads` option `fragment.length.min = 150L` to match the specifications of the simulations using 125bp and 150bp read length.
+* Changes in version 221105:
+    + Simulations with 50, 75, and 100 base pairs read length were re-run with `simReads` option `fragment.length.min = 150L` to match the specifications of the simulations using 125bp and 150bp read length.
 
-- Changes in version 221007:
-- Adding simulations with read length 125bp and 150bp to assess methods' performance under different read lengths.
+* Changes in version 221007:
+    + Adding simulations with read length 125bp and 150bp to assess methods' performance under different read lengths.
 
-- Changes in version 221007:
-- Adding simulations with read length of 50bp and 100bp to assess methods' performance under different read lengths.
+* Changes in version 221007:
+    + Adding simulations with read length of 50bp and 100bp to assess methods' performance under different read lengths.
 
-- Changes in version 220822:
-- The simulations are designed in such a way that TPM values are directly generated for transcripts. Previously, we found that a two-stage approach with a Dirichlet random variable to split gene-level expression into transcripts was not realistic.
-- Transcript ranks from our reference dataset are now based on Salmon's TPM from real data, not raw counts.
-- Increased the library size from 30 mi. reads to 50 mi. reads in the balanced scenario. For unbalanced scenario, libraries alternate between 25 mi. and 100 mil. reads in size.
-- Inclusion of an extra scenario with 5 replicates per group. We only had 3 replicates/group until now.
-- We now use `edgeR::goodTuring` to generate baseline expression values. Previously we used the Zipf law, which we thought to be unrealistic for the number of transcripts we are simulating. The BCV trend is of the form $\text{BCV} = 0.2 + 1/\sqrt{\text{expression}}$ with gene- and group-specific dispersion of the form $\text{Dispersion} = BCV^2\times\frac{40}{\chi^2_{40}}$. The motivation for these changes is mainly to match the simulation setup used in the `voom` paper.
+* Changes in version 220822:
+    + The simulations are designed in such a way that TPM values are directly generated for transcripts. Previously, we found that a two-stage approach with a Dirichlet random variable to split gene-level expression into transcripts was not realistic.
+    + Transcript ranks from our reference dataset are now based on Salmon's TPM from real data, not raw counts.
+    + Increased the library size from 30 mi. reads to 50 mi. reads in the balanced scenario. For unbalanced scenario, libraries alternate between 25 mi. and 100 mil. reads in size.
+    + Inclusion of an extra scenario with 5 replicates per group. We only had 3 replicates/group until now.
+    + We now use `edgeR::goodTuring` to generate baseline expression values. Previously we used the Zipf law, which we thought to be unrealistic for the number of transcripts we are simulating. The BCV trend is of the form $\text{BCV} = 0.2 + 1/\sqrt{\text{expression}}$ with gene- and group-specific dispersion of the form $\text{Dispersion} = BCV^2\times\frac{40}{\chi^2_{40}}$. The motivation for these changes is mainly to match the simulation setup used in the `voom` paper.
 
 ## Setup
 
