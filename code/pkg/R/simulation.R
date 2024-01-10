@@ -276,6 +276,7 @@ simulateExperiment <- function(dest,
                                opts.kallisto = paste0('--bootstrap-samples=100 --threads=',workers),
                                run.salmon = TRUE,
                                run.kallisto = TRUE,
+                               run.dte = TRUE,
                                seed = NULL){
   
   # Setting up parallel computing
@@ -311,7 +312,9 @@ simulateExperiment <- function(dest,
                 run.salmon = run.salmon, run.kallisto = run.kallisto)
   
   # Running methods
-  runDTEMethods(dest = file.path(dest),run.salmon = run.salmon, run.kallisto = run.kallisto)
+  if (isTRUE(run.dte)) {
+    runDTEMethods(dest = file.path(dest),run.salmon = run.salmon, run.kallisto = run.kallisto)
+  }
   
   # Organizing FASTQ files
   path.fastq <- read.delim(path.targets,header = TRUE)
@@ -319,8 +322,9 @@ simulateExperiment <- function(dest,
     message('Copying FASTQ files...')
     dir.create(file.path(dest,'fastq'))
     file.copy(from = unlist(path.fastq),to = file.path(dest,'fastq'))
+  } else{
+    file.remove(unlist(path.fastq))
   }
-  file.remove(unlist(path.fastq))
 }
 
 runDTEMethods <- function(dest,run.salmon,run.kallisto){
