@@ -855,7 +855,7 @@ plot.mds
 Next, we generate panel (b).
 
 ```{r casestudy_res_txgene_md}
-# plotMD does not return invisible(), so we just use wrap_elements
+# Manually export the plot to be combined with wrap_elements
 foo.md <- function(x,fontsize = 8){
   par(mar = c(5, 4, 2, 2))
   plotMD(x,
